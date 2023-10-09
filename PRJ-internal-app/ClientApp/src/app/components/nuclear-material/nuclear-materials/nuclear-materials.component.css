@@ -1,0 +1,28 @@
+.serviceItem {
+  width: 14%;
+  height: 110px;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+}
+
+.serviceItem img {
+  width: 43%;
+  height: 40px;
+  margin-bottom: 10px;
+  transition: 0.3s ease-in-out all;
+}
+
+.serviceItem:hover {
+  background-color: #f8f8f8;
+  box-shadow: 0 0.35rem 0.35rem rgba(0, 0, 0, 0.075) !important;
+}
+
+  .serviceItem:hover img {
+    filter: brightness(90%);
+  }
+
+.serviceItem h6 {
+  text-align: center;
+  color: var(--blue);
+  font-size: 0.85em;
+}

@@ -1,0 +1,1186 @@
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+  <div
+    class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4"
+  >
+    <form
+      style="width: 100%"
+      enctype="multipart/form-data"
+      [formGroup]="addNewSourceForm"
+    >
+      <div class="row my-2">
+        <h4>{{ "transactionEdit.editTransaction" | translate }}</h4>
+      </div>
+      <div class="row d-flex w-100">
+        <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <label for="licenseNumber" class="mx-1">
+            {{ "addNewSource.licenseNumber" | translate }}
+            <span class="text-danger valdiation-text">*</span></label
+          >
+          <p-dropdown
+            [options]="licenses"
+            formControlName="licenseNumber"
+            optionLabel="licenseVersionNumber"
+            [filter]="true"
+            filterBy="licenseVersionNumber"
+            [showClear]="true"
+            placeholder="{{ '--Select--' | translate }}"
+            #licenseNumber
+            (onChange)="getPermitsByLicenseId(licenseNumber.value.id)"
+            styleClass="w-100 "
+          >
+            <ng-template pTemplate="selectedItem">
+              <div
+                class="country-item country-item-value"
+                *ngIf="licenseNumber"
+              >
+                <div *ngIf="lang == 'ar'">
+                  {{ licenseNumber.value.licenseDescAr }}
+                </div>
+                <div *ngIf="lang == 'en'">
+                  {{ licenseNumber.value.licenseDescEn }}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-r pTemplate="item">
+              <div class="country-item">
+                <div *ngIf="lang == 'ar'">
+                  {{ r?.licenseDescAr }}
+                </div>
+                <div *ngIf="lang == 'en'">
+                  {{ r?.licenseDescEn }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+        </div>
+        <!-- Permit -->
+        <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <label for="permitNumber" class="mx-1">
+            {{ "addNewSource.permitNumber" | translate }}
+            <span class="text-danger valdiation-text">*</span></label
+          >
+          <p-dropdown
+            [options]="permits"
+            formControlName="permitNumber"
+            optionLabel="permitNumber"
+            [filter]="true"
+            filterBy="permitNumber"
+            [showClear]="true"
+            placeholder="{{ '--Select--' | translate }}"
+            #permitNumber
+            styleClass="w-100 "
+          >
+            <ng-template pTemplate="selectedItem">
+              <div class="country-item country-item-value" *ngIf="permitNumber">
+                <div>
+                  {{ permitNumber.value.permitNumber }}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-r pTemplate="item">
+              <div class="country-item">
+                <div>
+                  {{ r?.permitNumber }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+        </div>
+        <hr class="mt-5" />
+      </div>
+
+      <div
+        class="bg-light border rounded my-3 p-2 row w-100 align-items-center"
+        style="min-height: 6.5rem"
+      >
+        <div class="form-check col-lg-3">
+          <input
+            formControlName="selectedMixOrNot"
+            class="form-check-input"
+            type="radio"
+            name="selectedMixOrNot"
+            value="single"
+            id="single"
+          />
+          <label class="form-check-label" for="single">
+            {{ "addNewSource.singleRadionuclide" | translate }}
+          </label>
+        </div>
+        <div class="form-check col-lg-3">
+          <input
+            formControlName="selectedMixOrNot"
+            class="form-check-input"
+            type="radio"
+            name="selectedMixOrNot"
+            id="mix"
+            value="mix"
+          />
+          <label class="form-check-label" for="mix">{{
+            "addNewSource.mixedRadionuclide" | translate
+          }}</label>
+        </div>
+      </div>
+
+      <div
+        class="source-type-block bg-light border rounded my-3 p-2 row w-100 py-4"
+      >
+        <h5 class="col-12 mb-3">{{ "addNewSource.sourceInfo" | translate }}</h5>
+        <section class="row w-100 m-0 p-0">
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="manufacturerserial" class="mx-1"
+              >{{ "addNewSource.manufacturerSerialNo" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="{{ 'mandatory' | translate }}"
+              id="manufacturerserial"
+              formControlName="manufacturerSerialNo"
+              required
+            />
+          </div>
+
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="manufacturerInput" class="mx-1">{{
+              "addNewSource.manufacturer" | translate
+            }}</label>
+            <p-dropdown
+              [options]="lookups['Manufacturer']"
+              formControlName="manufacturer"
+              optionLabel="displayNameEn"
+              [filter]="true"
+              filterBy="displayNameEn,displayNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #manufacturer
+              styleClass="w-100 "
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="manufacturer"
+                >
+                  <div>
+                    {{
+                      lang == "en"
+                        ? manufacturer.value.displayNameEn
+                        : manufacturer.value.displayNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="manufacturerCountry" class="mx-1"
+              >{{ "addNewSource.manufacturerCountry" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <p-dropdown
+              [options]="lookups['ManufacturerCountry']"
+              formControlName="manufacturerCountry"
+              optionLabel="displayNameEn"
+              [filter]="true"
+              filterBy="displayNameEn,displayNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #manufacturerCountry
+              styleClass="w-100 "
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="manufacturerCountry"
+                >
+                  <div>
+                    {{
+                      lang == "en"
+                        ? manufacturerCountry.value.displayNameEn
+                        : manufacturerCountry.value.displayNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="sourceModel" class="mx-1">
+              {{ "addNewSource.sourceModel" | translate }}
+              <span class="text-danger valdiation-text">*</span>
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="sourceModel"
+              placeholder="{{ 'mandatory' | translate }}"
+              formControlName="sourceModel"
+              maxlength="8"
+            />
+          </div>
+
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="facilitySourceId" class="mx-1">
+              {{ "addNewSource.facilitySourceID" | translate }}
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="facilitySourceId"
+              placeholder="{{ 'optional' | translate }}"
+              formControlName="facilitySourceID"
+            />
+          </div>
+          <div
+            class="col-lg-1 col-md-3 col-sm-6 col-xs-6 d-flex align-items-center"
+            style="margin: auto 0 auto 0; padding-top: 6px"
+          >
+            <button
+              class="btn btn-success"
+              data-bs-toggle="modal"
+              data-bs-target="#changeFacilityIDContact"
+              (click)="
+                updateAttribute(
+                  source.facilitySerialNo,
+                  TransactionAttributes.facilitySourceId
+                )
+              "
+            >
+              {{ "edit" | translate }}
+            </button>
+          </div>
+
+          <hr />
+
+          <!-- Characterisrics -->
+          <section class="w-100">
+            <h5 class="col-12 mb-3">
+              {{ "addNewSource.characterisrics" | translate }}
+            </h5>
+            <div class="row">
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="status" class="mx-1"
+                  >{{ "addNewSource.status" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <p-dropdown
+                  [options]="lookups['Status']"
+                  formControlName="status"
+                  optionLabel="displayNameEn"
+                  [filter]="true"
+                  filterBy="displayNameEn,displayNameAr"
+                  [showClear]="true"
+                  placeholder="{{ '--Select--' | translate }}"
+                  #status
+                  styleClass="w-100 "
+                >
+                  <ng-template pTemplate="selectedItem">
+                    <div class="country-item country-item-value" *ngIf="status">
+                      <div>
+                        {{
+                          lang == "en"
+                            ? status.value.displayNameEn
+                            : status.value.displayNameAr
+                        }}
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-r pTemplate="item">
+                    <div class="country-item">
+                      <div>
+                        {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+              </div>
+              <div
+                class="col-lg-1 col-md-3 col-sm-6 col-xs-6 d-flex align-items-center"
+                style="margin: auto 0 auto 0; padding-top: 6px"
+              >
+                <button
+                  class="btn btn-success"
+                  data-bs-toggle="modal"
+                  data-bs-target="#changeFacilityIDContact"
+                  (click)="
+                    updateAttribute(source.status, TransactionAttributes.status)
+                  "
+                >
+                  {{ "edit" | translate }}
+                </button>
+              </div>
+
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="associatedEquipment" class="mx-1"
+                  >{{ "addNewSource.associatedEquipment" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <p-dropdown
+                  [options]="lookups['Associated Equipment']"
+                  formControlName="associatedEquipment"
+                  optionLabel="displayNameEn"
+                  [filter]="true"
+                  filterBy="displayNameEn,displayNameAr"
+                  [showClear]="true"
+                  placeholder="{{ '--Select--' | translate }}"
+                  #associatedEquipment
+                  styleClass="w-100 "
+                >
+                  <ng-template pTemplate="selectedItem">
+                    <div
+                      class="country-item country-item-value"
+                      *ngIf="associatedEquipment"
+                    >
+                      <div>
+                        {{
+                          lang == "en"
+                            ? associatedEquipment.value.displayNameEn
+                            : associatedEquipment.value.displayNameAr
+                        }}
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-r pTemplate="item">
+                    <div class="country-item">
+                      <div>
+                        {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+              </div>
+              <div
+                class="col-lg-1 col-md-3 col-sm-6 col-xs-6 d-flex align-items-center"
+                style="margin: auto 0 auto 0; padding-top: 6px"
+              >
+                <button
+                  class="btn btn-success"
+                  data-bs-toggle="modal"
+                  data-bs-target="#changeFacilityIDContact"
+                  (click)="
+                    updateAttribute(
+                      source.associatedEquipment,
+                      TransactionAttributes.associatedEquipment
+                    )
+                  "
+                >
+                  {{ "edit" | translate }}
+                </button>
+              </div>
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="physicalForm" class="mx-1"
+                  >{{ "addNewSource.physicalForm" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <p-dropdown
+                  [options]="lookups['PhysicalForm']"
+                  formControlName="physicalForm"
+                  optionLabel="displayNameEn"
+                  [filter]="true"
+                  filterBy="displayNameEn,displayNameAr"
+                  [showClear]="true"
+                  placeholder="{{ '--Select--' | translate }}"
+                  #physicalForm
+                  styleClass="w-100"
+                  id="physicalForm"
+                >
+                  <ng-template pTemplate="selectedItem">
+                    <div
+                      class="country-item country-item-value"
+                      *ngIf="physicalForm"
+                    >
+                      <div>
+                        {{
+                          lang == "en"
+                            ? physicalForm.value.displayNameEn
+                            : physicalForm.value.displayNameAr
+                        }}
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-r pTemplate="item">
+                    <div class="country-item">
+                      <div>
+                        {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+              </div>
+
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="quantity" class="mx-1">
+                  {{ "addNewSource.quantity" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="quantity"
+                  min="0"
+                  placeholder="e.x. 2"
+                  formControlName="quantity"
+                />
+              </div>
+            </div>
+          </section>
+
+          <hr />
+
+          <!-- Here come the RadioNuclides Pool -->
+          <div id="radionuclidepool">
+            <h5 class="col-12 mb-3">
+              {{ "addNewSource.radionuclides" | translate }}
+            </h5>
+
+            <ng-container formArrayName="radionuclides">
+              <ng-container
+                *ngFor="let alias of radionuclides.controls; let i = index"
+              >
+                <ng-container [formGroupName]="i">
+                  <div class="m-0 p-2 w-100 row radio-1 border my-2 rounded">
+                    <div
+                      class="px-1 mb-3 col-lg-3 col-md-4 col-sm-12 col-xs-12"
+                    >
+                      <label class="mx-1"
+                        >{{ "addNewSource.radionuclide" | translate }}
+                        <span class="text-danger valdiation-text"
+                          >*</span
+                        ></label
+                      >
+                      <p-dropdown
+                        [options]="radionulcidesList"
+                        formControlName="radionuclide"
+                        optionLabel="isotop"
+                        [filter]="true"
+                        filterBy="isotop"
+                        [showClear]="true"
+                        placeholder="{{ '--Select--' | translate }}"
+                        #radionuclide
+                        styleClass="w-100"
+                      >
+                        <ng-template pTemplate="selectedItem">
+                          <div
+                            class="country-item country-item-value"
+                            *ngIf="radionuclide"
+                          >
+                            <div>
+                              {{ radionuclide.value.isotop }}
+                            </div>
+                          </div>
+                        </ng-template>
+                        <ng-template let-r pTemplate="item">
+                          <div class="country-item">
+                            <div>{{ r?.isotop }}</div>
+                          </div>
+                        </ng-template>
+                      </p-dropdown>
+                    </div>
+                    <div
+                      class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12"
+                    >
+                      <label class="mx-1"
+                        >{{ "addNewSource.initialActivity" | translate }}
+                        <span class="text-danger valdiation-text"
+                          >*</span
+                        ></label
+                      >
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control"
+                        #initialActivity
+                        placeholder="{{ 'mandatory' | translate }}"
+                        formControlName="initialActivity"
+                      />
+                    </div>
+
+                    <div
+                      class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12"
+                    >
+                      <label class="mx-1"
+                        >{{ "addNewSource.activityUnit" | translate
+                        }}<span class="text-danger valdiation-text"
+                          >*</span
+                        ></label
+                      >
+                      <p-dropdown
+                        id="radionuclides"
+                        [options]="lookups['ActivityUnit']"
+                        formControlName="activityUnit"
+                        optionLabel="displayNameEn"
+                        [filter]="true"
+                        filterBy="displayNameEn,displayNameAr"
+                        [showClear]="true"
+                        placeholder="{{ '--Select--' | translate }}"
+                        #activityUnit
+                        styleClass="w-100"
+                      >
+                        <ng-template pTemplate="selectedItem">
+                          <div
+                            class="country-item country-item-value"
+                            *ngIf="activityUnit"
+                          >
+                            <div>
+                              {{ activityUnit.value.displayNameEn }}
+                            </div>
+                          </div>
+                        </ng-template>
+                        <ng-template let-r pTemplate="item">
+                          <div class="country-item">
+                            <div>{{ r?.displayNameEn }}</div>
+                          </div>
+                        </ng-template>
+                      </p-dropdown>
+                    </div>
+
+                    <div
+                      class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12"
+                    >
+                      <label for="initialActivityDate" class="mx-1"
+                        >{{ "addNewSource.productionDate" | translate }}
+                        <span class="text-danger valdiation-text"
+                          >*</span
+                        ></label
+                      >
+                      <input
+                        type="date"
+                        class="form-control"
+                        #initialActivityDate
+                        id="initialActivityDate"
+                        placeholder="{{ 'mandatory' | translate }}"
+                        formControlName="initialActivityDate"
+                      />
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </div>
+
+          <hr />
+
+          <!-- Source Attachments -->
+
+          <h5 class="w-100">
+            {{ "attachments" | translate
+            }}<span class="text-danger valdiation-text">*</span>
+          </h5>
+          <h6 class="col-12 mb-3 mt-2">Certificate</h6>
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+              <div class="form-check form-switch mb-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="noManufacturerCertificateFlag"
+                  formControlName="noManufacturerCertificateFlag"
+                  #noManufacturerCertificateFlag
+                  [disabled]="true"
+                />
+                <label
+                  class="form-check-label"
+                  for="noManufacturerCertificateFlag"
+                  >{{ "addNewSource.doYouHaveCertificate" | translate }}</label
+                >
+              </div>
+              <label class="mx-1"
+                >{{ "addNewSource.manufacturerCertificate" | translate }}
+                <span class="text-danger valdiation-text">*</span></label
+              >
+              <ngx-dropzone
+                [accept]="'application/pdf'"
+                [disabled]="true"
+                [expandable]="false"
+                style="width: 100%; border: 1px solid #dee2e6"
+                class="ngx-dropzone"
+              >
+                <ngx-dropzone-label>{{
+                  "uploadAttachment" | translate
+                }}</ngx-dropzone-label>
+                <ngx-dropzone-preview
+                  [removable]="true"
+                  [disabled]="true"
+                  *ngFor="let f of manufacturerCertificates"
+                  class="ngx-dropzone-preview"
+                >
+                  <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6 col-sm-12 mb-3"
+              *ngIf="!isManufacturerCertificate"
+            >
+              <div class="form-check form-switch mb-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="charCertificate"
+                  formControlName="noCharacterizationCertificateFlag"
+                  #noCharacterizationCertificateFlag
+                  [disabled]="true"
+                />
+                <label
+                  class="form-check-label"
+                  for="noCharacterizationCertificateFlag"
+                  >{{
+                    "addNewSource.ifYouDontHaveCertificate" | translate
+                  }}</label
+                >
+              </div>
+              <label class="mx-1"
+                >{{ "addNewSource.characterizationCertificate" | translate }}
+                <span class="text-danger valdiation-text">*</span></label
+              >
+              <ngx-dropzone
+                [accept]="'application/pdf'"
+                [disabled]="true"
+                [expandable]="false"
+                style="width: 100%; border: 1px solid #dee2e6"
+                class="ngx-dropzone"
+              >
+                <ngx-dropzone-label>{{
+                  "uploadAttachment" | translate
+                }}</ngx-dropzone-label>
+                <ngx-dropzone-preview
+                  [removable]="true"
+                  [disabled]="true"
+                  *ngFor="let f of charCertificates"
+                  class="ngx-dropzone-preview"
+                >
+                  <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6 col-sm-12 mb-3"
+              *ngIf="!isCharCertificate && !isManufacturerCertificate"
+            >
+              <div class="form-check form-switch mb-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="noImagesFlag"
+                  formControlName="noSourceTagImageFlag"
+                  [disabled]="true"
+                />
+                <label class="form-check-label" for="noImagesFlag">{{
+                  "addNewSource.noSourceTagImageFlag" | translate
+                }}</label>
+              </div>
+              <label class="mx-1"
+                >{{ "addNewSource.sourceTagImage" | translate }}
+                <span
+                  *ngIf="isSourceTagImage"
+                  class="text-danger valdiation-text"
+                  >*</span
+                >
+              </label>
+              <ngx-dropzone
+                [accept]="'image/jpeg,image/jpg,image/png'"
+                [disabled]="true"
+                [expandable]="false"
+                style="width: 100%; border: 1px solid #dee2e6"
+                class="ngx-dropzone"
+              >
+                <ngx-dropzone-label>{{
+                  "uploadImage" | translate
+                }}</ngx-dropzone-label>
+                <ngx-dropzone-image-preview
+                  [removable]="true"
+                  ngProjectAs="ngx-dropzone-preview"
+                  [file]="f"
+                  [disabled]="true"
+                  *ngFor="let f of sourceTagImages"
+                  class="ngx-dropzone-preview"
+                >
+                  <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+                </ngx-dropzone-image-preview>
+              </ngx-dropzone>
+            </div>
+          </div>
+
+          <hr />
+
+          <h6 class="col-12 mb-3 mt-2">Other Attachments</h6>
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+            <div class="form-check form-switch mb-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="manufacturerCertificate"
+                formControlName="noCustomImportPermitFlag"
+                #noCustomImportPermitFlag
+                [disabled]="true"
+              />
+              <label class="form-check-label" for="noCustomImportPermitFlag">{{
+                "addNewSource.noCustomImportPermitFlag" | translate
+              }}</label>
+            </div>
+            <label class="mx-1"
+              >{{ "addNewSource.customImportPermit" | translate }}
+              <span
+                *ngIf="isCustomImportPermit"
+                class="text-danger valdiation-text"
+                >*</span
+              ></label
+            >
+            <ngx-dropzone
+              [accept]="'application/pdf'"
+              [disabled]="true"
+              [expandable]="false"
+              style="width: 100%; border: 1px solid #dee2e6"
+              class="ngx-dropzone"
+            >
+              <ngx-dropzone-label>{{
+                "uploadAttachment" | translate
+              }}</ngx-dropzone-label>
+              <ngx-dropzone-preview
+                [removable]="true"
+                [disabled]="true"
+                *ngFor="let f of customImportPermits"
+                class="ngx-dropzone-preview"
+              >
+                <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+            <div class="form-check form-switch mb-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="noShipperImportPermitFlag"
+                formControlName="noShipperImportPermitFlag"
+                [disabled]="true"
+              />
+              <label class="form-check-label" for="noShipperImportPermitFlag">{{
+                "addNewSource.noShipperImportPermitFlag" | translate
+              }}</label>
+            </div>
+            <label class="mx-1"
+              >{{ "addNewSource.shipperImportPermit" | translate }}
+              <span
+                *ngIf="isShipperImportPermit"
+                class="text-danger valdiation-text"
+                >*</span
+              >
+            </label>
+            <ngx-dropzone
+              [accept]="'application/pdf'"
+              [disabled]="true"
+              [expandable]="false"
+              style="width: 100%; border: 1px solid #dee2e6"
+              class="ngx-dropzone"
+            >
+              <ngx-dropzone-label>{{
+                "uploadAttachment" | translate
+              }}</ngx-dropzone-label>
+              <ngx-dropzone-preview
+                [removable]="true"
+                [disabled]="true"
+                *ngFor="let f of shipperImportPermits"
+                class="ngx-dropzone-preview"
+              >
+                <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+            <div class="form-check form-switch mb-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="noImagesFlag"
+                formControlName="noImagesFlag"
+                [disabled]="true"
+              />
+              <label class="form-check-label" for="noImagesFlag">{{
+                "addNewSource.noImagesFlag" | translate
+              }}</label>
+            </div>
+            <label class="mx-1"
+              >{{ "addNewSource.sourceImage" | translate }}
+              <span *ngIf="isImage" class="text-danger valdiation-text">*</span>
+            </label>
+            <ngx-dropzone
+              [accept]="'image/jpeg,image/jpg,image/png'"
+              [disabled]="true"
+              [expandable]="false"
+              style="width: 100%; border: 1px solid #dee2e6"
+              class="ngx-dropzone"
+            >
+              <ngx-dropzone-label>{{
+                "uploadImage" | translate
+              }}</ngx-dropzone-label>
+              <ngx-dropzone-image-preview
+                [removable]="true"
+                ngProjectAs="ngx-dropzone-preview"
+                [file]="f"
+                [disabled]="true"
+                *ngFor="let f of images"
+                class="ngx-dropzone-preview"
+              >
+                <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+              </ngx-dropzone-image-preview>
+            </ngx-dropzone>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+            <div style="visibility: hidden">
+              <div class="form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" />
+                <label class="form-check-label" for="noImagesFlag">{{
+                  "addNewSource.noImagesFlag" | translate
+                }}</label>
+              </div>
+            </div>
+            <label class="mx-1"
+              >{{ "addNewSource.otherDocuments" | translate }}
+              <span class="text-black-50" style="font-size: 0.8em"
+                >({{ "optional" | translate }})</span
+              >
+            </label>
+
+            <ngx-dropzone
+              [accept]="'application/pdf'"
+              [disabled]="true"
+              [expandable]="false"
+              style="width: 100%; border: 1px solid #dee2e6"
+              class="ngx-dropzone"
+            >
+              <ngx-dropzone-label>{{
+                "uploadAttachment" | translate
+              }}</ngx-dropzone-label>
+              <ngx-dropzone-preview
+                [removable]="true"
+                [disabled]="true"
+                *ngFor="let f of otherDocumnets"
+                class="ngx-dropzone-preview"
+              >
+                <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+          </div>
+        </section>
+      </div>
+      <!-- end of Source Type Block -->
+    </form>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="changeFacilityIDContact"
+  tabindex="-1"
+  aria-labelledby="Change Facility ID"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ "edit" | translate }} -
+          <ng-container [ngSwitch]="onUpdateAttribute">
+            <strong *ngSwitchCase="1">
+              {{ "transactionEdit.status" | translate }}
+            </strong>
+            <strong *ngSwitchCase="2">
+              {{ "transactionEdit.facilitySourceId" | translate }}
+            </strong>
+            <strong *ngSwitchCase="3">
+              {{ "transactionEdit.associatedEquipment" | translate }}
+            </strong>
+          </ng-container>
+          -
+          {{ "transactionEdit.sourceNo" | translate }}.
+          <strong>{{ source?.nrrcId }}</strong>
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div
+        class="modal-body"
+        style="height: 300px; z-index: 100000; overflow: initial"
+      >
+        <div class="w-100 row" *ngIf="onUpdateAttribute == 1">
+          <div class="col-6">
+            <label>
+              <span class="fw-bold">{{
+                "transactionEdit.oldStatus" | translate
+              }}</span>
+            </label>
+            <p-dropdown
+              [options]="lookups['Status']"
+              optionLabel="displayNameEn"
+              [filter]="true"
+              filterBy="displayNameEn,displayNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #statusOldValue
+              styleClass="w-100"
+              [(ngModel)]="oldValue"
+              [disabled]="true"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="statusOldValue"
+                >
+                  <div>
+                    {{
+                      lang == "en"
+                        ? statusOldValue.value.displayNameEn
+                        : statusOldValue.value.displayNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="col-6">
+            <label>
+              <span class="fw-bold">{{
+                "transactionEdit.newStatus" | translate
+              }}</span>
+            </label>
+            <p-dropdown
+              [options]="lookups['Status']"
+              optionLabel="displayNameEn"
+              [filter]="true"
+              filterBy="displayNameEn,displayNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #statusNewValue
+              styleClass="w-100"
+              [(ngModel)]="newValue"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="statusNewValue"
+                >
+                  <div>
+                    {{
+                      lang == "en"
+                        ? statusNewValue.value.displayNameEn
+                        : statusNewValue.value.displayNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="col-12 mt-3">
+            <label>
+              <span class="fw-bold">{{
+                "transactionEdit.remarks" | translate
+              }}</span>
+            </label>
+            <textarea
+              class="form-control"
+              style="width: 100%; min-height: 160px"
+              [(ngModel)]="purpose"
+            ></textarea>
+          </div>
+        </div>
+        <div class="w-100 row" *ngIf="onUpdateAttribute == 2">
+          <div class="col-6">
+            <label>
+              <span class="fw-bold">{{
+                "transactionEdit.oldFacilitySourceID" | translate
+              }}</span>
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="oldValue"
+              [disabled]="true"
+            />
+          </div>
+          <div class="col-6">
+            <label>
+              <span class="fw-bold">{{
+                "transactionEdit.newFacilitySourceID" | translate
+              }}</span>
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="newValue"
+              placeholder="{{ 'mandatory' | translate }}"
+            />
+          </div>
+          <div class="col-12 mt-3">
+            <label>
+              <span class="fw-bold">{{
+                "transactionEdit.remarks" | translate
+              }}</span>
+            </label>
+            <textarea
+              class="form-control"
+              style="width: 100%; min-height: 160px"
+              [(ngModel)]="purpose"
+            ></textarea>
+          </div>
+        </div>
+        <div class="w-100 row" *ngIf="onUpdateAttribute == 3">
+          <div class="col-6">
+            <label>
+              <span class="fw-bold">{{
+                "transactionEdit.oldAssociatedEquipment" | translate
+              }}</span>
+            </label>
+            <p-dropdown
+              [options]="lookups['Associated Equipment']"
+              optionLabel="displayNameEn"
+              [filter]="true"
+              filterBy="displayNameEn,displayNameAr"
+              [showClear]="true"
+              #associatedEquipmentOldValue
+              [(ngModel)]="oldValue"
+              styleClass="w-100 "
+              [disabled]="true"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="associatedEquipmentOldValue"
+                >
+                  <div>
+                    {{
+                      lang == "en"
+                        ? associatedEquipmentOldValue.value.displayNameEn
+                        : associatedEquipmentOldValue.value.displayNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="col-6">
+            <label>
+              <span class="fw-bold">{{
+                "transactionEdit.newAssociatedEquipment" | translate
+              }}</span>
+            </label>
+            <p-dropdown
+              [options]="lookups['Associated Equipment']"
+              optionLabel="displayNameEn"
+              [filter]="true"
+              filterBy="displayNameEn,displayNameAr"
+              [showClear]="true"
+              #associatedEquipmentNewValue
+              placeholder="{{ '--Select--' | translate }}"
+              [(ngModel)]="newValue"
+              styleClass="w-100"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="associatedEquipmentNewValue"
+                >
+                  <div>
+                    {{
+                      lang == "en"
+                        ? associatedEquipmentNewValue.value.displayNameEn
+                        : associatedEquipmentNewValue.value.displayNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="col-12 mt-3">
+            <label>
+              <span class="fw-bold">{{
+                "transactionEdit.remarks" | translate
+              }}</span>
+            </label>
+            <textarea
+              class="form-control"
+              style="width: 100%; min-height: 160px"
+              [(ngModel)]="purpose"
+            ></textarea>
+          </div>
+        </div>
+        <!-- End of W-100-->
+      </div>
+      <!-- End of Modal-Body-->
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="closeEditModal()"
+        >
+          {{ "close" | translate }}
+        </button>
+        <button
+          type="button"
+          (click)="submit()"
+          data-bs-dismiss="modal"
+          class="btn btn-gold"
+        >
+          {{ "submitToNrrc" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

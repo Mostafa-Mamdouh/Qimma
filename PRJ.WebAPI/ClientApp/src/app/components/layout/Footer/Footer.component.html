@@ -1,0 +1,54 @@
+<ng-container *ngIf="isLoggedIn$ | async as token">
+  <!-- Footer -->
+  <div
+    class="footer mt-auto py-3 bg-light w-100 d-flex justify-content-evenly align-content-center flex-column flex-md-row flex-wrap"
+  >
+    <!-- <div class="footer-item">
+          <h4 class="">Links</h4>
+          <ul  class="list-unstyled mx-2">
+              <li class="my-1"><a href="#" class="link-secondary">About Us</a></li>
+              <li class="my-1"><a href="#" class="link-secondary">News</a></li>
+              <li class="my-1"><a href="#" class="link-secondary">Terms and Conditions</a></li>
+          </ul>
+      </div> -->
+
+    <!-- <div class="footer-item">
+          <h4 class="">Contact Us</h4>
+          <ul  class="list-unstyled">
+              <li class="my-1"><a href="#" class="link-primary"><i class="fa-solid fa-link mx-1"></i> Customer Care</a></li>
+              <li class="my-1 text-secondary"><i class="fa-solid fa-phone mx-1"></i> Call: 005500550</li>
+              <li class="my-1 text-secondary"><i class="fa-regular fa-at mx-1"></i> Email: <a href="mailto:info@nrrc.gov.sa">info@nrrc.gov.sa</a></li>
+              <li class="my-2 w-100 d-flex justify-content-start align-items-center">
+                  <a class="socialMedia" href=""><i class="fab fa-youtube "></i></a>
+                  <a class="socialMedia" href=""><fa-icon [icon]="faLink"></fa-icon></a>
+                  <a class="socialMedia" href=""><i class="fab fa-instagram "></i></a>
+                  <a class="socialMedia" href=""><i class="fab fa-facebook-f "></i></a>
+                  <a class="socialMedia" href=""><i class="fab fa-twitter "></i></a>
+              </li>
+
+          </ul>
+      </div> -->
+    <div class="mx-2 d-flex justify-content-between w-100">
+      <div class="footer-item d-flex">
+        <img
+          src="../../../assets/images/2030.svg"
+          alt=""
+          style="display: inline; margin: 10px; width: 103px"
+        />
+      </div>
+
+      <div class="d-flex align-items-center m-2">
+        <span class="mx-2 text-secondary">
+          هيئة الرقابة النووية والاشعاعية , جميع الحقوق محفوظة @ 2022
+        </span>
+        <img
+          src="../../../assets/images/nrrclogo-v.svg"
+          alt=""
+          style="display: inline; margin: 10px; width: 80px"
+        />
+      </div>
+    </div>
+  </div>
+  <!-- style="width: 200px" -->
+  <!-- style="align-self: stretch; text-align: center" -->
+</ng-container>

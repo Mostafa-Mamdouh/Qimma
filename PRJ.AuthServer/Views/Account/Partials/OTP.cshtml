@@ -1,0 +1,50 @@
+﻿@model string
+
+<script src="~/js/Scripts/Config.js"></script>
+<script src="~/js/Scripts/Account.js"></script>
+
+<script>
+    $(function () {
+
+        LoadOTP();
+    })
+</script>
+
+<div class="modal fade" id="OTPModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enter verification code</h5>
+            </div>
+            <form method="post">
+                <div id="authErrorOTPModal" class="alert alert-danger text-center">
+                    <i class="fa-solid fa fa-times-circle"></i>&nbsp;
+                    <div id="authErrorMessageOTPModal">
+                    </div>
+                </div>
+                <span class="m-2 text-center">
+
+                    Verification code has been sent to the number
+                    @Model
+                </span>
+                
+                <div class="modal-body d-flex justify-content-center">
+                    <input class="m-2 text-center form-control rounded" type="text" Id="Id1" maxlength="1" required />
+                    <input class="m-2 text-center form-control rounded" type="text" Id="Id2" maxlength="1" required />
+                    <input class="m-2 text-center form-control rounded" type="text" Id="Id3" maxlength="1" required />
+                    <input class="m-2 text-center form-control rounded" type="text" Id="Id4" maxlength="1" required />
+                    <input class="m-2 text-center form-control rounded" type="text" Id="Id5" maxlength="1" required />
+                    <input class="m-2 text-center form-control rounded" type="text" Id="Id6" maxlength="1" required />
+                </div>
+                <div class="modal-footer">
+                    <button  id="OTPButton" type="button" class="btn btn-gold">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

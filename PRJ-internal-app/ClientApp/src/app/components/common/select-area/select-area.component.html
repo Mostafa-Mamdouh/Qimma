@@ -1,0 +1,44 @@
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+
+
+
+  <div class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4">
+
+    <div class="panel panel-default" style="background-color:#fff; width: 100%; margin-left:10%;">
+      <div class="panel-body">
+        <div class="d-flex justify-content-end align-items-center flex-wrap w-100  mb-2">
+          <button class="btn btn-gold mx-2" (click)="save()" id="submit-all">
+            {{ "Save" | translate }}
+          </button>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <select [(ngModel)]="sourseSelectedItem" id="multiselect_left" class="form-control" size="15" multiple="multiple">
+              <optgroup label="Source Fields">
+                <option *ngFor="let mem of sourseSelect; index as i" value='{{mem.attributeId}}'>{{ lang == "en" ? mem.valueEn : mem.valueAr }}</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="col-sm-1">
+            <button type="button" (click)="moveAllItemsToDest()" id="btn_rightAll" class="btn d-block"> <fa-icon [icon]="faAnglesRight"></fa-icon></button>
+            <button type="button" (click)="moveItemsToLeft()" id="btn_rightSelected" class="btn d-block"> <fa-icon [icon]="faAngleRight"> </fa-icon></button>
+            <button type="button" (click)="moveItemsToRight()" id="btn_leftSelected" class="btn d-block"> <fa-icon [icon]="faAngleLeft"> </fa-icon></button>
+            <button type="button" (click)="moveAllItemsToSource()" id="btn_leftAll" class="btn d-block"> <fa-icon [icon]="faAnglesLeft"> </fa-icon></button>
+          </div>
+          <div class="col-sm-5">
+            <select [(ngModel)]="destSelectedItem" id="multiselect_right" class="form-control" size="15" multiple="multiple">
+              <optgroup label="Destination Fields">
+                <option *ngFor="let mem of destSelect; index as i" value='{{mem.attributeId}}'>{{ lang == "en" ? mem.valueEn : mem.valueAr }}</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <hr class="my-4 w-100">
+</div>
+

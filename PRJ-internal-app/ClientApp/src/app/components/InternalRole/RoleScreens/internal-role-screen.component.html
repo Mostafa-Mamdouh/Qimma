@@ -1,0 +1,104 @@
+
+
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+
+
+
+  <div class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4">
+
+    <section class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2">
+      <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+        <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "General.Back" | translate }} </button>
+      </div>
+      <h4 class="text-left">
+
+        {{ "ScreenRole.PageTitle" | translate }}
+      </h4>
+      <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+        <span class="btn btn-secondary mx-2" (click)="reset()" style="padding-left: 50px; padding-right: 50px;" id="reset-all">
+          {{ "ResetFormData" | translate }}
+        </span> 
+        <button class="btn btn-gold mx-2" (click)="save()" style="padding-left:  100px;padding-right:100px;" id="submit-all">
+          {{ "Save" | translate }}
+        </button>
+      </div>
+
+      <div class="row w-100 mt-3 lookupsDataEntry">
+
+        <div class="lookupsfields">
+          <div class="w-100">
+
+          </div>
+        </div>
+
+      </div>
+
+
+    </section>
+    <hr class="my-4 w-100">
+      <div [formGroup]="roleTable" class="datatablediv w-100">
+        <table id="datatableexample" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+          <thead>
+            <tr>
+              <th class="select-filter">
+                {{ "ScreenRole.Screen" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "ScreenRole.ScreenOrder" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "ScreenRole.Query" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "ScreenRole.Insert" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "ScreenRole.Update" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "ScreenRole.Delete" | translate }}
+              </th>
+              <th></th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container formArrayName="tableRows"
+                          *ngFor="let mem of roleScreenControls.controls; let i = index">
+              <tr [formGroupName]="i">
+                <td> {{ lang == "en" ? mem.value.screenNameEn : mem.value.screenNameAr }}</td>
+                <td width="15%"><input  type="number"  class="form-control" formControlName="screenOrder" id="ScreenOrder" required autocomplete="off" /></td>
+                <td>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" formControlName="query" type="checkbox" role="switch" id="Query">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" formControlName="insert" type="checkbox" role="switch" id="Insert">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" formControlName="update" type="checkbox" role="switch" id="Update">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" formControlName="delete" type="checkbox" role="switch" id="Delete">
+                  </div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-gold btn-sm mx-1" (click)="GotoSCreenFieldPrivileges(mem.value.hashedScreenId)"><i class="fas fa-users-gear"></i> </button>
+                </td>
+              </tr>
+
+            </ng-container>
+           
+          </tbody>
+        </table>
+      </div>
+  
+  </div>
+
+</div>

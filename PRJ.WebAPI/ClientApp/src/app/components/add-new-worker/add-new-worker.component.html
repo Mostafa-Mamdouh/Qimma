@@ -1,0 +1,416 @@
+
+
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+
+
+
+    <div class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4">
+  
+      <section class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2">
+        <div class="d-flex justify-content-between w-100 align-items-center">
+          <h4 class="title active ">{{ "Workers.AddWorker" | translate }}</h4>
+          <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "General.Back" | translate }} </button>
+        </div>
+        <div class=" row w-100 mt-3 lookupsDataEntry">
+  
+          <div class="lookupsfields">
+        
+  
+              <form [formGroup]="SubmitForm" (ngSubmit)="save()">
+  
+                <div class="row p-3 w-100 d-flex p-3">
+                
+                  <div class="col-3 px-1 mb-3">
+                    <label for="entity" class="mx-1"
+                      >{{ "entity" | translate }}
+                      <span class="text-danger valdiation-text">*</span></label
+                    >
+                    <p-dropdown
+                      [options]="EntityList"
+                      [(ngModel)]="objData.Entity"
+                      optionLabel="entityNameEn"
+                      [filter]="true"
+                      filterBy="entityNameEn,entityNameAr"
+                      [showClear]="true"
+                      placeholder="{{ '--Select--' | translate }}"
+                      #entity
+                      (onChange)="getFacilityProfileByEntityId(entity.value.id)"
+                      styleClass="w-100 "
+                      formControlName="Entity"
+                      [disabled]="true"
+                    >
+                      <ng-template pTemplate="selectedItem">
+                        <div class="country-item country-item-value" *ngIf="entity">
+                          <div>
+                            {{
+                              lang == "en"
+                                ? entity.value.entityNameEn
+                                : entity.value.entityNameAr
+                            }}
+                          </div>
+                        </div>
+                      </ng-template>
+                      <ng-template let-r pTemplate="item">
+                        <div class="country-item">
+                          <div>
+                            {{ lang == "en" ? r?.entityNameEn : r?.entityNameAr }}
+                          </div>
+                        </div>
+                      </ng-template>
+                      
+                    </p-dropdown>
+                    <div *ngIf="SubmitForm.controls['Entity'].errors && SubmitForm.controls['Entity'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidEntity" | translate }})
+                    </div>
+                  </div>
+                  
+                  <div class=" col-3 px-1 mb-3">
+                    <label for="facility" class="mx-1">
+                      {{ "facility" | translate }}
+                      <span class="text-danger valdiation-text">*</span></label
+                    >
+                    <p-dropdown
+                      [options]="Facilities"
+                      [(ngModel)]="objData.Facility"
+                      optionLabel="facilityNameEn"
+                      [filter]="true"
+                      filterBy="facilityNameEn,facilityNameAr"
+                      [showClear]="true"
+                      placeholder="{{ '--Select--' | translate }}"
+                      #facility
+                      styleClass="w-100 "
+                      (onChange)="getLicenseByFacilityId(facility.value.id)"
+                      formControlName="Facility"
+                      [disabled]="true"
+                    >
+                      <ng-template pTemplate="selectedItem">
+                        <div class="country-item country-item-value" *ngIf="facility">
+                          <div>
+                            {{
+                              lang == "en"
+                                ? facility.value.facilityNameEn
+                                : facility.value.facilityNameAr
+                            }}
+                          </div>
+                        </div>
+                      </ng-template>
+                      <ng-template let-r pTemplate="item">
+                        <div class="country-item">
+                          <div>
+                            {{ lang == "en" ? r?.facilityNameEn : r?.facilityNameAr }}
+                          </div>
+                        </div>
+                      </ng-template>
+                    </p-dropdown>
+                    <div *ngIf="SubmitForm.controls['Facility'].errors && SubmitForm.controls['Facility'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidFacility" | translate }})
+                    </div>
+                  </div>
+   
+                  <div class=" col-3 px-1 mb-3">
+                    <label for="license" class="mx-1">
+                      {{ "Workers.License" | translate }}
+                      <span class="text-danger valdiation-text">*</span></label
+                    >
+                    <p-dropdown
+                      [options]="LicenseList"
+                      [(ngModel)]="objData.License"
+                      optionLabel="licenseDescEn"
+                      [filter]="true"
+                      filterBy="licenseDescEn,licenseDescAr"
+                      [showClear]="true"
+                      placeholder="{{ '--Select--' | translate }}"
+                      #license
+                      styleClass="w-100 "
+                      (onChange)="getPractiseByLicenseId(license.value.id)"
+                      formControlName="License"
+                      [disabled]="true"
+                    >
+                      <ng-template pTemplate="selectedItem">
+                        <div class="country-item country-item-value" *ngIf="license">
+                          <div>
+                            {{
+                              lang == "en"
+                                ? license.value.licenseDescEn
+                                : license.value.licenseDescAr
+                            }}
+                          </div>
+                        </div>
+                      </ng-template>
+                      <ng-template let-r pTemplate="item">
+                        <div class="country-item">
+                          <div>
+                            {{ lang == "en" ? r?.licenseDescEn : r?.licenseDescAr }}
+                          </div>
+                        </div>
+                      </ng-template>
+                    </p-dropdown>
+                    <div *ngIf="SubmitForm.controls['License'].errors && SubmitForm.controls['License'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidFacility" | translate }})
+                    </div>
+                  </div>
+
+                  <div class="col-3 px-1 mb-3">
+                    <label for="license" class="mx-1">
+                      {{ "Workers.Practise" | translate }}
+                      <span class="text-danger valdiation-text">*</span></label
+                    >
+                    <p-dropdown
+                      [options]="PractiseList"
+                      [(ngModel)]="objData.Practise"
+                      optionLabel="practiseNameEn"
+                      [filter]="true"
+                      filterBy="practiseNameEn,practiseNameAr"
+                      [showClear]="true"
+                      placeholder="{{ '--Select--' | translate }}"
+                      #Practise
+                      styleClass="w-100 "
+                      formControlName="Practise"
+                      [disabled]="true"
+                    >
+                      <ng-template pTemplate="selectedItem">
+                        <div class="country-item country-item-value" *ngIf="Practise">
+                          <div>
+                            {{
+                              lang == "en"
+                                ? Practise.value.practiseNameEn
+                                : Practise.value.practiseNameAr
+                            }}
+                          </div>
+                        </div>
+                      </ng-template>
+                      <ng-template let-r pTemplate="item">
+                        <div class="country-item">
+                          <div>
+                            {{ lang == "en" ? r?.practiseNameEn : r?.practiseNameAr }}
+                          </div>
+                        </div>
+                      </ng-template>
+                    </p-dropdown>
+                    <div *ngIf="SubmitForm.controls['Practise'].errors && SubmitForm.controls['Practise'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidFacility" | translate }})
+                    </div>
+                  </div>
+                  <hr class="mt-3"> 
+              
+                </div>
+
+              
+
+               <div class="row p-3 w-100 py-2 p-3 border " style="background:#ececec">
+                <h5 class="col-12 mb-3 mt-2">{{ "Worker Information" | translate }}</h5>
+
+                  <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="ClassName" class="mx-1">{{ "Workers.WorkerNameAr" | translate }} <span class="text-danger">*</span></label>
+                    <input (keypress)="OnlyArabic($event , 200)" type="text" class="form-control" [(ngModel)]="objData.WorkerNameAr" formControlName="WorkerNameAr" id="WorkerNameAr" placeholder="{{ 'mandatory' | translate }}" required autocomplete="off" />
+                    <div *ngIf="SubmitForm.controls['WorkerNameAr'].errors && SubmitForm.controls['WorkerNameAr'].touched" id="error" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidWorkerNameAr" | translate }})
+                    </div>
+                  </div>
+  
+                  <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="WorkerNameEn" class="mx-1">{{ "Workers.WorkerNameEn" | translate }} <span class="text-danger">*</span></label>
+                    <input (keypress)="OnlyEnglish($event , 200)" type="text" class="form-control" [(ngModel)]="objData.WorkerNameEn" formControlName="WorkerNameEn" id="WorkerNameEn" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                    <div *ngIf="SubmitForm.controls['WorkerNameEn'].errors && SubmitForm.controls['WorkerNameEn'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidWorkerNameEn" | translate }})
+                    </div>
+                  </div> 
+
+                  <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="Gender" class="mx-1">{{ "Workers.Gender" | translate }}  </label>
+                    <select class="form-control" formControlName="Gender" [(ngModel)]="objData.Gender" autocomplete="off">
+                      <option value=""> -- select -- </option> 
+                      <option  *ngFor="let gender of GenderList" value="{{gender.id}}"> 
+                          {{ lang == "en" ? gender.displayNameEn : gender.displayNameAr }}
+                       </option>
+                    </select>
+                    <div *ngIf="SubmitForm.controls['Gender'].errors && SubmitForm.controls['Gender'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.Gender" | translate }})
+                    </div>
+                  </div>
+
+                  <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="BirthDate" class="mx-1">{{ "Workers.BirthDate" | translate }} <span class="text-danger">*</span></label>
+                    <input type="date" max="{{date | date:'yyyy-MM-dd'}}" class="form-control" formControlName="BirthDate" [(ngModel)]="objData.BirthDate" id="BirthDate" required autocomplete="off" />
+                    
+                    <div *ngIf="SubmitForm.controls['BirthDate'].errors && SubmitForm.controls['BirthDate'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidBirthDate" | translate }})
+                    </div>
+                  </div>
+                  <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="BirthDate" class="mx-1">{{ "Workers.MobileNo" | translate }} <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" formControlName="mobileNo" [(ngModel)]="objData.mobileNo" placeholder="{{ 'Workers.MobileNo' | translate }}" required autocomplete="off" />
+                    
+                    <div *ngIf="SubmitForm.controls['mobileNo'].errors && SubmitForm.controls['mobileNo'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidmobileNo" | translate }})
+                    </div>
+                  </div>
+                  <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="ExtraData1" class="mx-1">{{ "Workers.JobPosition" | translate }} </label>
+                    <select class="form-control" formControlName="JobPosition" [(ngModel)]="objData.JobPosition" autocomplete="off">
+                      <option value=""> -- select -- </option> 
+                      <option  *ngFor="let jopPosition of WorkerJobPositionsList" [value]="jopPosition.id"> 
+                          {{ lang == "en" ? jopPosition.displayNameEn : jopPosition.displayNameAr }} +{{jopPosition.id}} + {{objData.JobPosition}}
+                       </option>
+                    </select>
+                    <div *ngIf="SubmitForm.controls['JobPosition'].errors && SubmitForm.controls['JobPosition'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidJobPosition" | translate }})
+                    </div>
+                  </div>
+  
+                  <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="ExtraData2" class="mx-1">{{ "Workers.NationalityId" | translate }} </label>
+                    <input (keypress)="isNumberKey($event)" type="text" class="form-control" [(ngModel)]="objData.NationalityId" formControlName="NationalityId" id="NationalityId" placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                    <div *ngIf="SubmitForm.controls['NationalityId'].errors && SubmitForm.controls['NationalityId'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidNationalityId" | translate }})
+                    </div>
+                  </div>
+                  <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="Status" class="mx-1">{{ "Workers.nationality" | translate }}  </label>
+                    <select class="form-control" formControlName="Nationality"  [(ngModel)]="objData.Nationality" autocomplete="off">
+                      <option value=""> -- select -- </option> 
+                      <option *ngFor="let National of nationalitys" [value]="National.id">
+                        {{ lang == "en" ? National.countryNameEn : National.countryNameAr }}
+                      </option>
+                    </select>
+                    <div *ngIf="SubmitForm.controls['Nationality'].errors && SubmitForm.controls['Nationality'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.nationality" | translate }})
+                    </div>
+                  </div>
+                  <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="Status" class="mx-1">{{ "Workers.Status" | translate }} </label>
+                    <select class="form-control" [(ngModel)]="objData.Status" formControlName="Status" id="Status" autocomplete="off">
+                      <option value=""> -- select -- </option> 
+                      <option *ngFor="let itm of lookupsList" [value]="itm.id">
+                        {{ lang == "en" ? itm.displayNameEn : itm.displayNameAr }}
+                      </option>
+                    </select>
+                    <div *ngIf="SubmitForm.controls['Status'].errors && SubmitForm.controls['Status'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidStatus" | translate }})
+                    </div>
+                  </div>
+  
+                  <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="PassportNo" class="mx-1">{{ "Workers.PassportNo" | translate }} </label>
+                    <input (keypress)="isNumberKey($event)" type="text" class="form-control" [(ngModel)]="objData.PassportNo" formControlName="PassportNo" id="PassportNo" placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                    <div *ngIf="SubmitForm.controls['PassportNo'].errors && SubmitForm.controls['PassportNo'].touched" class="form-text d-block text-danger">
+                      ({{ "Workers.ValidPassportNo" | translate }})
+                    </div>
+                  </div>
+  
+                  
+                
+
+                  <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+                    <span class="btn btn-secondary mx-2" (click)="reset()" style="padding-left: 50px; padding-right: 50px;" id="reset-all">
+                      {{ "ResetFormData" | translate }}
+                    </span>
+                    <button class="btn btn-gold mx-2" style="padding-left: 100px;padding-right:100px;" id="submit-all">
+                      {{ "Save" | translate }}
+                    </button>
+                  </div>
+                </div>
+  
+              </form>
+  
+  
+        
+          </div>
+  
+        </div>
+  
+  
+      </section>
+      <hr class="my-4 w-100">
+      <div class="datatablediv w-100">
+        <div class="pb-3">
+          <button type="button" (click)="ExportExel()" class="btn btn-gold btn-sm mx-1">{{ "General.ExportExcel" | translate }}  </button>
+          <button type="button" (click)="Print()" class="btn btn-gold btn-sm mx-1">{{ "General.Print" | translate }}  </button>
+          <button type="button" (click)="Copy()" class="btn btn-gold btn-sm mx-1">{{ "General.Copy" | translate }} </button>
+        </div>
+  
+        <table datatable [dtOptions]="dtOptions" id="WorkersDataTable" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+          <thead>
+            <tr>
+              <th class="select-filter">
+                {{ "Workers.WorkerNameAr" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Workers.WorkerNameEn" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Workers.JobPosition" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Workers.Facility" | translate }}
+              </th>
+              <th>{{ "Action" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="dataList?.length != 0">
+            <tr *ngFor="let mem of dataList;let i = index">
+              <td>{{mem.workerNameAr}}</td>
+              <td>{{mem.workerNameEn}}</td>
+              <td>{{mem.jobPositionLookup.displayNameAr}}</td>
+              <td>{{lang == "en" ? mem.facilityProfile.facilityNameEn : mem.facilityProfile.facilityNameAr }}</td>
+              <td>
+                <button class="edit btn btn-gold btn-sm mx-1" (click)="Details(mem)"><fa-icon [icon]="faPen"> </fa-icon> </button>
+                <button class="delete btn btn-secondary btn-sm mx-1" (click)="Delete(mem)"><fa-icon [icon]="faTrash"> </fa-icon></button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="dataList?.length == 0">
+            <tr>
+              <td colspan="4" class="no-data-available">
+                {{ "General.NoDataFound" | translate }}
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>
+                <input class="search-input"
+                       name="workerNameAr"
+                       id="workerNameAr"
+                       type="text"
+                       placeholder="{{ 'Workers.WorkerNameAr' | translate }}"
+                       style="width: 100%" />
+              </th>
+              <th>
+                <input class="search-input"
+                       name="workerNameEn"
+                       id="workerNameEn"
+                       type="text"
+                       placeholder="{{ 'Workers.WorkerNameEn' | translate }}"
+                       style="width: 100%" />
+              </th>
+              <th>
+                <input class="search-input"
+                       name="jobPosition"
+                       id="jobPosition"
+                       type="text"
+                       placeholder="{{ 'Workers.JobPosition' | translate }}"
+                       style="width: 100%" />
+              </th>
+              <th>
+                <input class="search-input"
+                       name="facilityProfile"
+                       id="ss"
+                       type="text"
+                       placeholder="{{ 'Workers.Facility' | translate }}"
+                       style="width: 100%" />
+              </th>
+              <th>
+  
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+  
+  
+      </div>
+  
+    </div>
+  
+  </div>
+  

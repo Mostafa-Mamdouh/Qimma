@@ -1,0 +1,63 @@
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  data-bs-backdrop="false"
+  id="sidebar"
+  aria-labelledby="sidebarLabel"
+>
+  <div class="offcanvas-header">
+    <button
+      type="button"
+      class="btn btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+
+    <ng-container [ngSwitch]="lang">
+      <button
+        *ngSwitchCase="'en'"
+        (click)="switchLang('ar')"
+        class="btn btn-sm btn-secondary m-1"
+      >
+        عربي
+      </button>
+      <button
+        *ngSwitchCase="'ar'"
+        (click)="switchLang('en')"
+        class="btn btn-sm btn-secondary m-1"
+      >
+        English
+      </button>
+    </ng-container>
+    <ng-template> </ng-template>
+  </div>
+  <div class="offcanvas-body">
+    <div class="sidebar-logo d-flex justify-content-center mb-3">
+      <img
+        src="../../../../../assets/imgs/main/nrrclogo-v.svg"
+        alt=""
+      />
+    </div>
+
+    <div class="userInfo d-flex justify-content-center mb-2">
+      <!-- <span class="userName mx-1">{{ username }}</span> -
+      <span class="mx-1">{{ lang == "ar" ? jobDescNtv : jobDescFrn }}</span> -->
+      <span class="userName mx-1">Raed Shabatat</span> -
+      <span class="mx-1">Development Manager</span>
+    </div>
+
+    <app-sidebar-search></app-sidebar-search>
+
+    <div class="sidebar">
+      <ul class="nav mt-2">
+        <app-sidebar-category-item class="menuItem"></app-sidebar-category-item>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer d-flex justify-content-center">
+      <a (click)="logout()">
+        <fa-icon [icon]="faPowerOff" size="1x"></fa-icon>
+      </a>
+    </div>
+  </div>
+</div>

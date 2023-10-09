@@ -1,0 +1,1079 @@
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+  <div
+    class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4"
+  >
+    <section
+      class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2"
+    >
+      <div
+        class="d-flex justify-content-end align-items-center flex-wrap w-100"
+      >
+        <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()">
+          <fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon>
+          {{ "General.Back" | translate }}
+        </button>
+      </div>
+
+      <h4 class="text-left">
+        {{ "ActionCenter.PageTitle" | translate }}
+      </h4>
+
+      <div class="row w-100 mt-3 lookupsDataEntry">
+        <div class="lookupsfields">
+          <div class="w-100">
+            <section
+              class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2"
+            >
+              <div class="actioncenter-links w-100">
+                <button
+                  *ngFor="let type of transactionTypeList; index as i"
+                  [ngClass]="{ active: selectedTransactionTypeId == type.id }"
+                  (click)="getTransactions(type)"
+                  class="btn btn-secondary m-1 btn-sm"
+                >
+                  {{
+                    lang == "en"
+                      ? type.transactionTypeDesFrn
+                      : type.transactionTypeDesNtv
+                  }}
+                </button>
+              </div>
+              <!-- End of Action Center Links Div-->
+              <hr class="my-4" />
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="my-4 w-100" />
+    <div class="datatablediv w-100">
+      <table
+        id="action-center-table"
+        datatable
+        [dtOptions]="dtOptions"
+        class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto"
+      >
+        <thead>
+          <tr>
+            <th class="select-filter">
+              {{ "ActionCenter.TransactionType" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "ActionCenter.TransactionDate" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "ActionCenter.Entity" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "ActionCenter.Facility" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "ActionCenter.License" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "ActionCenter.Permit" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "ActionCenter.SourceType" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "ActionCenter.TransactionStatus" | translate }}
+            </th>
+            <th>{{ "Action" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="dataList?.length != 0">
+          <tr *ngFor="let lov of dataList; index as i">
+            <td width="13%">
+              {{ lang == "en" ? lov.transactionTypeEn : lov.transactionTypeAr }}
+            </td>
+            <td width="13%">{{ lov.transactionDate | date : "dd/MM/yyyy" }}</td>
+            <td>{{ lang == "en" ? lov.entityEn : lov.entityAr }}</td>
+            <td>{{ lang == "en" ? lov.facilityEn : lov.facilityAr }}</td>
+            <td>{{ lang == "en" ? lov.licenseEn : lov.licenseAr }}</td>
+            <td>{{ lov.permitNumber }}</td>
+            <td>{{ lang == "en" ? lov.sourceTypeEn : lov.sourceTypeAr }}</td>
+            <td>
+              {{
+                lang == "en" ? lov.transactionStatusEn : lov.transactionStatusAr
+              }}
+            </td>
+
+            <td width="12%">
+              <button
+                class="delete btn btn-green btn-sm mx-1"
+                (click)="onOpenModal(lov, true)"
+                data-bs-toggle="modal"
+                data-bs-target="#changeFacilityIDDetails"
+              >
+                <i class="fa-regular fa-folder-open"></i>
+              </button>
+              <!-- <button class="edit btn btn-gold btn-sm mx-1"><i class="fa-solid fa-pen-to-square"></i></button> -->
+              <button
+                class="delete btn btn-blue btn-sm mx-1"
+                (click)="onOpenModal(lov, false)"
+                data-bs-toggle="modal"
+                data-bs-target="#changeFacilityIDContact"
+              >
+                <i class="fa-solid fa-address-card"></i>
+              </button>
+              <button
+                class="delete btn btn-secondary btn-sm mx-1"
+                (click)="onOpenModal(lov, false)"
+                data-bs-toggle="modal"
+                data-bs-target="#changeSourceStatus"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+                <!-- <i class="fas fa-history"></i> -->
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="dataList?.length == 0">
+          <tr>
+            <td colspan="10" class="no-data-available">no data !!!</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>
+              <input
+                class="search-input"
+                name="transactionType"
+                id="transactionType"
+                type="text"
+                placeholder="New Source"
+                style="width: 100%"
+              />
+            </th>
+            <th>
+              <input
+                class="search-input"
+                name="transactionDate"
+                id="transactionDate"
+                type="text"
+                placeholder="01/11/2022"
+                style="width: 100%"
+              />
+            </th>
+            <th>
+              <input
+                class="search-input"
+                name="entity"
+                id="entity"
+                type="text"
+                placeholder="Aramco"
+                style="width: 100%"
+              />
+            </th>
+            <th>
+              <input
+                class="search-input"
+                name="facility"
+                id="facility"
+                type="text"
+                placeholder="Aramco/Hasa"
+                style="width: 100%"
+              />
+            </th>
+            <th>
+              <input
+                class="search-input"
+                name="license"
+                id="license"
+                type="text"
+                placeholder="055 66..."
+                style="width: 100%"
+              />
+            </th>
+            <th>
+              <input
+                class="search-input"
+                name="permit"
+                id="permit"
+                type="text"
+                placeholder="055 66..."
+                style="width: 100%"
+              />
+            </th>
+            <th>
+              <input
+                class="search-input"
+                name="sourceType"
+                id="sourceType"
+                type="text"
+                placeholder="New Sealed"
+                style="width: 100%"
+              />
+            </th>
+            <th>
+              <input
+                class="search-input"
+                name="transactionStatus"
+                id="transactionStatus"
+                type="text"
+                placeholder="Iniated"
+                style="width: 100%"
+              />
+            </th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+      <hr class="my-4" />
+    </div>
+  </div>
+</div>
+<!-- Change History  Modal -->
+<div
+  class="modal fade"
+  id="changeSourceStatus"
+  tabindex="-1"
+  aria-labelledby="Change Facility ID"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ "ActionCenter.StatusChange" | translate }}
+        </h5>
+      </div>
+
+      <div class="modal-body">
+        <div class="w-100 row">
+          <div class="col-12 my-2 row">
+            <div class="col-6">
+              <div class="mb-3 row">
+                <label for="from" class="col-sm-4 col-form-label"
+                  >{{ "ActionCenter.ChangeStatus" | translate }}:</label
+                >
+                <div class="col-sm-8">
+                  <select [(ngModel)]="selectedStatusId" class="form-select">
+                    <option
+                      *ngFor="let status of sourceStatusList; index as i"
+                      value="{{ status.id }}"
+                      selected
+                    >
+                      {{
+                        lang == "en" ? status.statusNameEn : status.statusNameAr
+                      }}
+                    </option>
+                  </select>
+                  <div id="statusHelp" class="form-text">
+                    {{ "ActionCenter.CurrentStatus" | translate }} :
+                    {{
+                      lang == "en"
+                        ? selectedStatus.statusNameEn
+                        : selectedStatus.statusNameAr
+                    }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">{{
+                  "ActionCenter.Remarks" | translate
+                }}</label>
+                <textarea
+                  class="form-control"
+                  [(ngModel)]="remarks"
+                  id="remarks"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <table
+            id="transactionHistoryTable"
+            class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto"
+          >
+            <thead>
+              <tr>
+                <th class="select-filter">
+                  {{ "ActionCenter.TransactionDateTime" | translate }}
+                </th>
+                <th class="select-filter">
+                  {{ "ActionCenter.EntryUser" | translate }}
+                </th>
+                <th class="select-filter">
+                  {{ "ActionCenter.FromState" | translate }}
+                </th>
+                <th class="select-filter">
+                  {{ "ActionCenter.ToState" | translate }}
+                </th>
+                <th class="select-filter">
+                  {{ "ActionCenter.Remarks" | translate }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let status of selectedStatusHistory; index as i">
+                <td>{{ status.createDate | date : "dd/MM/yyyy" }}</td>
+                <td>{{ status.entryUser }}</td>
+                <td>
+                  {{
+                    lang == "en"
+                      ? status.fromStateEn ?? "Submitted"
+                      : status.fromStateAr
+                  }}
+                </td>
+                <td>
+                  {{ lang == "en" ? status.toStateEn : status.toStateAr }}
+                </td>
+                <td>{{ status.remarks }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br />
+        </div>
+        <!-- End of W-100-->
+      </div>
+      <!-- End of Modal-Body-->
+
+      <div class="modal-footer">
+        <button
+          *ngIf="selectedStatusId != selectedStatus.id"
+          (click)="addNewStatus()"
+          class="btn btn-gold"
+        >
+          {{ "submit" | translate }}
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          {{ "close" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of changeSourceStatus Modal-->
+<!-- //////////////////   Modal    //////////////////////////////// -->
+<!-- Change Contact  Modal -->
+<div
+  class="modal fade"
+  id="changeFacilityIDContact"
+  tabindex="-1"
+  aria-labelledby="Change Facility ID"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ "ActionCenter.Remarks" | translate }}
+        </h5>
+      </div>
+
+      <div class="modal-body">
+        <div class="w-100 row">
+          <div class="col-3">
+            <p>
+              <span class="fw-bold"
+                >{{ "ActionCenter.Reference" | translate }} #:
+              </span>
+              {{ selectedSource.nrrcId }}
+            </p>
+          </div>
+          <div class="col-3">
+            <p>
+              <span class="fw-bold"
+                >{{ "ActionCenter.FacilityID" | translate }}:
+              </span>
+              {{ selectedSource.facilitySourceID }}
+            </p>
+          </div>
+          <div class="col-3">
+            <p>
+              <span class="fw-bold"
+                >{{ "ActionCenter.FacilityName" | translate }}:
+              </span>
+              {{
+                lang == "en"
+                  ? selectedSource.facilityEn
+                  : selectedSource.facilityAr
+              }}
+            </p>
+          </div>
+          <div class="col-3">
+            <p>
+              <span class="fw-bold"
+                >{{ "ActionCenter.CreatedUserName" | translate }}:
+              </span>
+              {{ selectedSource.createUser }}
+            </p>
+          </div>
+          <hr class="col-12 my-3" />
+          <div class="col-6">
+            <label for="contactMessageInput" class="form-label"
+              >{{ "ActionCenter.Message" | translate }}:</label
+            >
+            <textarea
+              class="form-control"
+              [(ngModel)]="mailMsg"
+              id="contactMessageInput"
+              rows="3"
+            ></textarea>
+          </div>
+          <div
+            class="col-6 d-flex flex-column justify-content-center align-items-start"
+          >
+            <div class="mb-3 w-100 row">
+              <label for="contactEmail" class="col-sm-4 col-form-label"
+                >{{ "ActionCenter.Emailaddress" | translate }}:</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="contactEmail"
+                  value="mostafa.a@qimmat-alkhaleej.com"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="mb-3 w-100 row">
+              <label for="contactPhone" class="col-sm-4 col-form-label"
+                >{{ "ActionCenter.PhoneNumber" | translate }}:</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="contactPhone"
+                  value="201287349897"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="w-100 d-flex justify-content-end align-items-center">
+              <button class="btn btn-gold btn-sm m-1" (click)="sendEmail()">
+                {{ "ActionCenter.SendEmail" | translate }}
+              </button>
+              <button class="btn btn-gold btn-sm m-1">
+                {{ "ActionCenter.SendSMS" | translate }}
+              </button>
+            </div>
+          </div>
+          <hr class="col-12 my-3" />
+          <div class="col-12">
+            <table
+              id="contactHistoryTable"
+              class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto"
+            >
+              <thead>
+                <tr>
+                  <th class="select-filter">
+                    {{ "ActionCenter.MessageDate" | translate }}
+                  </th>
+                  <th class="select-filter">
+                    {{ "ActionCenter.MessageText" | translate }}
+                  </th>
+                  <th class="select-filter">
+                    {{ "ActionCenter.SentBy" | translate }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let msg of selectedMsgHistory; index as i">
+                  <td>{{ msg.createdOn | date }}</td>
+                  <td>{{ msg.msgText }}</td>
+                  <td>{{ msg.sentBy }}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <th class="select-filter"></th>
+                <th class="select-filter"></th>
+                <th class="select-filter"></th>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        <!-- End of W-100-->
+      </div>
+      <!-- End of Modal-Body-->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          {{ "close" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of changeFacilityID Contact Modal-->
+<!-- //////////////////   Modal    //////////////////////////////// -->
+<!-- Change Facility ID Details  Modal -->
+<div
+  class="modal fade"
+  id="changeFacilityIDDetails"
+  tabindex="-1"
+  aria-labelledby="Change Facility ID"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ "ActionCenter.SourceDetails" | translate }}
+        </h5>
+      </div>
+
+      <div class="modal-body" style="height: max-content">
+        <div class="col-12 p-2">
+          <h5 class="fw-bold">
+            {{ "ActionCenter.transactionDetails" | translate }}
+          </h5>
+        </div>
+
+        <div class="w-100 row">
+          <div class="col-6 p-2">
+            <div class="card card-id">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.TransactionID" | translate }}:
+                </h6>
+                <p class="card-text">{{ selectedSource.transactionId }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card card-type">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.TransactionType" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    lang == "en"
+                      ? selectedSource.transactionTypeEn
+                      : selectedSource.transactionTypeAr
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card card-status">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.StatusFlag" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    lang == "en"
+                      ? selectedSource.transactionStatusEn
+                      : selectedSource.transactionStatusAr
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card card-user">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.CreatedUser" | translate }}:
+                </h6>
+                <p class="card-text">{{ selectedSource.createUser }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card card-date">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.CreatedDate" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{ selectedSource.createDate | date : "dd/MM/yyyy" }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card card-user">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.ModifiedUser" | translate }}:
+                </h6>
+                <p class="card-text">{{ selectedSource.modifiedUser }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card card-date">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.ModifiedDate" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{ selectedSource.modifiedDate | date : "dd/MM/yyyy" }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card card-user">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.ConfirmedUser" | translate }}:
+                </h6>
+                <p class="card-text">{{ selectedSource.modifiedUser }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card card-date">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.ConfirmedDate" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{ selectedSource.modifiedDate | date : "dd/MM/yyyy" }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card card-reject">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.TransactionDate" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{ selectedSource.transactionDate | date : "dd/MM/yyyy" }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-3" />
+
+          <div class="col-12 p-2">
+            <h5 class="fw-bold">
+              {{ "ActionCenter.SourceDetails" | translate }}
+            </h5>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.Entity" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    lang == "en"
+                      ? selectedSource.entityEn
+                      : selectedSource.entityAr
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.Facility" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    lang == "en"
+                      ? selectedSource.facilityEn
+                      : selectedSource.facilityAr
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.License" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    lang == "en"
+                      ? selectedSource.licenseEn
+                      : selectedSource.licenseAr
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.Permit" | translate }}:
+                </h6>
+                <p class="card-text">{{ selectedSource.permitNumber }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.ManufacturerSerialNo" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{ selectedSource.manufacturerSerialNo }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.Manufacturer" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    lang == "en"
+                      ? selectedSource.manufacturerEn
+                      : selectedSource.manufacturerAr
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.ManufacturerCountry" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    lang == "en"
+                      ? selectedSource.manufacturerCountryEn
+                      : selectedSource.manufacturerCountryAr
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2" *ngIf="selectedSource.sourceType != 3">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.FacilitySourceID" | translate }}:
+                </h6>
+                <p class="card-text">{{ selectedSource.facilitySourceID }}</p>
+              </div>
+              <p
+                *ngIf="currentTrnType == 3"
+                class="p-1 align-self-end"
+                style="
+                  font-size: 13px;
+                  text-decoration: underline;
+                  cursor: pointer;
+                  margin-bottom: 0;
+                "
+                (click)="
+                  GetEditHistory(
+                    selectedSource.sourceId,
+                    selectedTransactionTypeId
+                  )
+                "
+                data-bs-toggle="modal"
+                data-bs-target="#history"
+              >
+                {{ "ActionCenter.details" | translate }}
+              </p>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.Radionuclide" | translate }}:
+                </h6>
+                <p class="card-text">{{ selectedSource.radionuclideName }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">
+                  {{ "ActionCenter.CurrentActivity" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    selectedSource.currentActivity
+                      ?.toExponential(2)
+                      .toString()
+                      .toUpperCase()
+                  }}
+                  Bq
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 p-2" *ngIf="selectedSource.sourceType != 3">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.sourceStatus" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    lang == "ar"
+                      ? selectedSource.currentSourceStatusAr
+                      : selectedSource.currentSourceStatusEn
+                  }}
+                </p>
+              </div>
+              <p
+                *ngIf="currentTrnType == 7"
+                class="p-1 align-self-end"
+                style="
+                  font-size: 13px;
+                  text-decoration: underline;
+                  cursor: pointer;
+                  margin-bottom: 0;
+                "
+                (click)="
+                  GetEditHistory(
+                    selectedSource.sourceId,
+                    selectedTransactionTypeId
+                  )
+                "
+                data-bs-toggle="modal"
+                data-bs-target="#history"
+              >
+                {{ "ActionCenter.details" | translate }}
+              </p>
+            </div>
+          </div>
+
+          <div class="col-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.associatedEquipment" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    lang == "ar"
+                      ? selectedSource.associatedEquipmentAr
+                      : selectedSource.associatedEquipmentEn
+                  }}
+                </p>
+              </div>
+              <p
+                *ngIf="currentTrnType == 4"
+                class="p-1 align-self-end"
+                style="
+                  font-size: 13px;
+                  text-decoration: underline;
+                  cursor: pointer;
+                  margin-bottom: 0;
+                "
+                (click)="
+                  GetEditHistory(
+                    selectedSource.sourceId,
+                    selectedTransactionTypeId
+                  )
+                "
+                data-bs-toggle="modal"
+                data-bs-target="#history"
+              >
+                {{ "ActionCenter.details" | translate }}
+              </p>
+            </div>
+          </div>
+
+          <div class="col-6 p-2" *ngIf="selectedSource.sourceType == 1">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.NuclearShieldCode" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    selectedSource.shieldCode
+                      ? selectedSource.shieldCode
+                      : "N/A"
+                  }}
+                </p>
+              </div>
+              <p
+                *ngIf="currentTrnType == 5"
+                class="p-1 align-self-end"
+                style="
+                  font-size: 13px;
+                  text-decoration: underline;
+                  cursor: pointer;
+                  margin-bottom: 0;
+                "
+                (click)="
+                  GetEditHistory(
+                    selectedSource.sourceId,
+                    selectedTransactionTypeId
+                  )
+                "
+                data-bs-toggle="modal"
+                data-bs-target="#history"
+              >
+                {{ "ActionCenter.details" | translate }}
+              </p>
+            </div>
+          </div>
+
+          <div class="col-6 p-2" *ngIf="selectedSource.sourceType == 3">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold" style="margin-right: 10px">
+                  {{ "ActionCenter.Quantity" | translate }}:
+                </h6>
+                <p class="card-text">
+                  {{
+                    selectedSource.quantity ? selectedSource.quantity : "N/A"
+                  }}
+                </p>
+              </div>
+              <p
+                *ngIf="currentTrnType == 1001"
+                class="p-1 align-self-end"
+                style="
+                  font-size: 13px;
+                  text-decoration: underline;
+                  cursor: pointer;
+                  margin-bottom: 0;
+                "
+                (click)="
+                  GetEditHistory(
+                    selectedSource.sourceId,
+                    selectedTransactionTypeId
+                  )
+                "
+                data-bs-toggle="modal"
+                data-bs-target="#history"
+              >
+                {{ "ActionCenter.details" | translate }}
+              </p>
+            </div>
+          </div>
+
+          <div *ngIf="sourceAttachments?.length != 0" class="col-12 p-2">
+            <h5>{{ "ActionCenter.TransactionAttactcments" | translate }}</h5>
+          </div>
+
+          <ngx-dropzone-preview
+            (click)="downloadFile(f)"
+            *ngFor="let f of sourceAttachments"
+            [file]="f"
+            class="ngx-dropzone-preview ngx-dropzone"
+          >
+            <ngx-dropzone-label>{{ f.fileName }}</ngx-dropzone-label>
+          </ngx-dropzone-preview>
+
+          <div *ngIf="shieldAttachments?.length != 0" class="col-12 p-2">
+            <h5>{{ "ActionCenter.ShildAttachments" | translate }}</h5>
+          </div>
+
+          <ngx-dropzone-preview
+            (click)="downloadFile(f)"
+            *ngFor="let f of shieldAttachments"
+            [file]="f"
+            class="ngx-dropzone-preview ngx-dropzone"
+          >
+            <ngx-dropzone-label>{{ f.fileName }}</ngx-dropzone-label>
+          </ngx-dropzone-preview>
+        </div>
+        <!-- End of W-100-->
+      </div>
+      <!-- End of Modal-Body-->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          {{ "close" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of  Facility ID Details Modal-->
+
+<!-- History Modal -->
+<div
+  class="modal fade"
+  id="history"
+  tabindex="-1"
+  aria-labelledby="History"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ "ActionCenter.SourceDetails" | translate }}
+        </h5>
+      </div>
+
+      <div class="modal-body" style="height: max-content">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">{{ "ActionCenter.date" | translate }}</th>
+              <th scope="col">{{ "ActionCenter.oldValue" | translate }}</th>
+              <th scope="col">{{ "ActionCenter.newValue" | translate }}</th>
+              <th scope="col">{{ "ActionCenter.Remarks" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="historyList.length !== 0">
+            <tr *ngFor="let i of historyList">
+              <th scope="row">{{ i.trnHistoryId }}</th>
+              <td>{{ i.transactionDate | date : "dd/MM/yyyy" }}</td>
+              <td>{{ i.oldValue }}</td>
+              <td>{{ i.newValue }}</td>
+              <td>{{ i.remarks }}</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="historyList.length == 0">
+            <tr>
+              <td colspan="5" class="no-data-available">no data !!!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End of Modal-Body-->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          {{ "close" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

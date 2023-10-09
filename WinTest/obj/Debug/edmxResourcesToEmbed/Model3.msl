@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NRRCDb2Model1StoreContainer" CdmEntityContainer="NRRCDb2Entities3">
+    <EntitySetMapping Name="LookupSets">
+      <EntityTypeMapping TypeName="NRRCDb2Model1.LookupSet">
+        <MappingFragment StoreEntitySet="LookupSet">
+          <ScalarProperty Name="LookupSetId" ColumnName="LookupSetId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="DisplayNameAr" ColumnName="DisplayNameAr" />
+          <ScalarProperty Name="DisplayNameEn" ColumnName="DisplayNameEn" />
+          <ScalarProperty Name="ExtraData1" ColumnName="ExtraData1" />
+          <ScalarProperty Name="ExtraData2" ColumnName="ExtraData2" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookupSetTerms">
+      <EntityTypeMapping TypeName="NRRCDb2Model1.LookupSetTerm">
+        <MappingFragment StoreEntitySet="LookupSetTerm">
+          <ScalarProperty Name="LookupSetTermId" ColumnName="LookupSetTermId" />
+          <ScalarProperty Name="LookupSetId" ColumnName="LookupSetId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DisplayNameAr" ColumnName="DisplayNameAr" />
+          <ScalarProperty Name="DisplayNameEn" ColumnName="DisplayNameEn" />
+          <ScalarProperty Name="ExtraData1" ColumnName="ExtraData1" />
+          <ScalarProperty Name="ExtraData2" ColumnName="ExtraData2" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

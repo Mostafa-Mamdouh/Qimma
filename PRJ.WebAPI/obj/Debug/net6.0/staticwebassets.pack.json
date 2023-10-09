@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Qimma\\PRJ.WebAPI\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.PRJ.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.PRJ.WebAPI.props",
+      "PackagePath": "build\\PRJ.WebAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.PRJ.WebAPI.props",
+      "PackagePath": "buildMultiTargeting\\PRJ.WebAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.PRJ.WebAPI.props",
+      "PackagePath": "buildTransitive\\PRJ.WebAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

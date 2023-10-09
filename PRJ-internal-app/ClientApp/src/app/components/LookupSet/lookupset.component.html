@@ -1,0 +1,183 @@
+
+
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+
+
+
+  <div class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4">
+
+    <section class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2">
+      <div class="breadcrumb-w1 mb-0" class="{{lang == 'ar' ? 'lang' : ''}}">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li type="button" class="breadcrumb-item" (click)="Breadcrumb('')" style="color: #ca9f45">{{ "General.Home" | translate }}</li>
+            <li type="button" class="breadcrumb-item" (click)="Breadcrumb('system-settings')" style="color: #ca9f45">{{ "Settings" | translate }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ "LookUps.PageTitle" | translate }}</li>
+          </ol>
+        </nav>
+        <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "General.Back" | translate }} </button>
+
+      </div>
+      <h4 class="text-left">
+
+        {{ "LookUps.PageTitle" | translate }}
+      </h4>
+
+      <div class="row w-100 mt-3 lookupsDataEntry">
+
+        <div class="lookupsfields">
+          <div class="w-100">
+
+            <form [formGroup]="SubmitForm" (ngSubmit)="save()">
+
+              <div class="row p-3 w-100 py-2">
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="ClassName" class="mx-1">{{ "LookUps.ClassName" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyEnglish($event , 200)" type="text" class="form-control" [(ngModel)]="objData.className" formControlName="ClassName" id="ClassName" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                  <div *ngIf="SubmitForm.controls['ClassName'].errors && SubmitForm.controls['ClassName'].touched" id="error" class="form-text d-block text-danger">
+                    ({{ "LookUps.ValidClassName" | translate }})
+                  </div>
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="DisplayNameAr" class="mx-1">{{ "LookUps.DisplayNameArabic" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyArabic($event , 200)" type="text" class="form-control" [(ngModel)]="objData.displayNameAr" formControlName="DisplayNameAr" id="DisplayNameAr" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                  <div *ngIf="SubmitForm.controls['DisplayNameAr'].errors && SubmitForm.controls['DisplayNameAr'].touched" class="form-text d-block text-danger">
+                    ({{ "LookUps.ValidDisplayNameArabic" | translate }})
+                  </div>
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="DisplayNameEn" class="mx-1">{{ "LookUps.DisplayNameEnglish" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyEnglish($event , 200)" type="text" class="form-control" [(ngModel)]="objData.displayNameEn" formControlName="DisplayNameEn" id="DisplayNameEn" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                  <div *ngIf="SubmitForm.controls['DisplayNameEn'].errors && SubmitForm.controls['DisplayNameEn'].touched" class="form-text d-block text-danger">
+                    ({{ "LookUps.ValidDisplayNameEnglish" | translate }})
+                  </div>
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="ExtraData1" class="mx-1">{{ "LookUps.ExtraData1" | translate }} </label>
+                  <input (keypress)="OnlyEnglish($event , 200)" type="text" class="form-control" [(ngModel)]="objData.extraData1" formControlName="ExtraData1" id="ExtraData1" placeholder="{{ 'optional' | translate }}" autocomplete="off" />
+                  <div *ngIf="SubmitForm.controls['ExtraData1'].errors && SubmitForm.controls['ExtraData1'].touched" class="form-text d-block text-danger">
+                    ({{ "LookUps.ExteraValidate" | translate }})
+                  </div>
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="ExtraData2" class="mx-1">{{ "LookUps.ExtraData2" | translate }} </label>
+                  <input (keypress)="OnlyEnglish($event , 200)" type="text" class="form-control" placeholder="{{ 'optional' | translate }}" [(ngModel)]="objData.extraData2" formControlName="ExtraData2" id="ExtraData2" autocomplete="off" />
+                  <div *ngIf="SubmitForm.controls['ExtraData2'].errors && SubmitForm.controls['ExtraData2'].touched" class="form-text d-block text-danger">
+                    ({{ "LookUps.ExteraValidate" | translate }})
+                  </div>
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <div class="form-check form-switch h-100 d-flex flex-column justify-content-start align-items-start">
+                    <label class="form-check-label" for="IsActive">{{ "Radionuclide.isActive" | translate }}</label>
+                    <input formControlName="IsActive" class="form-check-input mx-3" type="checkbox" id="IsActive" [(ngModel)]="objData.isActive" checked>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+                  <span class="btn btn-secondary mx-2" (click)="reset()" style="padding-left: 50px; padding-right: 50px;" id="reset-all">
+                    {{ "ResetFormData" | translate }}
+                  </span>
+                  <button class="btn btn-gold mx-2" style="padding-left: 100px;padding-right:100px;" id="submit-all">
+                    {{ "Save" | translate }}
+                  </button>
+                </div>
+              </div>
+
+            </form>
+
+
+          </div>
+        </div>
+
+      </div>
+
+
+    </section> 
+    <hr class="my-4 w-100">
+    <div class="datatablediv w-100">
+      <div class="pb-3">
+        <button type="button" (click)="ExportExel()" class="btn btn-gold btn-sm mx-1">{{ "General.ExportExcel" | translate }}  </button>
+        <button type="button" (click)="Print()" class="btn btn-gold btn-sm mx-1">{{ "General.Print" | translate }}  </button>
+        <button type="button" (click)="Copy()" class="btn btn-gold btn-sm mx-1">{{ "General.Copy" | translate }} </button>
+      </div>
+      <table datatable [dtOptions]="dtOptions" id="lookUpsDataTable" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+        <thead>
+          <tr>
+            <th class="select-filter">
+              {{ "LookUps.ClassName" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "LookUps.DisplayNameArabic" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "LookUps.DisplayNameEnglish" | translate }}
+            </th>
+            <th>{{ "LookUps.ValueDetails" | translate }}</th>
+            <th>{{ "Action" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="dataList?.length != 0">
+          <tr *ngFor="let mem of dataList;let i = index;">
+            <td>{{mem.className}}</td>
+            <td>{{mem.displayNameAr}}</td>
+            <td>{{mem.displayNameEn}}</td>
+            <td>
+              <button class="edit btn btn-success btn-sm mx-1" (click)="LookUpTerm(mem)" style="width:100%">
+                <fa-icon [icon]="faListDots"> </fa-icon>
+                {{ "General.Details" | translate }}
+              </button>
+            </td>
+            <td>
+              <button class="edit btn btn-gold btn-sm mx-1" (click)="Details(mem)"><fa-icon [icon]="faPen"> </fa-icon> </button>
+              <button class="delete btn btn-secondary btn-sm mx-1" (click)="Delete(mem)"><fa-icon [icon]="faTrash"> </fa-icon></button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="dataList?.length == 0">
+          <tr>
+            <td colspan="5" class="no-data-available">
+              {{ "General.NoDataFound" | translate }}
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>
+              <input class="search-input"
+                     name="className"
+                     type="text"
+                     placeholder="{{ 'LookUps.ClassName' | translate }}"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="displayNameAr"
+                     id="displayNameAr"
+                     type="text"
+                     placeholder="{{ 'LookUps.DisplayNameArabic' | translate }}"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="displayNameEn"
+                     id="displayNameEn"
+                     type="text"
+                     placeholder="{{ 'LookUps.DisplayNameEnglish' | translate }}"
+                     style="width: 100%" />
+            </th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div> 
+
+  </div>
+
+</div>

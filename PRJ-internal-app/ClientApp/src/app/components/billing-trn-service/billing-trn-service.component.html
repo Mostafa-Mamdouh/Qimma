@@ -1,0 +1,134 @@
+
+
+
+
+
+
+
+
+<div class="w-100 container border rounded shadow my-5 bg-white px-4 pb-3 pt-3 ">
+
+
+
+  <div class="servicesList w-100 d-flex justify-content-between align-items-center  p-3">
+    <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "Back" | translate }} </button>
+    <button class="btn btn btn-gold m-1" routerLink="/InsertBillnigTrn">Add New Invoice </button>
+
+  </div>
+  <div class="source-service-details d-flex justify-content-start flex-row-reverse align-items-start w-100">
+    <div class="functionButtonsContainer">
+    </div>
+    <table datatable [dtOptions]="dtOptions" id="WorkersDataTable" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+      <thead>
+        <tr>
+          <th class="select-filter">
+            {{ "Billing.TransactionRefNum" | translate }}
+          </th>
+          <th class="select-filter">
+            {{ "Billing.InvoiceDate" | translate }}
+          </th>
+          <th class="select-filter">
+            {{ "Billing.InvoiceBU" | translate }}
+          </th>
+          <th class="select-filter">
+            {{ "Billing.CustomerName" | translate }}
+          </th>
+          <th class="select-filter">
+            {{ "Billing.InvoiceSource" | translate }}
+          </th>
+          <th class="select-filter">
+            {{ "Billing.Status" | translate }}
+          </th>
+          <th>{{ "Action" | translate }}</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="radionuclides?.length != 0">
+        <tr *ngFor="let mem of radionuclides;let i = index">
+          <td>{{mem.transactionRefNum}}</td>
+          <td>{{mem.invoiceDate | date:'dd/MM/yyyy'}}</td>
+          <td>
+            {{ lang == "en" ? mem.itemHierarchyStructure.itemStructureDesNtv : mem.itemHierarchyStructure.itemStructureDesFrn }}
+          </td>
+          <td>{{mem.customerName}}</td>
+          <td>{{lang == "en" ? mem.invoiceSources.displayNameAr :mem.invoiceSources.displayNameEn}}</td>
+          <td>
+            {{ lang == "en" ? mem.lookupSetTerm.displayNameAr :mem.lookupSetTerm.displayNameEn }}
+          </td>
+          <td>
+            <button [disabled]="mem.lookupSetTerm.value == 'Confirmed' || mem.lookupSetTerm.extraData1 == 'Settled' || mem.invoiceSources.value == 2" class="edit btn btn-gold btn-sm mx-1" (click)="ToEditInvoice(mem.id)">
+              <fa-icon [icon]="faPen"> </fa-icon>
+            </button>
+            <button class="edit btn btn-gold btn-sm mx-1" (click)="ToViewInvoice(mem.id)">
+              <fa-icon [icon]="faListDots"> </fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="radionuclides?.length == 0">
+        <tr>
+          <td colspan="6" class="no-data-available">
+            {{ "General.NoDataFound" | translate }}
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>
+            <input class="search-input"
+                   name="transactionRefNum"
+                   id=""
+                   type="text"
+                   placeholder="{{ 'Billing.TransactionRefNum' | translate }}"
+                   style="width: 100%" />
+          </th>
+          <th>
+            <input class="search-input"
+                   name="invoiceDate"
+                   id="ss"
+                   type="text"
+                   placeholder="{{ 'Billing.InvoiceDate' | translate }}"
+                   style="width: 100%" />
+          </th>
+          <th>
+            <input class="search-input"
+                   name="invoiceBU"
+                   id="workerNameAr"
+                   type="text"
+                   placeholder="{{ 'Billing.InvoiceBU' | translate }}"
+                   style="width: 100%" />
+          </th>
+          <th>
+            <input class="search-input"
+                   name="customerName"
+                   id="workerNameEn"
+                   type="text"
+                   placeholder="{{ 'Billing.CustomerName' | translate }}"
+                   style="width: 100%" />
+          </th>
+          <th>
+            <input class="search-input"
+                   name="invoiceSource"
+                   id="nationalityId"
+                   type="text"
+                   placeholder="{{ 'Billing.InvoiceSource' | translate }}"
+                   style="width: 100%" />
+          </th>
+          <th>
+            <input class="search-input"
+                   name="statusFlag"
+                   id="statusFlag"
+                   type="text"
+                   placeholder="{{ 'Billing.Status' | translate }}"
+                   style="width: 100%" />
+          </th>
+          <th>
+
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+
+
+</div>

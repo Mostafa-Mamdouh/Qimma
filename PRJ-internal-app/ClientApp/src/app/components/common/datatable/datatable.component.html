@@ -1,0 +1,202 @@
+<!--<div id="data-table-wrapper">-->
+<mat-form-field appearance="standard">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort matSortActive="created" matSortDirection="desc">
+
+    <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+      <th class="cu" mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ col |  titlecase }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ (row && row[col] != 'action') && row[col] }}
+        <button class="edit btn btn-gold btn-sm mx-1" (click)="editEvent(row)" *ngIf="col == 'action'">
+          <fa-icon [icon]="faPen"></fa-icon>
+        </button>
+        <button class="delete btn btn-secondary btn-sm mx-1" (click)="deleteEvent(row)" *ngIf="col == 'action'">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef><input type="text" *ngIf="col != 'action'" class="searchFieldDataTable w-90" placeholder="{{col}}" /></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator showFirstLastButtons [length]="length" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+<!--</div>-->
+<!--<div id="data-table-wrapper">
+
+  <div class="disable-table" *ngIf="loadingRecords">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <mat-form-field>
+    <input matInput type="text" name="searchString"
+           [(ngModel)]="inputFilter.searchString"
+           (input)="onSearchString()"
+           (keydown)="onKeyDown()"
+           placeholder="Search...">
+    <button *ngIf="inputFilter.searchString" matSuffix mat-icon-button
+            (click)="inputFilter.searchString = ''; onResetSearch()">
+    </button>
+  </mat-form-field>
+
+  <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container *ngFor="let col of displayedCols" [matColumnDef]="col">
+      <th class="cu" mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ col |  titlecase }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ (row && row[col] != 'action') && row[col] }}
+        <button class="edit btn btn-gold btn-sm mx-1" (click)="editEvent(row)" *ngIf="col == 'action'">
+          <fa-icon [icon]="faPen"></fa-icon>
+        </button>
+        <button class="delete btn btn-secondary btn-sm mx-1" (click)="deleteEvent(row)" *ngIf="col == 'action'">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef><input type="text" *ngIf="col != 'action'" class="searchFieldDataTable w-90" placeholder="{{col}}" /></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedCols; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedCols"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedCols; sticky: true"></tr>
+
+  </table>
+  <mat-paginator [length]="totalRecords" showFirstLastButtons="true" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>-->
+<!--<mat-form-field appearance="standard">
+  <mat-label>{{ "search" | translate }}</mat-label>
+  <input matInput search color="gray" (keyup)="applyFilter($event)" #input />
+</mat-form-field>-->
+<!--   @Output() tableCols = ['id', 'userId', 'title', 'action'];
+  @Output() tableColsDisplay = [
+    {
+      colDef: 'id',
+      disNameEn: 'ID',
+      disNameAr: 'الرقم المرجعي'
+    },
+    {
+      colDef: 'userId',
+      disNameEn: 'User Id',
+      disNameAr: 'رقم المستخدم'
+    },
+    {
+      colDef: 'title',
+      disNameEn: 'Title',
+      disNameAr: 'العنوان'
+    },
+    {
+      colDef: 'action',
+      disNameEn: 'Actions',
+      disNameAr: 'عمليات'
+    }
+  ];-->
+<!--<div class="datatable-container" tabindex="0">
+  <div class="table-overlay-container">
+    <div class="activitIndecatorContainer" *ngIf="isLoading">
+      <div class="spinner-border text-warning activitIndecator" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <table class="datatable" mat-table matSort [dataSource]="dataSource">
+
+      <ng-container *ngFor="let col of displayedCols" [matColumnDef]="col">
+        <th class="cu" mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ col |  titlecase }}
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ (row && row[col] != 'action') && row[col] }}
+          <button class="edit btn btn-gold btn-sm mx-1" (click)="editEvent(row)" *ngIf="col == 'action'">
+            <fa-icon [icon]="faPen"></fa-icon>
+          </button>
+          <button class="delete btn btn-secondary btn-sm mx-1" (click)="deleteEvent(row)" *ngIf="col == 'action'">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </td>
+        <td mat-footer-cell *matFooterCellDef><input type="text" *ngIf="col != 'action'" class="searchFieldDataTable w-90" placeholder="{{col}}" /></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedCols; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedCols"></tr>
+      <tr mat-footer-row *matFooterRowDef="displayedCols; sticky: true"></tr>
+
+
+      <tr *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          The filter does not match any item in the data for this text
+          {{ input.value }}
+        </td>
+      </tr>
+    </table>
+
+    <mat-paginator class="mat-paginator-sticky custom-mat-paginator-style"
+                   [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                   aria-label="Select page"
+                   (page)="pageChanged($event)"
+                   (openedChange)="openedChange($event)"></mat-paginator>
+  </div>
+
+</div>-->
+<!--
+<table class="datatable" mat-table matSort [dataSource]="dataSource">
+
+      <ng-container *ngFor="let col of tableCols" [matColumnDef]="col">
+        <th class="cu" mat-header-cell *matHeaderCellDef mat-sort-header>
+{{ getDisplayName(col) }}
+        </th>
+<td mat-cell *matCellDef="let row">
+  {{ (row && row[col] != 'action') && row[col] }}
+  <button class="edit btn btn-gold btn-sm mx-1" (click)="editEvent(row)" *ngIf="col == 'action'">
+    <fa-icon [icon]="faPen"></fa-icon>
+  </button>
+  <button class="delete btn btn-secondary btn-sm mx-1" (click)="deleteEvent(row)" *ngIf="col == 'action'">
+    <fa-icon [icon]="faTrash"></fa-icon>
+  </button>
+</td>
+<td mat-footer-cell *matFooterCellDef><input type="text" *ngIf="col != 'action'" class="searchFieldDataTable w-90" placeholder="{{col}}" /></td>
+      </ng-container>
+
+<tr mat-header-row *matHeaderRowDef="tableCols; sticky: true"></tr>
+<tr mat-row *matRowDef="let row; columns: tableCols"></tr>
+<tr mat-footer-row *matFooterRowDef="tableCols; sticky: true"></tr>
+
+
+<tr *matNoDataRow>
+  <td class="mat-cell" colspan="4">
+    The filter does not match any item in the data for this text
+    {{ input.value }}
+  </td>
+</tr>
+    </table>
+-->
+<!--
+
+  <table class="datatable" #table mat-table matSort [dataSource]="dataSource">
+      <ng-container *ngFor="let col of displayedCols" [cdkColumnDef]="col.colDef">
+        <th class="cu" mat-header-cell *cdkHeaderCellDef mat-sort-header>
+          {{ col.disNameAr }}
+        </th>
+
+
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
+    </table>
+
+-->

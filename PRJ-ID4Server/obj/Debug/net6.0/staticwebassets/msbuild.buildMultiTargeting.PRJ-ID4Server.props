@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PRJ-ID4Server.props" />
+</Project>

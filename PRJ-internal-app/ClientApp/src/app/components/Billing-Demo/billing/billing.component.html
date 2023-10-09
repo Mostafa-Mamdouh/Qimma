@@ -1,0 +1,312 @@
+<div class="border rounded shadow my-5 bg-white px-4">
+  <div
+    class="mainContent d-flex flex-wrap justify-content-between align-content-center mt-4 w-100"
+  >
+    <div
+      class="d-flex justify-content-between"
+      style="width: 100%; float: left"
+    >
+      <div style="text-align: right">
+        <button
+          class="btn btn-secondary btn-sm custom-collapse me-2"
+          (click)="collapseAll()"
+        >
+          <span class="padding-h-5">{{
+            "Billing.CollapseAll" | translate
+          }}</span>
+        </button>
+
+        <button
+          class="btn btn-secondary btn-sm custom-collapse me-2"
+          style="background-color: var(--blue); border: none"
+          (click)="expandAll()"
+        >
+          <span class="padding-h-5">{{ "Billing.ExpandAll" | translate }}</span>
+        </button>
+      </div>
+      <div>
+      <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "Back" | translate }} </button>
+
+      </div>
+   
+    </div>
+    <div class="tree-table-container row">
+      <div class="col-lg-6 col-md-12">
+        <p-treeTable [value]="data"
+                     dataKey="itemStructureCode"
+                     dir="ltr"
+                     #tt
+                     [columns]="columns"
+                     [scrollable]="true"
+                     scrollHeight="80vh"
+                     [(contextMenuSelection)]="selectedNode"
+                     [contextMenu]="cm"
+                     selectionMode="single"
+                     [(selection)]="selectedNode"
+                     (onNodeSelect)="nodeSelect($event)">
+
+          <ng-template pTemplate="caption">
+            <div>
+              <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input type="text"
+                       pInputText
+                       size="50"
+                       placeholder="Global Filter"
+                       class="search-tree"
+                       (input)="tt.filterGlobal($any($event).target.value , 'contains')"
+                       (keydown)="expandAll()" />
+              </span>
+            </div>
+          </ng-template>
+
+          <ng-template pTemplate="header">
+            <tr>
+              <th>{{ "Billing.ItemStructureCode" | translate }}</th>
+              <th>{{ "Billing.description" | translate }}</th>
+            </tr>
+            <tr>
+              <th *ngFor="let col of columns">
+                <input pInputText
+                       type="text"
+                       class="w-full search-tree"
+                       placeholder="{{col.header}}"
+                       (input)="tt.filter($any($event).target.value , col.field, col.filterMatchMode)"
+                       (keydown)="expandAll()" />
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+            <tr [ttContextMenuRow]="rowNode"
+                [ttRow]="rowNode"
+                [ttSelectableRow]="rowNode">
+              <td>
+                <p-treeTableToggler dir="rtl"
+                                    [rowNode]="rowNode"></p-treeTableToggler>
+                {{ rowData.itemStructureCode }}
+              </td>
+              <td *ngIf="lang == 'en'">{{ rowData.itemStructureDesFrn }}</td>
+              <td *ngIf="lang == 'ar'">{{ rowData.itemStructureDesNtv }}</td>
+            </tr>
+          </ng-template>
+        </p-treeTable>
+      </div>
+
+      <div class="datatablediv col-lg-6 col-md-12">
+        <div class="pb-3">
+          <button
+            type="button"
+            (click)="ExportExel()"
+            class="btn btn-gold btn-sm mx-1"
+          >
+            {{ "General.ExportExcel" | translate }}
+          </button>
+          <button
+            type="button"
+            (click)="Print()"
+            class="btn btn-gold btn-sm mx-1"
+          >
+            {{ "General.Print" | translate }}
+          </button>
+          <button
+            type="button"
+            (click)="Copy()"
+            class="btn btn-gold btn-sm mx-1"
+          >
+            {{ "General.Copy" | translate }}
+          </button>
+        </div>
+        <table
+          datatable
+          [dtOptions]="dtOptions"
+          id="billingServicesDatatable"
+          class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto"
+        >
+          <thead>
+            <tr>
+              <th class="select-filter">
+                {{ "Billing.itemRefCode" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Billing.itemDesFrn" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Billing.itemDesNtv" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Billing.itemType" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Billing.issueAccountCode" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Billing.currentPrice" | translate }}
+              </th>
+              <th>{{ "Action" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="services?.length != 0">
+            <tr *ngFor="let service of services; index as i">
+              <td>{{ service.itemStructureCode }}</td>
+              <td>{{ service.itemDesFrn }}</td>
+              <td>{{ service.itemDesNtv }}</td>
+              <td>{{ service.itemType }}</td>
+              <td>99955500088</td>
+              <!--<td>{{ service.issueAccountCode }}</td>-->
+              <td>{{ service.currentPrice }}</td>
+              <td>
+                <button
+                  class="edit btn btn-success btn-sm mx-1"
+                  style="width: 100%"
+                >
+                  <fa-icon [icon]="faListDots"> </fa-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody *ngIf="services?.length == 0">
+            <tr>
+              <td colspan="7" class="no-data-available">
+                {{ "General.NoDataFound" | translate }}
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>
+                <input
+                  class="search-input"
+                  name="itemRefCode"
+                  type="text"
+                  placeholder="{{ 'Billing.itemRefCode' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="itemDesFrn"
+                  id="itemDesFrn"
+                  type="text"
+                  placeholder="{{ 'Billing.itemDesFrn' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="itemDesNtv"
+                  type="text"
+                  placeholder="{{ 'Billing.itemDesNtv' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="itemType"
+                  type="text"
+                  placeholder="{{ 'Billing.itemType' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="issueAccountCode"
+                  type="text"
+                  placeholder="{{ 'Billing.issueAccountCode' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="currentPrice"
+                  type="text"
+                  placeholder="{{ 'Billing.currentPrice' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <!-- end of datatablediv-->
+    </div>
+  </div>
+  <!--Context Menu-->
+  <p-contextMenu #cm [model]="contextMenuitems"></p-contextMenu>
+
+  <!-- Add/Edit Modal -->
+  <p-dialog
+    [header]="edit ? 'Edit' : 'Add'"
+    [(visible)]="displayModal"
+    [breakpoints]="{ '960px': '75vw' }"
+    [style]="{ width: '50vw' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <form [formGroup]="addEditItemForm">
+      <div class="row">
+        <div class="form-floating mb-3 col-6">
+          <input
+            type="text"
+            formControlName="itemStructureDesFrn"
+            class="form-control"
+            id="itemStructureDesFrn"
+          />
+          <label for="itemStructureDesFrn">{{
+            "Billing.itemStructureDesFrn" | translate
+          }}</label>
+        </div>
+        <div class="form-floating mb-3 col-6">
+          <input
+            type="text"
+            formControlName="itemStructureDesNtv"
+            class="form-control"
+            id="itemStructureDesNtv"
+          />
+          <label for="itemStructureDesNtv">{{
+            "Billing.itemStructureDesNtv" | translate
+          }}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-floating mb-3 col-6">
+          <input
+            type="text"
+            min="1"
+            formControlName="defaultIssueAccountCode"
+            class="form-control"
+            id="defaultIssueAccountCode"
+          />
+          <label for="defaultIssueAccountCode">{{
+            "Billing.defaultIssueAccountCode" | translate
+          }}</label>
+        </div>
+      </div>
+    </form>
+    <ng-template pTemplate="footer">
+      <p-button
+        (click)="displayModal = false"
+        label="No"
+        styleClass="p-button-text"
+      ></p-button>
+      <p-button
+        *ngIf="!edit"
+        (click)="addItemStructure()"
+        label="Yes"
+        styleClass="p-button-text"
+      ></p-button>
+      <p-button
+        *ngIf="edit"
+        (click)="editItemStructure()"
+        label="Yes"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+  </p-dialog>
+</div>

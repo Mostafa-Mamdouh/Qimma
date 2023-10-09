@@ -1,0 +1,16 @@
+C:\Qimma\WinTest\bin\Debug\WinTest.exe.config
+C:\Qimma\WinTest\bin\Debug\WinTest.exe
+C:\Qimma\WinTest\bin\Debug\WinTest.pdb
+C:\Qimma\WinTest\bin\Debug\EntityFramework.dll
+C:\Qimma\WinTest\bin\Debug\EntityFramework.SqlServer.dll
+C:\Qimma\WinTest\bin\Debug\EntityFramework.xml
+C:\Qimma\WinTest\bin\Debug\EntityFramework.SqlServer.xml
+C:\Qimma\WinTest\obj\Debug\WinTest.csproj.AssemblyReference.cache
+C:\Qimma\WinTest\obj\Debug\WinTest.csproj.SuggestedBindingRedirects.cache
+C:\Qimma\WinTest\obj\Debug\WinTest.Form1.resources
+C:\Qimma\WinTest\obj\Debug\WinTest.Properties.Resources.resources
+C:\Qimma\WinTest\obj\Debug\WinTest.csproj.GenerateResource.cache
+C:\Qimma\WinTest\obj\Debug\WinTest.csproj.CoreCompileInputs.cache
+C:\Qimma\WinTest\obj\Debug\WinTest.csproj.CopyComplete
+C:\Qimma\WinTest\obj\Debug\WinTest.exe
+C:\Qimma\WinTest\obj\Debug\WinTest.pdb

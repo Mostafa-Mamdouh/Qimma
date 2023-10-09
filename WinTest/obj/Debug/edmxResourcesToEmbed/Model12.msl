@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NRRCDb2ModelStoreContainer" CdmEntityContainer="NRRCDb2Entities">
+    <EntitySetMapping Name="C__EFMigrationsHistory">
+      <EntityTypeMapping TypeName="NRRCDb2Model.C__EFMigrationsHistory">
+        <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoleClaims">
+      <EntityTypeMapping TypeName="NRRCDb2Model.AspNetRoleClaim">
+        <MappingFragment StoreEntitySet="AspNetRoleClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NormalizedName" ColumnName="NormalizedName" />
+          <ScalarProperty Name="ConcurrencyStamp" ColumnName="ConcurrencyStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="NRRCDb2Model.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="NRRCDb2Model.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="ProviderDisplayName" ColumnName="ProviderDisplayName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="NRRCDb2Model.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SecondNameEn" ColumnName="SecondNameEn" />
+          <ScalarProperty Name="SecondNameAr" ColumnName="SecondNameAr" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="PictureContentType" ColumnName="PictureContentType" />
+          <ScalarProperty Name="PictureName" ColumnName="PictureName" />
+          <ScalarProperty Name="PassportNo" ColumnName="PassportNo" />
+          <ScalarProperty Name="GregorianBirthDate" ColumnName="GregorianBirthDate" />
+          <ScalarProperty Name="HijriBirthDate" ColumnName="HijriBirthDate" />
+          <ScalarProperty Name="NationalID" ColumnName="NationalID" />
+          <ScalarProperty Name="IqamaID" ColumnName="IqamaID" />
+          <ScalarProperty Name="UserAlternatePhone" ColumnName="UserAlternatePhone" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="NormalizedUserName" ColumnName="NormalizedUserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="NormalizedEmail" ColumnName="NormalizedEmail" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="ConcurrencyStamp" ColumnName="ConcurrencyStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEnd" ColumnName="LockoutEnd" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="IsActiveUser" ColumnName="IsActiveUser" />
+          <ScalarProperty Name="FirstNameAr" ColumnName="FirstNameAr" />
+          <ScalarProperty Name="FirstNameEn" ColumnName="FirstNameEn" />
+          <ScalarProperty Name="LastNameNameAr" ColumnName="LastNameNameAr" />
+          <ScalarProperty Name="LastNameNameEn" ColumnName="LastNameNameEn" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserTokens">
+      <EntityTypeMapping TypeName="NRRCDb2Model.AspNetUserToken">
+        <MappingFragment StoreEntitySet="AspNetUserTokens">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BasCities">
+      <EntityTypeMapping TypeName="NRRCDb2Model.BasCity">
+        <MappingFragment StoreEntitySet="BasCities">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="NameAr" ColumnName="NameAr" />
+          <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BasCountries">
+      <EntityTypeMapping TypeName="NRRCDb2Model.BasCountry">
+        <MappingFragment StoreEntitySet="BasCountries">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CountryNameAr" ColumnName="CountryNameAr" />
+          <ScalarProperty Name="CountryNameEn" ColumnName="CountryNameEn" />
+          <ScalarProperty Name="NationalityNameFrn" ColumnName="NationalityNameFrn" />
+          <ScalarProperty Name="NationalityNameNtv" ColumnName="NationalityNameNtv" />
+          <ScalarProperty Name="CountryCodeISO" ColumnName="CountryCodeISO" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntityProfiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.EntityProfile">
+        <MappingFragment StoreEntitySet="EntityProfile">
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="EntityNameAr" ColumnName="EntityNameAr" />
+          <ScalarProperty Name="EntityNameEn" ColumnName="EntityNameEn" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="GovernmentID" ColumnName="GovernmentID" />
+          <ScalarProperty Name="EntityType" ColumnName="EntityType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AmanInsertedOn" ColumnName="AmanInsertedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacilityProfiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.FacilityProfile">
+        <MappingFragment StoreEntitySet="FacilityProfile">
+          <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+          <ScalarProperty Name="FacilityNameAr" ColumnName="FacilityNameAr" />
+          <ScalarProperty Name="FacilityNameEn" ColumnName="FacilityNameEn" />
+          <ScalarProperty Name="OragnizationName" ColumnName="OragnizationName" />
+          <ScalarProperty Name="FacilityCode" ColumnName="FacilityCode" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AmanInsertedOn" ColumnName="AmanInsertedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemSourcesFiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.ItemSourcesFile">
+        <MappingFragment StoreEntitySet="ItemSourcesFiles">
+          <ScalarProperty Name="ItemSourcesFileId" ColumnName="ItemSourcesFileId" />
+          <ScalarProperty Name="FileSourceID" ColumnName="FileSourceID" />
+          <ScalarProperty Name="FileNum" ColumnName="FileNum" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileOriginalName" ColumnName="FileOriginalName" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="UploadType" ColumnName="UploadType" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="FileBytes" ColumnName="FileBytes" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemSourcesProfiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.ItemSourcesProfile">
+        <MappingFragment StoreEntitySet="ItemSourcesProfile">
+          <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+          <ScalarProperty Name="SourceDescAr" ColumnName="SourceDescAr" />
+          <ScalarProperty Name="SourceDescEn" ColumnName="SourceDescEn" />
+          <ScalarProperty Name="NrrcID" ColumnName="NrrcID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ManufacturerSerialNo" ColumnName="ManufacturerSerialNo" />
+          <ScalarProperty Name="FacilitySerialNo" ColumnName="FacilitySerialNo" />
+          <ScalarProperty Name="RadioNuclides" ColumnName="RadioNuclides" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="IsoptopHalfLifeTime" ColumnName="IsoptopHalfLifeTime" />
+          <ScalarProperty Name="IspotopHalfLifeTimeUnit" ColumnName="IspotopHalfLifeTimeUnit" />
+          <ScalarProperty Name="InitialActivity" ColumnName="InitialActivity" />
+          <ScalarProperty Name="InitialActivityUnit" ColumnName="InitialActivityUnit" />
+          <ScalarProperty Name="CurrentActivity" ColumnName="CurrentActivity" />
+          <ScalarProperty Name="CurrentActivityUnit" ColumnName="CurrentActivityUnit" />
+          <ScalarProperty Name="PhysicalForm" ColumnName="PhysicalForm" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Exemption" ColumnName="Exemption" />
+          <ScalarProperty Name="RecommendedWorkingLifeTime" ColumnName="RecommendedWorkingLifeTime" />
+          <ScalarProperty Name="RadioactiveSourceid" ColumnName="RadioactiveSourceid" />
+          <ScalarProperty Name="ShieldMaterial" ColumnName="ShieldMaterial" />
+          <ScalarProperty Name="ShieldNuclearMaterialCode" ColumnName="ShieldNuclearMaterialCode" />
+          <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+          <ScalarProperty Name="NumberOfAcquiredSources" ColumnName="NumberOfAcquiredSources" />
+          <ScalarProperty Name="NumberOfConsumedSources" ColumnName="NumberOfConsumedSources" />
+          <ScalarProperty Name="NumberOfAvailableSources" ColumnName="NumberOfAvailableSources" />
+          <ScalarProperty Name="NuclearMaterial" ColumnName="NuclearMaterial" />
+          <ScalarProperty Name="WeightOfNuclearMaterial" ColumnName="WeightOfNuclearMaterial" />
+          <ScalarProperty Name="EnrichmentofU235" ColumnName="EnrichmentofU235" />
+          <ScalarProperty Name="WeightOffIssileisotopes" ColumnName="WeightOffIssileisotopes" />
+          <ScalarProperty Name="WeightOffIssileisotopesunit" ColumnName="WeightOffIssileisotopesunit" />
+          <ScalarProperty Name="ChemicalForm" ColumnName="ChemicalForm" />
+          <ScalarProperty Name="ChemicalComposition" ColumnName="ChemicalComposition" />
+          <ScalarProperty Name="ContainerVolume" ColumnName="ContainerVolume" />
+          <ScalarProperty Name="SourceActivity" ColumnName="SourceActivity" />
+          <ScalarProperty Name="SourceModel" ColumnName="SourceModel" />
+          <ScalarProperty Name="AssociatedEquipment" ColumnName="AssociatedEquipment" />
+          <ScalarProperty Name="SourceCategory" ColumnName="SourceCategory" />
+          <ScalarProperty Name="SourceLinkedFlag" ColumnName="SourceLinkedFlag" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+          <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+          <ScalarProperty Name="LicenseInventoryId" ColumnName="LicenseInventoryId" />
+          <ScalarProperty Name="PermitdetailsId" ColumnName="PermitdetailsId" />
+          <ScalarProperty Name="PermitInventoryId" ColumnName="PermitInventoryId" />
+          <ScalarProperty Name="PractiseId" ColumnName="PractiseId" />
+          <ScalarProperty Name="SROId" ColumnName="SROId" />
+          <ScalarProperty Name="LegalRepresentativesId" ColumnName="LegalRepresentativesId" />
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="ManufactureCountryId" ColumnName="ManufactureCountryId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LegalRepresentativesProfiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.LegalRepresentativesProfile">
+        <MappingFragment StoreEntitySet="LegalRepresentativesProfile">
+          <ScalarProperty Name="LegalRepresentativesId" ColumnName="LegalRepresentativesId" />
+          <ScalarProperty Name="LegalRepresentativesNameAr" ColumnName="LegalRepresentativesNameAr" />
+          <ScalarProperty Name="LegalRepresentativesNameEn" ColumnName="LegalRepresentativesNameEn" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="NationalID" ColumnName="NationalID" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CurrentFacilities" ColumnName="CurrentFacilities" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AmanInsertedOn" ColumnName="AmanInsertedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LicenseInventoryLimits">
+      <EntityTypeMapping TypeName="NRRCDb2Model.LicenseInventoryLimit">
+        <MappingFragment StoreEntitySet="LicenseInventoryLimits">
+          <ScalarProperty Name="LicenseInventoryId" ColumnName="LicenseInventoryId" />
+          <ScalarProperty Name="SourceType" ColumnName="SourceType" />
+          <ScalarProperty Name="Radionuclide" ColumnName="Radionuclide" />
+          <ScalarProperty Name="MaximumRadioactivity" ColumnName="MaximumRadioactivity" />
+          <ScalarProperty Name="NumberofSources" ColumnName="NumberofSources" />
+          <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AmanInsertedOn" ColumnName="AmanInsertedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LicenseProfiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.LicenseProfile">
+        <MappingFragment StoreEntitySet="LicenseProfile">
+          <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+          <ScalarProperty Name="LicenseDescAr" ColumnName="LicenseDescAr" />
+          <ScalarProperty Name="LicenseDescEn" ColumnName="LicenseDescEn" />
+          <ScalarProperty Name="LicenseCode" ColumnName="LicenseCode" />
+          <ScalarProperty Name="LicenseVersionNumber" ColumnName="LicenseVersionNumber" />
+          <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="PractiseSector" ColumnName="PractiseSector" />
+          <ScalarProperty Name="LicenseActivities" ColumnName="LicenseActivities" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+          <ScalarProperty Name="AmanInsertedOn" ColumnName="AmanInsertedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookupSets">
+      <EntityTypeMapping TypeName="NRRCDb2Model.LookupSet">
+        <MappingFragment StoreEntitySet="LookupSet">
+          <ScalarProperty Name="LookupSetId" ColumnName="LookupSetId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="DisplayNameAr" ColumnName="DisplayNameAr" />
+          <ScalarProperty Name="DisplayNameEn" ColumnName="DisplayNameEn" />
+          <ScalarProperty Name="ExtraData1" ColumnName="ExtraData1" />
+          <ScalarProperty Name="ExtraData2" ColumnName="ExtraData2" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookupSetTerms">
+      <EntityTypeMapping TypeName="NRRCDb2Model.LookupSetTerm">
+        <MappingFragment StoreEntitySet="LookupSetTerm">
+          <ScalarProperty Name="LookupSetTermId" ColumnName="LookupSetTermId" />
+          <ScalarProperty Name="LookupSetId" ColumnName="LookupSetId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DisplayNameAr" ColumnName="DisplayNameAr" />
+          <ScalarProperty Name="DisplayNameEn" ColumnName="DisplayNameEn" />
+          <ScalarProperty Name="ExtraData1" ColumnName="ExtraData1" />
+          <ScalarProperty Name="ExtraData2" ColumnName="ExtraData2" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManufacturerMasters">
+      <EntityTypeMapping TypeName="NRRCDb2Model.ManufacturerMaster">
+        <MappingFragment StoreEntitySet="ManufacturerMaster">
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="ManufacturerDescAr" ColumnName="ManufacturerDescAr" />
+          <ScalarProperty Name="ManufacturerDescEn" ColumnName="ManufacturerDescEn" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="POBox" ColumnName="POBox" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NuclearRelatedItemsProfiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.NuclearRelatedItemsProfile">
+        <MappingFragment StoreEntitySet="NuclearRelatedItemsProfile">
+          <ScalarProperty Name="NRRCRelatedItemId" ColumnName="NRRCRelatedItemId" />
+          <ScalarProperty Name="RelatedItemDescAr" ColumnName="RelatedItemDescAr" />
+          <ScalarProperty Name="RelatedItemDescEn" ColumnName="RelatedItemDescEn" />
+          <ScalarProperty Name="NrrcID" ColumnName="NrrcID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ManufacturerSerialNo" ColumnName="ManufacturerSerialNo" />
+          <ScalarProperty Name="DateofManufacturing" ColumnName="DateofManufacturing" />
+          <ScalarProperty Name="FacilityRelatedItemID" ColumnName="FacilityRelatedItemID" />
+          <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+          <ScalarProperty Name="ItemTypeNo" ColumnName="ItemTypeNo" />
+          <ScalarProperty Name="ItemtypeName" ColumnName="ItemtypeName" />
+          <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+          <ScalarProperty Name="HSCode" ColumnName="HSCode" />
+          <ScalarProperty Name="GovernmentCommitmentsFlag" ColumnName="GovernmentCommitmentsFlag" />
+          <ScalarProperty Name="EndUserCertificateFlag" ColumnName="EndUserCertificateFlag" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="PermitInitialQty" ColumnName="PermitInitialQty" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+          <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+          <ScalarProperty Name="LicenseInventoryId" ColumnName="LicenseInventoryId" />
+          <ScalarProperty Name="PermitdetailsId" ColumnName="PermitdetailsId" />
+          <ScalarProperty Name="PermitInventoryId" ColumnName="PermitInventoryId" />
+          <ScalarProperty Name="PractiseId" ColumnName="PractiseId" />
+          <ScalarProperty Name="SROId" ColumnName="SROId" />
+          <ScalarProperty Name="LegalRepresentativesId" ColumnName="LegalRepresentativesId" />
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="ManufactureCountryId" ColumnName="ManufactureCountryId" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PermitDetailsProfiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.PermitDetailsProfile">
+        <MappingFragment StoreEntitySet="PermitDetailsProfile">
+          <ScalarProperty Name="PermitDetailsId" ColumnName="PermitDetailsId" />
+          <ScalarProperty Name="PermitDetailsDescAr" ColumnName="PermitDetailsDescAr" />
+          <ScalarProperty Name="PermitDetailsDescEn" ColumnName="PermitDetailsDescEn" />
+          <ScalarProperty Name="PermitNumber" ColumnName="PermitNumber" />
+          <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+          <ScalarProperty Name="AmanInsertedOn" ColumnName="AmanInsertedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PermitInventoryLimits">
+      <EntityTypeMapping TypeName="NRRCDb2Model.PermitInventoryLimit">
+        <MappingFragment StoreEntitySet="PermitInventoryLimits">
+          <ScalarProperty Name="PermitInventoryId" ColumnName="PermitInventoryId" />
+          <ScalarProperty Name="SourceSerialNo" ColumnName="SourceSerialNo" />
+          <ScalarProperty Name="ManufactureName" ColumnName="ManufactureName" />
+          <ScalarProperty Name="Radionuclide" ColumnName="Radionuclide" />
+          <ScalarProperty Name="ModelMaximumRadioactivity" ColumnName="ModelMaximumRadioactivity" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="PermitDetailsId" ColumnName="PermitDetailsId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AmanInsertedOn" ColumnName="AmanInsertedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PractiseProfiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.PractiseProfile">
+        <MappingFragment StoreEntitySet="PractiseProfile">
+          <ScalarProperty Name="PractiseId" ColumnName="PractiseId" />
+          <ScalarProperty Name="PractiseNameAr" ColumnName="PractiseNameAr" />
+          <ScalarProperty Name="PractiseNameEn" ColumnName="PractiseNameEn" />
+          <ScalarProperty Name="PermitDetailsId" ColumnName="PermitDetailsId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RadiationGeneratorsProfiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.RadiationGeneratorsProfile">
+        <MappingFragment StoreEntitySet="RadiationGeneratorsProfile">
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="EquipmentDescAr" ColumnName="EquipmentDescAr" />
+          <ScalarProperty Name="EquipmentDescEn" ColumnName="EquipmentDescEn" />
+          <ScalarProperty Name="NrrcID" ColumnName="NrrcID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ManufacturerSerialNo" ColumnName="ManufacturerSerialNo" />
+          <ScalarProperty Name="DateofManufacturing" ColumnName="DateofManufacturing" />
+          <ScalarProperty Name="FacilitySerialNo" ColumnName="FacilitySerialNo" />
+          <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+          <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+          <ScalarProperty Name="XRayTubeSerialNo" ColumnName="XRayTubeSerialNo" />
+          <ScalarProperty Name="MaxEnergy" ColumnName="MaxEnergy" />
+          <ScalarProperty Name="EnergyUnit" ColumnName="EnergyUnit" />
+          <ScalarProperty Name="MaxDoseRate" ColumnName="MaxDoseRate" />
+          <ScalarProperty Name="DoseUnit" ColumnName="DoseUnit" />
+          <ScalarProperty Name="MaxCurrent" ColumnName="MaxCurrent" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="SheildMaterial" ColumnName="SheildMaterial" />
+          <ScalarProperty Name="ShieldNuclearMaterialCode" ColumnName="ShieldNuclearMaterialCode" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+          <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+          <ScalarProperty Name="LicenseInventoryId" ColumnName="LicenseInventoryId" />
+          <ScalarProperty Name="PermitdetailsId" ColumnName="PermitdetailsId" />
+          <ScalarProperty Name="PermitInventoryId" ColumnName="PermitInventoryId" />
+          <ScalarProperty Name="PractiseId" ColumnName="PractiseId" />
+          <ScalarProperty Name="SROId" ColumnName="SROId" />
+          <ScalarProperty Name="LegalRepresentativesId" ColumnName="LegalRepresentativesId" />
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="EquipmentType" ColumnName="EquipmentType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SafetyResponsibleOfficersProfiles">
+      <EntityTypeMapping TypeName="NRRCDb2Model.SafetyResponsibleOfficersProfile">
+        <MappingFragment StoreEntitySet="SafetyResponsibleOfficersProfile">
+          <ScalarProperty Name="SROId" ColumnName="SROId" />
+          <ScalarProperty Name="SRONameAr" ColumnName="SRONameAr" />
+          <ScalarProperty Name="SRONameEn" ColumnName="SRONameEn" />
+          <ScalarProperty Name="NationalID" ColumnName="NationalID" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="CertificateNo" ColumnName="CertificateNo" />
+          <ScalarProperty Name="IssuanceDate" ColumnName="IssuanceDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AmanInsertedOn" ColumnName="AmanInsertedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="NRRCDb2Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="NRRCDb2Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

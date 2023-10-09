@@ -1,0 +1,342 @@
+<!-- Content -->
+<div class="w-100 container border rounded shadow my-5 bg-white px-4 pb-5 ">
+
+  <div class="servicesList w-100 d-flex justify-content-between align-items-center flex-wrap p-3">
+    <h4>{{ 'Billing.SalesInvoice' | translate }}</h4>
+    <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "Back" | translate }} </button>
+
+  </div>
+  <form style="width: 100%"
+        enctype="multipart/form-data"
+        [formGroup]="AddTrnHeaderData">
+    <!-- end of servicesList-->
+    <div class="row w-100 g-2">
+      <div class="col-12 col-sm-6 col-md-6 mb-2 row">
+        <label for="dateofInvoice" class="col-sm-6 col-md-4">{{ 'Billing.Date' | translate }}</label>
+        <div class="col-sm-6 col-md-8">
+          <input formControlName="invoiceDate" *ngIf="View || Edit; else date" type="text" [readonly]="View || Edit" class="form-control form-control-sm" />
+          <ng-template #date>
+            <input type="date" formControlName="invoiceDate" [readonly]="View" class="form-control form-control-sm" />
+
+          </ng-template>
+          <p *ngIf="AddTrnHeaderData.controls['invoiceDate'].errors && AddTrnHeaderData.controls['invoiceDate'].touched" class="warn-text">
+            This field is required.
+
+          </p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-6 mb-2 row">
+        <label for="status" class="col-sm-6 col-md-4">{{ 'Billing.Status' | translate }}</label>
+        <div class="col-sm-6 col-md-8">
+          <select [attr.disabled]="View ? '' : null" formControlName="statusFlag" class="form-select form-select-sm">
+            <option *ngFor="let s of Status" value={{s.id}}>
+              {{s.displayNameEn}}
+            </option>
+          </select>
+
+          <p *ngIf="AddTrnHeaderData.controls['statusFlag'].errors && AddTrnHeaderData.controls['statusFlag'].touched" class="warn-text">
+            This field is required.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-6 mb-2 row">
+        <label for="customerLPO" class="col-sm-6 col-md-4">{{ 'Billing.CustomerName' | translate }} </label>
+        <div class="col-sm-6 col-md-8">
+          <p-dropdown [options]="Facility"
+                      optionLabel="customerNameEn"
+                      optionValue="refCode"
+                      [filter]="true"
+                      filterBy="customerNameAr,customerNameEn"
+                      placeholder="{{ '--Select--' | translate }}"
+                      #facility
+                      
+                      (onChange)="SelectedFacility(facility.value)"
+                      styleClass="w-100 ui-column-filter"
+                      formControlName="customerId"
+                      [showClear]="true"
+                      [disabled]="View">
+            <ng-template let-r pTemplate="selectedItem">
+              <div class="country-item country-item-value" *ngIf="facility">
+                <div>
+                  {{lang == "en" ? r?.customerNameEn: r?.customerNameAr}}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-r pTemplate="item">
+              <div class="country-item">
+                <div>
+                  {{ lang == "en" ? r?.customerNameEn : r?.customerNameAr }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <p *ngIf="AddTrnHeaderData.controls['customerId'].errors && AddTrnHeaderData.controls['customerId'].touched" class="warn-text">
+            This field is required.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-6 mb-2 row">
+        <label for="customerLPO" class="col-sm-6 col-md-4">{{ 'Billing.CustomerCode' | translate }} </label>
+        <div class="col-sm-6 col-md-8">
+          <input type="text" formControlName="customerId" [readOnly]="true" class="form-control form-control-sm" id="customerLPO" />
+        </div>
+      </div>
+
+
+      <div class="col-12 col-sm-6 col-md-6 mb-2 row">
+        <label for="terms" class="col-sm-6 col-md-4">{{ 'Billing.Sector' | translate }}</label>
+        <div class="col-sm-6 col-md-8">
+          <p-dropdown [options]="Sector"
+                      optionLabel="itemStructureDesFrn"
+                      optionValue="itemStructureCode"
+                      [filter]="true"
+                      filterBy="itemStructureDesFrn,itemStructureDesNtv"
+                      [showClear]="true"
+                      placeholder="{{ '--Select--' | translate }}"
+                      #sector
+                      (onChange)="getPractice(sector.value)"
+                      styleClass="w-100 "
+                      [disabled]="View || Edit"
+                      formControlName="sector">
+            <ng-template let-r pTemplate="selectedItem">
+              <div class="country-item country-item-value" *ngIf="sector">
+                <div>
+                  {{
+                                lang == "en"
+                                  ? r?.itemStructureDesFrn
+                                  : r?.itemStructureDesNtv
+                  }}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-r pTemplate="item">
+              <div class="country-item">
+                <div>
+                  {{ lang == "en" ? r?.itemStructureDesFrn : r?.itemStructureDesNtv }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <p *ngIf="AddTrnHeaderData.controls['sector'].errors && AddTrnHeaderData.controls['sector'].touched" class="warn-text">
+            This field is required.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 mb-2 row">
+        <label for="terms" class="col-sm-6 col-md-4">{{ 'Billing.Practice' | translate }}</label>
+        <div class="col-sm-6 col-md-8">
+          <p-dropdown [options]="Practice"
+                      optionLabel="itemStructureDesFrn"
+                      optionValue="itemStructureCode"
+                      [filter]="true"
+                      filterBy="itemStructureDesFrn,itemStructureDesNtv"
+                      [showClear]="true"
+                      placeholder="{{ '--Select--' | translate }}"
+                      #practice
+                      (onChange)="GetServiceItemByHierarchyCode(practice.value)"
+                      styleClass="w-100 "
+                      formControlName="invoiceBU"
+                      [disabled]="View || Edit">
+            <ng-template let-r pTemplate="selectedItem">
+              <div class="country-item country-item-value" *ngIf="practice">
+                <div>
+                  {{
+                              lang == "en"
+                                ? r?.itemStructureDesFrn
+                                : r?.itemStructureDesNtv
+                  }}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-r pTemplate="item">
+              <div class="country-item">
+                <div>
+                  {{ lang == "en" ? r?.itemStructureDesFrn : r?.itemStructureDesNtv }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <p *ngIf="AddTrnHeaderData.controls['invoiceBU'].errors && AddTrnHeaderData.controls['invoiceBU'].touched" class="warn-text">
+            This field is required.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 mb-2 row">
+        <label for="terms" class="col-sm-6 col-md-4">{{ 'Billing.PaymentTerm' | translate }}</label>
+        <div class="col-sm-6 col-md-8">
+          <p-dropdown [options]="PaymentTerms"
+                      optionLabel="displayNameAr"
+                      optionValue="value"
+                      [filter]="true"
+                      filterBy="displayNameAr,displayNameEn"
+                      placeholder="{{ '--Select--' | translate }}"
+                      #payment
+                      styleClass="w-100 ui-column-filter"
+                      [disabled]="View"
+                      [showClear]="true"
+                      formControlName="termsCode">
+            <ng-template let-r pTemplate="selectedItem">
+              <div class="country-item country-item-value" *ngIf="payment">
+                <div>
+                  {{lang == "en" ? r?.displayNameEn: r?.displayNameAr}}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-r pTemplate="item">
+              <div class="country-item">
+                <div>
+                  {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <p *ngIf="AddTrnHeaderData.controls['termsCode'].errors && AddTrnHeaderData.controls['termsCode'].touched" class="warn-text">
+            This field is required.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 mb-2 row">
+        <label for="remarks" class="col-sm-6 col-md-4">{{ 'Billing.TransactionRefNum' | translate }}</label>
+        <div class="col-sm-6 col-md-8">
+          <input [readonly]="View" formControlName="transactionRefNum" maxlength="20" type="text" class="form-control form-control-sm">
+          <p *ngIf="AddTrnHeaderData.controls['transactionRefNum'].errors && AddTrnHeaderData.controls['transactionRefNum'].touched" class="warn-text">
+            This field is required.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-6 mb-2 row">
+        <label for="remarks" class="col-sm-6 col-md-4">{{ 'Billing.Remarks' | translate }}</label>
+        <div class="col-sm-6 col-md-8">
+          <textarea [readonly]="View" formControlName="trnRemarks" rows="3" type="text" class="form-control form-control-sm"> 
+               
+                  </textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="source-service-details row w-100">
+
+      <div [formGroup]="ItemsRow" class="source-service-datatable col-12 my-3">
+        <table class="tableInvoice table table-striped table-hover table-border table-responsive table-sm">
+          <thead>
+            <tr class="header-Table">
+              <th scope="col">{{ 'Billing.Serial.No' | translate }}</th>
+              <th scope="col">{{ 'Billing.Items' | translate }}</th>
+              <th scope="col">{{ 'Billing.Units' | translate }}</th>
+              <th scope="col">{{ 'Billing.Quantity' | translate }}</th>
+              <th scope="col">{{ 'Billing.BillableUnitPrice' | translate }}</th>
+              <th scope="col">{{ 'Billing.Price' | translate }}</th>
+              <th scope="col">{{ 'Billing.TotalPrice' | translate }} </th>
+              <th scope="col">{{ 'Billing.Vatinclude' | translate }}</th>
+              <th scope="col">{{ 'Billing.Delet/Add' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container formArrayName="tableRows"
+                          *ngFor="let alias of getFormControls.controls; let i = index">
+              <tr [formGroupName]="i">
+                <td class="linenum">
+                  <input type="hidden" formControlName="lineNum" value="{{i+1}}">
+                  {{i+1}}
+                </td>
+                <td>
+                  <select [attr.disabled]="View ? '' : null"
+                          class="form-select form-select-sm"
+                          formControlName="serviceItemId"
+                          (change)="AddTypeItem( i , $event.target)">
+                    <option value="">
+                      --- select Item ---
+                    </option>
+                    <option *ngFor="let s of ServiceHierarchy" value="{{s.serviceItemId}}">
+                      {{s.itemDesFrn}}
+                    </option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" [readonly]="true" name="units" value="Each/Piece" class="form-control form-control-sm">
+                </td>
+                <td>
+                  <input type="number" #itemQty formControlName="itemQty" [readonly]="View" value="1" min="1" (change)="AddQuantity( i , $event.target)" class="form-control form-control-sm Num">
+                </td>
+                <td>
+                  <input type="text" #billableQty formControlName="billableQty" [readonly]="true" class="form-control form-control-sm Num">
+                </td>
+                <td>
+                  <input type="text" #itemPrice formControlName="itemPrice" [readonly]="true" name="price" class="form-control form-control-sm Num">
+                </td>
+                <td>
+                  <input name="totalPrice" #TotalpriceItem [readonly]="true" formControlName="TotalpriceItem" class="form-control form-control-sm Num">
+                </td>
+                <td>
+                  <div class="px-1 mb-3 d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <p-inputSwitch [readonly]="View"
+                                   (onChange)="CalTotalPrice()"
+                                   formControlName="vatIncluded"></p-inputSwitch>
+                  </div>
+                </td>
+                <td style="text-align: -webkit-center">
+
+                  <button class="btn btn-danger delete-radionuclide-btn"
+                          (click)="removeRowForItemForm(i)"
+                          [disabled]="View"
+                          *ngIf="i > 0">
+                    <fa-icon [icon]="faXmark"></fa-icon>
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+          <tfoot>
+            <tr>
+
+              <td colspan="6" class="text-end"> {{ 'Billing.TotalPrice' | translate }} </td>
+
+              <td>
+                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="TotalPrice" name="totalPrice" class="form-control form-control-sm Num" disabled>
+              </td>
+              <td>
+                <button type="button"
+                        class="btn btn-sm btn-gold py-2 px-4"
+                        id="addRadioNuclide"
+                        (click)="AddNewRowForItemForm()"
+                        [disabled]="View">
+                  <fa-icon [icon]="faPlus"></fa-icon>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="6" class="text-end">{{ 'Billing.vatAmount' | translate }} </td>
+              <td>
+                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="vatAmount" name="vatAmount" class="form-control form-control-sm Num" disabled>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="6" class="text-end"> {{ 'Billing.NetAmount' | translate }}</td>
+              <td>
+                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="NetAmount" name="totalPrice" class="form-control form-control-sm Num" disabled>
+              </td>
+            </tr>
+
+          </tfoot>
+        </table>
+      </div>
+      <div class="col-12 text-end">
+        <button class="btn btn-sm btn-gold mx-2" [disabled]="View" (click)="SubmitForm()">Submit</button>
+        <button class="btn btn-sm btn-secondary" [disabled]="View || Edit" (click)="ClearForm()">clear</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+

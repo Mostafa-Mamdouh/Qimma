@@ -1,0 +1,14 @@
+C:\Qimma\PRJ.Domain\bin\Debug\net6.0\PRJ.Domain.deps.json
+C:\Qimma\PRJ.Domain\bin\Debug\net6.0\PRJ.Domain.runtimeconfig.json
+C:\Qimma\PRJ.Domain\bin\Debug\net6.0\PRJ.Domain.dll
+C:\Qimma\PRJ.Domain\bin\Debug\net6.0\PRJ.Domain.pdb
+C:\Qimma\PRJ.Domain\obj\Debug\net6.0\PRJ.Domain.csproj.AssemblyReference.cache
+C:\Qimma\PRJ.Domain\obj\Debug\net6.0\PRJ.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Qimma\PRJ.Domain\obj\Debug\net6.0\PRJ.Domain.AssemblyInfoInputs.cache
+C:\Qimma\PRJ.Domain\obj\Debug\net6.0\PRJ.Domain.AssemblyInfo.cs
+C:\Qimma\PRJ.Domain\obj\Debug\net6.0\PRJ.Domain.csproj.CoreCompileInputs.cache
+C:\Qimma\PRJ.Domain\obj\Debug\net6.0\PRJ.Domain.dll
+C:\Qimma\PRJ.Domain\obj\Debug\net6.0\refint\PRJ.Domain.dll
+C:\Qimma\PRJ.Domain\obj\Debug\net6.0\PRJ.Domain.pdb
+C:\Qimma\PRJ.Domain\obj\Debug\net6.0\PRJ.Domain.genruntimeconfig.cache
+C:\Qimma\PRJ.Domain\obj\Debug\net6.0\ref\PRJ.Domain.dll

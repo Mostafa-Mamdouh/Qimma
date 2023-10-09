@@ -1,0 +1,188 @@
+
+
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+
+
+
+  <div class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4">
+
+    <section class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2">
+      <div class="breadcrumb-w1 mb-0" class="{{lang == 'ar' ? 'lang' : ''}}">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li type="button" class="breadcrumb-item" (click)="Breadcrumb('')" style="color: #ca9f45">{{ "General.Home" | translate }}</li>
+            <li type="button" class="breadcrumb-item" (click)="Breadcrumb('aman-settings')" style="color: #ca9f45">{{ "AmmanSettings" | translate }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ "Facility.PageTitle" | translate }}</li>
+          </ol>
+        </nav>
+        <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "General.Back" | translate }} </button>
+
+      </div>
+      <h4 class="text-left">
+
+        {{ "Facility.PageTitle" | translate }}
+
+      </h4>
+
+      <div class="row w-100 mt-3 lookupsDataEntry">
+
+        <div class="lookupsfields ">
+          <div class="w-100">
+            <form [formGroup]="SubmitForm" (ngSubmit)="save()">
+
+              <div class="row p-3 w-100 py-2">
+
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="className" class="mx-1">{{ "Facility.facilityNameAr" | translate }} <span class="text-danger">*</span></label>
+                  <input readonly type="text" placeholder="{{ 'mandatory' | translate }}" class="form-control" [(ngModel)]="DataObject.FacilityNameAr" formControlName="FacilityNameAr" autocomplete="off" />
+
+                </div>
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="displayNameAr" class="mx-1">{{ "Facility.facilityNameEn" | translate }} <span class="text-danger">*</span></label>
+                  <input readonly type="text" class="form-control" placeholder="{{ 'mandatory' | translate }}" [(ngModel)]="DataObject.FacilityNameEn" formControlName="FacilityNameEn" id="EntityNameAr" required autocomplete="off" />
+
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="displayNameEn" class="mx-1">{{ "Facility.oragnizationName" | translate }} <span class="text-danger">*</span></label>
+                  <input readonly type="text" (keypress)="OnlyEnglish($event , 200)" class="form-control" [(ngModel)]="DataObject.OragnizationName" placeholder="{{ 'mandatory' | translate }}" formControlName="OragnizationName" id="EntityNameEn" required autocomplete="off" />
+
+
+                </div>
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="displayNameEn" class="mx-1">{{ "Facility.facilityCode" | translate }} <span class="text-danger">*</span></label>
+                  <input readonly type="text" (keypress)="isNumberKey($event)" class="form-control" [(ngModel)]="DataObject.FacilityCode" formControlName="FacilityCode" id="PhoneNo" placeholder="{{ 'mandatory' | translate }}" required autocomplete="off" />
+
+
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="value1" class="mx-1">{{ "Facility.province" | translate }} <span class="text-danger">*</span></label>
+                  <input readonly type="text" class="form-control" placeholder="{{ 'mandatory' | translate }}" [(ngModel)]="DataObject.Province" formControlName="Province" id="value1" required autocomplete="off" />
+
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="value1" class="mx-1">{{ "Facility.city" | translate }} <span class="text-danger">*</span></label>
+                  <input readonly type="text" class="form-control" placeholder="{{ 'mandatory' | translate }}" [(ngModel)]="DataObject.City" formControlName="City" id="value1" required autocomplete="off" />
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="value1" class="mx-1">{{ "Facility.location" | translate }} <span class="text-danger">*</span></label>
+                  <input readonly type="text" class="form-control" placeholder="{{ 'mandatory' | translate }}" [(ngModel)]="DataObject.Location" formControlName="Location" id="value1" required autocomplete="off" />
+
+                </div>
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="value1" class="mx-1">{{ "Facility.amanInsertedOn" | translate }} <span class="text-danger">*</span></label>
+                  <input readonly type="text" class="form-control" placeholder="{{ 'mandatory' | translate }}" [(ngModel)]="DataObject.AmanInsertedOn" formControlName="AmanInsertedOn" id="value1" required autocomplete="off" />
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="value1" class="mx-1">{{ "Facility.AmanID" | translate }} <span class="text-danger">*</span></label>
+                  <input readonly type="text" class="form-control" placeholder="{{ 'mandatory' | translate }}" [(ngModel)]="DataObject.AmanID" formControlName="AmanID" id="value1" required autocomplete="off" />
+                </div>
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="value1" class="mx-1">{{ "Facility.facilitySource" | translate }} <span class="text-danger">*</span></label>
+                  <input readonly type="text" class="form-control" placeholder="{{ 'mandatory' | translate }}" [(ngModel)]="DataObject.FacilitySource" formControlName="FacilitySource" id="value1" required autocomplete="off" />
+
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div><!-- end of lookupsDataEntry Div-->
+
+      </div><!-- end of lookupsDataEntry Div-->
+
+
+    </section> <!-- end of lookup Section-->
+    <hr class="my-4 w-100">
+    <div class="datatablediv w-100">
+      <div class="datatablediv w-100">
+        <div class="pb-3">
+          <button type="button" (click)="ExportExel()" class="btn btn-gold btn-sm mx-1">{{ "General.ExportExcel" | translate }}  </button>
+          <button type="button" (click)="Print()" class="btn btn-gold btn-sm mx-1">{{ "General.Print" | translate }}  </button>
+          <button type="button" (click)="Copy()" class="btn btn-gold btn-sm mx-1">{{ "General.Copy" | translate }} </button>
+        </div>
+        <table datatable [dtOptions]="dtOptions" id="lookUpsDataTable" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+          <thead>
+            <tr>
+              <th class="select-filter">
+                {{ "Facility.facilityNameAr" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Facility.facilityNameEn" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Facility.facilityCode" | translate }}
+              </th>
+              <th class="select-filter">
+                {{ "Facility.amanInsertedOn" | translate }}
+              </th>
+              <th>
+                {{ "Action" | translate }}
+              </th>
+            </tr>
+          </thead>
+          <tbody *ngIf="DataList?.length != 0">
+            <tr *ngFor="let facility of DataList; index as i">
+              <td>{{ facility.facilityNameAr }}</td>
+              <td>{{ facility.facilityNameEn }}</td>
+              <td>{{ facility.facilityCode }}</td>
+              <td>{{ facility.amanInsertedOn | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+              <td>
+                <button class="edit btn btn-gold btn-sm mx-1" (click)="Details(facility)"> <fa-icon [icon]="faPen"> </fa-icon></button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="DataList?.length == 0">
+            <tr>
+              <td colspan="5" class="no-data-available">
+                {{ "General.NoDataFound" | translate }}
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>
+                <input class="search-input"
+                       name="facilityNameAr"
+                       type="text"
+                       placeholder="{{ 'Facility.facilityNameAr' | translate }}"
+                       style="width: 100%" />
+              </th>
+              <th>
+                <input class="search-input"
+                       name="facilityNameEn"
+                       id="facilityNameEn"
+                       type="text"
+                       placeholder=" {{ 'Facility.facilityNameEn' | translate }}"
+                       style="width: 100%" />
+              </th>
+              <th>
+                <input class="search-input"
+                       name="facilityCode"
+                       id="facilityCode"
+                       type="text"
+                       placeholder="{{ 'Facility.facilityCode' | translate }}"
+                       style="width: 100%" />
+              </th>
+              <th>
+                <input class="search-input"
+                       name="amanInsertedOn"
+                       id="amanInsertedOn"
+                       type="text"
+                       placeholder="{{ 'Facility.amanInsertedOn' | translate }}"
+                       style="width: 100%" />
+              </th>
+              <th></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div> <!-- end of datatablediv-->
+    </div> <!-- end of datatablediv-->
+
+  </div>
+
+</div><!-- Main Content-->

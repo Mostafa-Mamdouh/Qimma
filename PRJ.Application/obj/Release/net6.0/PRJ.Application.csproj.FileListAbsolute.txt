@@ -1,0 +1,17 @@
+C:\Qimma\PRJ.Application\bin\Release\net6.0\PRJ.Application.deps.json
+C:\Qimma\PRJ.Application\bin\Release\net6.0\PRJ.Application.dll
+C:\Qimma\PRJ.Application\bin\Release\net6.0\PRJ.Application.pdb
+C:\Qimma\PRJ.Application\bin\Release\net6.0\PRJ.Domain.dll
+C:\Qimma\PRJ.Application\bin\Release\net6.0\PRJ.GlobalComponents.dll
+C:\Qimma\PRJ.Application\bin\Release\net6.0\PRJ.Domain.pdb
+C:\Qimma\PRJ.Application\bin\Release\net6.0\PRJ.GlobalComponents.pdb
+C:\Qimma\PRJ.Application\obj\Release\net6.0\PRJ.Application.csproj.AssemblyReference.cache
+C:\Qimma\PRJ.Application\obj\Release\net6.0\PRJ.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Qimma\PRJ.Application\obj\Release\net6.0\PRJ.Application.AssemblyInfoInputs.cache
+C:\Qimma\PRJ.Application\obj\Release\net6.0\PRJ.Application.AssemblyInfo.cs
+C:\Qimma\PRJ.Application\obj\Release\net6.0\PRJ.Application.csproj.CoreCompileInputs.cache
+C:\Qimma\PRJ.Application\obj\Release\net6.0\PRJ.Application.csproj.CopyComplete
+C:\Qimma\PRJ.Application\obj\Release\net6.0\PRJ.Application.dll
+C:\Qimma\PRJ.Application\obj\Release\net6.0\refint\PRJ.Application.dll
+C:\Qimma\PRJ.Application\obj\Release\net6.0\PRJ.Application.pdb
+C:\Qimma\PRJ.Application\obj\Release\net6.0\ref\PRJ.Application.dll

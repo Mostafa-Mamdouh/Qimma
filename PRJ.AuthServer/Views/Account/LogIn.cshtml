@@ -1,0 +1,113 @@
+﻿@model LoginViewModel
+
+@{
+    ViewBag.Title = "User Login";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    
+<link href="~/assets/css2/login.css" rel="stylesheet" />
+
+        <div class="sideloginform">
+          <img src="~/assets/imgs/nrrclogo-v.svg" class="logoLoginForm w-25 mx-auto mb-3" alt="" />
+          <h1>Log in</h1>
+          <form method="post">
+                @{
+                    if(ViewBag.HaveError != null)
+                    {
+                        if (ViewBag.HaveError)
+                        {
+                            <div id="authError" class="alert alert-danger text-center">
+                            <i class="fa-solid fa fa-times-circle"></i>&nbsp;
+                            <div asp-validation-summary="All"> </div>
+                            </div>
+                        }
+                    }
+                }
+            <div class="my-3 row">
+              <div class="form-floating mb-3">
+                <input asp-for="EmailOrId" class="form-control" placeholder="Email / ID Number" />
+                <label for="email">Email / ID Number</label>
+              </div>
+              <h6 id="emailcheck" class="text-danger">
+                <span asp-validation-for="EmailOrId" class="text-danger"></span>
+              </h6>
+            </div>
+            <div class="my-3 row">
+              <div class="form-floating">
+                <input asp-for="Password" class="form-control" />
+                <label for="Password">Password</label>
+              </div>
+              <h6 id="passcheck" class="text-danger">
+                <span asp-validation-for="Password" class="text-danger" placeholder="Password"></span>
+              </h6>
+            </div>
+            <div class="my-3 row">
+            <div class="form-floating">
+
+            </div>
+        </div>
+            <div class="d-flex flex-row justify-content-between align-items-center login-action">
+            <a style="color:blue;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#resetPasswordModal" onclick="ResetForget();">
+                Forget Password ?
+              </a>
+              <label>
+                Remember Me
+                <input asp-for="RememberMe" />
+                
+              </label>
+            </div>
+            <input id="submit" type="submit" value="Log in" class="btn btn-gold w-100 my-2" />
+        <a href="https://www.iam.gov.sa/authservice//userauthservice?lang=ar"
+              class="btn btn-secondary btn-sm loginNafath m-auto my-2 w-100 d-flex flex-nowrap justify-content-between align-items-center">
+              <img src="~/assets/imgs/nafath.svg" alt="">
+              <p>
+                National Single Sign-On
+              </p>
+            </a>
+            <div class="d-flex justify-content-evenly align-items-center mt-3 w-100">
+              <a href="faq.html" target="_blank">  FAQs</a>
+              <a href="#">Contact Us</a>
+            </div>
+
+
+        @{
+            if (ViewData["NextAction"] != null)
+            {
+                if (ViewData["NextAction"].ToString() == "OTP")
+                {
+                        <partial name="~/Views/Account/Partials/OTP.cshtml" model="@ViewData["MobileNo"]" />
+                }
+                else if (ViewData["NextAction"].ToString() == "Activation")
+                {
+                        <partial name="~/Views/Account/Partials/Activate.cshtml" model="null" />
+                }
+            }
+        }
+        <partial name="~/Views/Account/Partials/ForgetPassword.cshtml" model="null" />
+    </form>
+    
+
+
+        </div>
+
+        <div class="sidelogin">
+          <img src="~/nrrclogo-white.svg" class="w-50 mx-auto d-block mt-3" alt="" />
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

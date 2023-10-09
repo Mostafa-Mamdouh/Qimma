@@ -1,0 +1,84 @@
+<!-- Section: Design Block -->
+
+<div class="w-50 container border rounded shadow mt-5 bg-white px-4">
+
+  <section class="text-center text-lg-start p-4">
+    <style>
+      .rounded-t-5 {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+
+      @media (min-width: 992px) {
+        .rounded-tr-lg-0 {
+          border-top-right-radius: 0;
+        }
+
+        .rounded-bl-lg-5 {
+          border-bottom-left-radius: 0.5rem;
+        }
+      }
+    </style>
+      <div class="row align-items-center">
+        <div class="col-lg-6 d-none d-lg-flex">
+          <img src="../../../../assets/images/nrrc/nrrclogo-v.svg" alt="Trendy Pants and Shoes"
+               class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+        </div>
+        <div class="col-lg-6">
+          <div class="py-5 px-md-5">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">
+                    <fa-icon
+                    [icon]="faUser"
+                  ></fa-icon>
+                  </span>
+                  <input formControlName="username"
+                         type="text"
+                         class="form-control"
+                         placeholder="Username"
+                         id="username" />
+
+                </div>
+                <span class="text-danger"
+                      *ngIf="
+                    loginForm.get('username').invalid &&
+                    loginForm.get('username').touched &&
+                    loginForm.get('username').errors['required']
+                  ">User Name is required</span>
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">  <fa-icon
+                    [icon]="faLock"
+                  ></fa-icon></span>
+                  <input formControlName="password"
+                         type="password"
+                         class="form-control"
+                         placeholder="password"
+                         id="password" />
+
+                </div>
+                <span class="text-danger ml-3"
+                      *ngIf="
+                    loginForm.get('password').invalid &&
+                    loginForm.get('password').touched &&
+                    loginForm.get('password').errors['required']
+                  ">Password is required</span>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+  </section>
+  <!-- Section: Design Block -->
+  </div>

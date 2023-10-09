@@ -1,0 +1,692 @@
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+  <div class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4">
+    <section class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2">
+      <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+        <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "General.Back" | translate }} </button>
+      </div>
+
+      <h4 class="text-left">
+        {{ 'ActionCenter.EnquiryCenter' | translate }}
+      </h4>
+
+    </section>
+    <hr class="my-4 w-100">
+    <div class="row d-flex w-100">
+      <!-- Entity -->
+      <div class=" px-1 mb-2 col-lg-2 col-md-4 col-sm-12 col-xs-12 filter">
+        <p-multiSelect [options]="filteredEntities"
+                       [(ngModel)]="selectedEntity"
+                       optionLabel="entityNameEn"
+                       [filter]="true"
+                       selectedItemsLabel="{0} items selected"
+                       filterBy="entityNameEn,entityNameAr"
+                       [showClear]="true"
+                       placeholder="{{ 'ActionCenter.Entity' | translate }}"
+                       #entity
+                       (onClear)="getFacilitiesByEntity(true)"
+                       (onChange)="getFacilitiesByEntity(false)"
+                       styleClass="w-100 ">
+
+        </p-multiSelect>
+        <span class="selectParentCount" (click)="renderSearchTable(1)" data-bs-toggle="modal" data-bs-target="#searchedModal" id="Entity_Count" style="display: block;">{{filteredEntities.length}}</span>
+
+
+      </div>
+      <!-- Facility -->
+      <div class="px-1 mb-2 col-lg-2 col-md-4 col-sm-12 col-xs-12 filter">
+        <p-multiSelect [options]="filteredFacilities"
+                       [(ngModel)]="selectedFacility"
+                       optionLabel="facilityNameEn"
+                       [filter]="true"
+                       selectedItemsLabel="{0} items selected"
+                       filterBy="facilityNameEn,facilityNameAr"
+                       [showClear]="true"
+                       placeholder="{{ 'ActionCenter.Facility' | translate }}"
+                       #facility
+                       (onClear)="getLicensesByFacility(true)"
+                       (onChange)="getLicensesByFacility(false)"
+                       styleClass="w-100 ">
+
+        </p-multiSelect>
+        <span class="selectParentCount" (click)="renderSearchTable(2)" data-bs-toggle="modal" data-bs-target="#searchedModal" id="Facility_Count" style="display: block;">{{filteredFacilities.length}}</span>
+
+      </div>
+      <!-- License -->
+      <div class="px-1 mb-2 col-lg-2 col-md-4 col-sm-12 col-xs-12 filter">
+        <p-multiSelect [options]="filteredLicenses"
+                       [(ngModel)]="selectedLicense"
+                       optionLabel="licenseVersionNumber"
+                       [filter]="true"
+                       filterBy="licenseVersionNumber"
+                       [showClear]="true"
+                       selectedItemsLabel="{0} items selected"
+                       placeholder="{{ 'ActionCenter.License' | translate }}"
+                       #licenseNumber
+                       (onClear)="getPermitsByLicense(true)"
+                       (onChange)="getPermitsByLicense(false)"
+                       styleClass="w-100 ">
+
+        </p-multiSelect>
+        <span class="selectParentCount" (click)="renderSearchTable(3)" data-bs-toggle="modal" data-bs-target="#searchedModal" id="License_Count" style="display: block;">{{filteredLicenses.length}}</span>
+
+
+      </div>
+      <!-- Permit -->
+      <div class="px-1 mb-3 col-lg-2 col-md-4 col-sm-12 col-xs-12 filter">
+        <p-multiSelect [options]="filteredPermits"
+                       [(ngModel)]="selectedPermit"
+                       optionLabel="permitNumber"
+                       [filter]="true"
+                       filterBy="practiseNameEn,practiseNameAr"
+                       selectedItemsLabel="{0} items selected"
+                       [showClear]="true"
+                       placeholder="{{ 'ActionCenter.Permit' | translate }}"
+                       #permitNumber
+                       (onClear)="getPractisesByPermit(true)"
+                       (onChange)="getPractisesByPermit(false)"
+                       styleClass="w-100 ">
+        </p-multiSelect>
+        <span class="selectParentCount" (click)="renderSearchTable(4)" data-bs-toggle="modal" data-bs-target="#searchedModal" id="Permit_Count" style="display: block;">{{filteredPermits.length}}</span>
+
+
+      </div>
+      <!-- Practise -->
+      <div class="px-1 mb-3 col-lg-2 col-md-4 col-sm-12 col-xs-12 filter">
+        <p-multiSelect [options]="filteredPractices"
+                       [(ngModel)]="selectedPractise"
+                       optionLabel="practiseNameEn"
+                       [filter]="true"
+                       filterBy="practiseNameEn"
+                       selectedItemsLabel="{0} items selected"
+                       [showClear]="true"
+                       placeholder="Practise"
+                       (onClear)="filterPractises(true)"
+                       (onChange)="filterPractises(false)"
+                       #practiseNumbe
+                       styleClass="w-100 ">
+        </p-multiSelect>
+        <span class="selectParentCount" (click)="renderSearchTable(5)" data-bs-toggle="modal" data-bs-target="#searchedModal" id="Practise_Count" style="display: block;">{{filteredPractices.length}}</span>
+
+
+      </div>
+      <!--<div class="col-lg-1 col-md-2">
+        <button class="btn-filter extra-filter-button">
+          <i class="fa-solid fa-filter"></i>
+        </button>
+      </div>-->
+    </div>
+    <div class="source-filter2 flex-grow-1 d-flex justify-content-center align-items-center mt-2 mb-2">
+
+      <div id="sealedSource" [ngClass]="isSealedSelected?'btn-secondary':'btn-lightww'" class="btn  sourceIconItemFilter mx-4  ">
+        <a (click)="toggleSource(104,isSealedSelected)" class="souceLabel" [ngClass]="isSealedSelected?'text-white':''" data-itemcatg="SEALED"> Sealed Source</a>
+        <span class="sourcealert">
+          <a (click)="showLabelBox(true)" id="sealed">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g id="Layer_2" data-name="Layer 2"><g id="alerticon"><g id="Layer_3" data-name="Layer 3"><path d="M11,1A10,10,0,1,1,1,11,10,10,0,0,1,11,1Z" fill="#fff" stroke="#ac7a0f" stroke-miterlimit="10" stroke-width="2"></path></g><g id="Layer_2-2" data-name="Layer 2"><path d="M9.85,6.4A1.35,1.35,0,0,1,11.2,4.88a1.29,1.29,0,0,1,1.28,1.45l-.76,6.05a.58.58,0,0,1-.56.5.56.56,0,0,1-.56-.5Z" fill="#ac7a0f"></path><circle cx="11.16" cy="15.88" r="1.25" fill="#ac7a0f"></circle></g></g></g></svg>
+          </a>
+        </span>
+        <span class="sourcecount">
+          <a href="#" id="SEALED_COUNT" class="ITEMCOUNT_CLS">{{sealedIds?sealedIds.length:0}}</a>
+        </span>
+      </div>
+
+      <div id="unsealedSource" [ngClass]="isUnSealedSelected?'btn-secondary':'btn-lightww'" class="btn sourceIconItemFilter mx-4">
+        <a (click)="toggleSource(105,isUnSealedSelected)" class="souceLabel" data-itemcatg="UNSEALED" [ngClass]="isUnSealedSelected?'text-white':''">UnSealed Source</a>
+        <span class="sourcealert" style="display:none">
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g id="Layer_2" data-name="Layer 2"><g id="alerticon"><g id="Layer_3" data-name="Layer 3"><path d="M11,1A10,10,0,1,1,1,11,10,10,0,0,1,11,1Z" fill="#fff" stroke="#ac7a0f" stroke-miterlimit="10" stroke-width="2"></path></g><g id="Layer_2-2" data-name="Layer 2"><path d="M9.85,6.4A1.35,1.35,0,0,1,11.2,4.88a1.29,1.29,0,0,1,1.28,1.45l-.76,6.05a.58.58,0,0,1-.56.5.56.56,0,0,1-.56-.5Z" fill="#ac7a0f"></path><circle cx="11.16" cy="15.88" r="1.25" fill="#ac7a0f"></circle></g></g></g></svg>
+          </a>
+        </span>
+        <span class="sourcecount">
+          <a href="#" id="UNSEALED_COUNT" class="ITEMCOUNT_CLS">{{unSealedIds?unSealedIds.length:0}}</a>
+        </span>
+      </div>
+      <div id="unsealedSource" [ngClass]="isVariableSealedSelected?'btn-secondary':'btn-lightww'" class="btn sourceIconItemFilter mx-4">
+        <a (click)="toggleSource(106,isVariableSealedSelected)" class="souceLabel" data-itemcatg="UNSEALED" [ngClass]="isVariableSealedSelected?'text-white':''">Variable UnSealed Source</a>
+        <span class="sourcealert" style="display:none">
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g id="Layer_2" data-name="Layer 2"><g id="alerticon"><g id="Layer_3" data-name="Layer 3"><path d="M11,1A10,10,0,1,1,1,11,10,10,0,0,1,11,1Z" fill="#fff" stroke="#ac7a0f" stroke-miterlimit="10" stroke-width="2"></path></g><g id="Layer_2-2" data-name="Layer 2"><path d="M9.85,6.4A1.35,1.35,0,0,1,11.2,4.88a1.29,1.29,0,0,1,1.28,1.45l-.76,6.05a.58.58,0,0,1-.56.5.56.56,0,0,1-.56-.5Z" fill="#ac7a0f"></path><circle cx="11.16" cy="15.88" r="1.25" fill="#ac7a0f"></circle></g></g></g></svg>
+          </a>
+        </span>
+        <span class="sourcecount">
+          <a href="#" id="UNSEALED_COUNT" class="ITEMCOUNT_CLS">{{variableUnSealedIds?variableUnSealedIds.length:0}}</a>
+        </span>
+      </div>
+
+    </div>
+    <div *ngIf="showLabel" class="searchFilterAlert flex-grow-1 justify-content-center align-items-center py-2 border border-end-0 border-start-0 d-flex">
+      <div id="depsealedSource" class="btn btn-lightww sourceIconItemFilter2 mx-4 ">
+        <a class="souceLabel2" data-itemcatg="DEPUWITEM" style="text-decoration:none"> Depleted shield without source</a>
+      </div>
+      <div id="depsealedSource" class="btn btn-lightww sourceIconItemFilter2 mx-4 ">
+        <a class="souceLabel2" data-itemcatg="SHLDWITEM" style="text-decoration:none">Source without Shield</a>
+      </div>
+      <div class="btn btn-lightww mx-2">
+        Violation 1
+      </div>
+      <div class="btn btn-lightww mx-2">
+        Violation 1
+      </div>
+      <button (click)="showLabelBox(false)" class="btn btn-close closesearchFilterAlert"></button>
+    </div>
+    <hr class="my-4 w-100">
+    <div class="datatablediv w-100">
+      <table id="action-center-table" datatable [dtOptions]="dtOptions" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+        <thead>
+          <tr>
+            <th class="select-filter">NRRC ID </th>
+            <th class="select-filter">Manufacturer Serial #</th>
+            <th class="select-filter">Status</th>
+            <th class="select-filter">Radionuclide</th>
+            <th class="select-filter">Manufacturer</th>
+            <th class="select-filter">Production Year</th>
+            <th class="select-filter">Source Category</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="dataList?.length != 0">
+          <tr   [ngClass]="{'selected': lov.sourceId === selectedSourceId}" (click)="GetSourceById(lov.sourceId)" *ngFor="let lov of dataList; index as i">
+            <td width="13%">{{ lov.nrrcId}}</td>
+            <td width="13%">{{ lov.manufacturerSerialNo }}</td>
+            <td> {{ lang == 'en' ? lov.statusEn : lov.statusAr  }} </td>
+            <td> {{  lov.radionuclideName  }} </td>
+            <td> {{ lang == 'en' ? lov.manufacturerEn : lov.manufacturerAr  }} </td>
+            <td> {{ lov.productionDate| date: 'yyyy' }} </td>
+            <td> {{ lang == 'en' ? lov.sourceTypeEn : lov.sourceTypeAr  }} </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="dataList?.length == 0">
+          <tr>
+            <td colspan="10" class="no-data-available">no data !!!</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>
+              <input class="search-input"
+                     name="nrrcId"
+                     id="nrrcId"
+                     type="text"
+                     placeholder="New Source"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="manufacturerSerialNo"
+                     id="manufacturerSerialNo"
+                     type="text"
+                     placeholder="New Source"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="Status"
+                     id="Status"
+                     type="text"
+                     placeholder="Aramco"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="facility"
+                     id="facility"
+                     type="text"
+                     placeholder="Aramco/Hasa"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="license"
+                     id="license"
+                     type="text"
+                     placeholder="055 66..."
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="permit"
+                     id="permit"
+                     type="text"
+                     placeholder="055 66..."
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="sourceType"
+                     id="sourceType"
+                     type="text"
+                     placeholder="New Sealed"
+                     style="width: 100%" />
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <hr class="my-4">
+
+      <div class="row" *ngIf="selectedSource">
+        <div class="w-100 row">
+          <div class="col-2 p-2">
+            <div class="card card-id">
+              <div class="card-body ">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.TransactionID" | translate}}:</h6>
+                <p class="card-text">{{selectedSource.data.nrrcId}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card card-type">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.TransactionType" | translate}}: </h6>
+                <p class="card-text">{{ lang == 'en' ? selectedSource.data.transactionTypeEn : selectedSource.data.transactionTypeAr  }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 p-2">
+            <div class="card card-user">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.CreatedUser" | translate}}: </h6>
+                <p class="card-text">{{selectedSource.data.createUser}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card card-date">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.CreatedDate" | translate}}: </h6>
+                <p class="card-text">{{selectedSource.data.createDate | date:'dd/MM/yyyy'}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card card-user">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.ModifiedUser" | translate}}: </h6>
+                <p class="card-text">{{selectedSource.data.modifiedUser}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card card-date">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.ModifiedDate" | translate}}: </h6>
+                <p class="card-text">{{selectedSource.data.modifiedDate  | date:'dd/MM/yyyy'}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card card-user">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.ConfirmedUser" | translate}}: </h6>
+                <p class="card-text">{{selectedSource.data.modifiedUser}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card card-date">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.ConfirmedDate" | translate}}: </h6>
+                <p class="card-text">{{selectedSource.data.modifiedDate  | date:'dd/MM/yyyy'}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card card-reject">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.productionDate" | translate}}:  </h6>
+                <p class="card-text">{{selectedSource.data.productionDate  | date:'dd/MM/yyyy'}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 p-2">
+            <h5>{{ "ActionCenter.SourceDetails" | translate}}</h5>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.Entity" | translate}}</h6>
+                <p class="card-text">{{ lang == 'en' ? selectedSource.data.entityEn  : selectedSource.data.entityAr   }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.Facility" | translate}}</h6>
+                <p class="card-text">{{ lang == 'en' ? selectedSource.data.facilityEn  : selectedSource.data.facilityAr   }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.License" | translate}}</h6>
+                <p class="card-text">{{ lang == 'en' ? selectedSource.data.licenseEn  : selectedSource.data.licenseAr   }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.Permit" | translate}}</h6>
+                <p class="card-text">{{ selectedSource.data.permitNumber   }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.ManufacturerSerialNo" | translate}}</h6>
+                <p class="card-text">{{ selectedSource.data.manufacturerSerialNo   }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.Manufacturer" | translate}}</h6>
+                <p class="card-text">{{ lang == 'en' ? selectedSource.data.manufacturerEn  : selectedSource.data.manufacturerAr   }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">{{ "ActionCenter.ManufacturerCountry" | translate}}</h6>
+                <p class="card-text">{{ lang == 'en' ? selectedSource.data.manufacturerCountryEn  : selectedSource.data.manufacturerCountryAr   }}</p>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">
+                  {{ "ActionCenter.FacilitySourceID" | translate}}
+                </h6>
+                <p class="card-text">{{ selectedSource.data.facilitySourceID}}</p>
+              </div>
+              <p *ngIf="currentTrnType == 3" class="p-1 align-self-end" style="font-size: 13px;
+              text-decoration: underline; cursor: pointer;
+              margin-bottom: 0;" (click)="GetEditHistory(selectedSource.data.sourceId, selectedTransactionTypeId)" data-bs-toggle="modal" data-bs-target="#history">{{ "ActionCenter.details" | translate}}</p>
+            </div>
+          </div>
+
+
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">
+                  {{ "ActionCenter.Radionuclide" | translate}}
+                </h6>
+                <p class="card-text">{{ selectedSource.data.radionuclideName}} Bq</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">
+                  {{ "ActionCenter.CurrentActivity" | translate}}
+                </h6>
+                <p class="card-text">{{ selectedSource.data.currentActivity | number:"1.2-2"  }} Bq</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">
+                  {{ "ActionCenter.sourceStatus" | translate}}
+                </h6>
+                <p class="card-text">{{ lang == "ar" ? selectedSource.data.currentSourceStatusAr : selectedSource.data.currentSourceStatusEn }}</p>
+              </div>
+              <p *ngIf="currentTrnType == 7" class="p-1 align-self-end" style="font-size: 13px;
+              text-decoration: underline; cursor: pointer;
+              margin-bottom: 0;" data-bs-toggle="modal" data-bs-target="#history">{{ "ActionCenter.details" | translate}}</p>
+            </div>
+          </div>
+
+          <div class="col-2 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">
+                  {{ "ActionCenter.associatedEquipment" | translate}}
+                </h6>
+                <p class="card-text">{{ lang == "ar" ? selectedSource.data.associatedEquipmentAr : selectedSource.data.associatedEquipmentEn }}</p>
+              </div>
+              <p *ngIf="currentTrnType == 4" class="p-1 align-self-end" style="font-size: 13px;
+              text-decoration: underline; cursor: pointer;
+              margin-bottom: 0;" (click)="GetEditHistory(selectedSource.data.sourceId, selectedTransactionTypeId)" data-bs-toggle="modal" data-bs-target="#history">{{ "ActionCenter.details" | translate}}</p>
+            </div>
+          </div>
+
+
+
+
+          <div *ngIf="selectedSource.data.transactionAttactcments?.length != 0" class="col-12 p-2">
+            <h5>{{ "ActionCenter.TransactionAttactcments" | translate}}</h5>
+          </div>
+
+          <ngx-dropzone-preview (click)="downloadFile(f)"
+                                *ngFor="let f of selectedSource.data.transactionAttactcments"
+                                [file]="f"
+                                class="ngx-dropzone-preview ngx-dropzone">
+            <ngx-dropzone-label>{{ f.fileName }}</ngx-dropzone-label>
+          </ngx-dropzone-preview>
+
+
+
+          <div *ngIf="selectedSource.data.shieldAttachments?.length != 0" class="col-12 p-2">
+            <h5>{{ "ActionCenter.ShildAttachments" | translate}}</h5>
+          </div>
+
+          <ngx-dropzone-preview (click)="downloadFile(f)"
+                                *ngFor="let f of selectedSource.data.shieldAttachments"
+                                [file]="f"
+                                class="ngx-dropzone-preview ngx-dropzone">
+            <ngx-dropzone-label>{{ f.fileName }}</ngx-dropzone-label>
+          </ngx-dropzone-preview>
+
+
+
+        </div><!-- End of W-100-->
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="searchedModal" tabindex="-1" aria-labelledby="Change Facility ID"
+     aria-hidden="true">
+  <div class="modal-dialog  modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel"> {{modalHeader}}</h5>
+      </div>
+      <div class="modal-body">
+        <div class="datatablediv w-100">
+          <div class="pb-3">
+            <button type="button" (click)="ExportExel()" class="btn btn-gold btn-sm mx-1">{{ "General.ExportExcel" | translate }}  </button>
+            <button type="button" (click)="Print()" class="btn btn-gold btn-sm mx-1">{{ "General.Print" | translate }}  </button>
+          </div>
+          <div id="table_id_wrapper" class="dataTables_wrapper dt-bootstrap5">
+            <ng-container *ngIf="dropdownType==1">
+              <table id="datatableexample" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+
+                <thead>
+                  <tr>
+                    <th>Name - English</th>
+                    <th>Name - Arabic</th>
+                    <th>Phone No</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of filteredEntities; index as i" class="odd">
+                    <td>{{item.entityNameEn}}</td>
+                    <td>{{item.entityNameAr}}</td>
+                    <td>{{item.mobileNo}}</td>
+                    <td>{{item.emailId}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-container>
+            <ng-container *ngIf="dropdownType==2">
+              <table id="datatableexample" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+
+                <thead>
+                  <tr>
+                    <th>Name - English</th>
+                    <th>Name - Arabic</th>
+                    <th>Province</th>
+                    <th>City</th>
+                    <th>Location</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of filteredFacilities; index as i" class="odd">
+                    <td>{{item.facilityNameEn}}</td>
+                    <td>{{item.facilityNameAr}}</td>
+                    <td>{{item.province}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.location}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-container>
+            <ng-container *ngIf="dropdownType==3">
+              <table id="datatableexample" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+
+                <thead>
+                  <tr>
+                    <th>License</th>
+                    <th>Effective Date</th>
+                    <th>Expiration Date</th>
+                    <th>Facility</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of filteredLicenses; index as i" class="odd">
+                    <td>{{item.licenseCode}}</td>
+                    <td>{{item.effectiveDate | date}}</td>
+                    <td>{{item.expirationDate| date}}</td>
+                    <td>{{item.facilityProfile.facilityNameEn}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-container>
+            <ng-container *ngIf="dropdownType==4">
+              <table id="datatableexample" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+
+                <thead>
+                  <tr>
+                    <th>Permit Number</th>
+                    <th>Effective Date</th>
+                    <th>Expiration Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of filteredPermits; index as i" class="odd">
+                    <td>{{item.permitNumber}}</td>
+                    <td>{{item.effectiveDate | date}}</td>
+                    <td>{{item.expirationDate| date}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-container>
+            <ng-container *ngIf="dropdownType==5">
+              <table id="datatableexample" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+
+                <thead>
+                  <tr>
+                    <th>Desc-En</th>
+                    <th>Desc-Ar</th>
+                    <th>Permit Number</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of filteredPractices; index as i" class="odd">
+                    <td>{{item.practiseNameEn}}</td>
+                    <td>{{item.practiseNameAr }}</td>
+                    <td>{{item.permitDetailsProfile.permitNumber}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-container>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-gold btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="modal-footer">
+
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        {{ "close" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<!-- History Modal -->
+<div class="modal fade" id="history" tabindex="-1" aria-labelledby="History"
+     aria-hidden="true">
+  <div class="modal-dialog  modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> {{ "ActionCenter.SourceDetails" | translate}}</h5>
+      </div>
+
+      <div class="modal-body" style="height:max-content">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">{{ "ActionCenter.date" | translate }}</th>
+              <th scope="col">{{ "ActionCenter.oldValue" | translate }}</th>
+              <th scope="col">{{ "ActionCenter.newValue" | translate }}</th>
+              <th scope="col">{{ "ActionCenter.Remarks" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="historyList.length !== 0">
+            <tr *ngFor="let i of historyList">
+              <th scope="row">{{ i.trnHistoryId }}</th>
+              <td>{{ i.transactionDate | date:'dd/MM/yyyy' }}</td>
+              <td>{{ i.oldValue }}</td>
+              <td>{{ i.newValue }}</td>
+              <td>{{ i.remarks }}</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="historyList.length == 0">
+            <tr>
+              <td colspan="5" class="no-data-available">no data !!!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End of Modal-Body-->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          {{ "close" | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

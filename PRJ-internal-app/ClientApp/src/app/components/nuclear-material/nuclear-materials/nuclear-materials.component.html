@@ -1,0 +1,253 @@
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+  <div
+    class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4"
+  >
+    <section
+      class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2"
+    >
+      <div class="breadcrumb-w1 mb-0" class="{{ lang == 'ar' ? 'lang' : '' }}">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+        >
+          <ol class="breadcrumb">
+            <li
+              type="button"
+              class="breadcrumb-item"
+              (click)="Breadcrumb('')"
+              style="color: #ca9f45"
+            >
+              {{ "General.Home" | translate }}
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ "NuclearMaterial.NuclearMaterials" | translate }}
+            </li>
+          </ol>
+        </nav>
+        <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()">
+          <fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon>
+          {{ "General.Back" | translate }}
+        </button>
+      </div>
+      <h4 class="text-left">
+        {{ "NuclearMaterial.NuclearMaterials" | translate }}
+      </h4>
+
+      <div class="row w-100 mt-3 lookupsDataEntry">
+        <div class="lookupsfields">
+          <div class="w-100">
+            <div
+              [routerLink]="['/nuclear-material-form']"
+              class="serviceItem m-2 p-2 shadow-sm rounded border d-flex flex-column justify-content-center align-items-center"
+            >
+              <img
+                src="../../../../assets/imgs/nuclearmaterial.svg"
+                class=""
+                alt="..."
+              />
+              <h6>
+                {{ "NuclearMaterial.AddNuclearMaterial" | translate }}
+              </h6>
+            </div>
+          </div>
+        </div>
+        <!-- end of lookupsDataEntry Div-->
+      </div>
+      <!-- end of lookupsDataEntry Div-->
+    </section>
+    <!-- end of lookup Section-->
+
+    <hr class="my-4 w-100" />
+
+    <div class="datatablediv w-100">
+      <div class="datatablediv w-100">
+        <div class="pb-3">
+          <!--<button type="button" (click)="ExportExel()" class="btn btn-gold btn-sm mx-1">{{ "General.ExportExcel" | translate }}  </button>
+          <button type="button" (click)="Print()" class="btn btn-gold btn-sm mx-1">{{ "General.Print" | translate }}  </button>
+          <button type="button" (click)="Copy()" class="btn btn-gold btn-sm mx-1">{{ "General.Copy" | translate }} </button>-->
+        </div>
+        <table
+          datatable
+          [dtOptions]="dtOptions"
+          id="manufacturerDataTable"
+          class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto"
+        >
+          <thead>
+            <tr>
+              <th width="10%" class="select-filter">
+                {{ "NuclearMaterial.nrrcId" | translate }}
+              </th>
+              <th width="10%" class="select-filter">
+                {{ "NuclearMaterial.manufacturerSerialNo" | translate }}
+              </th>
+              <th width="10%" class="select-filter">
+                {{ "NuclearMaterial.sourceModel" | translate }}
+              </th>
+              <th width="15%" class="select-filter">
+                {{ "NuclearMaterial.facility" | translate }}
+              </th>
+              <th width="10%" class="select-filter">
+                {{ "NuclearMaterial.physicalForm" | translate }}
+              </th>
+              <th width="10%" class="select-filter">
+                {{ "NuclearMaterial.chemicalForm" | translate }}
+              </th>
+              <th width="10%" class="select-filter">
+                {{ "NuclearMaterial.nuclearMaterial" | translate }}
+              </th>
+              <!-- <th class="select-filter">
+                {{ "NuclearMaterial.quantity" | translate }}
+              </th> -->
+              <th width="10%" class="select-filter">
+                {{ "NuclearMaterial.status" | translate }}
+              </th>
+              <th width="3%" class="select-filter">
+                {{ "NuclearMaterial.isShield" | translate }}
+              </th>
+              <th width="15%">{{ "NuclearMaterial.actions" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="DataList?.length != 0">
+            <tr *ngFor="let obj of DataList; index as i">
+              <td>{{ obj.nrrcId }}</td>
+              <td>{{ obj.manufacturerSerialNo }}</td>
+              <td>{{ obj.sourceModel }}</td>
+              <td>{{ lang == "ar" ? obj.facilityAr : obj.facilityEn }}</td>
+              <td>
+                {{ lang == "ar" ? obj.physicalFormAr : obj.physicalFormEn }}
+              </td>
+              <td>{{ obj.isShield ? "---" : obj.chemicalForm }}</td>
+              <td>
+                {{
+                  lang == "ar"
+                    ? showMaterialTypeInTable(obj.nuclearMaterialTypeAr)
+                    : showMaterialTypeInTable(obj.nuclearMaterialTypeEn)
+                }}
+              </td>
+              <td>{{ lang == "ar" ? obj.statusAr : obj.statusEn }}</td>
+              <td *ngIf="obj.isShield">{{ "yes" | translate }}</td>
+              <td *ngIf="!obj.isShield">{{ "no" | translate }}</td>
+              <td>
+                <button
+                  *ngIf="!obj.isShield"
+                  class="edit btn btn-gold btn-sm mx-1"
+                  (click)="updateNucleaMaterial(obj.sourceId)"
+                >
+                  <fa-icon [icon]="faPen"> </fa-icon>
+                </button>
+                <button
+                  *ngIf="!obj.isShield"
+                  class="delete btn btn-secondary btn-sm mx-1"
+                  (click)="deleteNucleaMaterial(obj.sourceId, obj.nrrcId)"
+                >
+                  <fa-icon [icon]="faTrash"> </fa-icon>
+                </button>
+                <button
+                  class="btn btn-dark btn-sm mx-1"
+                  (click)="viewNucleaMaterial(obj.sourceId)"
+                >
+                  <fa-icon class="fa-sm" [icon]="faEye"> </fa-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="DataList?.length == 0">
+            <tr>
+              <td colspan="10" class="no-data-available">
+                {{ "General.NoDataFound" | translate }}
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>
+                <input
+                  class="search-input"
+                  name="nrrcId"
+                  type="text"
+                  placeholder="N-SA1100"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="manufacturerSerialNo"
+                  type="text"
+                  placeholder="MNF111"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="sourceModel"
+                  type="text"
+                  placeholder="{{ 'NuclearMaterial.sourceModel' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="facility"
+                  type="text"
+                  placeholder="{{ 'NuclearMaterial.facility' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="physicalForm"
+                  type="text"
+                  placeholder="{{ 'NuclearMaterial.physicalForm' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="chemicalForm"
+                  type="text"
+                  placeholder="{{ 'NuclearMaterial.chemicalForm' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="nuclearMaterialType"
+                  type="text"
+                  placeholder="{{
+                    'NuclearMaterial.nuclearMaterial' | translate
+                  }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th>
+                <input
+                  class="search-input"
+                  name="status"
+                  type="text"
+                  placeholder="{{ 'NuclearMaterial.status' | translate }}"
+                  style="width: 100%"
+                />
+              </th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <!-- end of datatablediv-->
+    </div>
+    <!-- end of datatablediv-->
+  </div>
+</div>
+<!-- Main Content-->

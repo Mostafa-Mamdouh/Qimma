@@ -1,0 +1,922 @@
+<div
+  class="w-100 page-container container-fluid d-flex justify-content-between align-content-center border rounded shadow bg-white px-4"
+>
+<div class="sidebarcontent d-flex justify-content-start align-items-center flex-column mt-4 rounded border shadow-sm mb-2 pt-3 px-1">
+  <div class="doseDetailsAction col-sm-12 col-md-12 p-3">
+    <div
+      class="d-flex flex-column justify-content-between py-2 align-items-center border rounded shadow-sm bg-light p-3"
+      data-bs-toggle="modal"
+      data-bs-target="#addDose"
+    >
+      <img
+        src="assets/images/sourcesicons/dosedevice.svg"
+        style="height: 75px"
+        alt=""
+      />
+      <h5>Add Reading</h5>
+    </div>
+  </div>
+  <div
+  class="d-flex flex-column justify-content-between col-md-12 flex-wrap border-top my-3 py-3"
+>
+  <h5 class="w-100 text-center">Last Reading</h5>
+  <div
+    class="w-100 mt-3 d-flex flex-column justify-content-center align-items-center border rounded shadow-sm pt-3 box-detailsw1"
+  >
+    <h6>Quarter Date</h6>
+    <h6>{{ LastReading.quarterCode }}</h6>
+  </div>
+  <div
+    class="w-100 mt-3 d-flex flex-column justify-content-center align-items-center border rounded shadow-sm pt-3 box-detailsw1"
+  >
+    <h6>Shallow Dose</h6>
+    <h6> {{ LastReading.shallowDose }} </h6>
+  </div>
+  <div
+    class="w-100 mt-3 d-flex flex-column justify-content-center align-items-center border rounded shadow-sm pt-3 box-detailsw1"
+  >
+    <h6>Deep Dose</h6>
+    <h6>{{ LastReading.deepDose }} </h6>
+  </div>
+</div>
+</div>
+
+
+  <div
+    class="mainContent d-flex flex-wrap justify-content-evenly align-content-start mt-4 w-75 border shadow-sm rounded mb-2 p-2"
+  >
+
+    <div
+      class="servicesList w-100 d-flex justify-content-between align-items-center flex-wrap p-3"
+    >
+      <h4>
+        <span style="color: #ca9f45">{{ WorkerDetails.workerNameEn }}</span
+        ><span class="mx-3" style="font-size: 0.85em; color: #4e4e4e"
+          >- Worker Details</span
+        >
+      </h4>
+      <h4>
+        <button type="button" class="btn btn-gold" (click)="back()">
+          Back
+        </button>
+      </h4>
+    </div>
+    <!-- end of servicesList-->
+    <div class="row w-100 my-1 p-2">
+
+        <div class="row p-3 w-100 py-2 d-flex" style="background:#ececec">
+            
+          <div class="col-3 px-1 mb-3">
+            <label for="entity" class="mx-1"
+              >{{ "entity" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <p-dropdown
+              [options]="EntityList"
+              [(ngModel)]="objData.Entity"
+              optionLabel="entityNameEn"
+              [filter]="true"
+              filterBy="entityNameEn,entityNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #entity
+              styleClass="w-100 "
+              [disabled]="true"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div class="country-item country-item-value" *ngIf="entity">
+                  <div>
+                    {{
+                      lang == "en"
+                        ? entity.value.entityNameEn
+                        : entity.value.entityNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.entityNameEn : r?.entityNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+              
+            </p-dropdown>
+            
+          </div>
+          
+          <div class=" col-3 px-1 mb-3">
+            <label for="facility" class="mx-1">
+              {{ "facility" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <p-dropdown
+              [options]="Facilities"
+              [(ngModel)]="objData.Facility"
+              optionLabel="facilityNameEn"
+              [filter]="true"
+              filterBy="facilityNameEn,facilityNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #facility
+              styleClass="w-100 "
+              [disabled]="true"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div class="country-item country-item-value" *ngIf="facility">
+                  <div>
+                    {{
+                      lang == "en"
+                        ? facility.value.facilityNameEn
+                        : facility.value.facilityNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.facilityNameEn : r?.facilityNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          
+          </div>
+
+          <div class=" col-3 px-1 mb-3">
+            <label for="license" class="mx-1">
+              {{ "Workers.License" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <p-dropdown
+              [options]="LicenseList"
+              [(ngModel)]="objData.License"
+              optionLabel="licenseDescEn"
+              [filter]="true"
+              filterBy="licenseDescEn,licenseDescAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #license
+              styleClass="w-100 "
+              [disabled]="true"
+
+            >
+              <ng-template pTemplate="selectedItem">
+                <div class="country-item country-item-value" *ngIf="license">
+                  <div>
+                    {{
+                      lang == "en"
+                        ? license.value.licenseDescEn
+                        : license.value.licenseDescAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.licenseDescEn : r?.licenseDescAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+           
+          </div>
+
+          <div class="col-3 px-1 mb-3">
+            <label for="license" class="mx-1">
+              {{ "Workers.Practise" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <p-dropdown
+              [options]="PractiseList"
+              [(ngModel)]="objData.Practise"
+              optionLabel="practiseNameEn"
+              [filter]="true"
+              filterBy="practiseNameEn,practiseNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #Practise
+              styleClass="w-100 "
+              (onChange)="getPractiseByLicenseId(Practise.value.id)"
+              [disabled]="true"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div class="country-item country-item-value" *ngIf="Practise">
+                  <div>
+                    {{
+                      lang == "en"
+                        ? Practise.value.practiseNameEn
+                        : Practise.value.practiseNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.practiseNameEn : r?.practiseNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          
+          </div>
+      
+       </div>
+
+    </div>
+
+    <form [formGroup]="WorkerForm">
+      <div class="row w-100 g-2">
+        <div class="col-12 col-sm-6 col-md-4">
+          <label for="firstname">Worker Name Ar</label>
+          <input
+            type="text"
+            formControlName="workerNameAr"
+            class="form-control form-control-sm"
+            value="{{ WorkerDetails.workerNameAr }}"
+            [attr.disabled]="Update ? null : ''"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <label for="middlename">Worker Name En</label>
+          <input
+            type="text"
+            formControlName="workerNameEn"
+            class="form-control form-control-sm"
+            [attr.disabled]="Update ? null : ''"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <label for="middlename">Gender </label>
+          <select   
+          formControlName="gender"
+          class="form-select form-control-sm"
+          [attr.disabled]="Update ? null : ''"> 
+            <option *ngFor="let g of GenderList" [value]="g.id">
+              {{ lang == "en" ? g.displayNameEn : g.displayNameAr }} 
+             </option>
+          </select>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <label for="lastname">BirthDate</label>
+          <input
+            type="date"
+            formControlName="birthDate"
+            class="form-control form-control-sm"
+            [attr.disabled]="Update ? null : ''"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <label for="lastname">mobileNo</label>
+          <input
+            type="text"
+            formControlName="mobileNo"
+            class="form-control form-control-sm"
+            [attr.disabled]="Update ? null : ''"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <label for="nationalId">Job Position</label>
+          <!-- <input
+            type="text"
+            formControlName="jobPosition"
+            class="form-control form-control-sm"
+            [attr.disabled]="Update ? null : ''"
+          /> -->
+
+          <select  formControlName="jobPosition" class="form-select form-control-sm" 
+          > 
+            <option value=""> -- select -- </option>
+            <option *ngFor="let job of WorkerJobPositionsList" [value]="job.id">
+              {{lang == "en" ? job.displayNameEn : job.displayNameAr}}
+            </option>
+          </select>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <label for="nationalId">Facility </label>
+          <input
+            type="text"
+            formControlName="facilityNameEn"
+            class="form-control form-control-sm"
+            [attr.disabled]="true"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <label for="dateofBirth">Id Num</label>
+          <input
+            type="text"
+            formControlName="nationalityId"
+            class="form-control form-control-sm"
+            [attr.disabled]="Update ? null : ''"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <label for="firstname">Nationality </label>
+          <input
+            type="text"
+            formControlName="countryNameEn"
+            class="form-control form-control-sm"
+            [attr.disabled]="Update ? null : ''"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <label>Practise</label>
+          <input
+            type="text"
+            value="Diagnostic Radiology"
+            class="form-control form-control-sm"
+            [attr.disabled]="true"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 ">
+          <label>{{'Workers.Status' | translate }}</label>
+          <span class="d-flex"> 
+           
+          <select formControlName="status"  [(ngModel)]="StatusWorker"
+          class="form-select form-control-sm"
+          [attr.disabled]="EditStatus ? null : ''"
+          > 
+            <option *ngFor="let Status of StatusList" [value]="Status.id" > 
+              {{lang == "en" ? Status.displayNameEn : Status.displayNameAr}}
+            </option>
+          </select>
+          <button class="btn btn-gold m-1"  
+          data-bs-toggle="modal"
+          data-bs-target="#transferWorker" > Edit </button>
+          </span>
+         
+        </div>
+
+        <div *ngIf="Update" class="col-12 col-sm-6 col-md-12 mt-3">
+          <button class="btn btn-gold" (click)="saveupdated()">Save</button>
+        </div>
+
+       
+
+        <div class="col-12 row g-3">
+         
+
+          <!-- <div (click)="GethistoryDosByUserId()" class="doseDetailsAction col-sm-4 col-md-4 p-3">
+            <div
+              class="d-flex flex-column justify-content-between align-items-center border rounded shadow-sm bg-light p-3"
+              data-bs-toggle="modal"
+              data-bs-target="#AddDosimeters"
+            >
+              <img
+                src="assets/images/sourcesicons/adddosmeter.svg"
+                style="height: 75px"
+                alt=""
+              />
+              <h5>Assign Dosimeter</h5>
+            </div>
+          </div> -->
+
+          <!-- <div class="doseDetailsAction col-sm-4 col-md-4 p-3">
+            <div
+              class="d-flex flex-column justify-content-between py-2 align-items-center border rounded shadow-sm bg-light p-3"
+              data-bs-toggle="modal"
+              data-bs-target="#addDose"
+            >
+              <img
+                src="assets/images/sourcesicons/dosedevice.svg"
+                style="height: 75px"
+                alt=""
+              />
+              <h5>Add Reading</h5>
+            </div>
+          </div> -->
+
+          <!-- <div class="doseDetailsAction col-sm-4 col-md-4 p-3">
+            <div
+              class="d-flex flex-column justify-content-between py-2 align-items-center border rounded shadow-sm bg-light p-3"
+              data-bs-toggle="modal"
+              data-bs-target="#transferWorker"
+            >
+              <img
+                src="assets/images/sourcesicons/workertransfer.svg"
+                style="height: 75px"
+                alt=""
+              />
+              <h5>Transfer</h5>
+            </div>
+          </div> -->
+
+          <!-- <div class="doseDetailsAction col-sm-4 col-md-4 p-3">
+            <div
+              class="d-flex flex-column justify-content-between py-2 align-items-center border rounded shadow-sm bg-light p-3"
+              data-bs-toggle="modal"
+              data-bs-target="#Resign"
+            >
+              <img
+                src="assets/images/sourcesicons/workerresign.svg"
+                style="height: 75px"
+                alt=""
+              />
+              <h5>Resign</h5>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </form>
+    <div
+      class="source-service-details d-flex justify-content-start flex-row-reverse align-items-start w-100"
+    >
+      <div class="source-service-datatable w-100 my-3"></div>
+      <!-- end of datatablediv-->
+    </div>
+  </div>
+</div>
+<!-- End of Main Content Div-->
+
+<!-- Model for Add Dose -->
+<div
+  class="modal modal-xl fade"
+  id="addDose"
+  tabindex="-1"
+  aria-labelledby="addDoseLabel"
+  aria-hidden="true"
+>
+  <form [formGroup]="DoseForm">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addDoseLabel">Add Reading</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="w-100 row g-2">
+            <div class="col-4">
+              <label for="initialDayofMonitoring"
+                >Quarter</label
+              >
+              <select class="form-select form-select-sm" 
+               formControlName="quarterCode"
+              > 
+              <option value=""> 
+                -- Select --
+              </option>
+                <option *ngFor="let q of QuarterList" [value]="q.quarterCode"> 
+                  {{ lang == "en" ? q.quarterLongDescFrn : q.quarterLongDescNtv }}
+                </option>
+                
+              </select>
+            
+              <div id="initialDayofMonitoringHelp" class="form-text">
+                Please Insert Quarter
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="dosemeterType">Dosimeter Type</label>
+              <select
+                class="form-select form-select-sm"
+                formControlName="dosimeterType"
+              >
+                <option value="">-- select --</option>
+                <option *ngFor="let type of DosimeterType" [value]="type.id">
+                  {{ lang == "en" ? type.displayNameAr : type.displayNameEn}}
+                </option>
+              
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="doseimeterId">Dosimeter ID</label>
+              <input
+                type="text"
+                formControlName="dosimeterID"
+                name="doseimeterId"
+                class="form-control form-control-sm"
+              />
+              <div id="doseimeterIdHelp" class="form-text">Dosimeter ID.</div>
+            </div>
+
+            <div class="col-4">
+              <label for="dosemeterType">Year</label>
+              <select
+                class="form-select form-select-sm"
+                formControlName="FiscalYear"
+              >
+                <option value="">-- select --</option>
+                <option *ngFor="let year of YearsList" [value]="year.fiscalYear">
+                  {{year.fiscalYear}}
+                </option>
+
+               
+              </select>
+            </div>
+
+            <div class="col-4 ">
+              <label for="deepDose">Deep dose / Whole body (Hp 10)</label>
+                <input
+                  type="text"
+                  formControlName="deepDose"
+                  name="deepDose"
+                  class="form-control form-control-sm"
+                  />
+              <div id="deepDoseHelp" class="form-text">
+                Insert the Deep dose / Whole body (Hp 10) /  mSv
+              </div>
+            </div>
+            <div class="col-4 px-1 ">
+              <label for="shallowDose">Shallow dose / Skin (Hp 0.07)</label>
+                <input
+                  type="text"
+                  formControlName="shallowDose"
+                  name="shallowDose"
+                  class="form-control form-control-sm"
+                  />
+              <div id="shallowDoseHelp" class="form-text">
+                Insert the Shallow Dose / mSv 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-green btn-sm"
+            data-bs-dismiss="modal"
+            (click)="SaveAddDose()"
+          >
+            Add Dose
+          </button>
+          <button
+            type="button"
+            class="btn btn-gold btn-sm"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- End of Model for Add Dose -->
+
+<div
+  class="modal modal-xl fade"
+  id="AddPrac"
+  tabindex="-1"
+  aria-labelledby="AddPrac"
+  aria-hidden="true"
+>
+  <form [formGroup]="AssignDosimeter">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addDoseLabel">Assign Practise</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="w-100 row g-2">
+            <div class="col-4">
+              <label for="dosemeterType">New practise </label>
+              <select
+                class="form-select form-select-sm"
+                formControlName="dosimeterType"
+              >
+                <option value="">-- select --</option>
+                <option>Diagnostic Radiology</option>
+                <option>NUCLEAR MEDICINE</option>
+                <option>Industrial Radiography</option>
+                <option>Nuclear Gauge</option>
+                <option>well Logging</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="doseimeterId">Start Active Date</label>
+              <input
+                type="date"
+                formControlName="dosimeterID"
+                class="form-control form-control-sm"
+              />
+              <div id="doseimeterIdHelp" class="form-text"></div>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-12 mt-3">
+              <div>
+                <hr />
+                <h5 class="modal-title">Worker Practise history</h5>
+              </div>
+            </div>
+            <div class="col-12">
+              <table
+                class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto"
+              >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Practise</th>
+                    <th>Start Active Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Diagnostic Radiology</td>
+                    <td>20/5/2022</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>NUCLEAR MEDICINE</td>
+                    <td>30/3/2023</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Industrial Radiography</td>
+                    <td>14/4/2021</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Nuclear Gauge</td>
+                    <td>13/8/2022</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-green btn-sm"
+            data-bs-dismiss="modal"
+            (click)="SaveAddDosimeters()"
+          >
+            Add Practise
+          </button>
+          <button
+            type="button"
+            class="btn btn-gold btn-sm"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Model for Add Dos meters  -->
+<div
+  class="modal modal-xl fade"
+  id="AddDosimeters"
+  tabindex="-1"
+  aria-labelledby="AddDosimeters"
+  aria-hidden="true"
+>
+  <form [formGroup]="AssignDosimeter">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addDoseLabel">Assign Dosimeter</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="w-100 row g-2">
+            <div class="col-4">
+              <label for="dosemeterType">Dosimeter Type</label>
+              <select
+                class="form-select form-select-sm"
+                formControlName="dosimeterType"
+              >
+                <option
+                  *ngFor="let type of DosimeterType"
+                  value="{{ type.displayNameEn }}"
+                >
+                  {{ lang == "en" ? type.displayNameAr : type.displayNameEn }}
+                </option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="doseimeterId">Dosimeter ID</label>
+              <input
+                type="text"
+                formControlName="dosimeterID"
+                class="form-control form-control-sm"
+              />
+              <div id="doseimeterIdHelp" class="form-text">Dosimeter ID.</div>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+              <label for="initialDayofMonitoring">Start Wear Date</label>
+              <input
+                type="date"
+                formControlName="startWearDate"
+                name="initialDayofMonitoring"
+                class="form-control form-control-sm"
+              />
+              <div id="initialDayofMonitoringHelp" class="form-text">
+                Please Insert The start date of monitoring (reading) Period.
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="lastDayofMonitoring">End Wear Date</label>
+              <input
+                type="date"
+                formControlName="endWearDate"
+                name="lastDayofMonitoring"
+                class="form-control form-control-sm"
+              />
+              <div id="lastDayofMonitoringHelp" class="form-text">
+                Please Insert The Last Day of Monitoring.
+              </div>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div>
+                <hr />
+                <h5 class="modal-title">Worker Dosimeter History</h5>
+              </div>
+            </div>
+            <div class="col-12">
+              <table
+                class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto"
+              >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Dosimeter ID</th>
+                    <th>Start Wear Date</th>
+                    <th>End Wear Date</th>
+                    <th>Dosimeter Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let row of HistoryDos; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ row.dosimeterID }}</td>
+                    <td>{{ row.startWearDate | date : "dd/MM/YYY" }}</td>
+                    <td>{{ row.endWearDate | date : "dd/MM/YYY" }}</td>
+                    <td>{{ row.dosimeterType }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-green btn-sm"
+            data-bs-dismiss="modal"
+            (click)="SaveAddDosimeters()"
+          >
+            Add Dose meters
+          </button>
+          <button
+            type="button"
+            class="btn btn-gold btn-sm"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- End of Model for Add Dos meters  -->
+
+<!-- End of Model for Add Dos meters  -->
+
+<!-- Model for Transfer Worker -->
+<div
+  class="modal modal-xl fade"
+  id="transferWorker"
+  tabindex="-1"
+  aria-labelledby="transferWorkerLabel"
+  aria-hidden="true"
+>
+  <form [formGroup]="TransferWorkerForm">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="transferWorkerLabel">Employment Status
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="w-100 row">
+            <div class="col-6">
+              <label for="initialDayofMonitoring"> Transaction Date</label>
+              <input
+                type="date"
+                class="form-control form-control-sm"
+                formControlName="TransferDate"
+              />
+              <div id="initialDayofMonitoringHelp" class="form-text">
+                Please Insert Transfer Date
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="tofacility">Employment Status</label>
+              <select formControlName="Status"
+              class="form-select form-control-sm" 
+              > 
+              <option value=""> -- select -- </option>
+                <option *ngFor="let Status of StatusList" [value]="Status.id" > 
+                  {{lang == "en" ? Status.displayNameEn : Status.displayNameAr}}
+                </option>
+              </select>
+              <div id="tofacilityHelp" class="form-text">
+                Please Insert Employment Status
+              </div>
+            </div>
+            <div class="col-12 mt-2">
+              <label for="doseimeterId">Remarks </label>
+              <textarea
+                rows="3"
+                class="form-control form-control-sm"
+                formControlName="Remarks"
+              ></textarea>
+              <div id="doseimeterIdHelp" class="form-text">Remarks .</div>
+            </div>
+            <div class="col-12 pb-1 pt-1">
+              <hr>
+              <h5 class="modal-title" id="transferWorkerLabel">Last Employment Status
+              </h5>
+            </div>
+            <!-- <div class="col-12 pb-5 pt-3">
+              <select [(ngModel)]="LastStatusWorker" formControlName="LastStatus"
+              class="form-select form-control-sm"  
+              [attr.disabled]="true"
+              > 
+                            > 
+                <option *ngFor="let Status of StatusList" [value]="Status.id" > 
+                  {{lang == "en" ? Status.displayNameEn : Status.displayNameAr}}
+                </option>
+              </select>
+              
+            </div> -->
+            <div class="col-12">
+              <table
+              class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto"
+            >
+              <thead>
+                <tr>
+                  <th>worker</th>
+                  <th>Last Employment Status</th>
+                
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ lang == "en" ? this.WorkerForm.value.workerNameEn :this.WorkerForm.value.workerNameAr  }}</td>
+                  <td>{{  lang == "en" ? this.WorkerInfo.lookupSetTerm.displayNameEn : this.WorkerInfo.lookupSetTerm.displayNameAr }}</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-green btn-sm"
+            data-bs-dismiss="modal"
+            (click)="SaveTransferWorker()"
+          >
+            Save 
+          </button>
+          <button
+            type="button"
+            class="btn btn-gold btn-sm"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+       
+        </div>
+       
+      </div>
+    </div>
+  </form>
+</div>
+<!-- End of Model for Transfer Worker -->

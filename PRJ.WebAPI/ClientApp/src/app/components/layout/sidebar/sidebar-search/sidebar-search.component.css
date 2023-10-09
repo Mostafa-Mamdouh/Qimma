@@ -1,0 +1,17 @@
+.sidebar-search input {
+  background-color: var(--white);
+  border: 1px solid #ca9f454f;
+  width: 90%;
+  color: var(--white);
+  padding: 5px 15px;
+}
+
+.sidebar-search .input-group-text {
+  border: unset;
+  box-shadow: none;
+  background-color: unset;
+  padding: 8px;
+  font-size: 1em;
+  color: var(--midGray);
+  position: absolute;
+}

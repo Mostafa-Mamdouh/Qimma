@@ -1,0 +1,60 @@
+<li (click)="toggleMenu()" class="list-unstyled nav-item has-submenu">
+  <span class="category-item-container nav-link sidebarNavLink" href="#">
+    <span class="category-item-container-first">
+      <fa-icon [icon]="faGear" size="1x"></fa-icon>
+      <span>{{ "Settings" | translate }}</span>
+      <!-- <ng-container [ngSwitch]="lang">
+        <span *ngSwitchCase="'en'">{{menu.nameFRN}}</span>
+        <span *ngSwitchCase="'ar'">{{menu.nameNTV}}</span>
+      </ng-container> -->
+    </span>
+    <fa-icon [icon]="faArrow" size="1x" class="pt-1"></fa-icon>
+    <!-- *ngIf="menu.children.length == 0" -->
+  </span>
+  <ul [ngClass]="clicked ? 'show' : ''" class="submenu collapse list-unstyled">
+    <li>
+      <a style="cursor:pointer" (click)="GoTO('bas-countries')"><span>{{ "CountriesCites" | translate }}</span></a>
+    </li>
+    <li>
+      <a style="cursor:pointer" (click)="GoTO('lookup-set')"><span>{{ "LookUps.PageTitle" | translate }}</span></a>
+    </li>
+    <li>
+      <a style="cursor:pointer" (click)="GoTO('manufacturer-master')"><span>{{ "ManufacturerMaster.PageTitle" | translate }}</span></a>
+    </li>
+    <li>
+      <a style="cursor:pointer" (click)="GoTO('radionuclide-setup')"><span>{{ "Radionuclide.radionuclide" | translate }}</span></a>
+    </li>
+    <li>
+      <a style="cursor:pointer" (click)="GoTO('workers')"><span>{{ "Workers.PageTitle" | translate }}</span></a>
+    </li>
+  </ul>
+</li>
+
+<li (click)="toggleMenu()" class="list-unstyled nav-item has-submenu">
+  <span class="category-item-container nav-link sidebarNavLink" href="#">
+    <span class="category-item-container-first">
+      <fa-icon [icon]="faGear" size="1x"></fa-icon>
+      <span>{{ "AmmanSettings" | translate }}</span>
+      <!-- <ng-container [ngSwitch]="lang">
+        <span *ngSwitchCase="'en'">{{menu.nameFRN}}</span>
+        <span *ngSwitchCase="'ar'">{{menu.nameNTV}}</span>
+      </ng-container> -->
+    </span>
+    <fa-icon [icon]="faArrow" size="1x" class="pt-1"></fa-icon>
+    <!-- *ngIf="menu.children.length == 0" -->
+  </span>
+  <ul [ngClass]="clicked ? 'show' : ''" class="submenu collapse list-unstyled">
+    <li>
+      <a style="cursor:pointer" (click)="GoTO('practise-profile')"><span>{{ "PractiseProfile.PageTitle" | translate }}</span></a>
+    </li>
+    <li>
+      <a style="cursor:pointer" (click)="GoTO('license')"><span>{{ "License.PageTitle" | translate }}</span></a>
+    </li>
+    <li>
+      <a style="cursor:pointer" (click)="GoTO('facility')"><span>{{ "Facility.PageTitle" | translate }}</span></a>
+    </li>
+    <li>
+      <a style="cursor:pointer" (click)="GoTO('entity')"><span>{{ "Entity.PageTitle" | translate }}</span></a>
+    </li>
+  </ul>
+</li>

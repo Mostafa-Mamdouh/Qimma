@@ -1,0 +1,581 @@
+<!-- Content -->
+<div
+  class="w-100 page-container container-fluid d-flex justify-content-between align-content-center border rounded shadow bg-white px-4"
+>
+  <div
+    class="sidebarcontent d-flex justify-content-start align-items-center flex-column mt-4 rounded border shadow-sm mb-2 pt-3 px-1"
+  >
+    <div class="px-1 mb-3 w-100">
+      <label for="entity" class="mx-1"
+        >{{ "addNewSource.licenseNumber" | translate }}
+      </label>
+      <p-listbox
+        [options]="licenses"
+        [(ngModel)]="currentLicense"
+        [metaKeySelection]="false"
+        [checkbox]="true"
+        [filter]="true"
+        [multiple]="false"
+        filterBy="licenseCode"
+        optionLabel="licenseCode"
+        [listStyle]="{ 'max-height': '250px' }"
+        [style]="{ width: '100%' }"
+        (onChange)="setLicense()"
+      >
+        <ng-template let-item pTemplate="item">
+          <div class="country-item">
+            <div>{{ item.licenseCode }}</div>
+          </div>
+        </ng-template>
+      </p-listbox>
+    </div>
+
+    <div
+      class="d-flex flex-column px-2 py-1 mx-2 mb-3"
+      style="background-color: #e6e6e6; border-radius: 3px; width: 95%"
+      *ngIf="currentLicense"
+    >
+      <div
+        class="w-100 d-flex justify-content-between align-items-center mb-1"
+        style="background-color: #e6e6e6; border-radius: 3px"
+      >
+        <h6 style="margin-bottom: 0 !important; font-size: 15px">
+          {{ "landingPage.activeSources" | translate }}
+        </h6>
+        <div
+          class="justify-content-center align-items-center p-2"
+          style="
+            background-color: #1b9bd8;
+            border-radius: 3px;
+            color: #fff;
+            padding: 5px 10px !important;
+          "
+        >
+          <span style="margin-bottom: 0 !important; font-size: 14px">{{
+            currentLicense?.numberOfActiveSources
+          }}</span>
+        </div>
+      </div>
+      <div
+        class="w-100 d-flex justify-content-between align-items-center mb-1"
+        style="background-color: #e6e6e6; border-radius: 3px"
+      >
+        <h6 style="margin-bottom: 0 !important; font-size: 15px">
+          {{ "landingPage.numberOfSealedSources" | translate }}
+        </h6>
+        <div
+          class="justify-content-center align-items-center p-2"
+          style="
+            background-color: #1b9bd8;
+            border-radius: 3px;
+            color: #fff;
+            padding: 5px 10px !important;
+          "
+        >
+          <span style="margin-bottom: 0 !important; font-size: 14px">{{
+            currentLicense?.numberOfSealedSources
+          }}</span>
+        </div>
+      </div>
+
+      <div
+        class="w-100 d-flex justify-content-between align-items-center mb-1"
+        style="background-color: #e6e6e6; border-radius: 3px"
+      >
+        <h6 style="margin-bottom: 0 !important; font-size: 15px">
+          {{ "landingPage.numberOfUnsealedSources" | translate }}
+        </h6>
+        <div
+          class="justify-content-center align-items-center p-2"
+          style="
+            background-color: #1b9bd8;
+            border-radius: 3px;
+            color: #fff;
+            padding: 5px 10px !important;
+          "
+        >
+          <span style="margin-bottom: 0 !important; font-size: 14px">{{
+            currentLicense?.numberOfUnsealedSources
+          }}</span>
+        </div>
+      </div>
+
+      <div
+        class="w-100 d-flex justify-content-between align-items-center mb-1"
+        style="background-color: #e6e6e6; border-radius: 3px"
+      >
+        <h6 style="margin-bottom: 0 !important; font-size: 15px">
+          {{ "landingPage.numberOfShortLivedSources" | translate }}
+        </h6>
+        <div
+          class="justify-content-center align-items-center p-2"
+          style="
+            background-color: #1b9bd8;
+            border-radius: 3px;
+            color: #fff;
+            padding: 5px 10px !important;
+          "
+        >
+          <span style="margin-bottom: 0 !important; font-size: 14px">{{
+            currentLicense?.numberOfShortLivedSources
+          }}</span>
+        </div>
+      </div>
+
+      <div
+        class="w-100 d-flex justify-content-between align-items-center mb-1"
+        style="background-color: #e6e6e6; border-radius: 3px"
+      >
+        <h6 style="margin-bottom: 0 !important; font-size: 15px">
+          {{ "landingPage.monitoredWorkers" | translate }}
+        </h6>
+        <div
+          class="justify-content-center align-items-center p-2"
+          style="
+            background-color: #1b9bd8;
+            border-radius: 3px;
+            color: #fff;
+            padding: 5px 10px !important;
+          "
+        >
+          <span style="margin-bottom: 0 !important; font-size: 14px">{{
+            currentLicense?.numberOfMonitoredWorkers
+          }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-1 mb-3 w-100">
+      <label for="entity" class="mx-1"
+        >{{ "entity" | translate }}
+        <span class="text-danger valdiation-text">*</span></label
+      >
+      <p-dropdown
+        [options]="entities"
+        [(ngModel)]="currentEntity"
+        optionLabel="entityNameEn"
+        [filter]="true"
+        filterBy="entityNameEn,entityNameAr"
+        [showClear]="true"
+        placeholder="{{ '--Select--' | translate }}"
+        #entity
+        (onChange)="getFacilitiesByEntityId(entity.value.id)"
+        styleClass="w-100 "
+      >
+        <ng-template pTemplate="selectedItem">
+          <div class="country-item country-item-value" *ngIf="entity">
+            <div>
+              {{
+                lang == "en"
+                  ? entity.value.entityNameEn
+                  : entity.value.entityNameAr
+              }}
+            </div>
+          </div>
+        </ng-template>
+        <ng-template let-r pTemplate="item">
+          <div class="country-item">
+            <div>
+              {{ lang == "en" ? r?.entityNameEn : r?.entityNameAr }}
+            </div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+
+    <!-- Facility -->
+    <div class="px-1 mb-3 w-100">
+      <label for="facility" class="mx-1">
+        {{ "facility" | translate }}
+        <span class="text-danger valdiation-text">*</span></label
+      >
+      <p-dropdown
+        [options]="facilities"
+        [(ngModel)]="currentFacility"
+        optionLabel="facilityNameEn"
+        [filter]="true"
+        filterBy="facilityNameEn,facilityNameAr"
+        [showClear]="true"
+        placeholder="{{ '--Select--' | translate }}"
+        #facility
+        styleClass="w-100 "
+        (onChange)="setFacility()"
+      >
+        <ng-template pTemplate="selectedItem">
+          <div class="country-item country-item-value" *ngIf="facility">
+            <div>
+              {{
+                lang == "en"
+                  ? facility.value.facilityNameEn
+                  : facility.value.facilityNameAr
+              }}
+            </div>
+          </div>
+        </ng-template>
+        <ng-template let-r pTemplate="item">
+          <div class="country-item">
+            <div>
+              {{ lang == "en" ? r?.facilityNameEn : r?.facilityNameAr }}
+            </div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+
+  <div
+    class="mainContent d-flex flex-wrap justify-content-evenly align-content-start mt-4 border shadow-sm rounded mb-2 p-2"
+  >
+    <div
+      class="servicesList w-100 my-2 d-flex justify-content-start align-items-center flex-wrap p-2"
+    >
+      <div
+        (click)="handleSourcesMenuClick()"
+        [ngClass]="sourcesClicked ? 'clicked' : ''"
+        class="serviceItem m-2 p-2 shadow-sm rounded border d-flex flex-column justify-content-center align-items-center"
+      >
+        <img
+          src="assets/images/sourcesicons/sourcesIcon.png"
+          class=""
+          style="height: 6rem; width: 6rem"
+          alt="..."
+        />
+        <h6>
+          {{ "landingPage.sources" | translate }}
+        </h6>
+      </div>
+
+      <div
+        (click)="navigateToAddSource('worker')"
+        
+        class="serviceItem m-2 p-2 shadow-sm rounded border d-flex flex-column justify-content-center align-items-center"
+      >
+        <img
+          src="assets/images/sourcesicons/workerIcon.png"
+          class=""
+          style="height: 6rem; width: 6rem"
+          alt="..."
+        />
+        <h6>
+          {{ "landingPage.workers" | translate }}
+        </h6>
+      </div>
+
+      <div
+        (click)="handleIncidentsClick()"
+        class="serviceItem m-2 p-2 shadow-sm rounded border d-flex flex-column justify-content-center align-items-center"
+        [ngClass]="incidentsClicked ? 'clicked' : ''"
+      >
+        <img
+          src="assets/images/sourcesicons/incidentIcon.png"
+          class=""
+          style="height: 6rem; width: 6rem"
+          alt="..."
+        />
+        <h6>
+          {{ "landingPage.incidents" | translate }}
+        </h6>
+      </div>
+
+      <div
+        (click)="handleWasteClick()"
+        [ngClass]="wasteClicked ? 'clicked' : ''"
+        class="serviceItem m-2 p-2 shadow-sm rounded border d-flex flex-column justify-content-center align-items-center"
+      >
+        <img
+          src="assets/images/sourcesicons/wasteIcon.png"
+          class=""
+          style="height: 6rem; width: 6rem"
+          alt="..."
+        />
+        <h6>
+          {{ "landingPage.waste" | translate }}
+        </h6>
+      </div>
+    </div>
+
+    <div class="w-100 source_services px-2 my-2" *ngIf="sourcesClicked">
+      <h6 class="w-100 px-3">
+        {{ "landingPage.SourcesServices" | translate }}
+      </h6>
+      <div class="d-flex align-items-center">
+        <div
+          (click)="navigateToAddSource('add-sealed-source')"
+          class="serviceItem m-2 p-2 shadow-sm rounded border d-flex flex-column justify-content-center align-items-center"
+        >
+          <h6>
+            {{ "landingPage.AddNewSealedSource" | translate }}
+          </h6>
+        </div>
+
+        <div
+          (click)="navigateToAddSource('add-unsealed-source')"
+          class="serviceItem m-2 p-2 shadow-sm rounded border d-flex flex-column justify-content-center align-items-center"
+        >
+          <h6>{{ "landingPage.AddNewUnsealedSource" | translate }}</h6>
+        </div>
+
+        <div
+          (click)="navigateToAddSource('add-variable-unsealed-source')"
+          class="serviceItem m-2 p-2 shadow-sm rounded border d-flex flex-column justify-content-center align-items-center"
+        >
+          <h6>{{ "landingPage.AddNewVariableUnsealedSource" | translate }}</h6>
+        </div>
+
+        <div
+          [routerLink]="['/add-radiation-generator']"
+          class="serviceItem m-2 p-2 shadow-sm rounded border d-flex flex-column justify-content-center align-items-center"
+        >
+          <h6>
+            {{ "landingPage.AddNewRadioactiveGenerator" | translate }}
+          </h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-100 d-flex">
+      <div class="px-1 mb-3 col-lg-2 col-md-6 col-sm-12 col-xs-12">
+        <label for="status" class="mx-1">{{ "status" | translate }}</label>
+        <select
+          [(ngModel)]="trnStatus"
+          class="form-select shadow-sm"
+          id="status"
+          aria-label="Default select example"
+          (change)="GetListWithStatus()"
+        >
+          <option value="-1">
+            {{ "all" | translate }}
+          </option>
+          <option value="1">
+            {{ "draft" | translate }}
+          </option>
+          <option value="2">
+            {{ "submitted" | translate }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      class="source-service-details d-flex justify-content-start flex-row-reverse align-items-start w-100"
+      style="overflow: hidden"
+    >
+      <div class="source-service-datatable w-100 my-3" style="overflow: scroll">
+        <table
+          datatable
+          [dtOptions]="dtOptions"
+          id="sourcesDataTable"
+          class="table datatable table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto"
+        >
+          <thead>
+            <tr class="dtHeader">
+              <th class="select-filter p-2">
+                {{ "landingPage.transactionType" | translate }}
+              </th>
+              <th class="select-filter p-2">
+                {{ "landingPage.radionuclide" | translate }}
+              </th>
+              <th class="p-2">
+                {{ "landingPage.radioactivity" | translate }}
+              </th>
+              <th class="select-filter p-2">
+                {{ "landingPage.manufacturerSerialNo" | translate }}
+              </th>
+              <th class="select-filter p-2">
+                {{ "landingPage.transactionDate" | translate }}
+              </th>
+              <th class="select-filter p-2">
+                {{ "landingPage.status" | translate }}
+              </th>
+              <th class="p-2">
+                {{ "landingPage.actions" | translate }}
+              </th>
+            </tr>
+          </thead>
+          <tbody *ngIf="transactionsList?.length != 0">
+            <tr *ngFor="let t of transactionsList">
+              <td class="" width="10%">
+                {{ lang == "en" ? t.sourceTypeEn : t.sourceTypeAr }}
+              </td>
+              <td width="13%">{{ viewRadionuclides(t.radionuclideName) }}</td>
+              <td
+                style="background-color: #b8efd3"
+                width="7%"
+                *ngIf="t.sourceStatus == SourceStatus.submit"
+              >
+                {{
+                  t.currentActivity?.toExponential(2).toString().toUpperCase()
+                }}
+                Bq
+              </td>
+              <td
+                style="background-color: #b8efd3"
+                width="7%"
+                *ngIf="t.sourceStatus == SourceStatus.draft"
+              >
+                --- Bq
+              </td>
+              <td width="13%">{{ t.manufacturerSerialNo }}</td>
+              <td width="10%">{{ t.createdOn | date : "MM-dd-yyyy" }}</td>
+              <td
+                width="13%"
+                *ngIf="t.sourceType != SourceTypes.variableUnsealed"
+              >
+                {{ lang == "en" ? t.statusEn : t.statusAr }}
+              </td>
+              <td
+                width="13%"
+                *ngIf="t.sourceType == SourceTypes.variableUnsealed"
+              >
+                ---
+              </td>
+              <td class="px-2" width="12%">
+                <button
+                  class="edit btn btn-success btn-sm mx-1"
+                  (click)="UpdateTransaction(t)"
+                  *ngIf="t.sourceStatus == SourceStatus.draft"
+                >
+                  <fa-icon [icon]="faPen"> </fa-icon>
+                </button>
+                <button
+                  class="edit btn btn-success btn-sm mx-1"
+                  (click)="UpdateSubmitedTransaction(t)"
+                  *ngIf="t.sourceStatus == SourceStatus.submit"
+                >
+                  <fa-icon [icon]="faPen"> </fa-icon>
+                </button>
+
+                <button
+                  class="edit btn btn-warning btn-sm mx-1"
+                  (click)="CreateSimilar(t)"
+                >
+                  <fa-icon [icon]="faCopy" color="#fff"> </fa-icon>
+                </button>
+
+                <button
+                  *ngIf="t.sourceStatus == SourceStatus.draft"
+                  class="delete btn btn-danger btn-sm mx-1"
+                  (click)="Delete(t)"
+                >
+                  <fa-icon [icon]="faTrash"> </fa-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="transactionsList?.length == 0">
+            <tr>
+              <td colspan="10" class="no-data-available">
+                {{ "no_data" | translate }}
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th class="footerTh">
+                <input
+                  class="search-input"
+                  name="TransactionType"
+                  id="TransactionType"
+                  type="text"
+                  placeholder="{{ 'landingPage.transactionType' | translate }}"
+                  style="width: 100%"
+                />
+                <fa-icon
+                  [ngClass]="lang == 'ar' ? 'footerIcon_ar' : 'footerIcon'"
+                  [icon]="faSearch"
+                ></fa-icon>
+              </th>
+              <th class="footerTh">
+                <input
+                  class="search-input"
+                  name="RadionuclideName"
+                  id="RadionuclideName"
+                  type="text"
+                  placeholder="{{ 'landingPage.radionuclide' | translate }}"
+                  style="width: 100%"
+                />
+                <fa-icon
+                  [ngClass]="lang == 'ar' ? 'footerIcon_ar' : 'footerIcon'"
+                  [icon]="faSearch"
+                ></fa-icon>
+              </th>
+              <th style="background-color: #e6e6e6">
+                <input
+                  class="search-input"
+                  name="RadioActivity"
+                  id="RadioActivity"
+                  type="text"
+                  placeholder="{{
+                    'landingPage.radioactivityPlaceholder' | translate
+                  }}"
+                  disabled
+                  style="
+                    width: 100%;
+                    background-color: #e6e6e6;
+                    visibility: hidden;
+                  "
+                />
+              </th>
+              <th class="footerTh">
+                <input
+                  class="search-input"
+                  name="ManufacturerSerialNo"
+                  id="ManufacturerSerialNo"
+                  type="text"
+                  placeholder="{{
+                    'landingPage.manufacturerSerialNo' | translate
+                  }}"
+                  style="width: 100%"
+                />
+                <fa-icon
+                  [ngClass]="lang == 'ar' ? 'footerIcon_ar' : 'footerIcon'"
+                  [icon]="faSearch"
+                ></fa-icon>
+              </th>
+              <th class="footerTh">
+                <input
+                  class="search-input"
+                  name="CreatedOn"
+                  id="CreatedOn"
+                  type="text"
+                  placeholder="{{ 'landingPage.transactionDate' | translate }}"
+                  style="width: 100%"
+                />
+                <fa-icon
+                  [ngClass]="lang == 'ar' ? 'footerIcon_ar' : 'footerIcon'"
+                  [icon]="faSearch"
+                ></fa-icon>
+              </th>
+              <th class="footerTh">
+                <input
+                  class="search-input"
+                  name="ManufacturerSerialNo"
+                  id="ManufacturerSerialNo"
+                  type="text"
+                  placeholder="{{ 'landingPage.status' | translate }}"
+                  style="width: 100%"
+                />
+                <fa-icon
+                  [ngClass]="lang == 'ar' ? 'footerIcon_ar' : 'footerIcon'"
+                  [icon]="faSearch"
+                ></fa-icon>
+              </th>
+              <th></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <!-- end of datatablediv-->
+    </div>
+  </div>
+</div>
+<!-- End of Main Content Div-->
+<p-dialog
+  header="{{ 'landingPage.selectFirstHeader' | translate }}"
+  [style]="{ width: '40vw' }"
+  [(visible)]="displaySelectEFPopup"
+  [draggable]="false"
+  [modal]="true"
+>
+  {{ "landingPage.selectFirstMsg" | translate }}
+</p-dialog>
+<p-scrollTop></p-scrollTop>

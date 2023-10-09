@@ -1,0 +1,621 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\PRJ-ID4Server.bundle.scp.css",
+      "PackagePath": "staticwebassets\\PRJ-ID4Server.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\BahijTheSansArabic-Plain.woff2",
+      "PackagePath": "staticwebassets\\BahijTheSansArabic-Plain.woff2"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\css2\\Login.css",
+      "PackagePath": "staticwebassets\\assets\\css2\\Login.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\css2\\custom.css",
+      "PackagePath": "staticwebassets\\assets\\css2\\custom.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\css2\\customar.css",
+      "PackagePath": "staticwebassets\\assets\\css2\\customar.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\css2\\faq.css",
+      "PackagePath": "staticwebassets\\assets\\css2\\faq.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\css2\\guidance.css",
+      "PackagePath": "staticwebassets\\assets\\css2\\guidance.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\css2\\insertnewrecord.css",
+      "PackagePath": "staticwebassets\\assets\\css2\\insertnewrecord.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\css2\\restorePassword.css",
+      "PackagePath": "staticwebassets\\assets\\css2\\restorePassword.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\css\\custom.css",
+      "PackagePath": "staticwebassets\\assets\\css\\custom.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\css\\customar.css",
+      "PackagePath": "staticwebassets\\assets\\css\\customar.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\css\\styleform.css",
+      "PackagePath": "staticwebassets\\assets\\css\\styleform.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\fonts\\BahijTheSansArabic-Bold.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\BahijTheSansArabic-Bold.eot"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\fonts\\BahijTheSansArabic-Bold.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\BahijTheSansArabic-Bold.ttf"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\fonts\\BahijTheSansArabic-Bold.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\BahijTheSansArabic-Bold.woff2"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\fonts\\BahijTheSansArabic-Plain.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\BahijTheSansArabic-Plain.eot"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\fonts\\BahijTheSansArabic-Plain.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\BahijTheSansArabic-Plain.ttf"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\fonts\\BahijTheSansArabic-Plain.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\BahijTheSansArabic-Plain.woff2"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\fonts\\BahijTheSansArabic-SemiBold.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\BahijTheSansArabic-SemiBold.eot"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\fonts\\BahijTheSansArabic-SemiBold.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\BahijTheSansArabic-SemiBold.ttf"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\fonts\\BahijTheSansArabic-SemiBold.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\BahijTheSansArabic-SemiBold.woff2"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\bg-gold.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\bg-gold.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\bg-green.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\bg-green.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\bg32.jpg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\bg32.jpg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\main\\radionuc.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\main\\radionuc.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\main\\usersw.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\main\\usersw.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\nafath.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\nafath.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\nic-logo-2.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\nic-logo-2.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\nrrclogo-color-h.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\nrrclogo-color-h.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\nrrclogo-plain.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\nrrclogo-plain.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\nrrclogo-v.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\nrrclogo-v.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\nrrclogo-white.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\nrrclogo-white.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\nuclear shield.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\nuclear shield.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\nuclearshield-cat.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\nuclearshield-cat.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\imgs\\nuclearshieldwhite-cat.svg",
+      "PackagePath": "staticwebassets\\assets\\imgs\\nuclearshieldwhite-cat.svg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\js\\custom.js",
+      "PackagePath": "staticwebassets\\assets\\js\\custom.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\bootstrap\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\assets\\vendors\\bootstrap\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\datatable\\jquery.dataTables.min.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\datatable\\jquery.dataTables.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\datatable\\jquery.dataTables.min.js",
+      "PackagePath": "staticwebassets\\assets\\vendors\\datatable\\jquery.dataTables.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\jquery\\jquery-3.6.0.min.js",
+      "PackagePath": "staticwebassets\\assets\\vendors\\jquery\\jquery-3.6.0.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\select2\\select2.min.css",
+      "PackagePath": "staticwebassets\\assets\\vendors\\select2\\select2.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\assets\\vendors\\select2\\select2.min.js",
+      "PackagePath": "staticwebassets\\assets\\vendors\\select2\\select2.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\bg32.jpg",
+      "PackagePath": "staticwebassets\\bg32.jpg"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\css\\Login.css",
+      "PackagePath": "staticwebassets\\css\\Login.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\css\\custom.css",
+      "PackagePath": "staticwebassets\\css\\custom.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\css\\customar.css",
+      "PackagePath": "staticwebassets\\css\\customar.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Qimma\\PRJ-ID4Server\\wwwroot\\nrrclogo-white.svg",
+      "PackagePath": "staticwebassets\\nrrclogo-white.svg"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.PRJ-ID4Server.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.PRJ-ID4Server.props",
+      "PackagePath": "build\\PRJ-ID4Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.PRJ-ID4Server.props",
+      "PackagePath": "buildMultiTargeting\\PRJ-ID4Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.PRJ-ID4Server.props",
+      "PackagePath": "buildTransitive\\PRJ-ID4Server.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

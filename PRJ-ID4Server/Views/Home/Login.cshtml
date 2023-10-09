@@ -1,0 +1,130 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@model PRJ_ID4Server.Models.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="">
+    <div style="width: 100vw;height:100vh;display: flex;flex-direction: row-reverse;justify-content: center;align-items: center;">
+        <div class="btn-group language-login-group">
+            <button class="btn btn-gold dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                اللغة
+            </button>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("ُEnglish", "Login", "Home", null, new { language="en", id="", @class = "dropdown-item" })</li>
+                <li>@Html.ActionLink("العربية", "Login", "Home", null, new { language="ar", id="", @class = "dropdown-item" })</li>
+            </ul>
+        </div>
+        <div class="sideloginform">
+            <h1>تسجيل الدخول</h1>
+            <div id="authError" class="alert alert-danger text-center">كلمة السر غير صحيحة</div>
+
+            <form id="Login" name="form1" method="post">
+
+                <div class="my-3 row">
+
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" name="email" required id="email" placeholder="name@example.com" value="">
+                        <label for="email">البريد الألكتروني</label>
+                    </div>
+                    <h6 id="emailcheck" class="text-danger"></h6>
+
+                </div>
+                <div class="my-3 row">
+                    <div class="form-floating mb-3">
+                        <input type="password" name="password" id="password" required class="form-control" placeholder="Password" value="">
+                        <label for="password">كلمة المرور</label>
+                    </div>
+                    <h6 id="passcheck" class="text-danger"></h6>
+                </div>
+
+                <div class="d-flex flex-row justify-content-between align-items-center login-action">
+                    @Html.ActionLink("إستعادة كلمة المرور", "RestorePassword", "Home")
+
+                </div>
+                <input id="submit" type="button" value="تسجيل الدخول" class="btn btn-gold w-100 mt-5" />
+            </form>
+        </div>
+
+        <div class="sidelogin">
+            <img src="~/nrrclogo-white.svg" class="w-50 mx-auto d-block mt-3" alt="">
+        </div>
+    </div>
+
+</div>
+
+<!-- OTP Modal -->
+<div class="modal fade" id="OTPModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">أدخل رمز التحقق</h5>
+            </div>
+            <span class="m-2 text-center">تم إرسال رمز التحقق الى الرقم *****5652</span>
+            <div class="modal-body d-flex justify-content-center">
+                <input class="m-2 text-center form-control rounded"
+                       type="text"
+                       id="first"
+                       maxlength="1" />
+                <input class="m-2 text-center form-control rounded"
+                       type="text"
+                       id="second"
+                       maxlength="1" />
+                <input class="m-2 text-center form-control rounded"
+                       type="text"
+                       id="third"
+                       maxlength="1" />
+                <input class="m-2 text-center form-control rounded"
+                       type="text"
+                       id="fourth"
+                       maxlength="1" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">متابعة</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#passcheck').hide();
+        $('#authError').hide();
+
+        $('#password').keyup(function () {
+            validatePassword();
+        });
+
+        $('#submit').click(function (e) {
+            let email = $('#email').val();
+            let password = $('#password').val();
+
+            var form = new FormData();
+            form.append('email', email);
+            form.append('password', password);
+
+            var requestOptions = {
+                method: 'POST',
+                body: form,
+                redirect: 'follow',
+            };
+
+            fetch('/Home/login', requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log(result.succeeded)
+                    if (result.succeeded) {
+                        $('#authError').hide();
+                        $('#OTPModal').modal('show');
+                    }
+                    else {
+                        $("#authError").show();
+                    }
+                })
+                .catch((error) => console.log('error', error));
+        });
+    });
+</script>

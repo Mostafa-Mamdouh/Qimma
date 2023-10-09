@@ -1,0 +1,146 @@
+<ng-container *ngIf="isLoggedIn$ | async as token">
+  <header class="bg-light px-3 py-2">
+    <a class="navbar-brand" href="#">
+      <!-- <img class="logoimg" src="assets/imgs/nrrclogo-plain.svg" alt=""> -->
+      <img class="img-fluid" src="assets/images/nrrclogo-color-h.svg" alt="" />
+    </a>
+
+    <span class="rightMenu">
+      <ng-container [ngSwitch]="lang">
+        <button
+          *ngSwitchCase="'en'"
+          (click)="switchLang('ar')"
+          class="btn btn-sm btn-gold"
+        >
+          <!-- <i class="fa-solid fa-globe"></i> -->
+          <fa-icon [icon]="faGlobe"></fa-icon>
+          En
+        </button>
+
+        <button
+          *ngSwitchCase="'ar'"
+          (click)="switchLang('en')"
+          class="btn btn-sm btn-gold"
+        >
+          <fa-icon [icon]="faGlobe"></fa-icon>
+          عربي
+        </button>
+      </ng-container>
+      <a href="#" class="notificationcounterlink position-relative mx-3">
+        <!-- <i class="fa-regular fa-envelope"></i> -->
+        <fa-icon [icon]="faEnvelope"></fa-icon>
+        <span
+          class="notificationcounter position-absolute start-100 translate-middle p-2 bg-danger badge rounded-pill"
+        >
+          99+
+          <span class="visually-hidden">New alerts</span>
+        </span>
+      </a>
+
+      <div class="dropdown mx-2" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle userOptions"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="true"
+            >
+              <fa-icon [icon]="faCircleUser"></fa-icon>
+              <span class="fw-bold mx-2">مؤيد وليد كعكي</span>
+            </a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdown"
+              style="position: absolute; z-index: 1032"
+            >
+              <li><a class="dropdown-item" href="#">الملف الشخصي</a></li>
+              <li><a class="dropdown-item" href="#">الإعدادات</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="logout()" href="#"
+                  >تسجيل الخروج</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </span>
+  </header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav navbar-master mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              (click)="navigateToMainMenu()"
+            >
+              <fa-icon [icon]="faHouse"></fa-icon>
+              {{ "Header.home" | translate }}</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</ng-container>
+
+<!-- <li class="nav-item dropdown">
+  <a
+    class="nav-link dropdown-toggle"
+    href="#"
+    id="navbarDarkDropdownMenuLink"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+
+    <fa-icon [icon]="faBrain"></fa-icon>
+    {{ "Header.Sources" | translate }}
+  </a>
+  <ul
+    class="dropdown-menu"
+    aria-labelledby="navbarDarkDropdownMenuLink"
+  >
+    <li><a class="dropdown-item" href="#">Sealed Sources</a></li>
+    <li><a class="dropdown-item" href="#">Unsealed Sources</a></li>
+    <li><a class="dropdown-item" href="#">Variable Unsealed</a></li>
+    <li><a class="dropdown-item" href="#">Nuclear material</a></li>
+    <li><a class="dropdown-item" href="#">Related Items</a></li>
+    <li>
+      <a class="dropdown-item" href="#">Radiation Generators</a>
+    </li>
+  </ul>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="#">
+    <fa-icon [icon]="faUsersLine"></fa-icon>
+    {{ "Header.WorkerDoses" | translate }}</a
+  >
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="#">
+    <fa-icon [icon]="faPersonBurst"></fa-icon>
+    {{ "Header.Incidents" | translate }}
+  </a>
+</li> -->

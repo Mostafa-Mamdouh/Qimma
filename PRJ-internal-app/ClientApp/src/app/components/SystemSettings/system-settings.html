@@ -1,0 +1,8 @@
+<div class="mainContent container-fluid d-flex flex-wrap justify-content-start align-content-center mt-5" style=" margin: auto; width: 90%;">
+  <ng-container *ngFor="let menu of menus">
+    <app-main-menu-item [menu]="menu"
+                        class="mainContentItem d-flex justify-content-center align-items-center mx-3">
+    </app-main-menu-item>
+  </ng-container>
+</div>
+

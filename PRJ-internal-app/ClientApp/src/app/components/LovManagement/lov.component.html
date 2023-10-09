@@ -1,0 +1,160 @@
+
+
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+
+
+
+  <div class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4">
+
+    <section class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2">
+      <div class="breadcrumb-w1 mb-0" class="{{lang == 'ar' ? 'lang' : ''}}">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' %3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li type="button" class="breadcrumb-item" (click)="Home()" style="color: #ca9f45">{{ "General.Home" | translate }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ "Lov.PageTitle" | translate }}</li>
+          </ol>
+        </nav>
+        <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "General.Back" | translate }} </button>
+
+      </div>
+
+      <h4 class="text-left">
+        {{ "Lov.PageTitle" | translate }}
+      </h4>
+
+      <div class="row w-100 mt-3 lookupsDataEntry">
+
+
+
+        <div class="lookupsfields">
+          <div class="w-100">
+            <form [formGroup]="LovForm" (ngSubmit)="save()">
+
+              <div class="row p-3 w-100 py-2">
+
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="LovNameAr" class="mx-1">{{ "Lov.LovNameAr" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyArabic($event , 200)" type="text" class="form-control" [(ngModel)]="lovNameAr" formControlName="LovNameAr" id="LovNameAr" required autocomplete="off" placeholder="{{ 'mandatory' | translate }}" />
+                  <div *ngIf="LovForm.controls['LovNameAr'].errors && LovForm.controls['LovNameAr'].touched" id="error" class="form-text d-block text-danger">
+                    ({{ "Lov.ValidLovNameAr" | translate }})
+                  </div>
+                </div>
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="LovNameEn" class="mx-1">{{ "Lov.LovNameEn" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyEnglish($event , 200)" type="text" class="form-control" [(ngModel)]="lovNameEn" formControlName="LovNameEn" id="LovNameEn" required autocomplete="off" placeholder="{{ 'mandatory' | translate }}" />
+                  <div *ngIf="LovForm.controls['LovNameEn'].errors && LovForm.controls['LovNameEn'].touched" class="form-text d-block text-danger">
+                    ({{ "Lov.ValidLovNameEn" | translate }})
+                  </div>
+                </div>
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="LovCode" class="mx-1">{{ "Lov.LovCode" | translate }} <span class="text-danger">*</span></label>
+                  <input type="text" (keypress)="OnlyEnglishCode($event , 200)" class="form-control" [(ngModel)]="lovCode" formControlName="LovCode" id="LovCode" required autocomplete="off" placeholder="{{ 'mandatory' | translate }}" />
+                  <div *ngIf="LovForm.controls['LovCode'].errors && LovForm.controls['LovCode'].touched" class="form-text d-block text-danger">
+                    ({{ "Lov.ValidLovCode" | translate }})
+                  </div>
+                </div>
+                <div class="px-1 mb-3 col-lg-6 col-md-9 col-sm-12 col-xs-12">
+                  <label for="SqlStatement" class="mx-1">{{ "Lov.SqlStatement" | translate }} <span class="text-danger">*</span></label>
+                  <textarea  class="form-control" [(ngModel)]="sqlStatement" formControlName="SqlStatement" id="SqlStatement" required autocomplete="off"></textarea>
+                  <div *ngIf="LovForm.controls['SqlStatement'].errors && LovForm.controls['SqlStatement'].touched" class="form-text d-block text-danger">
+                    ({{ "Lov.SqlStatement" | translate }})
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+                  <span class="btn btn-secondary mx-2" (click)="reset()" style="padding-left: 50px; padding-right: 50px;" id="reset-all">
+                    {{ "ResetFormData" | translate }}
+                  </span>
+                  <button class="btn btn-gold mx-2" style="padding-left: 100px;padding-right:100px;" id="submit-all">
+                    {{ "Save" | translate }}
+                  </button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div><!-- end of lookupsDataEntry Div-->
+
+      </div><!-- end of lookupsDataEntry Div-->
+
+
+    </section> <!-- end of lookup Section-->
+    <hr class="my-4 w-100">
+    <div class="datatablediv w-100">
+      <table datatable [dtOptions]="dtOptions" id="lovDataTable"
+             class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+        <thead>
+          <tr>
+
+            <th class="select-filter">
+              {{ "Lov.LovNameAr" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "Lov.LovNameEn" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "Lov.LovCode" | translate }}
+            </th>
+            <th>{{ "Action" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="lovs?.length != 0">
+          <tr *ngFor="let lov of lovs; index as i">
+            <!--<td>{{ i+1 }}</td>-->
+ 
+            <td>{{ lov.lovNameAr }}</td>
+            <td>{{ lov.lovNameEn }}</td>
+            <td> {{ lov.lovCode }} </td>
+            <td>
+              <button class="edit btn btn-gold btn-sm mx-1" (click)="Details(lov)">
+                <fa-icon [icon]="faPen"> </fa-icon>
+                {{ "General.Edit" | translate }}
+              </button>
+              <button class="delete btn btn-secondary btn-sm mx-1" (click)="Delete(lov)">
+                <fa-icon [icon]="faTrash"> </fa-icon>
+                {{ "General.Delete" | translate }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="lovs?.length == 0">
+          <tr>
+            <td colspan="5" class="no-data-available">no data !!!</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>
+              <input class="search-input"
+                     name="lovNameAr"
+                     id="lovNameAr"
+                     type="text"
+                     placeholder="أرامكو"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="lovNameEn"
+                     id="lovNameEn"
+                     type="text"
+                     placeholder="Aramco"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="lovCode"
+                     id="lovCode"
+                     type="text"
+                     placeholder="055 66..."
+                     style="width: 100%" />
+            </th>
+         
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div> <!-- end of datatablediv-->
+
+  </div>
+
+</div><!-- Main Content-->

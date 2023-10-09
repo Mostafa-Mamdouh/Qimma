@@ -1,0 +1,23 @@
+<app-loader></app-loader>
+<app-navbar></app-navbar>
+<!-- <app-sidebar></app-sidebar> -->
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>
+
+<p-toast position="top-center"></p-toast>
+<p-toast key="PlanValidation" position="top-center">
+  <ng-template let-message pTemplate="message">
+    <p innerHtml="{{ message.detail }}"></p>
+  </ng-template>
+</p-toast>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+
+<!-- <div class="scroll-to-top" [ngClass]="{ 'show-scrollTop': windowScrolled }">
+  <button (click)="scrollToTop()">
+    <fa-icon [icon]="faPen"> </fa-icon>
+  </button>
+</div> -->

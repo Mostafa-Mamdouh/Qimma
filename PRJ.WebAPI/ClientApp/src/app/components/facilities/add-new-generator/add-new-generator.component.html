@@ -1,0 +1,996 @@
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+  <div
+    class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4"
+  >
+    <form
+      style="width: 100%"
+      enctype="multipart/form-data"
+      [formGroup]="addNewSourceForm"
+    >
+      <div class="row my-2">
+        <h4>{{ "addNewSource.addNewGenerator" | translate }}</h4>
+      </div>
+
+      <div
+        class="source-type-block bg-light border rounded my-3 p-2 row w-100 py-4"
+      >
+        <h5 class="col-12 mb-3">
+          {{ "addNewSource.radiationGeneratorInfo" | translate }}
+        </h5>
+        <div class="row w-100 m-0 p-0">
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="equipmentType" class="mx-1">
+              {{ "addNewSource.radiationGenerator" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <p-dropdown
+              [options]="lookups['EquipmentType']"
+              formControlName="equipmentType"
+              optionLabel="displayNameEn"
+              [filter]="true"
+              filterBy="displayNameEn,displayNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #equipmentType
+              styleClass="w-100 "
+              (onChange)="onDeviceTypeChange()"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="equipmentType"
+                >
+                  <div>
+                    {{
+                      lang == "en"
+                        ? equipmentType.value.displayNameEn
+                        : equipmentType.value.displayNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <div
+              id="error"
+              class="form-text d-block text-danger"
+              *ngIf="
+                submitBtnClicked &&
+                addNewSourceForm.get('equipmentType')?.errors
+              "
+            >
+              {{ "addNewSource.validationText" | translate }}
+            </div>
+          </div>
+
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="modelNumber" class="mx-1"
+              >{{ "addNewSource.modelNumber" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="{{ 'mandatory' | translate }}"
+              id="modelNumber"
+              formControlName="modelNumber"
+              required
+            />
+            <div
+              id="error"
+              class="form-text d-block text-danger"
+              *ngIf="
+                submitBtnClicked && addNewSourceForm.get('modelNumber')?.errors
+              "
+            >
+              {{ "addNewSource.validationText" | translate }}
+            </div>
+          </div>
+
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="manufacturerserial" class="mx-1"
+              >{{ "addNewSource.manufacturerSerialNo" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="{{ 'mandatory' | translate }}"
+              id="manufacturerserial"
+              formControlName="manufacturerSerialNo"
+              required
+            />
+            <div
+              id="error"
+              class="form-text d-block text-danger"
+              *ngIf="
+                submitBtnClicked &&
+                addNewSourceForm.get('manufacturerSerialNo')?.errors
+              "
+            >
+              {{ "addNewSource.validationText" | translate }}
+            </div>
+          </div>
+
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="facilityGeneratorID" class="mx-1">
+              {{ "addNewSource.facilityGeneratorID" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="facilityGeneratorID"
+              placeholder="{{ 'mandatory' | translate }}"
+              required
+              formControlName="facilityGeneratorID"
+            />
+            <div
+              id="error"
+              class="form-text d-block text-danger"
+              *ngIf="
+                submitBtnClicked &&
+                addNewSourceForm.get('facilityGeneratorID')?.errors
+              "
+            >
+              {{ "addNewSource.validationText" | translate }}
+            </div>
+          </div>
+
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="manufacturerInput" class="mx-1">{{
+              "addNewSource.manufacturer" | translate
+            }}</label>
+            <p-dropdown
+              [options]="lookups['Manufacturer']"
+              formControlName="manufacturer"
+              optionLabel="displayNameEn"
+              [filter]="true"
+              filterBy="displayNameEn,displayNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #manufacturer
+              styleClass="w-100 "
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="manufacturer"
+                >
+                  <div>
+                    {{
+                      lang == "en"
+                        ? manufacturer.value.displayNameEn
+                        : manufacturer.value.displayNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <div
+              id="error"
+              class="form-text d-block text-danger"
+              *ngIf="
+                submitBtnClicked && addNewSourceForm.get('manufacturer')?.errors
+              "
+            >
+              {{ "addNewSource.validationText" | translate }}
+            </div>
+          </div>
+
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="manufacturerCountry" class="mx-1"
+              >{{ "addNewSource.manufacturerCountry" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <p-dropdown
+              [options]="lookups['ManufacturerCountry']"
+              formControlName="manufacturerCountry"
+              optionLabel="displayNameEn"
+              [filter]="true"
+              filterBy="displayNameEn,displayNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #manufacturerCountry
+              styleClass="w-100 "
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="manufacturerCountry"
+                >
+                  <div>
+                    {{
+                      lang == "en"
+                        ? manufacturerCountry.value.displayNameEn
+                        : manufacturerCountry.value.displayNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <div
+              id="error"
+              class="form-text d-block text-danger"
+              *ngIf="
+                submitBtnClicked &&
+                addNewSourceForm.get('manufacturerCountry')?.errors
+              "
+            >
+              {{ "addNewSource.validationText" | translate }}
+            </div>
+          </div>
+
+          <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="dateOfManufacturing" class="mx-1"
+              >{{ "addNewSource.dateOfManufacturing" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <input
+              type="date"
+              class="form-control"
+              #dateOfManufacturing
+              id="dateOfManufacturing"
+              placeholder="{{ 'mandatory' | translate }}"
+              formControlName="dateOfManufacturing"
+              required
+              max="{{ currentDate | date : 'yyyy-MM-dd' }}"
+            />
+            <div
+              id="error"
+              class="form-text d-block text-danger"
+              *ngIf="
+                submitBtnClicked &&
+                addNewSourceForm.get('dateOfManufacturing')?.errors
+              "
+            >
+              {{ "addNewSource.validationText" | translate }}
+            </div>
+          </div>
+
+          <hr />
+          <!-- Characterisrics -->
+          <section class="w-100">
+            <h5 class="col-12 mb-3">
+              {{ "addNewSource.characterisrics" | translate }}
+            </h5>
+            <div class="row">
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="status" class="mx-1"
+                  >{{ "addNewSource.status" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <p-dropdown
+                  [options]="lookups['Status']"
+                  formControlName="status"
+                  optionLabel="displayNameEn"
+                  [filter]="true"
+                  filterBy="displayNameEn,displayNameAr"
+                  [showClear]="true"
+                  placeholder="{{ '--Select--' | translate }}"
+                  #status
+                  styleClass="w-100 "
+                >
+                  <ng-template pTemplate="selectedItem">
+                    <div class="country-item country-item-value" *ngIf="status">
+                      <div>
+                        {{
+                          lang == "en"
+                            ? status.value.displayNameEn
+                            : status.value.displayNameAr
+                        }}
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-r pTemplate="item">
+                    <div class="country-item">
+                      <div>
+                        {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked && addNewSourceForm.get('status')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="maximumEnergy" class="mx-2"
+                  >{{ "addNewSource.maximumEnergy" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="maximumEnergy"
+                  placeholder="{{ 'mandatory' | translate }}"
+                  formControlName="maximumEnergy"
+                  (keyup)="isExempted()"
+                />
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked &&
+                    addNewSourceForm.get('maximumEnergy')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="maximumCurrent" class="mx-2"
+                  >{{ "addNewSource.maximumCurrent" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="maximumCurrent"
+                  placeholder="{{ 'mandatory' | translate }}"
+                  formControlName="maximumCurrent"
+                />
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked &&
+                    addNewSourceForm.get('maximumCurrent')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr />
+          <!-- Associated X-Ray tube -->
+          <section class="w-100">
+            <h5 class="col-12 mb-3">
+              {{ "addNewSource.associatedXRayTube" | translate }}
+            </h5>
+            <div class="row">
+              <div
+                class="px-1 mb-2 d-flex align-items-center col-lg-6 col-md-6 col-sm-12 col-xs-12"
+              >
+                <label class="mx-4"
+                  >{{ "addNewSource.isShieldDepletedUranium" | translate }}
+                </label>
+                <p-inputSwitch
+                  (onChange)="handleXRayTubeChange($event)"
+                  formControlName=""
+                ></p-inputSwitch>
+              </div>
+            </div>
+            <div class="row align-items-center mt-3">
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="xRayTubeSerialNo" class="mx-1">
+                  {{ "addNewSource.xRayTubeSerialNo" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="xRayTubeSerialNo"
+                  placeholder="{{ 'mandatory' | translate }}"
+                  required
+                  formControlName="xRayTubeSerialNo"
+                  [required]="isDigonostic"
+                />
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked &&
+                    addNewSourceForm.get('xRayTubeSerialNo')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="tubeMaximumEnergy" class="mx-2"
+                  >{{ "addNewSource.tubeMaximumEnergy" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="tubeMaximumEnergy"
+                  placeholder="{{ 'mandatory' | translate }}"
+                  formControlName="tubeMaximumEnergy"
+                  [required]="isDigonostic"
+                />
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked &&
+                    addNewSourceForm.get('tubeMaximumEnergy')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="tubeMaximumCurrent" class="mx-2"
+                  >{{ "addNewSource.tubeMaximumCurrent" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="tubeMaximumCurrent"
+                  placeholder="{{ 'mandatory' | translate }}"
+                  formControlName="tubeMaximumCurrent"
+                  [required]="isDigonostic"
+                />
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked &&
+                    addNewSourceForm.get('tubeMaximumCurrent')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+            </div>
+          </section>
+          <hr />
+
+          <!-- Associated Equipment & Shielding -->
+          <section class="w-100">
+            <h5 class="col-12 mb-3">
+              {{ "addNewSource.associatedEquipment" | translate }}
+            </h5>
+            <div class="row">
+              <div
+                class="px-1 mb-2 d-flex align-items-center col-lg-6 col-md-6 col-sm-12 col-xs-12"
+              >
+                <label class="mx-4"
+                  >{{ "addNewSource.isShieldDepletedUranium" | translate }}
+                </label>
+                <p-inputSwitch
+                  (onChange)="handleXRayTubeChange($event)"
+                  formControlName=""
+                ></p-inputSwitch>
+              </div>
+            </div>
+            <div class="row align-items-center mt-3">
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="shieldingMaterial" class="mx-2"
+                  >{{ "addNewSource.shieldMaterial" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <p-dropdown
+                  [options]="lookups['ShieldingMaterial']"
+                  formControlName="shieldMaterial"
+                  optionLabel="displayNameEn"
+                  [filter]="true"
+                  filterBy="displayNameEn,displayNameAr"
+                  [showClear]="true"
+                  placeholder="{{ '--Select--' | translate }}"
+                  #shieldMaterial
+                  styleClass="w-100"
+                >
+                  <ng-template pTemplate="selectedItem">
+                    <div
+                      class="country-item country-item-value"
+                      *ngIf="shieldMaterial"
+                    >
+                      <div>
+                        {{
+                          lang == "en"
+                            ? shieldMaterial.value.displayNameEn
+                            : shieldMaterial.value.displayNameAr
+                        }}
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-r pTemplate="item">
+                    <div class="country-item">
+                      <div>
+                        {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    (addNewSourceForm.get('shieldMaterial')?.touched &&
+                      addNewSourceForm.get('shieldMaterial')?.errors) ||
+                    (submitBtnClicked &&
+                      addNewSourceForm.get('shieldMaterial')?.errors)
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="shieldNuclearMaterialCode" class="mx-2">
+                  {{ "addNewSource.shieldNuclearMaterialCode" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="shieldNuclearMaterialCode"
+                  placeholder="{{ 'mandatory' | translate }}"
+                  formControlName="shieldNuclearMaterialCode"
+                />
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked &&
+                    addNewSourceForm.get('shieldNuclearMaterialCode')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+            </div>
+          </section>
+          <hr />
+
+          <section class="w-100">
+            <h5 class="col-12 mb-3">
+              {{ "addNewSource.energy" | translate }}
+            </h5>
+            <div class="row">
+              <!-- <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label class="mx-1"
+                  >{{ "addNewSource.maximumCurrentUnit" | translate
+                  }}<span class="text-danger valdiation-text">*</span></label
+                >
+                <p-dropdown
+                  [options]="lookups['EnergyUnit']"
+                  formControlName="maximumCurrentUnit"
+                  optionLabel="displayNameEn"
+                  [filter]="true"
+                  filterBy="displayNameEn,displayNameAr"
+                  [showClear]="true"
+                  placeholder="{{ '--Select--' | translate }}"
+                  #maximumCurrentUnit
+                  styleClass="w-100"
+                  id="maximumCurrentUnit"
+                >
+                  <ng-template pTemplate="selectedItem">
+                    <div
+                      class="country-item country-item-value"
+                      *ngIf="maximumCurrentUnit"
+                    >
+                      <div>
+                        {{
+                          lang == "en"
+                            ? maximumCurrentUnit.value.displayNameEn
+                            : maximumCurrentUnit.value.displayNameAr
+                        }}
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-r pTemplate="item">
+                    <div class="country-item">
+                      <div>
+                        {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked &&
+                    addNewSourceForm.get('maximumCurrentUnit')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div> -->
+
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label class="mx-1"
+                  >{{ "addNewSource.maximumEnergyUnit" | translate
+                  }}<span class="text-danger valdiation-text">*</span></label
+                >
+                <p-dropdown
+                  [options]="lookups['EnergyUnit']"
+                  formControlName="maximumEnergyUnit"
+                  optionLabel="displayNameEn"
+                  [filter]="true"
+                  filterBy="displayNameEn,displayNameAr"
+                  [showClear]="true"
+                  placeholder="{{ '--Select--' | translate }}"
+                  #maximumEnergyUnit
+                  styleClass="w-100"
+                  id="maximumEnergyUnit"
+                >
+                  <ng-template pTemplate="selectedItem">
+                    <div
+                      class="country-item country-item-value"
+                      *ngIf="maximumEnergyUnit"
+                    >
+                      <div>
+                        {{
+                          lang == "en"
+                            ? maximumEnergyUnit.value.displayNameEn
+                            : maximumEnergyUnit.value.displayNameAr
+                        }}
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-r pTemplate="item">
+                    <div class="country-item">
+                      <div>
+                        {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked &&
+                    addNewSourceForm.get('maximumEnergyUnit')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+            </div>
+          </section>
+          <hr />
+
+          <!-- <section class="w-100">
+            <h5 class="col-12 mb-3">
+              {{ "addNewSource.dose" | translate }}
+            </h5>
+            <div class="row">
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label class="mx-1"
+                  >{{ "addNewSource.doseEquivalentType" | translate
+                  }}<span class="text-danger valdiation-text">*</span></label
+                >
+                <p-dropdown
+                  [options]="lookups['DoseEquivalentTypes']"
+                  formControlName="doseEquivalentType"
+                  optionLabel="displayNameEn"
+                  [filter]="true"
+                  filterBy="displayNameEn,displayNameAr"
+                  [showClear]="true"
+                  placeholder="{{ '--Select--' | translate }}"
+                  #doseEquivalentType
+                  styleClass="w-100"
+                  id="doseEquivalentType"
+                >
+                  <ng-template pTemplate="selectedItem">
+                    <div
+                      class="country-item country-item-value"
+                      *ngIf="doseEquivalentType"
+                    >
+                      <div>
+                        {{
+                          lang == "en"
+                            ? doseEquivalentType.value.displayNameEn
+                            : doseEquivalentType.value.displayNameAr
+                        }}
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-r pTemplate="item">
+                    <div class="country-item">
+                      <div>
+                        {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked &&
+                    addNewSourceForm.get('doseEquivalentType')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label for="doseRate" class="mx-2"
+                  >{{ "addNewSource.doseRate" | translate }}
+                  <span class="text-danger valdiation-text">*</span></label
+                >
+                <div class="one_unit_container">
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="doseRate"
+                    placeholder="{{ 'mandatory' | translate }}"
+                    formControlName="doseRate"
+                    (keyup)="isExempted()"
+                  />
+                  <span class="unit-container">uSv/h</span>
+                </div>
+
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked && addNewSourceForm.get('doseRate')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+
+              <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <label class="mx-2"
+                  >{{ "addNewSource.exemption" | translate
+                  }}<span class="text-danger valdiation-text">*</span></label
+                >
+                <p-dropdown
+                  [options]="lookups['Boolean']"
+                  formControlName="exemption"
+                  optionLabel="displayNameEn"
+                  [filter]="true"
+                  filterBy="displayNameEn,displayNameAr"
+                  [showClear]="true"
+                  placeholder="{{ '--Select--' | translate }}"
+                  #exemption
+                  styleClass="w-100"
+                  id="exemption"
+                >
+                  <ng-template pTemplate="selectedItem">
+                    <div
+                      class="country-item country-item-value"
+                      *ngIf="exemption"
+                    >
+                      <div>
+                        {{
+                          lang == "en"
+                            ? exemption.value.displayNameEn
+                            : exemption.value.displayNameAr
+                        }}
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-r pTemplate="item">
+                    <div class="country-item">
+                      <div>
+                        {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+                <div
+                  id="error"
+                  class="form-text d-block text-danger"
+                  *ngIf="
+                    submitBtnClicked &&
+                    addNewSourceForm.get('exemption')?.errors
+                  "
+                >
+                  {{ "addNewSource.validationText" | translate }}
+                </div>
+              </div>
+
+             isTherapeutic              <ng-container *ngIf="isTherapeutic">
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="maximumDoseRate" class="mx-2"
+                    >{{ "addNewSource.maximumDoseRate" | translate }}
+                    <span class="text-danger valdiation-text">*</span></label
+                  >
+                  <div class="one_unit_container">
+                    <input
+                      type="number"
+                      min="0"
+                      class="form-control one_unit_input"
+                      id="maximumDoseRate"
+                      placeholder="{{ 'mandatory' | translate }}"
+                      formControlName="maximumDoseRate"
+                      [required]="isTherapeutic"
+                    />
+                    <div class="unit-container">mu/min</div>
+                  </div>
+                  <div
+                    id="error"
+                    class="form-text d-block text-danger"
+                    *ngIf="
+                      submitBtnClicked &&
+                      addNewSourceForm.get('maximumDoseRate')?.errors
+                    "
+                  >
+                    {{ "addNewSource.validationText" | translate }}
+                  </div>
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="maximumDoseRateAt01m" class="mx-2"
+                    >{{ "addNewSource.maximumDoseRateAt01m" | translate }}
+                    <span class="text-danger valdiation-text">*</span></label
+                  >
+                  <div class="one_unit_container">
+                    <input
+                      type="number"
+                      min="0"
+                      class="form-control one_unit_input"
+                      id="maximumDoseRateAt01m"
+                      placeholder="{{ 'mandatory' | translate }}"
+                      formControlName="maximumDoseRateAt01m"
+                      [required]="isTherapeutic"
+                    />
+                    <div class="unit-container">mu/min</div>
+                  </div>
+                  <div
+                    id="error"
+                    class="form-text d-block text-danger"
+                    *ngIf="
+                      submitBtnClicked &&
+                      addNewSourceForm.get('maximumDoseRateAt01m')?.errors
+                    "
+                  >
+                    {{ "addNewSource.validationText" | translate }}
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </section> -->
+
+          <hr />
+
+          <!-- isDigonostic -->
+          <!-- <ng-container *ngIf="isDigonostic">
+            <section class="w-100">
+              <h5 class="col-12 mb-3">
+                {{ "addNewSource.tubeInfo" | translate }}
+              </h5>
+              <div class="row">
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="xRayTubeSerialNo" class="mx-1">
+                    {{ "addNewSource.xRayTubeSerialNo" | translate }}
+                    <span class="text-danger valdiation-text">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="xRayTubeSerialNo"
+                    placeholder="{{ 'mandatory' | translate }}"
+                    required
+                    formControlName="xRayTubeSerialNo"
+                    [required]="isDigonostic"
+                  />
+                  <div
+                    id="error"
+                    class="form-text d-block text-danger"
+                    *ngIf="
+                      submitBtnClicked &&
+                      addNewSourceForm.get('xRayTubeSerialNo')?.errors
+                    "
+                  >
+                    {{ "addNewSource.validationText" | translate }}
+                  </div>
+                </div>
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="tubeMaximumEnergy" class="mx-2"
+                    >{{ "addNewSource.tubeMaximumEnergy" | translate }}
+                    <span class="text-danger valdiation-text">*</span></label
+                  >
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="tubeMaximumEnergy"
+                    placeholder="{{ 'mandatory' | translate }}"
+                    formControlName="tubeMaximumEnergy"
+                    [required]="isDigonostic"
+                  />
+                  <div
+                    id="error"
+                    class="form-text d-block text-danger"
+                    *ngIf="
+                      submitBtnClicked &&
+                      addNewSourceForm.get('tubeMaximumEnergy')?.errors
+                    "
+                  >
+                    {{ "addNewSource.validationText" | translate }}
+                  </div>
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="tubeMaximumCurrent" class="mx-2"
+                    >{{ "addNewSource.tubeMaximumCurrent" | translate }}
+                    <span class="text-danger valdiation-text">*</span></label
+                  >
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="tubeMaximumCurrent"
+                    placeholder="{{ 'mandatory' | translate }}"
+                    formControlName="tubeMaximumCurrent"
+                    [required]="isDigonostic"
+                  />
+                  <div
+                    id="error"
+                    class="form-text d-block text-danger"
+                    *ngIf="
+                      submitBtnClicked &&
+                      addNewSourceForm.get('tubeMaximumCurrent')?.errors
+                    "
+                  >
+                    {{ "addNewSource.validationText" | translate }}
+                  </div>
+                </div>
+
+              </div>
+            </section>
+            <hr />
+          </ng-container> -->
+
+          <div
+            class="d-flex justify-content-end align-items-center flex-wrap w-100"
+          >
+            <button
+              class="btn btn-secondary mx-2"
+              style="padding-left: 100px; padding-right: 100px"
+              (click)="SaveAsDraft()"
+            >
+              {{ "saveAsDraft" | translate }}
+            </button>
+            <button
+              class="btn btn-gold mx-2"
+              style="padding-left: 100px; padding-right: 100px"
+              (click)="submitNewSource()"
+            >
+              {{ "save" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

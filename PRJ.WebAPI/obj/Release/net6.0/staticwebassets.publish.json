@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "nMQzWS9CiSNLUeOdLzCwZZtPPYDRGXGNckhTVyd6zgQ=",
+  "Source": "PRJ.WebAPI",
+  "BasePath": "_content/PRJ.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "PRJ.WebAPI\\wwwroot",
+      "Source": "PRJ.WebAPI",
+      "ContentRoot": "C:\\Qimma\\PRJ.WebAPI\\wwwroot\\",
+      "BasePath": "_content/PRJ.WebAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Qimma\\PRJ.WebAPI\\wwwroot\\favicon.ico",
+      "SourceId": "PRJ.WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Qimma\\PRJ.WebAPI\\wwwroot\\",
+      "BasePath": "_content/PRJ.WebAPI",
+      "RelativePath": "favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\favicon.ico"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ItemSource\TrnItemSource\TransactionsHeader\**" />
+    <Compile Remove="TransactionItemFiles\**" />
+    <Compile Remove="TransactionsHeader\**" />
+    <Compile Remove="TransactionTypesMaster\**" />
+    <EmbeddedResource Remove="ItemSource\TrnItemSource\TransactionsHeader\**" />
+    <EmbeddedResource Remove="TransactionItemFiles\**" />
+    <EmbeddedResource Remove="TransactionsHeader\**" />
+    <EmbeddedResource Remove="TransactionTypesMaster\**" />
+    <None Remove="ItemSource\TrnItemSource\TransactionsHeader\**" />
+    <None Remove="TransactionItemFiles\**" />
+    <None Remove="TransactionsHeader\**" />
+    <None Remove="TransactionTypesMaster\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PRJ.DataAccess\PRJ.DataAccess.csproj" />
+    <ProjectReference Include="..\PRJ.GlobalComponents\PRJ.GlobalComponents.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="TransactionsHeader\" />
+    <None Remove="TrnItemSourceRadionuclides\" />
+    <None Remove="TransactionTypesMaster\" />
+    <None Remove="TrnItemSources\" />
+    <None Remove="TrnNuclearRelatedItems\" />
+    <None Remove="TrnRadiationGenerators\" />
+    <None Remove="WFTransactionsFlow\" />
+    <None Remove="WorkFlowRejectReasons\" />
+    <None Remove="WorkFlowStatus\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TrnNuclearRelatedItems\" />
+    <Folder Include="TrnRadiationGenerators\" />
+    <Folder Include="WFTransactionsFlow\" />
+    <Folder Include="WorkFlowRejectReasons\" />
+    <Folder Include="WorkFlowStatus\" />
+  </ItemGroup>
+</Project>

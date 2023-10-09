@@ -1,0 +1,384 @@
+<div class="border rounded shadow mt-5 bg-white px-4">
+  <div class="mainContent d-flex flex-wrap align-content-center mt-4 w-100">
+    <!-- Content Header-->
+    <section
+      class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2"
+    >
+      <div class="breadcrumb-w1 mb-0" class="{{ lang == 'ar' ? 'lang' : '' }}">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+        >
+          <ol class="breadcrumb">
+            <li
+              type="button"
+              class="breadcrumb-item"
+              (click)="Breadcrumb('')"
+              style="color: #ca9f45"
+            >
+              {{ "General.Home" | translate }}
+            </li>
+            <li
+              type="button"
+              class="breadcrumb-item"
+              (click)="Breadcrumb('related-items')"
+              style="color: #ca9f45"
+            >
+              {{ "RelatedItems.RelatedItems" | translate }}
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ "RelatedItems.RelatedItemsTree" | translate }}
+            </li>
+          </ol>
+        </nav>
+        <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()">
+          <fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon>
+          {{ "General.Back" | translate }}
+        </button>
+      </div>
+      <h4 class="text-left mt-4">
+        {{ "RelatedItems.RelatedItemsTree" | translate }}
+      </h4>
+    </section>
+
+    <div class="tree-table-container row">
+      <div class="col-lg-4 col-md-12 pt-2">
+        <div class="d-flex justify-content-start align-items-center w-100 mb-2">
+          <button
+            class="btn btn-secondary btn-sm custom-collapse me-2 ms-0"
+            (click)="collapseAll()"
+          >
+            <span class="padding-h-5">{{
+              "RelatedItems.CollapseAll" | translate
+            }}</span>
+          </button>
+
+          <button
+            class="btn btn-secondary btn-sm custom-collapse me-2"
+            style="background-color: var(--blue); border: none"
+            (click)="expandAll()"
+          >
+            <span class="padding-h-5">{{
+              "RelatedItems.ExpandAll" | translate
+            }}</span>
+          </button>
+        </div>
+
+        <div class="tree-containerw1 rounded shadow-sm">
+          <p-treeTable
+            #tt
+            [value]="data"
+            [columns]="columns"
+            dataKey="itemStructureCode"
+            dir="ltr"
+            [scrollable]="true"
+            scrollHeight="calc(100vh - 126px)"
+            [(contextMenuSelection)]="selectedNode"
+            [contextMenu]="cm"
+            class="relateditem"
+          >
+            <ng-template pTemplate="caption">
+              <div style="text-align: right">
+                <span class="p-input-icon-left">
+                  <i class="pi pi-search"></i>
+                  <input
+                    type="text"
+                    pInputText
+                    size="100"
+                    placeholder="Global Filter"
+                    class="search-tree"
+                    (input)="
+                      tt.filterGlobal($any($event).target.value, 'contains')
+                    "
+                    (keydown)="expandAll()"
+                  />
+                </span>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th class="itemDes-head rounded-top anas">
+                  {{ "RelatedItems.itemStructureCode" | translate }}
+                </th>
+                <th class="itemDes-head rounded-top anas">
+                  {{ "RelatedItems.itemStructureDesFrn" | translate }}
+                </th>
+              </tr>
+              <tr>
+                <th *ngFor="let col of columns">
+                  <input
+                    pInputText
+                    type="text"
+                    class="w-full search-tree"
+                    placeholder="{{ col.field }}"
+                    (input)="
+                      tt.filter(
+                        $any($event).target.value,
+                        col.field,
+                        col.filterMatchMode
+                      )
+                    "
+                    (keydown)="expandAll()"
+                  />
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+              <tr [ttContextMenuRow]="rowNode" class="itemDestr">
+                <td>
+                  <p-treeTableToggler
+                    dir="rtl"
+                    [rowNode]="rowNode"
+                  ></p-treeTableToggler>
+                  <span
+                    class="pointer-event"
+                    (click)="viewdetailsNode(rowData.itemStructureCode)"
+                  >
+                    {{ rowData.itemStructureCode }}
+                  </span>
+                </td>
+                <td class="itemDes">
+                  {{
+                    lang == "en"
+                      ? rowData.itemStructureDesFrn
+                      : rowData.itemStructureDesNtv
+                  }}
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr col="2">
+                <td [attr.colspan]="columns.length">No data found.</td>
+              </tr>
+            </ng-template>
+          </p-treeTable>
+        </div>
+      </div>
+      <!-- End of Tree Section Div-->
+
+      <div class="datatablediv col-lg-8 col-md-12 pt-2">
+        <div>
+          <button
+            type="button"
+            (click)="ExportExel()"
+            class="btn btn-gold btn-sm mx-1"
+          >
+            {{ "General.ExportExcel" | translate }}
+          </button>
+          <button
+            type="button"
+            (click)="Print()"
+            class="btn btn-gold btn-sm mx-1"
+          >
+            {{ "General.Print" | translate }}
+          </button>
+          <button
+            type="button"
+            (click)="Copy()"
+            class="btn btn-gold btn-sm mx-1"
+          >
+            {{ "General.Copy" | translate }}
+          </button>
+          <button
+            type="button"
+            (click)="ResetTable()"
+            class="btn btn-gold btn-sm mx-1"
+          >
+            {{ "RelatedItems.ResetTable" | translate }}
+          </button>
+        </div>
+        <div class="table-containerw1 rounded shadow-sm">
+          <table
+            datatable
+            [dtOptions]="dtOptions"
+            id="relatedItemsDataTable"
+            class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto"
+          >
+            <thead>
+              <tr>
+                <th width="20%" class="select-filter">
+                  {{ "RelatedItems.ManufacturerSerialNom" | translate }}
+                </th>
+                <th width="18%" class="select-filter">
+                  {{ "RelatedItems.hierarchyStructureCode" | translate }}
+                </th>
+                <th width="18%">
+                  {{ "RelatedItems.hsCode" | translate }}
+                </th>
+                <th width="30%" class="select-filter">
+                  {{ "RelatedItems.Description" | translate }}
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngIf="RelatedItems?.length != 0">
+              <tr *ngFor="let manuf of RelatedItems; index as i">
+                <td>{{ manuf.manufacturerSerialNom }}</td>
+                <td>{{ manuf.hierarchyStructureCode }}</td>
+                <td>{{ manuf.hsCode }}</td>
+                <td>{{ manuf.description }}</td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="RelatedItems?.length == 0">
+              <tr>
+                <td colspan="5" class="no-data-available">
+                  {{ "General.NoDataFound" | translate }}
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>
+                  <input
+                    class="search-input"
+                    name="entityNameEn"
+                    id="entityNameEn"
+                    type="text"
+                    placeholder="{{
+                      'RelatedItems.ManufacturerSerialNom' | translate
+                    }}"
+                    style="width: 100%"
+                  />
+                </th>
+                <th>
+                  <input
+                    class="search-input"
+                    name="emailId"
+                    type="text"
+                    placeholder="{{
+                      'RelatedItems.hierarchyStructureCode' | translate
+                    }}"
+                    style="width: 100%"
+                  />
+                </th>
+                <th>
+                  <input
+                    class="search-input"
+                    name="phoneNo"
+                    type="text"
+                    placeholder="{{ 'RelatedItems.hsCode' | translate }}"
+                    style="width: 100%"
+                  />
+                </th>
+                <th>
+                  <input
+                    class="search-input"
+                    name="entityNameAr"
+                    type="text"
+                    placeholder="{{ 'RelatedItems.description' | translate }}"
+                    style="width: 100%"
+                  />
+                </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <!-- end of datatablediv-->
+    </div>
+  </div>
+</div>
+<!--Context Menu-->
+<p-contextMenu #cm [model]="contextMenuitems"></p-contextMenu>
+
+<!-- Add/Edit Modal -->
+<p-dialog
+  [header]="edit ? 'Edit' : 'Add'"
+  [(visible)]="displayModal"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <form [formGroup]="addEditItemForm">
+    <div class="row">
+      <div class="col-6">
+        <label for="itemStructureDesFrn">{{
+          "RelatedItems.itemStructureDesFrn" | translate
+        }}</label>
+        <input
+          type="text"
+          formControlName="ItemStructureDesFrn"
+          class="form-control form-control-sm"
+          id="itemStructureDesFrn"
+        />
+      </div>
+      <div class="mb-3 col-6">
+        <label for="itemStructureDesNtv">{{
+          "RelatedItems.itemStructureDesNtv" | translate
+        }}</label>
+        <input
+          type="text"
+          formControlName="ItemStructureDesNtv"
+          class="form-control form-control-sm"
+          id="itemStructureDesNtv"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3 col-12">
+        <label for="LongDes">{{ "RelatedItems.LongDes" | translate }}</label>
+        <textarea
+          formControlName="ItemStructureLongDes"
+          rows="3"
+          class="form-control form-control-sm"
+          id="LongDes"
+        ></textarea>
+      </div>
+    </div>
+
+    <div [class]="edit ? '' : 'hidden'">
+      <h5 class="title-olddata mt-2 border-bottom pb-2">Old data</h5>
+
+      <div class="row">
+        <div class="mb-3 col-6">
+          <label>{{ "RelatedItems.itemStructureDesFrn" | translate }}</label>
+          <input
+            type="text"
+            class="form-control form-control-sm align-text-right"
+            value="{{ olddata.itemStructureDesFrn }}"
+            disabled
+          />
+        </div>
+        <div class="mb-3 col-6">
+          <label>{{ "RelatedItems.itemStructureDesNtv" | translate }}</label>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            value="{{ olddata.itemStructureDesNtv }}"
+            disabled
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <label>{{ "RelatedItems.ItemStructureLongDes" | translate }}</label>
+        <textarea class="form-control form-control-sm" rows="3" disabled>{{
+          olddata.ItemStructureLongDes
+        }}</textarea>
+      </div>
+    </div>
+  </form>
+  <ng-template pTemplate="footer">
+    <p-button
+      (click)="displayModal = false"
+      label="No"
+      styleClass="btn btn-sm btn-secondary"
+    ></p-button>
+    <p-button
+      *ngIf="!edit"
+      (click)="addItemStructure()"
+      label="Yes"
+      styleClass="btn btn-sm btn-blue"
+    ></p-button>
+    <p-button
+      *ngIf="edit"
+      (click)="editItemStructure()"
+      label="Yes"
+      styleClass="btn btn-sm btn-blue"
+    ></p-button>
+  </ng-template>
+</p-dialog>

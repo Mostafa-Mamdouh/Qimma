@@ -1,0 +1,12 @@
+C:\Qimma\PRJ.Integrations\bin\Debug\net6.0\PRJ.Integrations.deps.json
+C:\Qimma\PRJ.Integrations\bin\Debug\net6.0\PRJ.Integrations.dll
+C:\Qimma\PRJ.Integrations\bin\Debug\net6.0\PRJ.Integrations.pdb
+C:\Qimma\PRJ.Integrations\obj\Debug\net6.0\PRJ.Integrations.csproj.AssemblyReference.cache
+C:\Qimma\PRJ.Integrations\obj\Debug\net6.0\PRJ.Integrations.GeneratedMSBuildEditorConfig.editorconfig
+C:\Qimma\PRJ.Integrations\obj\Debug\net6.0\PRJ.Integrations.AssemblyInfoInputs.cache
+C:\Qimma\PRJ.Integrations\obj\Debug\net6.0\PRJ.Integrations.AssemblyInfo.cs
+C:\Qimma\PRJ.Integrations\obj\Debug\net6.0\PRJ.Integrations.csproj.CoreCompileInputs.cache
+C:\Qimma\PRJ.Integrations\obj\Debug\net6.0\PRJ.Integrations.dll
+C:\Qimma\PRJ.Integrations\obj\Debug\net6.0\refint\PRJ.Integrations.dll
+C:\Qimma\PRJ.Integrations\obj\Debug\net6.0\PRJ.Integrations.pdb
+C:\Qimma\PRJ.Integrations\obj\Debug\net6.0\ref\PRJ.Integrations.dll

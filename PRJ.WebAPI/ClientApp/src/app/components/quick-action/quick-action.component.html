@@ -1,0 +1,27 @@
+<div class="w-100 mt-4 d-flex align-content-center justify-content-center">
+  <div class="mainFav w-100 d-flex justify-content-center mt-3">
+    <div class="mainFavSelect">
+      <button (click)="favlist()" class="btn btn-secondary btn-sm w-100">
+        أريد أن ..
+      </button>
+      <div id="favDropDownList" class="dropdown-content">
+        <input
+          type="text"
+          placeholder="بحث"
+          id="myInput"
+          class="mb-3"
+          onkeyup="filterFavList()"
+        />
+
+        <a href="#about">About</a>
+        <a href="#base">Base</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="#custom">Custom</a>
+        <a href="#support">Support</a>
+        <a href="#tools">Tools</a>
+      </div>
+    </div>
+  </div>
+  <hr class="lineBreakw1" />
+</div>

@@ -1,0 +1,80 @@
+[
+  {
+    "LastDownloadTime": "2022-10-22T14:18:36.7218917Z",
+    "LocalPath": "JSON\\Schemas\\2408d306-e418-4751-b73d-fe895ae1bd93.json",
+    "OriginalPath": "https://json.schemastore.org/package.json",
+    "ExpirationTime": "2022-10-29T14:18:37.8827915Z"
+  },
+  {
+    "LastDownloadTime": "2022-11-01T15:35:44.7742068Z",
+    "LocalPath": "JSON\\Schemas\\2f14391e-6039-414c-bcee-6d4128422310.json",
+    "OriginalPath": "https://json.schemastore.org/appsettings.json",
+    "ExpirationTime": "2022-11-08T15:35:46.031921Z"
+  },
+  {
+    "LastDownloadTime": "2022-10-22T14:18:38.4951517Z",
+    "LocalPath": "JSON\\Schemas\\36d1d02d-b95a-4911-9b03-3231b1b88159.json",
+    "OriginalPath": "https://json.schemastore.org/stylelintrc.json",
+    "ExpirationTime": "2022-10-29T14:18:38.7514349Z"
+  },
+  {
+    "LastDownloadTime": "2022-10-22T14:18:37.9376118Z",
+    "LocalPath": "JSON\\Schemas\\4bdf6f06-378d-4196-9e97-be25c2df3b8f.json",
+    "OriginalPath": "https://json.schemastore.org/eslintrc.json",
+    "ExpirationTime": "2022-10-29T14:18:38.1989115Z"
+  },
+  {
+    "LastDownloadTime": "2022-11-02T18:41:37.7909374Z",
+    "LocalPath": "JSON\\Schemas\\60ede691-3816-4f93-bde5-26f64f22990e.json",
+    "OriginalPath": "http://json-schema.org/draft-04/schema",
+    "ExpirationTime": "2022-11-03T18:41:38.1266073Z"
+  },
+  {
+    "LastDownloadTime": "2022-11-08T18:24:52.0800716Z",
+    "LocalPath": "JSON\\Schemas\\63f018ab-c6ea-4b55-a3e8-8efa8451502e.json",
+    "OriginalPath": "http://json-schema.org/draft-07/schema",
+    "ExpirationTime": "2022-11-09T18:24:52.4169708Z"
+  },
+  {
+    "LastDownloadTime": "2022-11-08T18:24:52.0890705Z",
+    "LocalPath": "JSON\\Schemas\\8c9f5453-254c-4912-8a3d-c89d4ad1375a.json",
+    "OriginalPath": "http://json-schema.org/draft-06/schema",
+    "ExpirationTime": "2022-11-09T18:24:52.4109859Z"
+  },
+  {
+    "LastDownloadTime": "2022-10-22T14:18:38.8152959Z",
+    "LocalPath": "JSON\\Schemas\\bf91edb0-72ec-486c-a621-f52cacef1ca3.json",
+    "OriginalPath": "https://json.schemastore.org/ava.json",
+    "ExpirationTime": "2022-10-29T14:18:39.0785994Z"
+  },
+  {
+    "LastDownloadTime": "2022-11-08T20:50:22.9950897Z",
+    "LocalPath": "JSON\\Schemas\\c2fee15d-24ff-4299-8826-b1cb9327e1ae.json",
+    "OriginalPath": "https://docs.gradle.com/build-cache-node/schema/build-cache-node-config-schema-5.json",
+    "ExpirationTime": "2022-11-09T20:50:23.4517458Z"
+  },
+  {
+    "LastDownloadTime": "2022-11-02T07:04:30.0323907Z",
+    "LocalPath": "JSON\\Schemas\\d02abc4a-9509-4852-a079-c4fc1f7107d5.json",
+    "OriginalPath": "https://json.schemastore.org/launchsettings.json",
+    "ExpirationTime": "2022-11-09T07:04:32.5807297Z"
+  },
+  {
+    "LastDownloadTime": "2022-10-22T14:18:39.0835472Z",
+    "LocalPath": "JSON\\Schemas\\d3584811-5ea3-4e33-90b1-a21f7d5f14d4.json",
+    "OriginalPath": "https://json.schemastore.org/semantic-release.json",
+    "ExpirationTime": "2022-10-29T14:18:39.3388884Z"
+  },
+  {
+    "LastDownloadTime": "2022-10-22T14:18:38.2278348Z",
+    "LocalPath": "JSON\\Schemas\\d62cbe4e-44fb-4639-b7b1-7b7cf5847eff.json",
+    "OriginalPath": "https://json.schemastore.org/prettierrc.json",
+    "ExpirationTime": "2022-10-29T14:18:38.4861447Z"
+  },
+  {
+    "LastDownloadTime": "2022-10-22T14:18:39.34288Z",
+    "LocalPath": "JSON\\Schemas\\d9891709-f58a-4938-ae25-2e1d63af14a2.json",
+    "OriginalPath": "https://json.schemastore.org/jscpd.json",
+    "ExpirationTime": "2022-10-29T14:18:39.6021613Z"
+  }
+]

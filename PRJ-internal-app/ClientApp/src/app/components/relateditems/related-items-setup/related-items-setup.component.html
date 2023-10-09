@@ -1,0 +1,688 @@
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+  <div
+    class="mainContent d-flex mb-5 flex-wrap justify-content-evenly align-content-center mt-4"
+  >
+    <div class="breadcrumb-w1 mb-0" class="{{ lang == 'ar' ? 'lang' : '' }}">
+      <nav
+        style="
+          --bs-breadcrumb-divider: url(
+            &#34;data:image/svg + xml,
+            %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+          );
+        "
+        aria-label="breadcrumb"
+      >
+        <ol class="breadcrumb">
+          <li
+            type="button"
+            class="breadcrumb-item"
+            (click)="Breadcrumb('')"
+            style="color: #ca9f45"
+          >
+            {{ "General.Home" | translate }}
+          </li>
+          <li
+            type="button"
+            class="breadcrumb-item"
+            (click)="Breadcrumb('related-items')"
+            style="color: #ca9f45"
+          >
+            {{ "RelatedItems.RelatedItems" | translate }}
+          </li>
+          <li
+            *ngIf="!updateObj"
+            class="breadcrumb-item active"
+            aria-current="page"
+          >
+            {{ "RelatedItems.AddRelatedItems" | translate }}
+          </li>
+          <li
+            *ngIf="updateObj && !isView"
+            class="breadcrumb-item active"
+            aria-current="page"
+          >
+            {{ "RelatedItems.EditRelatedItems" | translate }}
+          </li>
+          <li *ngIf="isView" class="breadcrumb-item active" aria-current="page">
+            {{ "RelatedItems.ViewItem" | translate }}
+          </li>
+        </ol>
+      </nav>
+      <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()">
+        <fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon>
+        {{ "General.Back" | translate }}
+      </button>
+    </div>
+    <form
+      style="width: 100%"
+      enctype="multipart/form-data"
+      [formGroup]="ItemForm"
+    >
+      <h4 class="text-left my-3">
+        {{ "RelatedItems.PageTitle" | translate }}
+      </h4>
+      <div class="row w-100 mt-3">
+        <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <label for="status" class="mx-1">
+            {{ "addNewSource.nuclearRelatedItem" | translate }}
+            <span class="text-danger valdiation-text">*</span>
+          </label>
+          <p-dropdown
+            [options]="hierarchyItems"
+            formControlName="nuclearRelatedItem"
+            optionLabel="itemStructureCode"
+            [filter]="true"
+            filterBy="itemStructureCode"
+            [showClear]="true"
+            placeholder="{{ '--Select--' | translate }}"
+            #item
+            styleClass="w-100 "
+          >
+            <ng-template pTemplate="selectedItem">
+              <div class="country-item country-item-value" *ngIf="item">
+                <div>
+                  {{
+                    lang == "en"
+                      ? item.value.itemStructureCode
+                      : item.value.itemStructureCode
+                  }}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-r pTemplate="item">
+              <div class="country-item">
+                <div>
+                  {{
+                    lang == "en" ? r?.itemStructureCode : r?.itemStructureCode
+                  }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <!-- <div
+            id="error"
+            class="form-text d-block text-danger"
+            *ngIf="submitBtnClicked && addNewSourceForm.get('status')?.errors"
+          >
+            {{ "addNewSource.validationText" | translate }}
+          </div> -->
+        </div>
+
+        <div
+          class="px-1 mb-2 mx-2 d-flex align-items-center flex-shrink-0 col-lg-3 col-md-12 col-sm-12 col-xs-12"
+        >
+          <label class="mx-4"
+            >{{ "addNewSource.isTechnologyAndSoftware" | translate }}
+          </label>
+          <p-inputSwitch
+            formControlName="isTechnologyAndSoftware"
+          ></p-inputSwitch>
+        </div>
+
+        <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <label for="description" class="mx-1">
+            {{ "addNewSource.description" | translate }}
+            <span class="text-danger valdiation-text">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'mandatory' | translate }}"
+            id="description"
+            formControlName="description"
+            required
+          />
+          <!-- <div
+        id="error"
+        class="form-text d-block text-danger"
+        *ngIf="
+          submitBtnClicked &&
+          addNewSourceForm.get('description')?.errors
+        "
+      >
+        {{ "addNewSource.validationText" | translate }}
+      </div> -->
+        </div>
+      </div>
+
+      <div class="row w-100 mt-3 lookupsDataEntry">
+        <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <label for="status" class="mx-1">
+            {{ "addNewSource.status" | translate }}
+            <span class="text-danger valdiation-text">*</span>
+          </label>
+          <p-dropdown
+            [options]="lookups['Status']"
+            formControlName="status"
+            optionLabel="displayNameEn"
+            [filter]="true"
+            filterBy="displayNameEn,displayNameAr"
+            [showClear]="true"
+            placeholder="{{ '--Select--' | translate }}"
+            #status
+            styleClass="w-100 "
+          >
+            <ng-template pTemplate="selectedItem">
+              <div class="country-item country-item-value" *ngIf="status">
+                <div>
+                  {{
+                    lang == "en"
+                      ? status.value.displayNameEn
+                      : status.value.displayNameAr
+                  }}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-r pTemplate="item">
+              <div class="country-item">
+                <div>
+                  {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <!-- <div
+            id="error"
+            class="form-text d-block text-danger"
+            *ngIf="submitBtnClicked && addNewSourceForm.get('status')?.errors"
+          >
+            {{ "addNewSource.validationText" | translate }}
+          </div> -->
+        </div>
+        <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <label for="manufacturerserial" class="mx-1">
+            {{ "addNewSource.manufacturerSerialNo" | translate }}
+            <span class="text-danger valdiation-text">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'mandatory' | translate }}"
+            id="manufacturerserial"
+            formControlName="manufacturerSerialNo"
+            required
+          />
+          <!-- <div
+            id="error"
+            class="form-text d-block text-danger"
+            *ngIf="
+              submitBtnClicked &&
+              addNewSourceForm.get('manufacturerSerialNo')?.errors
+            "
+          >
+            {{ "addNewSource.validationText" | translate }}
+          </div> -->
+        </div>
+        <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <label for="manufacturerInput" class="mx-1">
+            {{ "addNewSource.manufacturer" | translate }}
+            <span class="text-danger valdiation-text">*</span>
+          </label>
+          <p-dropdown
+            [options]="lookups['Manufacturer']"
+            formControlName="manufacturerId"
+            optionLabel="displayNameEn"
+            [filter]="true"
+            filterBy="displayNameEn,displayNameAr"
+            [showClear]="true"
+            placeholder="{{ '--Select--' | translate }}"
+            #manufacturer
+            styleClass="w-100 "
+          >
+            <ng-template pTemplate="selectedItem">
+              <div class="country-item country-item-value" *ngIf="manufacturer">
+                <div>
+                  {{
+                    lang == "en"
+                      ? manufacturer.value.displayNameEn
+                      : manufacturer.value.displayNameAr
+                  }}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-r pTemplate="item">
+              <div class="country-item">
+                <div>
+                  {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <!-- <div
+            id="error"
+            class="form-text d-block text-danger"
+            *ngIf="
+              submitBtnClicked &&
+              addNewSourceForm.get('manufacturerId')?.errors
+            "
+          >
+            {{ "addNewSource.validationText" | translate }}
+          </div> -->
+        </div>
+
+        <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <label for="manufacturerCountry" class="mx-1"
+            >{{ "addNewSource.manufacturerCountry" | translate }}
+            <span class="text-danger valdiation-text">*</span></label
+          >
+          <p-dropdown
+            [options]="lookups['ManufacturerCountry']"
+            formControlName="manufacturerCountryId"
+            optionLabel="displayNameEn"
+            [filter]="true"
+            filterBy="displayNameEn,displayNameAr"
+            [showClear]="true"
+            placeholder="{{ '--Select--' | translate }}"
+            #manufacturerCountry
+            styleClass="w-100 "
+          >
+            <ng-template pTemplate="selectedItem">
+              <div
+                class="country-item country-item-value"
+                *ngIf="manufacturerCountry"
+              >
+                <div>
+                  {{
+                    lang == "en"
+                      ? manufacturerCountry.value.displayNameEn
+                      : manufacturerCountry.value.displayNameAr
+                  }}
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-r pTemplate="item">
+              <div class="country-item">
+                <div>
+                  {{ lang == "en" ? r?.displayNameEn : r?.displayNameAr }}
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <!-- <div
+            id="error"
+            class="form-text d-block text-danger"
+            *ngIf="
+              submitBtnClicked &&
+              addNewSourceForm.get('manufacturerCountryId')?.errors
+            "
+          >
+            {{ "addNewSource.validationText" | translate }}
+          </div> -->
+        </div>
+      </div>
+      <hr />
+
+      <h5 class="w-100">
+        {{ "attachments" | translate
+        }}<span class="text-danger valdiation-text">*</span>
+      </h5>
+      <h6 class="col-12 mb-3 mt-2">Certificate</h6>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+          <!-- *ngIf="isManufacturerCertificate" -->
+          <div
+            id="error"
+            class="form-text d-block text-danger"
+            *ngIf="!isSourceManufacturerCertificateValid"
+          >
+            {{ "attachmentsValidation" | translate }}
+          </div>
+          <div class="form-check form-switch mb-2">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="noManufacturerCertificateFlag"
+              formControlName="noManufacturerCertificateFlag"
+              #noManufacturerCertificateFlag
+              (change)="handleCertificateChange(1)"
+              [disabled]="isView"
+            />
+            <label
+              class="form-check-label"
+              for="noManufacturerCertificateFlag"
+              >{{ "addNewSource.doYouHaveCertificate" | translate }}</label
+            >
+          </div>
+          <label class="mx-1"
+            >{{ "addNewSource.manufacturerCertificate" | translate }}
+            <span class="text-danger valdiation-text">*</span></label
+          >
+          <ngx-dropzone
+            [accept]="'application/pdf'"
+            (change)="
+              onSelect($event, AttachmentsTypes.manufacturerCertificate)
+            "
+            [expandable]="false"
+            style="width: 100%; border: 1px solid #dee2e6"
+            class="ngx-dropzone"
+            [disabled]="!isManufacturerCertificate || isView"
+          >
+            <ngx-dropzone-label>{{
+              "uploadAttachment" | translate
+            }}</ngx-dropzone-label>
+            <ngx-dropzone-preview
+              [removable]="true"
+              (removed)="onRemove(f, AttachmentsTypes.manufacturerCertificate)"
+              *ngFor="let f of manufacturerCertificates"
+              class="ngx-dropzone-preview"
+            >
+              <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+        </div>
+
+        <div
+          class="col-lg-4 col-md-6 col-sm-12 mb-3"
+          *ngIf="!isManufacturerCertificate"
+        >
+          <div
+            id="error"
+            class="form-text d-block text-danger"
+            *ngIf="!isCharCertificateValid"
+          >
+            {{ "attachmentsValidation" | translate }}
+          </div>
+          <div class="form-check form-switch mb-2">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="charCertificate"
+              formControlName="noCharacterizationCertificateFlag"
+              #noCharacterizationCertificateFlag
+              (change)="handleCertificateChange(2)"
+              [disabled]="isView"
+            />
+            <label
+              class="form-check-label"
+              for="noCharacterizationCertificateFlag"
+              >{{ "addNewSource.ifYouDontHaveCertificate" | translate }}</label
+            >
+          </div>
+          <label class="mx-1"
+            >{{ "addNewSource.characterizationCertificate" | translate }}
+            <span class="text-danger valdiation-text">*</span></label
+          >
+          <ngx-dropzone
+            [accept]="'application/pdf'"
+            (change)="onSelect($event, AttachmentsTypes.charCertificates)"
+            [expandable]="false"
+            style="width: 100%; border: 1px solid #dee2e6"
+            class="ngx-dropzone"
+            [disabled]="!isCharCertificate || isView"
+          >
+            <ngx-dropzone-label>{{
+              "uploadAttachment" | translate
+            }}</ngx-dropzone-label>
+            <ngx-dropzone-preview
+              [removable]="true"
+              (removed)="onRemove(f, AttachmentsTypes.charCertificates)"
+              *ngFor="let f of charCertificates"
+              class="ngx-dropzone-preview"
+            >
+              <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+        </div>
+
+        <div
+          class="col-lg-4 col-md-6 col-sm-12 mb-3"
+          *ngIf="!isCharCertificate && !isManufacturerCertificate"
+        >
+          <div
+            id="error"
+            class="form-text d-block text-danger"
+            *ngIf="!isSourceTagImagesValid"
+          >
+            {{ "attachmentsValidation" | translate }}
+          </div>
+          <div class="form-check form-switch mb-2">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="noImagesFlag"
+              formControlName="noSourceTagImageFlag"
+              (change)="handleCertificateChange(6)"
+              [disabled]="isView"
+            />
+            <label class="form-check-label" for="noImagesFlag">{{
+              "addNewSource.noSourceTagImageFlag" | translate
+            }}</label>
+          </div>
+          <label class="mx-1"
+            >{{ "addNewSource.sourceTagImage" | translate }}
+            <span *ngIf="isSourceTagImage" class="text-danger valdiation-text"
+              >*</span
+            >
+          </label>
+          <ngx-dropzone
+            [accept]="'image/jpeg,image/jpg,image/png'"
+            (change)="onSelect($event, AttachmentsTypes.sourceTagImage)"
+            [expandable]="false"
+            style="width: 100%; border: 1px solid #dee2e6"
+            class="ngx-dropzone"
+            [disabled]="!isSourceTagImage || isView"
+          >
+            <ngx-dropzone-label>{{
+              "uploadImage" | translate
+            }}</ngx-dropzone-label>
+            <ngx-dropzone-image-preview
+              [removable]="true"
+              ngProjectAs="ngx-dropzone-preview"
+              [file]="f"
+              (removed)="onRemove(f, AttachmentsTypes.sourceTagImage)"
+              *ngFor="let f of sourceTagImages"
+              class="ngx-dropzone-preview"
+            >
+              <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
+        </div>
+      </div>
+
+      <hr />
+
+      <h6 class="col-12 mb-3 mt-2">Other Attachments</h6>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+          <div
+            id="error"
+            class="form-text d-block text-danger"
+            *ngIf="!isSourceCustomImportPermitsValid"
+          >
+            {{ "attachmentsValidation" | translate }}
+          </div>
+          <div class="form-check form-switch mb-2">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="manufacturerCertificate"
+              formControlName="noCustomImportPermitFlag"
+              #noCustomImportPermitFlag
+              (change)="handleCertificateChange(3)"
+              [disabled]="isView"
+            />
+            <label class="form-check-label" for="noCustomImportPermitFlag">{{
+              "addNewSource.noCustomImportPermitFlag" | translate
+            }}</label>
+          </div>
+          <label class="mx-1"
+            >{{ "addNewSource.customImportPermit" | translate }}
+            <span
+              *ngIf="isCustomImportPermit"
+              class="text-danger valdiation-text"
+              >*</span
+            ></label
+          >
+          <ngx-dropzone
+            [accept]="'application/pdf'"
+            (change)="onSelect($event, AttachmentsTypes.customImportPermits)"
+            [expandable]="false"
+            style="width: 100%; border: 1px solid #dee2e6"
+            class="ngx-dropzone"
+            [disabled]="!isCustomImportPermit || isView"
+          >
+            <ngx-dropzone-label>{{
+              "uploadAttachment" | translate
+            }}</ngx-dropzone-label>
+            <ngx-dropzone-preview
+              [removable]="true"
+              (removed)="onRemove(f, AttachmentsTypes.customImportPermits)"
+              *ngFor="let f of customImportPermits"
+              class="ngx-dropzone-preview"
+            >
+              <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+          <div
+            id="error"
+            class="form-text d-block text-danger"
+            *ngIf="!isSourceShipperImportPermitsValid"
+          >
+            {{ "attachmentsValidation" | translate }}
+          </div>
+          <div class="form-check form-switch mb-2">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="noShipperImportPermitFlag"
+              formControlName="noShipperImportPermitFlag"
+              (change)="handleCertificateChange(4)"
+              [disabled]="isView"
+            />
+            <label class="form-check-label" for="noShipperImportPermitFlag">{{
+              "addNewSource.noShipperImportPermitFlag" | translate
+            }}</label>
+          </div>
+          <label class="mx-1"
+            >{{ "addNewSource.shipperImportPermit" | translate }}
+            <span
+              *ngIf="isShipperImportPermit"
+              class="text-danger valdiation-text"
+              >*</span
+            >
+          </label>
+          <ngx-dropzone
+            [accept]="'application/pdf'"
+            (change)="onSelect($event, AttachmentsTypes.shipperImportPermits)"
+            [expandable]="false"
+            style="width: 100%; border: 1px solid #dee2e6"
+            class="ngx-dropzone"
+            [disabled]="!isShipperImportPermit || isView"
+          >
+            <ngx-dropzone-label>{{
+              "uploadAttachment" | translate
+            }}</ngx-dropzone-label>
+            <ngx-dropzone-preview
+              [removable]="true"
+              (removed)="onRemove(f, AttachmentsTypes.shipperImportPermits)"
+              *ngFor="let f of shipperImportPermits"
+              class="ngx-dropzone-preview"
+            >
+              <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+          <div style="visibility: hidden">
+            <div class="form-check form-switch mb-2">
+              <input class="form-check-input" type="checkbox" />
+              <label class="form-check-label" for="noImagesFlag">{{
+                "addNewSource.noImagesFlag" | translate
+              }}</label>
+            </div>
+          </div>
+          <label class="mx-1"
+            >{{ "addNewSource.endUserCertificate" | translate }}
+            <span class="text-black-50" style="font-size: 0.8em"
+              >({{ "addNewSource.endUserCertificateNote" | translate }})</span
+            >
+          </label>
+
+          <ngx-dropzone
+            [accept]="'application/pdf'"
+            (change)="onSelect($event, AttachmentsTypes.endUserCertificate)"
+            [expandable]="false"
+            style="width: 100%; border: 1px solid #dee2e6"
+            class="ngx-dropzone"
+            [disabled]="isView"
+          >
+            <ngx-dropzone-label>{{
+              "uploadAttachment" | translate
+            }}</ngx-dropzone-label>
+            <ngx-dropzone-preview
+              [removable]="true"
+              (removed)="onRemove(f, AttachmentsTypes.endUserCertificate)"
+              *ngFor="let f of endUserCertificate"
+              class="ngx-dropzone-preview"
+            >
+              <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+          <div style="visibility: hidden">
+            <div class="form-check form-switch mb-2">
+              <input class="form-check-input" type="checkbox" />
+              <label class="form-check-label" for="noImagesFlag">{{
+                "addNewSource.noImagesFlag" | translate
+              }}</label>
+            </div>
+          </div>
+          <label class="mx-1"
+            >{{ "addNewSource.otherDocuments" | translate }}
+            <span class="text-black-50" style="font-size: 0.8em"
+              >({{ "optional" | translate }})</span
+            >
+          </label>
+
+          <ngx-dropzone
+            [accept]="'application/pdf'"
+            (change)="onSelect($event, AttachmentsTypes.otherDocumnets)"
+            [expandable]="false"
+            style="width: 100%; border: 1px solid #dee2e6"
+            class="ngx-dropzone"
+            [disabled]="isView"
+          >
+            <ngx-dropzone-label>{{
+              "uploadAttachment" | translate
+            }}</ngx-dropzone-label>
+            <ngx-dropzone-preview
+              [removable]="true"
+              (removed)="onRemove(f, AttachmentsTypes.otherDocumnets)"
+              *ngFor="let f of otherDocumnets"
+              class="ngx-dropzone-preview"
+            >
+              <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+        </div>
+      </div>
+      <hr />
+      <div
+        class="d-flex justify-content-end align-items-center flex-wrap w-100"
+        *ngIf="!isView"
+      >
+        <button
+          *ngIf="!updateObj"
+          class="btn btn-gold mx-2 col-md-3 col-sm-12 col-xs-12 mb-1"
+          (click)="submit()"
+        >
+          {{ "save" | translate }}
+        </button>
+        <button
+          *ngIf="updateObj"
+          class="btn btn-gold mx-2 col-md-3 col-sm-12 col-xs-12 mb-1"
+          (click)="update()"
+        >
+          {{ "edit" | translate }}
+        </button>
+      </div>
+    </form>
+    <!-- end of lookup Section-->
+  </div>
+</div>

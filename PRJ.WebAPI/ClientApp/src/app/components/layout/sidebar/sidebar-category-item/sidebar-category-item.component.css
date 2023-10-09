@@ -1,0 +1,35 @@
+.has-submenu span,
+.sidebarNavLink {
+  padding: auto 10px;
+}
+
+.ng-fa-icon {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+fa-icon,
+ng-fa-icon {
+  color: var(--dgold);
+}
+
+fa-icon:hover,
+ng-fa-icon:hover {
+  display: inline-block;
+  animation: swing ease-in-out 0.5s 1 alternate;
+}
+
+.category-item-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.has-submenu:hover fa-icon,
+.has-submenu:hover ng-fa-icon,
+.has-submenu:hover span {
+  color: var(--blue);
+}
+
+.category-item-container-first {
+  display: block;
+}

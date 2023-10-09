@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NRRCDb2Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LookupSet">
+    <Key>
+      <PropertyRef Name="LookupSetId" />
+    </Key>
+    <Property Name="LookupSetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="ClassName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayNameAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayNameEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="LookupSetTerms" Relationship="Self.FK_LookupSetTerm_LookupSet_LookupSetId" FromRole="LookupSet" ToRole="LookupSetTerm" />
+  </EntityType>
+  <EntityType Name="LookupSetTerm">
+    <Key>
+      <PropertyRef Name="LookupSetTermId" />
+    </Key>
+    <Property Name="LookupSetTermId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LookupSetId" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayNameAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayNameEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="LookupSet" Relationship="Self.FK_LookupSetTerm_LookupSet_LookupSetId" FromRole="LookupSetTerm" ToRole="LookupSet" />
+  </EntityType>
+  <Association Name="FK_LookupSetTerm_LookupSet_LookupSetId">
+    <End Role="LookupSet" Type="Self.LookupSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LookupSetTerm" Type="Self.LookupSetTerm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupSet">
+        <PropertyRef Name="LookupSetId" />
+      </Principal>
+      <Dependent Role="LookupSetTerm">
+        <PropertyRef Name="LookupSetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NRRCDb2Entities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LookupSets" EntityType="Self.LookupSet" />
+    <EntitySet Name="LookupSetTerms" EntityType="Self.LookupSetTerm" />
+    <AssociationSet Name="FK_LookupSetTerm_LookupSet_LookupSetId" Association="Self.FK_LookupSetTerm_LookupSet_LookupSetId">
+      <End Role="LookupSet" EntitySet="LookupSets" />
+      <End Role="LookupSetTerm" EntitySet="LookupSetTerms" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

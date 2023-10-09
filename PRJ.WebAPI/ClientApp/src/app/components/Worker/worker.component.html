@@ -1,0 +1,243 @@
+<!-- Content -->
+        <div class="w-100 page-container container-fluid d-flex justify-content-between align-content-center border rounded shadow bg-white px-4">
+            
+          <div
+          class="sidebarcontent d-flex justify-content-start align-items-center flex-column mt-4 rounded border shadow-sm mb-2 pt-3 px-1"
+          >
+          <div class="px-1 mb-3 w-100">
+            <label for="entity" class="mx-1"
+              >{{ "addNewSource.licenseNumber" | translate }}
+            </label>
+            <p-listbox
+              [options]="licenses"
+              [(ngModel)]="currentLicense"
+              [metaKeySelection]="false"
+              [checkbox]="true"
+              [filter]="true"
+              [multiple]="false"
+              filterBy="licenseCode"
+              optionLabel="licenseCode"
+              [listStyle]="{ 'max-height': '250px' }"
+              [style]="{ width: '100%' }"
+              (onChange)="setLicense()"
+              [disabled]="true"
+            >
+              <ng-template let-item pTemplate="item">
+                <div class="country-item">
+                  <div>{{ item.licenseCode }}</div>
+                </div>
+              </ng-template>
+            </p-listbox>
+          </div>
+          
+        
+          
+          <div class="px-1 mb-3 w-100">
+            <label for="entity" class="mx-1"
+              >{{ "entity" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <p-dropdown
+              [options]="entities"
+              [(ngModel)]="currentEntity"
+              optionLabel="entityNameEn"
+              [filter]="true"
+              filterBy="entityNameEn,entityNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #entity
+              (onChange)="getFacilitiesByEntityId(entity.value.id)"
+              styleClass="w-100 "
+              [disabled]="true"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div class="country-item country-item-value" *ngIf="entity">
+                  <div>
+                    {{
+                      lang == "en"
+                        ? entity.value.entityNameEn
+                        : entity.value.entityNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.entityNameEn : r?.entityNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          
+          <!-- Facility -->
+          <div class="px-1 mb-3 w-100">
+            <label for="facility" class="mx-1">
+              {{ "facility" | translate }}
+              <span class="text-danger valdiation-text">*</span></label
+            >
+            <p-dropdown
+              [options]="facilities"
+              [(ngModel)]="currentFacility"
+              optionLabel="facilityNameEn"
+              [filter]="true"
+              filterBy="facilityNameEn,facilityNameAr"
+              [showClear]="true"
+              placeholder="{{ '--Select--' | translate }}"
+              #facility
+              styleClass="w-100 "
+              (onChange)="setFacility()"
+              [disabled]="true"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div class="country-item country-item-value" *ngIf="facility">
+                  <div>
+                    {{
+                      lang == "en"
+                        ? facility.value.facilityNameEn
+                        : facility.value.facilityNameAr
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template let-r pTemplate="item">
+                <div class="country-item">
+                  <div>
+                    {{ lang == "en" ? r?.facilityNameEn : r?.facilityNameAr }}
+                  </div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          </div>
+          
+      
+
+            <div class="mainContent d-flex flex-wrap justify-content-evenly align-content-start mt-4 w-75 border shadow-sm rounded mb-2 p-2">
+
+                
+
+                <div class="servicesList w-100 d-flex justify-content-end align-items-center  flex-wrap p-3">
+                    <button class="btn btn btn-gold m-1" (click)="GoToAddworker()">Add New Worker</button>
+                    <button class="btn btn btn-success m-1" (click)="GoToMassUpdate()" >Mass Reading Update</button>
+                    
+                </div> <!-- end of servicesList-->
+                <div class="source-service-details d-flex justify-content-start flex-row-reverse align-items-start w-100">
+ 
+                    <div class="functionButtonsContainer">
+                  </div>
+                      <!-- end of functions buttons Div-->
+              
+      <table datatable [dtOptions]="dtOptions" id="WorkersDataTable" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+        <thead>
+          <tr>
+            <th class="select-filter">
+              {{ "Workers.WorkerName" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "Workers.nationalityId" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "Workers.Gender" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "Workers.TypeDeviceMeter" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "Workers.ReadDosimeter" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "Workers.DateRead" | translate }}
+            </th>
+            <th>{{ "Action" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="radionuclides?.length != 0">
+          <tr *ngFor="let mem of radionuclides; let i = index"> 
+            <td>{{ lang == "en" ? mem.workerNameEn : mem.workerNameAr }}</td>
+            <td>{{ mem.nationalityId }}</td>
+            <td>{{ lang == "en" ? mem.genderLookup.displayNameEn : mem.genderLookup.displayNameAr }}</td>
+            <td>    {{mem.lastWorkersExposuresDose != null ? lang == "en" ? mem.lastWorkersExposuresDose.dosimeterTypeList.displayNameEn : mem.lastWorkersExposuresDose.dosimeterTypeList.displayNameAr : 'No previous readings'}}
+            </td>
+            <td>
+              {{mem.lastWorkersExposuresDose != null ? 'Deep Dose : '+mem.lastWorkersExposuresDose.deepDose +' , Shallow Dose : '+mem.lastWorkersExposuresDose.shallowDose : 'No previous readings'}}
+            </td>
+            <td>
+              {{mem.lastWorkersExposuresDose!= null ? mem.lastWorkersExposuresDose.fiscalYear+' :' : 'No previous readings'}}  {{mem.lastWorkersExposuresDose  != null  ? 'Q'+mem.lastWorkersExposuresDose.quarterCode : ''}}
+            </td>
+            <td>
+                <button class="edit btn btn-success btn-sm mx-1" (click)="GoToDetails(mem.id)" style="width:100%">
+                  <fa-icon [icon]="faListDots"> </fa-icon>
+                  {{ "WorkerActions" | translate }}
+                </button>
+              </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="radionuclides?.length == 0">
+          <tr>
+            <td colspan="7" class="no-data-available">
+              {{ "General.NoDataFound" | translate }}
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+           
+            <th>
+              <input
+                class="search-input"
+                name="worker"
+                id="worker"
+                type="text"
+                placeholder="{{ 'Workers.WorkerNameAr' | translate }}"
+                style="width: 100%"
+              />
+            </th>
+            <th>
+              <input
+                class="search-input"
+                name="iqama"
+                id="iqama"
+                type="text"
+                placeholder="{{ 'Workers.nationalityId' | translate }}"
+                style="width: 100%"
+              />
+            </th>
+            <th>
+              <input
+                class="search-input"
+                name="nationality"
+                id="nationality"
+                type="text"
+                placeholder="{{ 'Workers.Gender' | translate }}"
+                style="width: 100%"
+              />
+            </th>
+            <th>
+              <input
+              class="search-input"
+              name="typeDeviceDosimeter"
+              id="typeDeviceDosimeter"
+              type="text"
+              placeholder="{{ 'Workers.TypeDeviceMeter' | translate }}"
+              style="width: 100%"
+            />
+
+            </th>
+            <th></th>
+            <th></th>
+
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- end of datatablediv-->
+    </div>
+  </div>
+  <div id="chart"></div>
+</div>
+<!-- End of Main Content Div-->
+
+<script></script>

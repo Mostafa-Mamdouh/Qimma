@@ -1,0 +1,1418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NRRCDb2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__EFMigrationsHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoleClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRole" Relationship="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId" FromRole="AspNetRoleClaims" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="NormalizedName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ConcurrencyStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRoleClaims" Relationship="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId" FromRole="AspNetRoles" ToRole="AspNetRoleClaims" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_AspNetUserClaims_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderDisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_AspNetUserLogins_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SecondNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SecondNameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PictureContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PictureName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PassportNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="GregorianBirthDate" Type="DateTime" Precision="7" />
+    <Property Name="HijriBirthDate" Type="DateTime" Precision="7" />
+    <Property Name="NationalID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="IqamaID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="UserAlternatePhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Nationality" Type="Int32" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="NormalizedUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="NormalizedEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ConcurrencyStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEnd" Type="DateTimeOffset" Precision="7" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="IsActiveUser" Type="Boolean" Nullable="false" />
+    <Property Name="FirstNameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FirstNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LastNameNameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LastNameNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_AspNetUserClaims_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_AspNetUserLogins_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="BasCountry" Relationship="Self.FK_AspNetUsers_BasCountries_CountryID" FromRole="AspNetUsers" ToRole="BasCountries" />
+    <NavigationProperty Name="AspNetUserTokens" Relationship="Self.FK_AspNetUserTokens_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserTokens" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="AspNetUserToken">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginProvider" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_AspNetUserTokens_AspNetUsers_UserId" FromRole="AspNetUserTokens" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="BasCity">
+    <Key>
+      <PropertyRef Name="CityId" />
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="NameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="BasCountry">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryNameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountryNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NationalityNameFrn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NationalityNameNtv" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountryCodeISO" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_BasCountries_CountryID" FromRole="BasCountries" ToRole="AspNetUsers" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_BasCountries_ManufactureCountryId" FromRole="BasCountries" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="ManufacturerMasters" Relationship="Self.FK_ManufacturerMaster_BasCountries_CountryId" FromRole="BasCountries" ToRole="ManufacturerMaster" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_BasCountries_ManufactureCountryId" FromRole="BasCountries" ToRole="NuclearRelatedItemsProfile" />
+  </EntityType>
+  <EntityType Name="EntityProfile">
+    <Key>
+      <PropertyRef Name="EntityId" />
+    </Key>
+    <Property Name="EntityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntityNameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EntityNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="GovernmentID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EntityType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="FacilityProfiles" Relationship="Self.FK_FacilityProfile_EntityProfile_EntityId" FromRole="EntityProfile" ToRole="FacilityProfile" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_EntityProfile_EntityId" FromRole="EntityProfile" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="LicenseProfiles" Relationship="Self.FK_LicenseProfile_EntityProfile_EntityId" FromRole="EntityProfile" ToRole="LicenseProfile" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_EntityProfile_EntityId" FromRole="EntityProfile" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_EntityProfile_EntityId" FromRole="EntityProfile" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="FacilityProfile">
+    <Key>
+      <PropertyRef Name="FacilityId" />
+    </Key>
+    <Property Name="FacilityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FacilityNameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FacilityNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="OragnizationName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FacilityCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EntityId" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="EntityProfile" Relationship="Self.FK_FacilityProfile_EntityProfile_EntityId" FromRole="FacilityProfile" ToRole="EntityProfile" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_FacilityProfile_FacilityId" FromRole="FacilityProfile" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="LicenseProfiles" Relationship="Self.FK_LicenseProfile_FacilityProfile_FacilityId" FromRole="FacilityProfile" ToRole="LicenseProfile" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_FacilityProfile_FacilityId" FromRole="FacilityProfile" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_FacilityProfile_FacilityId" FromRole="FacilityProfile" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="ItemSourcesFile">
+    <Key>
+      <PropertyRef Name="ItemSourcesFileId" />
+    </Key>
+    <Property Name="ItemSourcesFileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileSourceID" Type="Int32" Nullable="false" />
+    <Property Name="FileNum" Type="Int32" Nullable="false" />
+    <Property Name="FileName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="FileOriginalName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="FileSize" Type="Int32" Nullable="false" />
+    <Property Name="UploadType" Type="Int32" Nullable="false" />
+    <Property Name="FilePath" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="FileBytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ContentType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="ItemSourcesProfile">
+    <Key>
+      <PropertyRef Name="SourceId" />
+    </Key>
+    <Property Name="SourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SourceDescAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SourceDescEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NrrcID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ManufacturerSerialNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="FacilitySerialNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="RadioNuclides" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProductionDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="IsoptopHalfLifeTime" Type="Int32" Nullable="false" />
+    <Property Name="IspotopHalfLifeTimeUnit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="InitialActivity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="InitialActivityUnit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentActivity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentActivityUnit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PhysicalForm" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Exemption" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="RecommendedWorkingLifeTime" Type="Int32" Nullable="false" />
+    <Property Name="RadioactiveSourceid" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ShieldMaterial" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ShieldNuclearMaterialCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Purpose" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfAcquiredSources" Type="Int32" Nullable="false" />
+    <Property Name="NumberOfConsumedSources" Type="Int32" Nullable="false" />
+    <Property Name="NumberOfAvailableSources" Type="Int32" Nullable="false" />
+    <Property Name="NuclearMaterial" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="WeightOfNuclearMaterial" Type="Int32" Nullable="false" />
+    <Property Name="EnrichmentofU235" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="WeightOffIssileisotopes" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="WeightOffIssileisotopesunit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ChemicalForm" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ChemicalComposition" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ContainerVolume" Type="Int32" Nullable="false" />
+    <Property Name="SourceActivity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SourceModel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AssociatedEquipment" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SourceCategory" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SourceLinkedFlag" Type="Int32" Nullable="false" />
+    <Property Name="EntityId" Type="Int32" />
+    <Property Name="FacilityId" Type="Int32" />
+    <Property Name="LicenseId" Type="Int32" />
+    <Property Name="LicenseInventoryId" Type="Int32" />
+    <Property Name="PermitdetailsId" Type="Int32" />
+    <Property Name="PermitInventoryId" Type="Int32" />
+    <Property Name="PractiseId" Type="Int32" />
+    <Property Name="SROId" Type="Int32" />
+    <Property Name="LegalRepresentativesId" Type="Int32" />
+    <Property Name="ManufacturerId" Type="Int32" />
+    <Property Name="ManufactureCountryId" Type="Int32" />
+    <Property Name="ItemTypeId" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="BasCountry" Relationship="Self.FK_ItemSourcesProfile_BasCountries_ManufactureCountryId" FromRole="ItemSourcesProfile" ToRole="BasCountries" />
+    <NavigationProperty Name="EntityProfile" Relationship="Self.FK_ItemSourcesProfile_EntityProfile_EntityId" FromRole="ItemSourcesProfile" ToRole="EntityProfile" />
+    <NavigationProperty Name="FacilityProfile" Relationship="Self.FK_ItemSourcesProfile_FacilityProfile_FacilityId" FromRole="ItemSourcesProfile" ToRole="FacilityProfile" />
+    <NavigationProperty Name="LegalRepresentativesProfile" Relationship="Self.FK_ItemSourcesProfile_LegalRepresentativesProfile_LegalRepresentativesId" FromRole="ItemSourcesProfile" ToRole="LegalRepresentativesProfile" />
+    <NavigationProperty Name="LicenseInventoryLimit" Relationship="Self.FK_ItemSourcesProfile_LicenseInventoryLimits_LicenseInventoryId" FromRole="ItemSourcesProfile" ToRole="LicenseInventoryLimits" />
+    <NavigationProperty Name="LicenseProfile" Relationship="Self.FK_ItemSourcesProfile_LicenseProfile_LicenseId" FromRole="ItemSourcesProfile" ToRole="LicenseProfile" />
+    <NavigationProperty Name="LookupSet" Relationship="Self.FK_ItemSourcesProfile_LookupSet_ItemTypeId" FromRole="ItemSourcesProfile" ToRole="LookupSet" />
+    <NavigationProperty Name="ManufacturerMaster" Relationship="Self.FK_ItemSourcesProfile_ManufacturerMaster_ManufacturerId" FromRole="ItemSourcesProfile" ToRole="ManufacturerMaster" />
+    <NavigationProperty Name="PermitDetailsProfile" Relationship="Self.FK_ItemSourcesProfile_PermitDetailsProfile_PermitdetailsId" FromRole="ItemSourcesProfile" ToRole="PermitDetailsProfile" />
+    <NavigationProperty Name="PermitInventoryLimit" Relationship="Self.FK_ItemSourcesProfile_PermitInventoryLimits_PermitInventoryId" FromRole="ItemSourcesProfile" ToRole="PermitInventoryLimits" />
+    <NavigationProperty Name="PractiseProfile" Relationship="Self.FK_ItemSourcesProfile_PractiseProfile_PractiseId" FromRole="ItemSourcesProfile" ToRole="PractiseProfile" />
+    <NavigationProperty Name="SafetyResponsibleOfficersProfile" Relationship="Self.FK_ItemSourcesProfile_SafetyResponsibleOfficersProfile_SROId" FromRole="ItemSourcesProfile" ToRole="SafetyResponsibleOfficersProfile" />
+  </EntityType>
+  <EntityType Name="LegalRepresentativesProfile">
+    <Key>
+      <PropertyRef Name="LegalRepresentativesId" />
+    </Key>
+    <Property Name="LegalRepresentativesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LegalRepresentativesNameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LegalRepresentativesNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NationalID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentFacilities" Type="Int32" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_LegalRepresentativesProfile_LegalRepresentativesId" FromRole="LegalRepresentativesProfile" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_LegalRepresentativesProfile_LegalRepresentativesId" FromRole="LegalRepresentativesProfile" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_LegalRepresentativesProfile_LegalRepresentativesId" FromRole="LegalRepresentativesProfile" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="LicenseInventoryLimit">
+    <Key>
+      <PropertyRef Name="LicenseInventoryId" />
+    </Key>
+    <Property Name="LicenseInventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SourceType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Radionuclide" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaximumRadioactivity" Type="Int32" Nullable="false" />
+    <Property Name="NumberofSources" Type="Int32" Nullable="false" />
+    <Property Name="LicenseId" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_LicenseInventoryLimits_LicenseInventoryId" FromRole="LicenseInventoryLimits" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="LicenseProfile" Relationship="Self.FK_LicenseInventoryLimits_LicenseProfile_LicenseId" FromRole="LicenseInventoryLimits" ToRole="LicenseProfile" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_LicenseInventoryLimits_LicenseInventoryId" FromRole="LicenseInventoryLimits" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_LicenseInventoryLimits_LicenseInventoryId" FromRole="LicenseInventoryLimits" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="LicenseProfile">
+    <Key>
+      <PropertyRef Name="LicenseId" />
+    </Key>
+    <Property Name="LicenseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LicenseDescAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LicenseDescEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LicenseCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LicenseVersionNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EffectiveDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="PractiseSector" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LicenseActivities" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="EntityId" Type="Int32" />
+    <Property Name="FacilityId" Type="Int32" />
+    <Property Name="AmanInsertedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="EntityProfile" Relationship="Self.FK_LicenseProfile_EntityProfile_EntityId" FromRole="LicenseProfile" ToRole="EntityProfile" />
+    <NavigationProperty Name="FacilityProfile" Relationship="Self.FK_LicenseProfile_FacilityProfile_FacilityId" FromRole="LicenseProfile" ToRole="FacilityProfile" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_LicenseProfile_LicenseId" FromRole="LicenseProfile" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="LicenseInventoryLimits" Relationship="Self.FK_LicenseInventoryLimits_LicenseProfile_LicenseId" FromRole="LicenseProfile" ToRole="LicenseInventoryLimits" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_LicenseProfile_LicenseId" FromRole="LicenseProfile" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="PermitDetailsProfiles" Relationship="Self.FK_PermitDetailsProfile_LicenseProfile_LicenseId" FromRole="LicenseProfile" ToRole="PermitDetailsProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_LicenseProfile_LicenseId" FromRole="LicenseProfile" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="LookupSet">
+    <Key>
+      <PropertyRef Name="LookupSetId" />
+    </Key>
+    <Property Name="LookupSetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="ClassName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayNameAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayNameEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_LookupSet_ItemTypeId" FromRole="LookupSet" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_LookupSet_ItemCategory" FromRole="LookupSet" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_LookupSet_EquipmentType" FromRole="LookupSet" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="LookupSetTerm">
+    <Key>
+      <PropertyRef Name="LookupSetTermId" />
+    </Key>
+    <Property Name="LookupSetTermId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LookupSetId" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayNameAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayNameEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="ManufacturerMaster">
+    <Key>
+      <PropertyRef Name="ManufacturerId" />
+    </Key>
+    <Property Name="ManufacturerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ManufacturerDescAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ManufacturerDescEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="POBox" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="BasCountry" Relationship="Self.FK_ManufacturerMaster_BasCountries_CountryId" FromRole="ManufacturerMaster" ToRole="BasCountries" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_ManufacturerMaster_ManufacturerId" FromRole="ManufacturerMaster" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_ManufacturerMaster_ManufacturerId" FromRole="ManufacturerMaster" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_ManufacturerMaster_ManufacturerId" FromRole="ManufacturerMaster" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="NuclearRelatedItemsProfile">
+    <Key>
+      <PropertyRef Name="NRRCRelatedItemId" />
+    </Key>
+    <Property Name="NRRCRelatedItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RelatedItemDescAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RelatedItemDescEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NrrcID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ManufacturerSerialNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DateofManufacturing" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="FacilityRelatedItemID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Purpose" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ItemTypeNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ItemtypeName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ModelNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HSCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="GovernmentCommitmentsFlag" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EndUserCertificateFlag" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PermitInitialQty" Type="Int32" Nullable="false" />
+    <Property Name="EntityId" Type="Int32" />
+    <Property Name="FacilityId" Type="Int32" />
+    <Property Name="LicenseId" Type="Int32" />
+    <Property Name="LicenseInventoryId" Type="Int32" />
+    <Property Name="PermitdetailsId" Type="Int32" />
+    <Property Name="PermitInventoryId" Type="Int32" />
+    <Property Name="PractiseId" Type="Int32" />
+    <Property Name="SROId" Type="Int32" />
+    <Property Name="LegalRepresentativesId" Type="Int32" />
+    <Property Name="ManufacturerId" Type="Int32" />
+    <Property Name="ManufactureCountryId" Type="Int32" />
+    <Property Name="ItemCategory" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="BasCountry" Relationship="Self.FK_NuclearRelatedItemsProfile_BasCountries_ManufactureCountryId" FromRole="NuclearRelatedItemsProfile" ToRole="BasCountries" />
+    <NavigationProperty Name="EntityProfile" Relationship="Self.FK_NuclearRelatedItemsProfile_EntityProfile_EntityId" FromRole="NuclearRelatedItemsProfile" ToRole="EntityProfile" />
+    <NavigationProperty Name="FacilityProfile" Relationship="Self.FK_NuclearRelatedItemsProfile_FacilityProfile_FacilityId" FromRole="NuclearRelatedItemsProfile" ToRole="FacilityProfile" />
+    <NavigationProperty Name="LegalRepresentativesProfile" Relationship="Self.FK_NuclearRelatedItemsProfile_LegalRepresentativesProfile_LegalRepresentativesId" FromRole="NuclearRelatedItemsProfile" ToRole="LegalRepresentativesProfile" />
+    <NavigationProperty Name="LicenseInventoryLimit" Relationship="Self.FK_NuclearRelatedItemsProfile_LicenseInventoryLimits_LicenseInventoryId" FromRole="NuclearRelatedItemsProfile" ToRole="LicenseInventoryLimits" />
+    <NavigationProperty Name="LicenseProfile" Relationship="Self.FK_NuclearRelatedItemsProfile_LicenseProfile_LicenseId" FromRole="NuclearRelatedItemsProfile" ToRole="LicenseProfile" />
+    <NavigationProperty Name="LookupSet" Relationship="Self.FK_NuclearRelatedItemsProfile_LookupSet_ItemCategory" FromRole="NuclearRelatedItemsProfile" ToRole="LookupSet" />
+    <NavigationProperty Name="ManufacturerMaster" Relationship="Self.FK_NuclearRelatedItemsProfile_ManufacturerMaster_ManufacturerId" FromRole="NuclearRelatedItemsProfile" ToRole="ManufacturerMaster" />
+    <NavigationProperty Name="PermitDetailsProfile" Relationship="Self.FK_NuclearRelatedItemsProfile_PermitDetailsProfile_PermitdetailsId" FromRole="NuclearRelatedItemsProfile" ToRole="PermitDetailsProfile" />
+    <NavigationProperty Name="PermitInventoryLimit" Relationship="Self.FK_NuclearRelatedItemsProfile_PermitInventoryLimits_PermitInventoryId" FromRole="NuclearRelatedItemsProfile" ToRole="PermitInventoryLimits" />
+    <NavigationProperty Name="PractiseProfile" Relationship="Self.FK_NuclearRelatedItemsProfile_PractiseProfile_PractiseId" FromRole="NuclearRelatedItemsProfile" ToRole="PractiseProfile" />
+    <NavigationProperty Name="SafetyResponsibleOfficersProfile" Relationship="Self.FK_NuclearRelatedItemsProfile_SafetyResponsibleOfficersProfile_SROId" FromRole="NuclearRelatedItemsProfile" ToRole="SafetyResponsibleOfficersProfile" />
+  </EntityType>
+  <EntityType Name="PermitDetailsProfile">
+    <Key>
+      <PropertyRef Name="PermitDetailsId" />
+    </Key>
+    <Property Name="PermitDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PermitDetailsDescAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PermitDetailsDescEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PermitNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EffectiveDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="LicenseId" Type="Int32" />
+    <Property Name="AmanInsertedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_PermitDetailsProfile_PermitdetailsId" FromRole="PermitDetailsProfile" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="LicenseProfile" Relationship="Self.FK_PermitDetailsProfile_LicenseProfile_LicenseId" FromRole="PermitDetailsProfile" ToRole="LicenseProfile" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_PermitDetailsProfile_PermitdetailsId" FromRole="PermitDetailsProfile" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="PermitInventoryLimits" Relationship="Self.FK_PermitInventoryLimits_PermitDetailsProfile_PermitDetailsId" FromRole="PermitDetailsProfile" ToRole="PermitInventoryLimits" />
+    <NavigationProperty Name="PractiseProfiles" Relationship="Self.FK_PractiseProfile_PermitDetailsProfile_PermitDetailsId" FromRole="PermitDetailsProfile" ToRole="PractiseProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_PermitDetailsProfile_PermitdetailsId" FromRole="PermitDetailsProfile" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="PermitInventoryLimit">
+    <Key>
+      <PropertyRef Name="PermitInventoryId" />
+    </Key>
+    <Property Name="PermitInventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SourceSerialNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ManufactureName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Radionuclide" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ModelMaximumRadioactivity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PermitDetailsId" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_PermitInventoryLimits_PermitInventoryId" FromRole="PermitInventoryLimits" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_PermitInventoryLimits_PermitInventoryId" FromRole="PermitInventoryLimits" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="PermitDetailsProfile" Relationship="Self.FK_PermitInventoryLimits_PermitDetailsProfile_PermitDetailsId" FromRole="PermitInventoryLimits" ToRole="PermitDetailsProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_PermitInventoryLimits_PermitInventoryId" FromRole="PermitInventoryLimits" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="PractiseProfile">
+    <Key>
+      <PropertyRef Name="PractiseId" />
+    </Key>
+    <Property Name="PractiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PractiseNameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PractiseNameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PermitDetailsId" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_PractiseProfile_PractiseId" FromRole="PractiseProfile" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_PractiseProfile_PractiseId" FromRole="PractiseProfile" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="PermitDetailsProfile" Relationship="Self.FK_PractiseProfile_PermitDetailsProfile_PermitDetailsId" FromRole="PractiseProfile" ToRole="PermitDetailsProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_PractiseProfile_PractiseId" FromRole="PractiseProfile" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="RadiationGeneratorsProfile">
+    <Key>
+      <PropertyRef Name="EquipmentId" />
+    </Key>
+    <Property Name="EquipmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentDescAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EquipmentDescEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NrrcID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ManufacturerSerialNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DateofManufacturing" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="FacilitySerialNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Purpose" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ModelNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="XRayTubeSerialNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MaxEnergy" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EnergyUnit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MaxDoseRate" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DoseUnit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MaxCurrent" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SheildMaterial" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ShieldNuclearMaterialCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EntityId" Type="Int32" />
+    <Property Name="FacilityId" Type="Int32" />
+    <Property Name="LicenseId" Type="Int32" />
+    <Property Name="LicenseInventoryId" Type="Int32" />
+    <Property Name="PermitdetailsId" Type="Int32" />
+    <Property Name="PermitInventoryId" Type="Int32" />
+    <Property Name="PractiseId" Type="Int32" />
+    <Property Name="SROId" Type="Int32" />
+    <Property Name="LegalRepresentativesId" Type="Int32" />
+    <Property Name="ManufacturerId" Type="Int32" />
+    <Property Name="EquipmentType" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="EntityProfile" Relationship="Self.FK_RadiationGeneratorsProfile_EntityProfile_EntityId" FromRole="RadiationGeneratorsProfile" ToRole="EntityProfile" />
+    <NavigationProperty Name="FacilityProfile" Relationship="Self.FK_RadiationGeneratorsProfile_FacilityProfile_FacilityId" FromRole="RadiationGeneratorsProfile" ToRole="FacilityProfile" />
+    <NavigationProperty Name="LegalRepresentativesProfile" Relationship="Self.FK_RadiationGeneratorsProfile_LegalRepresentativesProfile_LegalRepresentativesId" FromRole="RadiationGeneratorsProfile" ToRole="LegalRepresentativesProfile" />
+    <NavigationProperty Name="LicenseInventoryLimit" Relationship="Self.FK_RadiationGeneratorsProfile_LicenseInventoryLimits_LicenseInventoryId" FromRole="RadiationGeneratorsProfile" ToRole="LicenseInventoryLimits" />
+    <NavigationProperty Name="LicenseProfile" Relationship="Self.FK_RadiationGeneratorsProfile_LicenseProfile_LicenseId" FromRole="RadiationGeneratorsProfile" ToRole="LicenseProfile" />
+    <NavigationProperty Name="LookupSet" Relationship="Self.FK_RadiationGeneratorsProfile_LookupSet_EquipmentType" FromRole="RadiationGeneratorsProfile" ToRole="LookupSet" />
+    <NavigationProperty Name="ManufacturerMaster" Relationship="Self.FK_RadiationGeneratorsProfile_ManufacturerMaster_ManufacturerId" FromRole="RadiationGeneratorsProfile" ToRole="ManufacturerMaster" />
+    <NavigationProperty Name="PermitDetailsProfile" Relationship="Self.FK_RadiationGeneratorsProfile_PermitDetailsProfile_PermitdetailsId" FromRole="RadiationGeneratorsProfile" ToRole="PermitDetailsProfile" />
+    <NavigationProperty Name="PermitInventoryLimit" Relationship="Self.FK_RadiationGeneratorsProfile_PermitInventoryLimits_PermitInventoryId" FromRole="RadiationGeneratorsProfile" ToRole="PermitInventoryLimits" />
+    <NavigationProperty Name="PractiseProfile" Relationship="Self.FK_RadiationGeneratorsProfile_PractiseProfile_PractiseId" FromRole="RadiationGeneratorsProfile" ToRole="PractiseProfile" />
+    <NavigationProperty Name="SafetyResponsibleOfficersProfile" Relationship="Self.FK_RadiationGeneratorsProfile_SafetyResponsibleOfficersProfile_SROId" FromRole="RadiationGeneratorsProfile" ToRole="SafetyResponsibleOfficersProfile" />
+  </EntityType>
+  <EntityType Name="SafetyResponsibleOfficersProfile">
+    <Key>
+      <PropertyRef Name="SROId" />
+    </Key>
+    <Property Name="SROId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SRONameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SRONameEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NationalID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CertificateNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="IssuanceDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="ItemSourcesProfiles" Relationship="Self.FK_ItemSourcesProfile_SafetyResponsibleOfficersProfile_SROId" FromRole="SafetyResponsibleOfficersProfile" ToRole="ItemSourcesProfile" />
+    <NavigationProperty Name="NuclearRelatedItemsProfiles" Relationship="Self.FK_NuclearRelatedItemsProfile_SafetyResponsibleOfficersProfile_SROId" FromRole="SafetyResponsibleOfficersProfile" ToRole="NuclearRelatedItemsProfile" />
+    <NavigationProperty Name="RadiationGeneratorsProfiles" Relationship="Self.FK_RadiationGeneratorsProfile_SafetyResponsibleOfficersProfile_SROId" FromRole="SafetyResponsibleOfficersProfile" ToRole="RadiationGeneratorsProfile" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetRoleClaims" Type="Self.AspNetRoleClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetRoleClaims">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserClaims_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserLogins_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_BasCountries_CountryID">
+    <End Role="BasCountries" Type="Self.BasCountry" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasCountries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserTokens_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserTokens" Type="Self.AspNetUserToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserTokens">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_BasCountries_ManufactureCountryId">
+    <End Role="BasCountries" Type="Self.BasCountry" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasCountries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="ManufactureCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ManufacturerMaster_BasCountries_CountryId">
+    <End Role="BasCountries" Type="Self.BasCountry" Multiplicity="0..1" />
+    <End Role="ManufacturerMaster" Type="Self.ManufacturerMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasCountries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="ManufacturerMaster">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_BasCountries_ManufactureCountryId">
+    <End Role="BasCountries" Type="Self.BasCountry" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasCountries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="ManufactureCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacilityProfile_EntityProfile_EntityId">
+    <End Role="EntityProfile" Type="Self.EntityProfile" Multiplicity="0..1" />
+    <End Role="FacilityProfile" Type="Self.FacilityProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityProfile">
+        <PropertyRef Name="EntityId" />
+      </Principal>
+      <Dependent Role="FacilityProfile">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_EntityProfile_EntityId">
+    <End Role="EntityProfile" Type="Self.EntityProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityProfile">
+        <PropertyRef Name="EntityId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LicenseProfile_EntityProfile_EntityId">
+    <End Role="EntityProfile" Type="Self.EntityProfile" Multiplicity="0..1" />
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityProfile">
+        <PropertyRef Name="EntityId" />
+      </Principal>
+      <Dependent Role="LicenseProfile">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_EntityProfile_EntityId">
+    <End Role="EntityProfile" Type="Self.EntityProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityProfile">
+        <PropertyRef Name="EntityId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_EntityProfile_EntityId">
+    <End Role="EntityProfile" Type="Self.EntityProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityProfile">
+        <PropertyRef Name="EntityId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_FacilityProfile_FacilityId">
+    <End Role="FacilityProfile" Type="Self.FacilityProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacilityProfile">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LicenseProfile_FacilityProfile_FacilityId">
+    <End Role="FacilityProfile" Type="Self.FacilityProfile" Multiplicity="0..1" />
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacilityProfile">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="LicenseProfile">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_FacilityProfile_FacilityId">
+    <End Role="FacilityProfile" Type="Self.FacilityProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacilityProfile">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_FacilityProfile_FacilityId">
+    <End Role="FacilityProfile" Type="Self.FacilityProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacilityProfile">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+    <End Role="LegalRepresentativesProfile" Type="Self.LegalRepresentativesProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LegalRepresentativesProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_LicenseInventoryLimits_LicenseInventoryId">
+    <End Role="LicenseInventoryLimits" Type="Self.LicenseInventoryLimit" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseInventoryLimits">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_LicenseProfile_LicenseId">
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseProfile">
+        <PropertyRef Name="LicenseId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_LookupSet_ItemTypeId">
+    <End Role="LookupSet" Type="Self.LookupSet" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupSet">
+        <PropertyRef Name="LookupSetId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="ItemTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_ManufacturerMaster_ManufacturerId">
+    <End Role="ManufacturerMaster" Type="Self.ManufacturerMaster" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ManufacturerMaster">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_PermitDetailsProfile_PermitdetailsId">
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitDetailsProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="PermitdetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_PermitInventoryLimits_PermitInventoryId">
+    <End Role="PermitInventoryLimits" Type="Self.PermitInventoryLimit" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitInventoryLimits">
+        <PropertyRef Name="PermitInventoryId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="PermitInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_PractiseProfile_PractiseId">
+    <End Role="PractiseProfile" Type="Self.PractiseProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PractiseProfile">
+        <PropertyRef Name="PractiseId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="PractiseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_SafetyResponsibleOfficersProfile_SROId">
+    <End Role="SafetyResponsibleOfficersProfile" Type="Self.SafetyResponsibleOfficersProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SafetyResponsibleOfficersProfile">
+        <PropertyRef Name="SROId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="SROId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+    <End Role="LegalRepresentativesProfile" Type="Self.LegalRepresentativesProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LegalRepresentativesProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+    <End Role="LegalRepresentativesProfile" Type="Self.LegalRepresentativesProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LegalRepresentativesProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LicenseInventoryLimits_LicenseProfile_LicenseId">
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="0..1" />
+    <End Role="LicenseInventoryLimits" Type="Self.LicenseInventoryLimit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseProfile">
+        <PropertyRef Name="LicenseId" />
+      </Principal>
+      <Dependent Role="LicenseInventoryLimits">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_LicenseInventoryLimits_LicenseInventoryId">
+    <End Role="LicenseInventoryLimits" Type="Self.LicenseInventoryLimit" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseInventoryLimits">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_LicenseInventoryLimits_LicenseInventoryId">
+    <End Role="LicenseInventoryLimits" Type="Self.LicenseInventoryLimit" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseInventoryLimits">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_LicenseProfile_LicenseId">
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseProfile">
+        <PropertyRef Name="LicenseId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermitDetailsProfile_LicenseProfile_LicenseId">
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="0..1" />
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseProfile">
+        <PropertyRef Name="LicenseId" />
+      </Principal>
+      <Dependent Role="PermitDetailsProfile">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_LicenseProfile_LicenseId">
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseProfile">
+        <PropertyRef Name="LicenseId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_LookupSet_ItemCategory">
+    <End Role="LookupSet" Type="Self.LookupSet" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupSet">
+        <PropertyRef Name="LookupSetId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="ItemCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_LookupSet_EquipmentType">
+    <End Role="LookupSet" Type="Self.LookupSet" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupSet">
+        <PropertyRef Name="LookupSetId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="EquipmentType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_ManufacturerMaster_ManufacturerId">
+    <End Role="ManufacturerMaster" Type="Self.ManufacturerMaster" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ManufacturerMaster">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_ManufacturerMaster_ManufacturerId">
+    <End Role="ManufacturerMaster" Type="Self.ManufacturerMaster" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ManufacturerMaster">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_PermitDetailsProfile_PermitdetailsId">
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitDetailsProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="PermitdetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_PermitInventoryLimits_PermitInventoryId">
+    <End Role="PermitInventoryLimits" Type="Self.PermitInventoryLimit" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitInventoryLimits">
+        <PropertyRef Name="PermitInventoryId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="PermitInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_PractiseProfile_PractiseId">
+    <End Role="PractiseProfile" Type="Self.PractiseProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PractiseProfile">
+        <PropertyRef Name="PractiseId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="PractiseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_SafetyResponsibleOfficersProfile_SROId">
+    <End Role="SafetyResponsibleOfficersProfile" Type="Self.SafetyResponsibleOfficersProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SafetyResponsibleOfficersProfile">
+        <PropertyRef Name="SROId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="SROId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermitInventoryLimits_PermitDetailsProfile_PermitDetailsId">
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="0..1" />
+    <End Role="PermitInventoryLimits" Type="Self.PermitInventoryLimit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitDetailsProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Principal>
+      <Dependent Role="PermitInventoryLimits">
+        <PropertyRef Name="PermitDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PractiseProfile_PermitDetailsProfile_PermitDetailsId">
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="0..1" />
+    <End Role="PractiseProfile" Type="Self.PractiseProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitDetailsProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Principal>
+      <Dependent Role="PractiseProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_PermitDetailsProfile_PermitdetailsId">
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitDetailsProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="PermitdetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_PermitInventoryLimits_PermitInventoryId">
+    <End Role="PermitInventoryLimits" Type="Self.PermitInventoryLimit" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitInventoryLimits">
+        <PropertyRef Name="PermitInventoryId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="PermitInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_PractiseProfile_PractiseId">
+    <End Role="PractiseProfile" Type="Self.PractiseProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PractiseProfile">
+        <PropertyRef Name="PractiseId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="PractiseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_SafetyResponsibleOfficersProfile_SROId">
+    <End Role="SafetyResponsibleOfficersProfile" Type="Self.SafetyResponsibleOfficersProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SafetyResponsibleOfficersProfile">
+        <PropertyRef Name="SROId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="SROId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="NRRCDb2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+    <EntitySet Name="AspNetRoleClaims" EntityType="Self.AspNetRoleClaim" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="AspNetUserTokens" EntityType="Self.AspNetUserToken" />
+    <EntitySet Name="BasCities" EntityType="Self.BasCity" />
+    <EntitySet Name="BasCountries" EntityType="Self.BasCountry" />
+    <EntitySet Name="EntityProfiles" EntityType="Self.EntityProfile" />
+    <EntitySet Name="FacilityProfiles" EntityType="Self.FacilityProfile" />
+    <EntitySet Name="ItemSourcesFiles" EntityType="Self.ItemSourcesFile" />
+    <EntitySet Name="ItemSourcesProfiles" EntityType="Self.ItemSourcesProfile" />
+    <EntitySet Name="LegalRepresentativesProfiles" EntityType="Self.LegalRepresentativesProfile" />
+    <EntitySet Name="LicenseInventoryLimits" EntityType="Self.LicenseInventoryLimit" />
+    <EntitySet Name="LicenseProfiles" EntityType="Self.LicenseProfile" />
+    <EntitySet Name="LookupSets" EntityType="Self.LookupSet" />
+    <EntitySet Name="LookupSetTerms" EntityType="Self.LookupSetTerm" />
+    <EntitySet Name="ManufacturerMasters" EntityType="Self.ManufacturerMaster" />
+    <EntitySet Name="NuclearRelatedItemsProfiles" EntityType="Self.NuclearRelatedItemsProfile" />
+    <EntitySet Name="PermitDetailsProfiles" EntityType="Self.PermitDetailsProfile" />
+    <EntitySet Name="PermitInventoryLimits" EntityType="Self.PermitInventoryLimit" />
+    <EntitySet Name="PractiseProfiles" EntityType="Self.PractiseProfile" />
+    <EntitySet Name="RadiationGeneratorsProfiles" EntityType="Self.RadiationGeneratorsProfile" />
+    <EntitySet Name="SafetyResponsibleOfficersProfiles" EntityType="Self.SafetyResponsibleOfficersProfile" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_AspNetRoleClaims_AspNetRoles_RoleId" Association="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetRoleClaims" EntitySet="AspNetRoleClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers_UserId" Association="Self.FK_AspNetUserClaims_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers_UserId" Association="Self.FK_AspNetUserLogins_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_BasCountries_CountryID" Association="Self.FK_AspNetUsers_BasCountries_CountryID">
+      <End Role="BasCountries" EntitySet="BasCountries" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserTokens_AspNetUsers_UserId" Association="Self.FK_AspNetUserTokens_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserTokens" EntitySet="AspNetUserTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_BasCountries_ManufactureCountryId" Association="Self.FK_ItemSourcesProfile_BasCountries_ManufactureCountryId">
+      <End Role="BasCountries" EntitySet="BasCountries" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ManufacturerMaster_BasCountries_CountryId" Association="Self.FK_ManufacturerMaster_BasCountries_CountryId">
+      <End Role="BasCountries" EntitySet="BasCountries" />
+      <End Role="ManufacturerMaster" EntitySet="ManufacturerMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_BasCountries_ManufactureCountryId" Association="Self.FK_NuclearRelatedItemsProfile_BasCountries_ManufactureCountryId">
+      <End Role="BasCountries" EntitySet="BasCountries" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacilityProfile_EntityProfile_EntityId" Association="Self.FK_FacilityProfile_EntityProfile_EntityId">
+      <End Role="EntityProfile" EntitySet="EntityProfiles" />
+      <End Role="FacilityProfile" EntitySet="FacilityProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_EntityProfile_EntityId" Association="Self.FK_ItemSourcesProfile_EntityProfile_EntityId">
+      <End Role="EntityProfile" EntitySet="EntityProfiles" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LicenseProfile_EntityProfile_EntityId" Association="Self.FK_LicenseProfile_EntityProfile_EntityId">
+      <End Role="EntityProfile" EntitySet="EntityProfiles" />
+      <End Role="LicenseProfile" EntitySet="LicenseProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_EntityProfile_EntityId" Association="Self.FK_NuclearRelatedItemsProfile_EntityProfile_EntityId">
+      <End Role="EntityProfile" EntitySet="EntityProfiles" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_EntityProfile_EntityId" Association="Self.FK_RadiationGeneratorsProfile_EntityProfile_EntityId">
+      <End Role="EntityProfile" EntitySet="EntityProfiles" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_FacilityProfile_FacilityId" Association="Self.FK_ItemSourcesProfile_FacilityProfile_FacilityId">
+      <End Role="FacilityProfile" EntitySet="FacilityProfiles" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LicenseProfile_FacilityProfile_FacilityId" Association="Self.FK_LicenseProfile_FacilityProfile_FacilityId">
+      <End Role="FacilityProfile" EntitySet="FacilityProfiles" />
+      <End Role="LicenseProfile" EntitySet="LicenseProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_FacilityProfile_FacilityId" Association="Self.FK_NuclearRelatedItemsProfile_FacilityProfile_FacilityId">
+      <End Role="FacilityProfile" EntitySet="FacilityProfiles" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_FacilityProfile_FacilityId" Association="Self.FK_RadiationGeneratorsProfile_FacilityProfile_FacilityId">
+      <End Role="FacilityProfile" EntitySet="FacilityProfiles" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_LegalRepresentativesProfile_LegalRepresentativesId" Association="Self.FK_ItemSourcesProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+      <End Role="LegalRepresentativesProfile" EntitySet="LegalRepresentativesProfiles" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_LicenseInventoryLimits_LicenseInventoryId" Association="Self.FK_ItemSourcesProfile_LicenseInventoryLimits_LicenseInventoryId">
+      <End Role="LicenseInventoryLimits" EntitySet="LicenseInventoryLimits" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_LicenseProfile_LicenseId" Association="Self.FK_ItemSourcesProfile_LicenseProfile_LicenseId">
+      <End Role="LicenseProfile" EntitySet="LicenseProfiles" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_LookupSet_ItemTypeId" Association="Self.FK_ItemSourcesProfile_LookupSet_ItemTypeId">
+      <End Role="LookupSet" EntitySet="LookupSets" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_ManufacturerMaster_ManufacturerId" Association="Self.FK_ItemSourcesProfile_ManufacturerMaster_ManufacturerId">
+      <End Role="ManufacturerMaster" EntitySet="ManufacturerMasters" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_PermitDetailsProfile_PermitdetailsId" Association="Self.FK_ItemSourcesProfile_PermitDetailsProfile_PermitdetailsId">
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfiles" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_PermitInventoryLimits_PermitInventoryId" Association="Self.FK_ItemSourcesProfile_PermitInventoryLimits_PermitInventoryId">
+      <End Role="PermitInventoryLimits" EntitySet="PermitInventoryLimits" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_PractiseProfile_PractiseId" Association="Self.FK_ItemSourcesProfile_PractiseProfile_PractiseId">
+      <End Role="PractiseProfile" EntitySet="PractiseProfiles" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_SafetyResponsibleOfficersProfile_SROId" Association="Self.FK_ItemSourcesProfile_SafetyResponsibleOfficersProfile_SROId">
+      <End Role="SafetyResponsibleOfficersProfile" EntitySet="SafetyResponsibleOfficersProfiles" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_LegalRepresentativesProfile_LegalRepresentativesId" Association="Self.FK_NuclearRelatedItemsProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+      <End Role="LegalRepresentativesProfile" EntitySet="LegalRepresentativesProfiles" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_LegalRepresentativesProfile_LegalRepresentativesId" Association="Self.FK_RadiationGeneratorsProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+      <End Role="LegalRepresentativesProfile" EntitySet="LegalRepresentativesProfiles" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LicenseInventoryLimits_LicenseProfile_LicenseId" Association="Self.FK_LicenseInventoryLimits_LicenseProfile_LicenseId">
+      <End Role="LicenseProfile" EntitySet="LicenseProfiles" />
+      <End Role="LicenseInventoryLimits" EntitySet="LicenseInventoryLimits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_LicenseInventoryLimits_LicenseInventoryId" Association="Self.FK_NuclearRelatedItemsProfile_LicenseInventoryLimits_LicenseInventoryId">
+      <End Role="LicenseInventoryLimits" EntitySet="LicenseInventoryLimits" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_LicenseInventoryLimits_LicenseInventoryId" Association="Self.FK_RadiationGeneratorsProfile_LicenseInventoryLimits_LicenseInventoryId">
+      <End Role="LicenseInventoryLimits" EntitySet="LicenseInventoryLimits" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_LicenseProfile_LicenseId" Association="Self.FK_NuclearRelatedItemsProfile_LicenseProfile_LicenseId">
+      <End Role="LicenseProfile" EntitySet="LicenseProfiles" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermitDetailsProfile_LicenseProfile_LicenseId" Association="Self.FK_PermitDetailsProfile_LicenseProfile_LicenseId">
+      <End Role="LicenseProfile" EntitySet="LicenseProfiles" />
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_LicenseProfile_LicenseId" Association="Self.FK_RadiationGeneratorsProfile_LicenseProfile_LicenseId">
+      <End Role="LicenseProfile" EntitySet="LicenseProfiles" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_LookupSet_ItemCategory" Association="Self.FK_NuclearRelatedItemsProfile_LookupSet_ItemCategory">
+      <End Role="LookupSet" EntitySet="LookupSets" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_LookupSet_EquipmentType" Association="Self.FK_RadiationGeneratorsProfile_LookupSet_EquipmentType">
+      <End Role="LookupSet" EntitySet="LookupSets" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_ManufacturerMaster_ManufacturerId" Association="Self.FK_NuclearRelatedItemsProfile_ManufacturerMaster_ManufacturerId">
+      <End Role="ManufacturerMaster" EntitySet="ManufacturerMasters" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_ManufacturerMaster_ManufacturerId" Association="Self.FK_RadiationGeneratorsProfile_ManufacturerMaster_ManufacturerId">
+      <End Role="ManufacturerMaster" EntitySet="ManufacturerMasters" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_PermitDetailsProfile_PermitdetailsId" Association="Self.FK_NuclearRelatedItemsProfile_PermitDetailsProfile_PermitdetailsId">
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfiles" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_PermitInventoryLimits_PermitInventoryId" Association="Self.FK_NuclearRelatedItemsProfile_PermitInventoryLimits_PermitInventoryId">
+      <End Role="PermitInventoryLimits" EntitySet="PermitInventoryLimits" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_PractiseProfile_PractiseId" Association="Self.FK_NuclearRelatedItemsProfile_PractiseProfile_PractiseId">
+      <End Role="PractiseProfile" EntitySet="PractiseProfiles" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_SafetyResponsibleOfficersProfile_SROId" Association="Self.FK_NuclearRelatedItemsProfile_SafetyResponsibleOfficersProfile_SROId">
+      <End Role="SafetyResponsibleOfficersProfile" EntitySet="SafetyResponsibleOfficersProfiles" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermitInventoryLimits_PermitDetailsProfile_PermitDetailsId" Association="Self.FK_PermitInventoryLimits_PermitDetailsProfile_PermitDetailsId">
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfiles" />
+      <End Role="PermitInventoryLimits" EntitySet="PermitInventoryLimits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PractiseProfile_PermitDetailsProfile_PermitDetailsId" Association="Self.FK_PractiseProfile_PermitDetailsProfile_PermitDetailsId">
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfiles" />
+      <End Role="PractiseProfile" EntitySet="PractiseProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_PermitDetailsProfile_PermitdetailsId" Association="Self.FK_RadiationGeneratorsProfile_PermitDetailsProfile_PermitdetailsId">
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfiles" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_PermitInventoryLimits_PermitInventoryId" Association="Self.FK_RadiationGeneratorsProfile_PermitInventoryLimits_PermitInventoryId">
+      <End Role="PermitInventoryLimits" EntitySet="PermitInventoryLimits" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_PractiseProfile_PractiseId" Association="Self.FK_RadiationGeneratorsProfile_PractiseProfile_PractiseId">
+      <End Role="PractiseProfile" EntitySet="PractiseProfiles" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_SafetyResponsibleOfficersProfile_SROId" Association="Self.FK_RadiationGeneratorsProfile_SafetyResponsibleOfficersProfile_SROId">
+      <End Role="SafetyResponsibleOfficersProfile" EntitySet="SafetyResponsibleOfficersProfiles" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

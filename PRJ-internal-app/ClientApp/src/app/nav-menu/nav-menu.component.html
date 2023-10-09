@@ -1,0 +1,97 @@
+    <!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="btn btn-gold" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <a class="navbar-brand" href="#">
+      <img class="logoimg" src="assets/imgs/nrrclogo-plain.svg" alt="">
+    </a>
+    <div class="dropdown" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle userOptions" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-regular fa-circle-user"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">الملف الشخصي</a></li>
+            <li><a class="dropdown-item" href="#">الإعدادات</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">تسجيل الخروج</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button class="btn btn-sm btn-secondary m-1">
+      English
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="sidebar-logo d-flex justify-content-center mb-3">
+      <img src="assets/imgs/nrrclogo-v.svg" alt="">
+    </div>
+
+    <div class="userInfo d-flex justify-content-center mb-2">
+      <span class="userName">سليم عابد</span> -
+      <span>مدير</span>
+    </div>
+
+    <div class="sidebar-search mb-2">
+      <div class="input-group">
+        <input type="text" class="form-control search-menu rounded-2" placeholder="بحث...">
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar ">
+      <ul class="nav">
+        <li class="nav-item navlinkw1 sidebarNavLinklink">
+          <a href="index.html">
+            <i class="fa fa-tachometer-alt"></i>Main Menu
+          </a>
+        </li>
+        <li class="list-unstyled nav-item has-submenu">
+          <span class="nav-link sidebarNavLink" href="#"><i class="fa fa-tachometer-alt"></i>Source Screens</span>
+          <ul class="submenu collapse list-unstyled">
+            <li><a href="insertrecord.html">Add New Source Screen</a></li>
+            <li><a href="#">تعديل المصادر الاشعاعية</a></li>
+            <li><a href="#">تقارير المصادر الاشعاعية</a></li>
+            <li><a href="#">مصادر قيد الإجراء</a></li>
+          </ul>
+        </li>
+
+        <li class="list-unstyled nav-item has-submenu">
+          <span class="nav-link sidebarNavLink" href="#"><i class="fas fa-cogs"></i> Setup</span>
+          <ul class="submenu collapse list-unstyled">
+            <li><a href="setup-lookups.html">Setup Look Ups</a></li>
+            <li><a href="setup-Domain.html">setup Domain</a></li>
+            <li><a href="radionuclide.html">RadioNuclide</a></li>
+            <li><a href="country.html">Country</a></li>
+            <li><a href="city.html">City</a></li>
+            <li><a href="manufacturer.html">Manufacturer</a></li>
+
+          </ul>
+        </li>
+
+
+      </ul>
+    </div>
+
+    <div class="sidebar-footer d-flex justify-content-center">
+      <a href="#">
+        <i class="fa fa-power-off"></i>
+      </a>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,201 @@
+
+
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+
+
+
+  <div class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4">
+
+    <section class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2">
+      <div class="breadcrumb-w1 mb-0" class="{{lang == 'ar' ? 'lang' : ''}}">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' %3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li type="button" class="breadcrumb-item" (click)="Breadcrumb('')" style="color: #ca9f45">{{ "General.Home" | translate }}</li>
+            <li type="button" class="breadcrumb-item" (click)="Breadcrumb('system-settings')" style="color: #ca9f45">{{ "Settings" | translate }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ "BasCountries.PageTitle" | translate }}</li>
+          </ol>
+        </nav>
+        <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "General.Back" | translate }} </button>
+
+      </div>
+
+      <h4 class="text-left">
+        {{ "BasCountries.PageTitle" | translate }}
+      </h4>
+
+      <div class="row w-100 mt-3 lookupsDataEntry">
+
+
+
+        <div class="lookupsfields">
+          <div class="w-100">
+            <form [formGroup]="CountriesForm" (ngSubmit)="save()">
+
+              <div class="row p-3 w-100 py-2">
+
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="className" class="mx-1">{{ "BasCountries.DisplayNameArabic" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyArabic($event , 200)" type="text" class="form-control" [(ngModel)]="CountryNameAr" formControlName="CountryNameAr" id="className" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                  <div *ngIf="CountriesForm.controls['CountryNameAr'].errors && CountriesForm.controls['CountryNameAr'].touched" id="error" class="form-text d-block text-danger">
+                    ({{ "BasCountries.ValidCountryNameAr" | translate }})
+                  </div>
+                </div>
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="displayNameAr" class="mx-1">{{ "BasCountries.DisplayNameEnglish" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyEnglish($event , 200)" type="text" class="form-control" [(ngModel)]="CountryNameEn" formControlName="CountryNameEn" id="CountryNameEn" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                  <div *ngIf="CountriesForm.controls['CountryNameEn'].errors && CountriesForm.controls['CountryNameEn'].touched" class="form-text d-block text-danger">
+                    ({{ "BasCountries.ValidCountryNameEn" | translate }})
+                  </div>
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="displayNameEn" class="mx-1">{{ "BasCountries.NationalityArabic" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyArabic($event , 200)" type="text" class="form-control" [(ngModel)]="NationalityNameFrn" formControlName="NationalityNameFrn" id="NationalityAr" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                  <div *ngIf="CountriesForm.controls['NationalityNameFrn'].errors && CountriesForm.controls['NationalityNameFrn'].touched" class="form-text d-block text-danger">
+                    ({{ "BasCountries.ValidNationalityNameFrn" | translate }})
+                  </div>
+
+                </div>
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="displayNameEn" class="mx-1">{{ "BasCountries.NationalityEnglish" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyEnglish($event , 200)" type="text" class="form-control" [(ngModel)]="NationalityNameNtv" formControlName="NationalityNameNtv" id="NationalityEn" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                  <div *ngIf="CountriesForm.controls['NationalityNameNtv'].errors && CountriesForm.controls['NationalityNameNtv'].touched" class="form-text d-block text-danger">
+                    ({{ "BasCountries.ValidNationalityNameNtv" | translate }})
+                  </div>
+
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="value1" class="mx-1">{{ "BasCountries.CountryCodeISO" | translate }} <span class="text-danger">*</span></label>
+                  <input type="text" (keypress)="OnlyEnglish($event , 3)" class="form-control" [(ngModel)]="CountryCodeISO" formControlName="CountryCodeISO" id="value1" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                  <div *ngIf="CountriesForm.controls['CountryCodeISO'].errors && CountriesForm.controls['CountryCodeISO'].touched" class="form-text d-block text-danger">
+                    ({{ "BasCountries.ValidCountryCodeISO" | translate }})
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+                  <span class="btn btn-secondary mx-2" (click)="reset()" style="padding-left: 50px; padding-right: 50px;" id="reset-all">
+                    {{ "ResetFormData" | translate }}
+                  </span>
+                  <button class="btn btn-gold mx-2" style="padding-left: 100px;padding-right:100px;" id="submit-all">
+                    {{ "Save" | translate }}
+                  </button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div><!-- end of lookupsDataEntry Div-->
+
+      </div><!-- end of lookupsDataEntry Div-->
+
+
+    </section> <!-- end of lookup Section-->
+    <hr class="my-4 w-100">
+    <div class="datatablediv w-100">
+      <div class="pb-3">
+        <button type="button" (click)="ExportExel()" class="btn btn-gold btn-sm mx-1">{{ "General.ExportExcel" | translate }}  </button>
+        <button type="button" (click)="Print()" class="btn btn-gold btn-sm mx-1">{{ "General.Print" | translate }}  </button>
+        <button type="button" (click)="Copy()" class="btn btn-gold btn-sm mx-1">{{ "General.Copy" | translate }} </button>
+      </div>
+      <table datatable [dtOptions]="dtOptions" id="lookUpsDataTable"
+             class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+        <thead>
+          <tr>
+            <th class="select-filter">
+              {{ "BasCountries.DisplayNameArabic" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "BasCountries.DisplayNameEnglish" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "BasCountries.NationalityArabic" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "BasCountries.NationalityEnglish" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "BasCountries.ISO" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "BasCites.PageTitle" | translate }}
+            </th>
+            <th>{{ "Action" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="BasCountries?.length != 0">
+          <tr *ngFor="let country of BasCountries; index as i">
+            <td>{{ country.countryNameAr }}</td>
+            <td>{{ country.countryNameEn }}</td>
+            <td>{{ country.nationalityNameFrn}}</td>
+            <td> {{country.nationalityNameNtv}}</td>
+            <td> {{ country.countryCodeISO }} </td>
+            <td>
+              <button class="edit btn btn-success btn-sm mx-1" (click)="CreateCites(country)" style="width:100%">
+                <fa-icon [icon]="faListDots"> </fa-icon>
+                {{ "General.Details" | translate }}
+              </button>
+            </td>
+            <td>
+              <button class="edit btn btn-gold btn-sm mx-1" (click)="Details(country)">
+                <fa-icon [icon]="faPen"> </fa-icon>
+              </button>
+              <button class="delete btn btn-secondary btn-sm mx-1" (click)="Delete(country)">
+                <fa-icon [icon]="faTrash"> </fa-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="BasCountries?.length == 0">
+          <tr>
+            <td colspan="5" class="no-data-available">{{ "General.NoDataFound" | translate }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>
+              <input class="search-input"
+                     name="countryNameAr"
+                     type="text"
+                     placeholder="{{ 'BasCountries.DisplayNameArabic' | translate }}"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="countryNameEn"
+                     id="entityNameEn"
+                     type="text"
+                     placeholder="{{ 'BasCountries.DisplayNameEnglish' | translate }}"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="nationalityNameFrn"
+                     type="text"
+                     placeholder="{{ 'BasCountries.NationalityArabic' | translate }}"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="nationalityNameNtv"
+                     type="text"
+                     placeholder="{{ 'BasCountries.NationalityEnglish' | translate }}"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="countryCodeISO"
+                     type="text"
+                     placeholder="{{ 'BasCountries.ISO' | translate }}"
+                     style="width: 100%" />
+            </th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div> <!-- end of datatablediv-->
+
+  </div>
+
+</div><!-- Main Content-->

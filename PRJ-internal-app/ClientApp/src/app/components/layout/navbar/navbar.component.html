@@ -1,0 +1,45 @@
+<ng-container *ngIf="isLoggedIn$ | async as token">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+    <div class="d-flex justify-content-between w-100 px-3">
+      <button class="btn btn-sm btn-gold"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#sidebar"
+              aria-controls="sidebar">
+        <fa-icon [icon]="faBars"
+                 size="lg"
+                 style="color: var(--white); padding: 0 10px"></fa-icon>
+      </button>
+
+      <a class="navbar-brand" (click)="navigateToMainMenu()">
+        <img class="logoimg"
+             src="../../../../assets/imgs/nrrclogo-plain.svg"
+             alt="" />
+      </a>
+
+      <div class="dropdown">
+        <button class="navbarusericon dropdown-toggle"
+                type="button"
+                id="profileShortCut"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                aria-expanded="false">
+          <fa-icon [icon]="faUserCircle" size="3x"></fa-icon>
+          <span class="position-absolute badgew1 translate-middle badge rounded-pill bg-secondary">
+            99+
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="profileShortCut">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li>
+            <button class="dropdown-item" (click)="logout()" href="#">
+              تسجيل الخروج
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  </ng-container>

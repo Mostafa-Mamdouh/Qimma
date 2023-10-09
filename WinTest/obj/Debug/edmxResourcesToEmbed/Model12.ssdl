@@ -1,0 +1,1357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NRRCDb2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__EFMigrationsHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoleClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" />
+    <Property Name="NormalizedName" Type="nvarchar" MaxLength="256" />
+    <Property Name="ConcurrencyStamp" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="ProviderDisplayName" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="450" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="SecondNameEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="SecondNameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="Picture" Type="varbinary(max)" />
+    <Property Name="PictureContentType" Type="nvarchar(max)" />
+    <Property Name="PictureName" Type="nvarchar(max)" />
+    <Property Name="PassportNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="GregorianBirthDate" Type="datetime2" Precision="7" />
+    <Property Name="HijriBirthDate" Type="datetime2" Precision="7" />
+    <Property Name="NationalID" Type="nvarchar" MaxLength="15" />
+    <Property Name="IqamaID" Type="nvarchar" MaxLength="15" />
+    <Property Name="UserAlternatePhone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Nationality" Type="int" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+    <Property Name="NormalizedUserName" Type="nvarchar" MaxLength="256" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="NormalizedEmail" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="ConcurrencyStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEnd" Type="datetimeoffset" Precision="7" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="IsActiveUser" Type="bit" Nullable="false" />
+    <Property Name="FirstNameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="FirstNameEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="LastNameNameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="LastNameNameEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="UserTypeId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserTokens">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="BasCities">
+    <Key>
+      <PropertyRef Name="CityId" />
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="BasCountries">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryNameAr" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CountryNameEn" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="NationalityNameFrn" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="NationalityNameNtv" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CountryCodeISO" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="EntityProfile">
+    <Key>
+      <PropertyRef Name="EntityId" />
+    </Key>
+    <Property Name="EntityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntityNameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="EntityNameEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="200" />
+    <Property Name="GovernmentID" Type="nvarchar" MaxLength="20" />
+    <Property Name="EntityType" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="FacilityProfile">
+    <Key>
+      <PropertyRef Name="FacilityId" />
+    </Key>
+    <Property Name="FacilityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FacilityNameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="FacilityNameEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="OragnizationName" Type="nvarchar" MaxLength="200" />
+    <Property Name="FacilityCode" Type="nvarchar" MaxLength="200" />
+    <Property Name="Province" Type="nvarchar" MaxLength="20" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" />
+    <Property Name="Location" Type="nvarchar" MaxLength="200" />
+    <Property Name="EntityId" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="ItemSourcesFiles">
+    <Key>
+      <PropertyRef Name="ItemSourcesFileId" />
+    </Key>
+    <Property Name="ItemSourcesFileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileSourceID" Type="int" Nullable="false" />
+    <Property Name="FileNum" Type="int" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="300" />
+    <Property Name="FileOriginalName" Type="nvarchar" MaxLength="300" />
+    <Property Name="FileSize" Type="int" Nullable="false" />
+    <Property Name="UploadType" Type="int" Nullable="false" />
+    <Property Name="FilePath" Type="nvarchar" MaxLength="4000" />
+    <Property Name="FileBytes" Type="varbinary(max)" />
+    <Property Name="ContentType" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="ItemSourcesProfile">
+    <Key>
+      <PropertyRef Name="SourceId" />
+    </Key>
+    <Property Name="SourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SourceDescAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="SourceDescEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="NrrcID" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="30" />
+    <Property Name="ManufacturerSerialNo" Type="nvarchar" MaxLength="30" />
+    <Property Name="FacilitySerialNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="RadioNuclides" Type="nvarchar" MaxLength="30" />
+    <Property Name="ProductionDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsoptopHalfLifeTime" Type="int" Nullable="false" />
+    <Property Name="IspotopHalfLifeTimeUnit" Type="nvarchar" MaxLength="30" />
+    <Property Name="InitialActivity" Type="nvarchar" MaxLength="30" />
+    <Property Name="InitialActivityUnit" Type="nvarchar" MaxLength="30" />
+    <Property Name="CurrentActivity" Type="nvarchar" MaxLength="30" />
+    <Property Name="CurrentActivityUnit" Type="nvarchar" MaxLength="30" />
+    <Property Name="PhysicalForm" Type="nvarchar" MaxLength="30" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="30" />
+    <Property Name="Exemption" Type="nvarchar" MaxLength="30" />
+    <Property Name="RecommendedWorkingLifeTime" Type="int" Nullable="false" />
+    <Property Name="RadioactiveSourceid" Type="nvarchar" MaxLength="30" />
+    <Property Name="ShieldMaterial" Type="nvarchar" MaxLength="30" />
+    <Property Name="ShieldNuclearMaterialCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="Purpose" Type="nvarchar" MaxLength="300" />
+    <Property Name="NumberOfAcquiredSources" Type="int" Nullable="false" />
+    <Property Name="NumberOfConsumedSources" Type="int" Nullable="false" />
+    <Property Name="NumberOfAvailableSources" Type="int" Nullable="false" />
+    <Property Name="NuclearMaterial" Type="nvarchar" MaxLength="30" />
+    <Property Name="WeightOfNuclearMaterial" Type="int" Nullable="false" />
+    <Property Name="EnrichmentofU235" Type="nvarchar" MaxLength="30" />
+    <Property Name="WeightOffIssileisotopes" Type="nvarchar" MaxLength="30" />
+    <Property Name="WeightOffIssileisotopesunit" Type="nvarchar" MaxLength="30" />
+    <Property Name="ChemicalForm" Type="nvarchar" MaxLength="30" />
+    <Property Name="ChemicalComposition" Type="nvarchar" MaxLength="30" />
+    <Property Name="ContainerVolume" Type="int" Nullable="false" />
+    <Property Name="SourceActivity" Type="nvarchar" MaxLength="30" />
+    <Property Name="SourceModel" Type="nvarchar" MaxLength="30" />
+    <Property Name="AssociatedEquipment" Type="nvarchar" MaxLength="30" />
+    <Property Name="SourceCategory" Type="nvarchar" MaxLength="30" />
+    <Property Name="SourceLinkedFlag" Type="int" Nullable="false" />
+    <Property Name="EntityId" Type="int" />
+    <Property Name="FacilityId" Type="int" />
+    <Property Name="LicenseId" Type="int" />
+    <Property Name="LicenseInventoryId" Type="int" />
+    <Property Name="PermitdetailsId" Type="int" />
+    <Property Name="PermitInventoryId" Type="int" />
+    <Property Name="PractiseId" Type="int" />
+    <Property Name="SROId" Type="int" />
+    <Property Name="LegalRepresentativesId" Type="int" />
+    <Property Name="ManufacturerId" Type="int" />
+    <Property Name="ManufactureCountryId" Type="int" />
+    <Property Name="ItemTypeId" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="LegalRepresentativesProfile">
+    <Key>
+      <PropertyRef Name="LegalRepresentativesId" />
+    </Key>
+    <Property Name="LegalRepresentativesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LegalRepresentativesNameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="LegalRepresentativesNameEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" />
+    <Property Name="NationalID" Type="nvarchar" MaxLength="20" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="200" />
+    <Property Name="Status" Type="nvarchar" MaxLength="30" />
+    <Property Name="CurrentFacilities" Type="int" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="4000" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="LicenseInventoryLimits">
+    <Key>
+      <PropertyRef Name="LicenseInventoryId" />
+    </Key>
+    <Property Name="LicenseInventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SourceType" Type="nvarchar(max)" />
+    <Property Name="Radionuclide" Type="nvarchar(max)" />
+    <Property Name="MaximumRadioactivity" Type="int" Nullable="false" />
+    <Property Name="NumberofSources" Type="int" Nullable="false" />
+    <Property Name="LicenseId" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="LicenseProfile">
+    <Key>
+      <PropertyRef Name="LicenseId" />
+    </Key>
+    <Property Name="LicenseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LicenseDescAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="LicenseDescEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="LicenseCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="LicenseVersionNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="EffectiveDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ExpirationDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="PractiseSector" Type="nvarchar" MaxLength="20" />
+    <Property Name="LicenseActivities" Type="nvarchar" MaxLength="4000" />
+    <Property Name="EntityId" Type="int" />
+    <Property Name="FacilityId" Type="int" />
+    <Property Name="AmanInsertedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="LookupSet">
+    <Key>
+      <PropertyRef Name="LookupSetId" />
+    </Key>
+    <Property Name="LookupSetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="int" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar(max)" />
+    <Property Name="DisplayNameAr" Type="nvarchar(max)" />
+    <Property Name="DisplayNameEn" Type="nvarchar(max)" />
+    <Property Name="ExtraData1" Type="nvarchar(max)" />
+    <Property Name="ExtraData2" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="LookupSetTerm">
+    <Key>
+      <PropertyRef Name="LookupSetTermId" />
+    </Key>
+    <Property Name="LookupSetTermId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LookupSetId" Type="int" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" />
+    <Property Name="DisplayNameAr" Type="nvarchar(max)" />
+    <Property Name="DisplayNameEn" Type="nvarchar(max)" />
+    <Property Name="ExtraData1" Type="nvarchar(max)" />
+    <Property Name="ExtraData2" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="ManufacturerMaster">
+    <Key>
+      <PropertyRef Name="ManufacturerId" />
+    </Key>
+    <Property Name="ManufacturerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ManufacturerDescAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="ManufacturerDescEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="200" />
+    <Property Name="Location" Type="nvarchar" MaxLength="200" />
+    <Property Name="AddressLine1" Type="nvarchar" MaxLength="200" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="200" />
+    <Property Name="AddressLine3" Type="nvarchar" MaxLength="200" />
+    <Property Name="City" Type="nvarchar" MaxLength="200" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="POBox" Type="nvarchar" MaxLength="20" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="NuclearRelatedItemsProfile">
+    <Key>
+      <PropertyRef Name="NRRCRelatedItemId" />
+    </Key>
+    <Property Name="NRRCRelatedItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelatedItemDescAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="RelatedItemDescEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="NrrcID" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="30" />
+    <Property Name="ManufacturerSerialNo" Type="nvarchar" MaxLength="30" />
+    <Property Name="DateofManufacturing" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="FacilityRelatedItemID" Type="nvarchar" MaxLength="30" />
+    <Property Name="Purpose" Type="nvarchar" MaxLength="30" />
+    <Property Name="ItemTypeNo" Type="nvarchar" MaxLength="30" />
+    <Property Name="ItemtypeName" Type="nvarchar" MaxLength="30" />
+    <Property Name="ModelNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="HSCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="GovernmentCommitmentsFlag" Type="nvarchar" MaxLength="30" />
+    <Property Name="EndUserCertificateFlag" Type="nvarchar" MaxLength="30" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="30" />
+    <Property Name="PermitInitialQty" Type="int" Nullable="false" />
+    <Property Name="EntityId" Type="int" />
+    <Property Name="FacilityId" Type="int" />
+    <Property Name="LicenseId" Type="int" />
+    <Property Name="LicenseInventoryId" Type="int" />
+    <Property Name="PermitdetailsId" Type="int" />
+    <Property Name="PermitInventoryId" Type="int" />
+    <Property Name="PractiseId" Type="int" />
+    <Property Name="SROId" Type="int" />
+    <Property Name="LegalRepresentativesId" Type="int" />
+    <Property Name="ManufacturerId" Type="int" />
+    <Property Name="ManufactureCountryId" Type="int" />
+    <Property Name="ItemCategory" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="PermitDetailsProfile">
+    <Key>
+      <PropertyRef Name="PermitDetailsId" />
+    </Key>
+    <Property Name="PermitDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PermitDetailsDescAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="PermitDetailsDescEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="PermitNumber" Type="nvarchar" MaxLength="200" />
+    <Property Name="EffectiveDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ExpirationDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="LicenseId" Type="int" />
+    <Property Name="AmanInsertedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="PermitInventoryLimits">
+    <Key>
+      <PropertyRef Name="PermitInventoryId" />
+    </Key>
+    <Property Name="PermitInventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SourceSerialNo" Type="nvarchar" MaxLength="30" />
+    <Property Name="ManufactureName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Radionuclide" Type="nvarchar" MaxLength="30" />
+    <Property Name="ModelMaximumRadioactivity" Type="nvarchar" MaxLength="30" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="30" />
+    <Property Name="PermitDetailsId" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="PractiseProfile">
+    <Key>
+      <PropertyRef Name="PractiseId" />
+    </Key>
+    <Property Name="PractiseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PractiseNameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="PractiseNameEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="PermitDetailsId" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="RadiationGeneratorsProfile">
+    <Key>
+      <PropertyRef Name="EquipmentId" />
+    </Key>
+    <Property Name="EquipmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentDescAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="EquipmentDescEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="NrrcID" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="30" />
+    <Property Name="ManufacturerSerialNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="DateofManufacturing" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="FacilitySerialNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="Purpose" Type="nvarchar" MaxLength="30" />
+    <Property Name="ModelNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="XRayTubeSerialNo" Type="nvarchar" MaxLength="30" />
+    <Property Name="MaxEnergy" Type="nvarchar" MaxLength="30" />
+    <Property Name="EnergyUnit" Type="nvarchar" MaxLength="30" />
+    <Property Name="MaxDoseRate" Type="nvarchar" MaxLength="30" />
+    <Property Name="DoseUnit" Type="nvarchar" MaxLength="30" />
+    <Property Name="MaxCurrent" Type="nvarchar" MaxLength="30" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="30" />
+    <Property Name="SheildMaterial" Type="nvarchar" MaxLength="30" />
+    <Property Name="ShieldNuclearMaterialCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="EntityId" Type="int" />
+    <Property Name="FacilityId" Type="int" />
+    <Property Name="LicenseId" Type="int" />
+    <Property Name="LicenseInventoryId" Type="int" />
+    <Property Name="PermitdetailsId" Type="int" />
+    <Property Name="PermitInventoryId" Type="int" />
+    <Property Name="PractiseId" Type="int" />
+    <Property Name="SROId" Type="int" />
+    <Property Name="LegalRepresentativesId" Type="int" />
+    <Property Name="ManufacturerId" Type="int" />
+    <Property Name="EquipmentType" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="SafetyResponsibleOfficersProfile">
+    <Key>
+      <PropertyRef Name="SROId" />
+    </Key>
+    <Property Name="SROId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SRONameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="SRONameEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="NationalID" Type="nvarchar" MaxLength="20" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="200" />
+    <Property Name="CertificateNo" Type="nvarchar" MaxLength="30" />
+    <Property Name="IssuanceDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ExpiryDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+    <Property Name="AmanInsertedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetRoleClaims" Type="Self.AspNetRoleClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetRoleClaims">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserClaims_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserLogins_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_BasCountries_CountryID">
+    <End Role="BasCountries" Type="Self.BasCountries" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasCountries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserTokens_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserTokens" Type="Self.AspNetUserTokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserTokens">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacilityProfile_EntityProfile_EntityId">
+    <End Role="EntityProfile" Type="Self.EntityProfile" Multiplicity="0..1" />
+    <End Role="FacilityProfile" Type="Self.FacilityProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityProfile">
+        <PropertyRef Name="EntityId" />
+      </Principal>
+      <Dependent Role="FacilityProfile">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_BasCountries_ManufactureCountryId">
+    <End Role="BasCountries" Type="Self.BasCountries" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasCountries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="ManufactureCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_EntityProfile_EntityId">
+    <End Role="EntityProfile" Type="Self.EntityProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityProfile">
+        <PropertyRef Name="EntityId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_FacilityProfile_FacilityId">
+    <End Role="FacilityProfile" Type="Self.FacilityProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacilityProfile">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+    <End Role="LegalRepresentativesProfile" Type="Self.LegalRepresentativesProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LegalRepresentativesProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_LicenseInventoryLimits_LicenseInventoryId">
+    <End Role="LicenseInventoryLimits" Type="Self.LicenseInventoryLimits" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseInventoryLimits">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_LicenseProfile_LicenseId">
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseProfile">
+        <PropertyRef Name="LicenseId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_LookupSet_ItemTypeId">
+    <End Role="LookupSet" Type="Self.LookupSet" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupSet">
+        <PropertyRef Name="LookupSetId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="ItemTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_ManufacturerMaster_ManufacturerId">
+    <End Role="ManufacturerMaster" Type="Self.ManufacturerMaster" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ManufacturerMaster">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_PermitDetailsProfile_PermitdetailsId">
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitDetailsProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="PermitdetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_PermitInventoryLimits_PermitInventoryId">
+    <End Role="PermitInventoryLimits" Type="Self.PermitInventoryLimits" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitInventoryLimits">
+        <PropertyRef Name="PermitInventoryId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="PermitInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_PractiseProfile_PractiseId">
+    <End Role="PractiseProfile" Type="Self.PractiseProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PractiseProfile">
+        <PropertyRef Name="PractiseId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="PractiseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSourcesProfile_SafetyResponsibleOfficersProfile_SROId">
+    <End Role="SafetyResponsibleOfficersProfile" Type="Self.SafetyResponsibleOfficersProfile" Multiplicity="0..1" />
+    <End Role="ItemSourcesProfile" Type="Self.ItemSourcesProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SafetyResponsibleOfficersProfile">
+        <PropertyRef Name="SROId" />
+      </Principal>
+      <Dependent Role="ItemSourcesProfile">
+        <PropertyRef Name="SROId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LicenseInventoryLimits_LicenseProfile_LicenseId">
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="0..1" />
+    <End Role="LicenseInventoryLimits" Type="Self.LicenseInventoryLimits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseProfile">
+        <PropertyRef Name="LicenseId" />
+      </Principal>
+      <Dependent Role="LicenseInventoryLimits">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LicenseProfile_EntityProfile_EntityId">
+    <End Role="EntityProfile" Type="Self.EntityProfile" Multiplicity="0..1" />
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityProfile">
+        <PropertyRef Name="EntityId" />
+      </Principal>
+      <Dependent Role="LicenseProfile">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LicenseProfile_FacilityProfile_FacilityId">
+    <End Role="FacilityProfile" Type="Self.FacilityProfile" Multiplicity="0..1" />
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacilityProfile">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="LicenseProfile">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ManufacturerMaster_BasCountries_CountryId">
+    <End Role="BasCountries" Type="Self.BasCountries" Multiplicity="0..1" />
+    <End Role="ManufacturerMaster" Type="Self.ManufacturerMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasCountries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="ManufacturerMaster">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_BasCountries_ManufactureCountryId">
+    <End Role="BasCountries" Type="Self.BasCountries" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasCountries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="ManufactureCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_EntityProfile_EntityId">
+    <End Role="EntityProfile" Type="Self.EntityProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityProfile">
+        <PropertyRef Name="EntityId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_FacilityProfile_FacilityId">
+    <End Role="FacilityProfile" Type="Self.FacilityProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacilityProfile">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+    <End Role="LegalRepresentativesProfile" Type="Self.LegalRepresentativesProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LegalRepresentativesProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_LicenseInventoryLimits_LicenseInventoryId">
+    <End Role="LicenseInventoryLimits" Type="Self.LicenseInventoryLimits" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseInventoryLimits">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_LicenseProfile_LicenseId">
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseProfile">
+        <PropertyRef Name="LicenseId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_LookupSet_ItemCategory">
+    <End Role="LookupSet" Type="Self.LookupSet" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupSet">
+        <PropertyRef Name="LookupSetId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="ItemCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_ManufacturerMaster_ManufacturerId">
+    <End Role="ManufacturerMaster" Type="Self.ManufacturerMaster" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ManufacturerMaster">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_PermitDetailsProfile_PermitdetailsId">
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitDetailsProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="PermitdetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_PermitInventoryLimits_PermitInventoryId">
+    <End Role="PermitInventoryLimits" Type="Self.PermitInventoryLimits" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitInventoryLimits">
+        <PropertyRef Name="PermitInventoryId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="PermitInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_PractiseProfile_PractiseId">
+    <End Role="PractiseProfile" Type="Self.PractiseProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PractiseProfile">
+        <PropertyRef Name="PractiseId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="PractiseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NuclearRelatedItemsProfile_SafetyResponsibleOfficersProfile_SROId">
+    <End Role="SafetyResponsibleOfficersProfile" Type="Self.SafetyResponsibleOfficersProfile" Multiplicity="0..1" />
+    <End Role="NuclearRelatedItemsProfile" Type="Self.NuclearRelatedItemsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SafetyResponsibleOfficersProfile">
+        <PropertyRef Name="SROId" />
+      </Principal>
+      <Dependent Role="NuclearRelatedItemsProfile">
+        <PropertyRef Name="SROId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermitDetailsProfile_LicenseProfile_LicenseId">
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="0..1" />
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseProfile">
+        <PropertyRef Name="LicenseId" />
+      </Principal>
+      <Dependent Role="PermitDetailsProfile">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermitInventoryLimits_PermitDetailsProfile_PermitDetailsId">
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="0..1" />
+    <End Role="PermitInventoryLimits" Type="Self.PermitInventoryLimits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitDetailsProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Principal>
+      <Dependent Role="PermitInventoryLimits">
+        <PropertyRef Name="PermitDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PractiseProfile_PermitDetailsProfile_PermitDetailsId">
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="0..1" />
+    <End Role="PractiseProfile" Type="Self.PractiseProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitDetailsProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Principal>
+      <Dependent Role="PractiseProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_EntityProfile_EntityId">
+    <End Role="EntityProfile" Type="Self.EntityProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityProfile">
+        <PropertyRef Name="EntityId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_FacilityProfile_FacilityId">
+    <End Role="FacilityProfile" Type="Self.FacilityProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacilityProfile">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+    <End Role="LegalRepresentativesProfile" Type="Self.LegalRepresentativesProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LegalRepresentativesProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="LegalRepresentativesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_LicenseInventoryLimits_LicenseInventoryId">
+    <End Role="LicenseInventoryLimits" Type="Self.LicenseInventoryLimits" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseInventoryLimits">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="LicenseInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_LicenseProfile_LicenseId">
+    <End Role="LicenseProfile" Type="Self.LicenseProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseProfile">
+        <PropertyRef Name="LicenseId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_LookupSet_EquipmentType">
+    <End Role="LookupSet" Type="Self.LookupSet" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupSet">
+        <PropertyRef Name="LookupSetId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="EquipmentType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_ManufacturerMaster_ManufacturerId">
+    <End Role="ManufacturerMaster" Type="Self.ManufacturerMaster" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ManufacturerMaster">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_PermitDetailsProfile_PermitdetailsId">
+    <End Role="PermitDetailsProfile" Type="Self.PermitDetailsProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitDetailsProfile">
+        <PropertyRef Name="PermitDetailsId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="PermitdetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_PermitInventoryLimits_PermitInventoryId">
+    <End Role="PermitInventoryLimits" Type="Self.PermitInventoryLimits" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermitInventoryLimits">
+        <PropertyRef Name="PermitInventoryId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="PermitInventoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_PractiseProfile_PractiseId">
+    <End Role="PractiseProfile" Type="Self.PractiseProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PractiseProfile">
+        <PropertyRef Name="PractiseId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="PractiseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RadiationGeneratorsProfile_SafetyResponsibleOfficersProfile_SROId">
+    <End Role="SafetyResponsibleOfficersProfile" Type="Self.SafetyResponsibleOfficersProfile" Multiplicity="0..1" />
+    <End Role="RadiationGeneratorsProfile" Type="Self.RadiationGeneratorsProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SafetyResponsibleOfficersProfile">
+        <PropertyRef Name="SROId" />
+      </Principal>
+      <Dependent Role="RadiationGeneratorsProfile">
+        <PropertyRef Name="SROId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NRRCDb2ModelStoreContainer">
+    <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoleClaims" EntityType="Self.AspNetRoleClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserTokens" EntityType="Self.AspNetUserTokens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BasCities" EntityType="Self.BasCities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BasCountries" EntityType="Self.BasCountries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EntityProfile" EntityType="Self.EntityProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FacilityProfile" EntityType="Self.FacilityProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemSourcesFiles" EntityType="Self.ItemSourcesFiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemSourcesProfile" EntityType="Self.ItemSourcesProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LegalRepresentativesProfile" EntityType="Self.LegalRepresentativesProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LicenseInventoryLimits" EntityType="Self.LicenseInventoryLimits" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LicenseProfile" EntityType="Self.LicenseProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookupSet" EntityType="Self.LookupSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookupSetTerm" EntityType="Self.LookupSetTerm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ManufacturerMaster" EntityType="Self.ManufacturerMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NuclearRelatedItemsProfile" EntityType="Self.NuclearRelatedItemsProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermitDetailsProfile" EntityType="Self.PermitDetailsProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermitInventoryLimits" EntityType="Self.PermitInventoryLimits" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PractiseProfile" EntityType="Self.PractiseProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RadiationGeneratorsProfile" EntityType="Self.RadiationGeneratorsProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SafetyResponsibleOfficersProfile" EntityType="Self.SafetyResponsibleOfficersProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AspNetRoleClaims_AspNetRoles_RoleId" Association="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetRoleClaims" EntitySet="AspNetRoleClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers_UserId" Association="Self.FK_AspNetUserClaims_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers_UserId" Association="Self.FK_AspNetUserLogins_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles_RoleId" Association="Self.FK_AspNetUserRoles_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers_UserId" Association="Self.FK_AspNetUserRoles_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_BasCountries_CountryID" Association="Self.FK_AspNetUsers_BasCountries_CountryID">
+      <End Role="BasCountries" EntitySet="BasCountries" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserTokens_AspNetUsers_UserId" Association="Self.FK_AspNetUserTokens_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserTokens" EntitySet="AspNetUserTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacilityProfile_EntityProfile_EntityId" Association="Self.FK_FacilityProfile_EntityProfile_EntityId">
+      <End Role="EntityProfile" EntitySet="EntityProfile" />
+      <End Role="FacilityProfile" EntitySet="FacilityProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_BasCountries_ManufactureCountryId" Association="Self.FK_ItemSourcesProfile_BasCountries_ManufactureCountryId">
+      <End Role="BasCountries" EntitySet="BasCountries" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_EntityProfile_EntityId" Association="Self.FK_ItemSourcesProfile_EntityProfile_EntityId">
+      <End Role="EntityProfile" EntitySet="EntityProfile" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_FacilityProfile_FacilityId" Association="Self.FK_ItemSourcesProfile_FacilityProfile_FacilityId">
+      <End Role="FacilityProfile" EntitySet="FacilityProfile" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_LegalRepresentativesProfile_LegalRepresentativesId" Association="Self.FK_ItemSourcesProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+      <End Role="LegalRepresentativesProfile" EntitySet="LegalRepresentativesProfile" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_LicenseInventoryLimits_LicenseInventoryId" Association="Self.FK_ItemSourcesProfile_LicenseInventoryLimits_LicenseInventoryId">
+      <End Role="LicenseInventoryLimits" EntitySet="LicenseInventoryLimits" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_LicenseProfile_LicenseId" Association="Self.FK_ItemSourcesProfile_LicenseProfile_LicenseId">
+      <End Role="LicenseProfile" EntitySet="LicenseProfile" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_LookupSet_ItemTypeId" Association="Self.FK_ItemSourcesProfile_LookupSet_ItemTypeId">
+      <End Role="LookupSet" EntitySet="LookupSet" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_ManufacturerMaster_ManufacturerId" Association="Self.FK_ItemSourcesProfile_ManufacturerMaster_ManufacturerId">
+      <End Role="ManufacturerMaster" EntitySet="ManufacturerMaster" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_PermitDetailsProfile_PermitdetailsId" Association="Self.FK_ItemSourcesProfile_PermitDetailsProfile_PermitdetailsId">
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfile" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_PermitInventoryLimits_PermitInventoryId" Association="Self.FK_ItemSourcesProfile_PermitInventoryLimits_PermitInventoryId">
+      <End Role="PermitInventoryLimits" EntitySet="PermitInventoryLimits" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_PractiseProfile_PractiseId" Association="Self.FK_ItemSourcesProfile_PractiseProfile_PractiseId">
+      <End Role="PractiseProfile" EntitySet="PractiseProfile" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSourcesProfile_SafetyResponsibleOfficersProfile_SROId" Association="Self.FK_ItemSourcesProfile_SafetyResponsibleOfficersProfile_SROId">
+      <End Role="SafetyResponsibleOfficersProfile" EntitySet="SafetyResponsibleOfficersProfile" />
+      <End Role="ItemSourcesProfile" EntitySet="ItemSourcesProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LicenseInventoryLimits_LicenseProfile_LicenseId" Association="Self.FK_LicenseInventoryLimits_LicenseProfile_LicenseId">
+      <End Role="LicenseProfile" EntitySet="LicenseProfile" />
+      <End Role="LicenseInventoryLimits" EntitySet="LicenseInventoryLimits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LicenseProfile_EntityProfile_EntityId" Association="Self.FK_LicenseProfile_EntityProfile_EntityId">
+      <End Role="EntityProfile" EntitySet="EntityProfile" />
+      <End Role="LicenseProfile" EntitySet="LicenseProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LicenseProfile_FacilityProfile_FacilityId" Association="Self.FK_LicenseProfile_FacilityProfile_FacilityId">
+      <End Role="FacilityProfile" EntitySet="FacilityProfile" />
+      <End Role="LicenseProfile" EntitySet="LicenseProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ManufacturerMaster_BasCountries_CountryId" Association="Self.FK_ManufacturerMaster_BasCountries_CountryId">
+      <End Role="BasCountries" EntitySet="BasCountries" />
+      <End Role="ManufacturerMaster" EntitySet="ManufacturerMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_BasCountries_ManufactureCountryId" Association="Self.FK_NuclearRelatedItemsProfile_BasCountries_ManufactureCountryId">
+      <End Role="BasCountries" EntitySet="BasCountries" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_EntityProfile_EntityId" Association="Self.FK_NuclearRelatedItemsProfile_EntityProfile_EntityId">
+      <End Role="EntityProfile" EntitySet="EntityProfile" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_FacilityProfile_FacilityId" Association="Self.FK_NuclearRelatedItemsProfile_FacilityProfile_FacilityId">
+      <End Role="FacilityProfile" EntitySet="FacilityProfile" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_LegalRepresentativesProfile_LegalRepresentativesId" Association="Self.FK_NuclearRelatedItemsProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+      <End Role="LegalRepresentativesProfile" EntitySet="LegalRepresentativesProfile" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_LicenseInventoryLimits_LicenseInventoryId" Association="Self.FK_NuclearRelatedItemsProfile_LicenseInventoryLimits_LicenseInventoryId">
+      <End Role="LicenseInventoryLimits" EntitySet="LicenseInventoryLimits" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_LicenseProfile_LicenseId" Association="Self.FK_NuclearRelatedItemsProfile_LicenseProfile_LicenseId">
+      <End Role="LicenseProfile" EntitySet="LicenseProfile" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_LookupSet_ItemCategory" Association="Self.FK_NuclearRelatedItemsProfile_LookupSet_ItemCategory">
+      <End Role="LookupSet" EntitySet="LookupSet" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_ManufacturerMaster_ManufacturerId" Association="Self.FK_NuclearRelatedItemsProfile_ManufacturerMaster_ManufacturerId">
+      <End Role="ManufacturerMaster" EntitySet="ManufacturerMaster" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_PermitDetailsProfile_PermitdetailsId" Association="Self.FK_NuclearRelatedItemsProfile_PermitDetailsProfile_PermitdetailsId">
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfile" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_PermitInventoryLimits_PermitInventoryId" Association="Self.FK_NuclearRelatedItemsProfile_PermitInventoryLimits_PermitInventoryId">
+      <End Role="PermitInventoryLimits" EntitySet="PermitInventoryLimits" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_PractiseProfile_PractiseId" Association="Self.FK_NuclearRelatedItemsProfile_PractiseProfile_PractiseId">
+      <End Role="PractiseProfile" EntitySet="PractiseProfile" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NuclearRelatedItemsProfile_SafetyResponsibleOfficersProfile_SROId" Association="Self.FK_NuclearRelatedItemsProfile_SafetyResponsibleOfficersProfile_SROId">
+      <End Role="SafetyResponsibleOfficersProfile" EntitySet="SafetyResponsibleOfficersProfile" />
+      <End Role="NuclearRelatedItemsProfile" EntitySet="NuclearRelatedItemsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermitDetailsProfile_LicenseProfile_LicenseId" Association="Self.FK_PermitDetailsProfile_LicenseProfile_LicenseId">
+      <End Role="LicenseProfile" EntitySet="LicenseProfile" />
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermitInventoryLimits_PermitDetailsProfile_PermitDetailsId" Association="Self.FK_PermitInventoryLimits_PermitDetailsProfile_PermitDetailsId">
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfile" />
+      <End Role="PermitInventoryLimits" EntitySet="PermitInventoryLimits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PractiseProfile_PermitDetailsProfile_PermitDetailsId" Association="Self.FK_PractiseProfile_PermitDetailsProfile_PermitDetailsId">
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfile" />
+      <End Role="PractiseProfile" EntitySet="PractiseProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_EntityProfile_EntityId" Association="Self.FK_RadiationGeneratorsProfile_EntityProfile_EntityId">
+      <End Role="EntityProfile" EntitySet="EntityProfile" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_FacilityProfile_FacilityId" Association="Self.FK_RadiationGeneratorsProfile_FacilityProfile_FacilityId">
+      <End Role="FacilityProfile" EntitySet="FacilityProfile" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_LegalRepresentativesProfile_LegalRepresentativesId" Association="Self.FK_RadiationGeneratorsProfile_LegalRepresentativesProfile_LegalRepresentativesId">
+      <End Role="LegalRepresentativesProfile" EntitySet="LegalRepresentativesProfile" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_LicenseInventoryLimits_LicenseInventoryId" Association="Self.FK_RadiationGeneratorsProfile_LicenseInventoryLimits_LicenseInventoryId">
+      <End Role="LicenseInventoryLimits" EntitySet="LicenseInventoryLimits" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_LicenseProfile_LicenseId" Association="Self.FK_RadiationGeneratorsProfile_LicenseProfile_LicenseId">
+      <End Role="LicenseProfile" EntitySet="LicenseProfile" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_LookupSet_EquipmentType" Association="Self.FK_RadiationGeneratorsProfile_LookupSet_EquipmentType">
+      <End Role="LookupSet" EntitySet="LookupSet" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_ManufacturerMaster_ManufacturerId" Association="Self.FK_RadiationGeneratorsProfile_ManufacturerMaster_ManufacturerId">
+      <End Role="ManufacturerMaster" EntitySet="ManufacturerMaster" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_PermitDetailsProfile_PermitdetailsId" Association="Self.FK_RadiationGeneratorsProfile_PermitDetailsProfile_PermitdetailsId">
+      <End Role="PermitDetailsProfile" EntitySet="PermitDetailsProfile" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_PermitInventoryLimits_PermitInventoryId" Association="Self.FK_RadiationGeneratorsProfile_PermitInventoryLimits_PermitInventoryId">
+      <End Role="PermitInventoryLimits" EntitySet="PermitInventoryLimits" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_PractiseProfile_PractiseId" Association="Self.FK_RadiationGeneratorsProfile_PractiseProfile_PractiseId">
+      <End Role="PractiseProfile" EntitySet="PractiseProfile" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RadiationGeneratorsProfile_SafetyResponsibleOfficersProfile_SROId" Association="Self.FK_RadiationGeneratorsProfile_SafetyResponsibleOfficersProfile_SROId">
+      <End Role="SafetyResponsibleOfficersProfile" EntitySet="SafetyResponsibleOfficersProfile" />
+      <End Role="RadiationGeneratorsProfile" EntitySet="RadiationGeneratorsProfile" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

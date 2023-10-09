@@ -1,0 +1,32 @@
+<!-- Quick Action-->
+<div class="w-100 mt-4 d-flex align-content-center justify-content-center">
+  <div class="mainFav w-100 d-flex justify-content-center mt-3">
+    <div class="mainFavSelect">
+      <button  class="btn btn-secondary btn-sm w-100">خيار سريع</button>
+      <div id="favDropDownList" class="dropdown-content">
+        <input type="text" placeholder="بحث" id="myInput" class="mb-3" >
+
+        <a href="#about">About</a>
+        <a href="#base">Base</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="#custom">Custom</a>
+        <a href="#support">Support</a>
+        <a href="#tools">Tools</a>
+
+      </div>
+    </div>
+  </div>
+  <hr class="lineBreakw1">
+</div>
+<!-- Menu Sections Blocks -->
+
+
+<div class="mainContent container-fluid d-flex flex-wrap justify-content-start align-content-center mt-5" style=" margin: auto; width: 90%;">
+  <ng-container *ngFor="let menu of menus">
+    <app-main-menu-item [menu]="menu"
+                        class="mainContentItem d-flex justify-content-center align-items-center mx-3">
+    </app-main-menu-item>
+  </ng-container>
+</div>
+

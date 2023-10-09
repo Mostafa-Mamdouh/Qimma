@@ -1,0 +1,49 @@
+﻿@model VerificationViewModel
+
+@{
+    ViewBag.Title = "Verification Login";
+}
+    
+
+<link href="~/assets/css2/login.css" rel="stylesheet" />
+
+<div class="sideloginform">
+    <img src="~/assets/imgs/nrrclogo-v.svg" class="logoLoginForm w-25 mx-auto mb-3" alt="" />
+    <h1>
+        Enter verification code
+    </h1>
+    <form method="post">
+        @{
+            if (ViewBag.HaveError != null)
+            {
+                if (ViewBag.HaveError)
+                {
+                    <div id="authError" class="alert alert-danger text-center">
+                        <div asp-validation-summary="All"> </div>
+                    </div>
+                }
+            }
+        }
+        <span class="m-2 text-center">
+            Verification code has been sent to the number
+            *****5652
+        </span>
+        <div class="modal-body d-flex justify-content-center">
+            <input class="m-2 text-center form-control rounded" type="text" asp-for="Id1" maxlength="1" required />
+            <input class="m-2 text-center form-control rounded" type="text" asp-for="Id2" maxlength="1" required />
+            <input class="m-2 text-center form-control rounded" type="text" asp-for="Id3" maxlength="1" required />
+            <input class="m-2 text-center form-control rounded" type="text" asp-for="Id4" maxlength="1" required />
+            <input class="m-2 text-center form-control rounded" type="text" asp-for="Id5" maxlength="1" required />
+            <input class="m-2 text-center form-control rounded" type="text" asp-for="Id6" maxlength="1" required />
+        </div>
+        <input id="submit" type="submit" value="Submit" class="btn btn-gold" />
+        <a  class="btn btn-secondary" >
+            Cancle
+        </a>
+    </form>
+
+
+</div>
+<div class="sidelogin">
+    <img src="~/nrrclogo-white.svg" class="w-50 mx-auto d-block mt-3" alt="" />
+</div>

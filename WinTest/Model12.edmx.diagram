@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a405d90c9b14f1792a9789b3051999f" Name="Diagram1">
+        <EntityTypeShape EntityType="NRRCDb2Model.C__EFMigrationsHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.AspNetRoleClaim" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.AspNetRole" Width="1.5" PointX="8.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.AspNetUserClaim" Width="1.5" PointX="12.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.AspNetUserLogin" Width="1.5" PointX="12.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.AspNetUser" Width="1.5" PointX="10.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.AspNetUserToken" Width="1.5" PointX="12.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.BasCity" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.BasCountry" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.EntityProfile" Width="1.5" PointX="0.5" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.FacilityProfile" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.ItemSourcesFile" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.ItemSourcesProfile" Width="1.5" PointX="7.5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.LegalRepresentativesProfile" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.LicenseInventoryLimit" Width="1.5" PointX="7.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.LicenseProfile" Width="1.5" PointX="5.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.LookupSet" Width="1.5" PointX="5.25" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.LookupSetTerm" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.ManufacturerMaster" Width="1.5" PointX="5.25" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.NuclearRelatedItemsProfile" Width="1.5" PointX="12" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.PermitDetailsProfile" Width="1.5" PointX="7.5" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.PermitInventoryLimit" Width="1.5" PointX="9.75" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.PractiseProfile" Width="1.5" PointX="9.75" PointY="38" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.RadiationGeneratorsProfile" Width="1.5" PointX="15" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.SafetyResponsibleOfficersProfile" Width="1.5" PointX="5.25" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="NRRCDb2Model.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="NRRCDb2Model.FK_AspNetRoleClaims_AspNetRoles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_AspNetUserClaims_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_AspNetUserLogins_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_AspNetUsers_BasCountries_CountryID" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_AspNetUserTokens_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_BasCountries_ManufactureCountryId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ManufacturerMaster_BasCountries_CountryId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_BasCountries_ManufactureCountryId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_FacilityProfile_EntityProfile_EntityId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_EntityProfile_EntityId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_LicenseProfile_EntityProfile_EntityId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_EntityProfile_EntityId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_EntityProfile_EntityId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_FacilityProfile_FacilityId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_LicenseProfile_FacilityProfile_FacilityId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_FacilityProfile_FacilityId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_FacilityProfile_FacilityId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_LegalRepresentativesProfile_LegalRepresentativesId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_LicenseInventoryLimits_LicenseInventoryId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_LicenseProfile_LicenseId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_LookupSet_ItemTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_ManufacturerMaster_ManufacturerId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_PermitDetailsProfile_PermitdetailsId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_PermitInventoryLimits_PermitInventoryId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_PractiseProfile_PractiseId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_ItemSourcesProfile_SafetyResponsibleOfficersProfile_SROId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_LegalRepresentativesProfile_LegalRepresentativesId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_LegalRepresentativesProfile_LegalRepresentativesId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_LicenseInventoryLimits_LicenseProfile_LicenseId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_LicenseInventoryLimits_LicenseInventoryId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_LicenseInventoryLimits_LicenseInventoryId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_LicenseProfile_LicenseId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_PermitDetailsProfile_LicenseProfile_LicenseId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_LicenseProfile_LicenseId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_LookupSet_ItemCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_LookupSet_EquipmentType" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_ManufacturerMaster_ManufacturerId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_ManufacturerMaster_ManufacturerId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_PermitDetailsProfile_PermitdetailsId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_PermitInventoryLimits_PermitInventoryId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_PractiseProfile_PractiseId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_NuclearRelatedItemsProfile_SafetyResponsibleOfficersProfile_SROId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_PermitInventoryLimits_PermitDetailsProfile_PermitDetailsId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_PractiseProfile_PermitDetailsProfile_PermitDetailsId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_PermitDetailsProfile_PermitdetailsId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_PermitInventoryLimits_PermitInventoryId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_PractiseProfile_PractiseId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.FK_RadiationGeneratorsProfile_SafetyResponsibleOfficersProfile_SROId" ManuallyRouted="false" />
+        <AssociationConnector Association="NRRCDb2Model.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,17 @@
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\PRJ.DataAccess.csproj.AssemblyReference.cache
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\PRJ.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\PRJ.DataAccess.AssemblyInfoInputs.cache
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\PRJ.DataAccess.AssemblyInfo.cs
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\PRJ.DataAccess.csproj.CoreCompileInputs.cache
+C:\Qimma\PRJ.DataAccess\bin\Debug\net6.0\PRJ.DataAccess.deps.json
+C:\Qimma\PRJ.DataAccess\bin\Debug\net6.0\PRJ.DataAccess.runtimeconfig.json
+C:\Qimma\PRJ.DataAccess\bin\Debug\net6.0\PRJ.DataAccess.dll
+C:\Qimma\PRJ.DataAccess\bin\Debug\net6.0\PRJ.DataAccess.pdb
+C:\Qimma\PRJ.DataAccess\bin\Debug\net6.0\PRJ.Domain.dll
+C:\Qimma\PRJ.DataAccess\bin\Debug\net6.0\PRJ.Domain.pdb
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\PRJ.DataAccess.csproj.CopyComplete
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\PRJ.DataAccess.dll
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\refint\PRJ.DataAccess.dll
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\PRJ.DataAccess.pdb
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\PRJ.DataAccess.genruntimeconfig.cache
+C:\Qimma\PRJ.DataAccess\obj\Debug\net6.0\ref\PRJ.DataAccess.dll

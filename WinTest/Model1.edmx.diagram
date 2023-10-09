@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9c461e2d9b204441b47be2c18962b1ff" Name="Diagram1">
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CampaignAttachment" Width="1.5" PointX="35.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CampaignLink" Width="1.5" PointX="35.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Campaing" Width="1.5" PointX="33" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CustomCompaignMail" Width="1.5" PointX="35.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EmailListContent" Width="1.5" PointX="33" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EmailList" Width="1.5" PointX="30.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.AuthorizedDepartment" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SASOArea" Width="1.5" PointX="3.75" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SASOCountry" Width="1.5" PointX="6" PointY="61.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SASOEmbassyPlace" Width="1.5" PointX="6" PointY="66.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SASOErrorLogger" Width="1.5" PointX="5.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.ServiceConfig" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.ServicesStatus" Width="1.5" PointX="0.75" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.UsersInDepartment" Width="1.5" PointX="2.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.AvailableDevice" Width="1.5" PointX="9" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.DataSimService" Width="1.5" PointX="9" PointY="42.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SimCardRequestAction" Width="1.5" PointX="3" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SimCardRequest" Width="1.5" PointX="6" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SimCardRequestSpecialist" Width="1.5" PointX="8.25" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SimRequestService" Width="1.5" PointX="11.25" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.UtilitiyType" Width="1.5" PointX="6.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Activity" Width="1.5" PointX="40" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.ActivityRequest" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Agency" Width="1.5" PointX="13.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.AgencyLicensor" Width="1.5" PointX="16" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.AgencyRelated" Width="1.5" PointX="19" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.AgencySupervisor" Width="1.5" PointX="16" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Announcement" Width="1.5" PointX="40" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.AnnouncementsDepartment" Width="1.5" PointX="37.75" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Branch" Width="1.5" PointX="10.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CarInfo" Width="1.5" PointX="4.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CarMainitnanceType" Width="1.5" PointX="18.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CarMaintinanceBillsAttachment" Width="1.5" PointX="7.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CarMaintinanceCard" Width="1.5" PointX="20.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CarMaintinanceRequest" Width="1.5" PointX="20.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CarMaintinanceRequestTask" Width="1.5" PointX="21.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CarRequest" Width="1.5" PointX="13.75" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CarRequestTask" Width="1.5" PointX="11.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Chapter" Width="1.5" PointX="37.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.City" Width="1.5" PointX="23.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EmailSenderLog" Width="1.5" PointX="5.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EmpIdentyCertificate" Width="1.5" PointX="15.75" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EmployeeInRole" Width="1.5" PointX="25.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EndorsementResult" Width="1.5" PointX="40" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Endorsement" Width="1.5" PointX="37.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EServicesTabContent" Width="1.5" PointX="37.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EServicesTab" Width="1.5" PointX="37.75" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.GuidesPolicy" Width="1.5" PointX="17.75" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HallRoom" Width="1.5" PointX="0.75" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Poll" Width="1.5" PointX="0.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.PollsAnswer" Width="1.5" PointX="5.25" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.PollsQuestion" Width="1.5" PointX="3" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.ProfileOfUser" Width="1.5" PointX="0.75" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Role" Width="1.5" PointX="2.75" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RolesUser" Width="1.5" PointX="39.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RSSNew" Width="1.5" PointX="39.75" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SASONew" Width="1.5" PointX="35.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SASONewsAttachemnt" Width="1.5" PointX="38" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.ServiceList" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.ServiceLog" Width="1.5" PointX="35.75" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.ServiceRole" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.ServicesSetting" Width="1.5" PointX="39.75" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.ServiceType" Width="1.5" PointX="40.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SocialNew" Width="1.5" PointX="35.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SocialNewsAttachemnt" Width="1.5" PointX="38" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Status" Width="1.5" PointX="40.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.sysdiagram" Width="1.5" PointX="10.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.TempFile" Width="1.5" PointX="40.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeAction" Width="1.5" PointX="11.75" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeApproval" Width="1.5" PointX="13.75" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeBasic" Width="1.5" PointX="41.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeExperience" Width="1.5" PointX="11.75" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeExperienceDetail" Width="1.5" PointX="14" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeFamilyMember" Width="1.5" PointX="0.75" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeFamilyMembersDetail" Width="1.5" PointX="3" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeePhoto" Width="1.5" PointX="37.75" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeQualificationDetail" Width="1.5" PointX="33" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeQualificationinfo" Width="1.5" PointX="30.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeSetting" Width="1.5" PointX="41.75" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeTrainingDetail" Width="1.5" PointX="35" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.updEmployeeTrainingInfo" Width="1.5" PointX="32.75" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.UserFavorite" Width="1.5" PointX="42.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Vacation" Width="1.5" PointX="42.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EmployeeEvaluation" Width="1.5" PointX="42.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationAction" Width="1.5" PointX="28.25" PointY="42.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationException" Width="1.5" PointX="42.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationGadarat" Width="1.5" PointX="31.25" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationGadarhDegree" Width="1.5" PointX="33.5" PointY="42.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationGoalDegree" Width="1.5" PointX="30.5" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationGoalNote" Width="1.5" PointX="30.5" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationGoal" Width="1.5" PointX="28.25" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationGoalVersion" Width="1.5" PointX="19.75" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationPlan" Width="1.5" PointX="26" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationRole" Width="1.5" PointX="25.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationRoleUser" Width="1.5" PointX="28" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.EvaluationStatus" Width="1.5" PointX="23.75" PointY="37.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.GadaratNote" Width="1.5" PointX="42.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.GadaratType" Width="1.5" PointX="29" PointY="52.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.GoalType" Width="1.5" PointX="26" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RoomAuthorized" Width="1.5" PointX="21.75" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RoomReservationAttandaceRequest" Width="1.5" PointX="21" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RoomReservationPublicRelationsTeam" Width="1.5" PointX="42.75" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RoomReservationRequestAction" Width="1.5" PointX="21" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RoomReservationRequest" Width="1.5" PointX="18.75" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RoomReservationRequestTask" Width="1.5" PointX="21" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RoomReservationSpeekersRequest" Width="1.5" PointX="21" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Room" Width="1.5" PointX="7.75" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RoomsTaskDepartment" Width="1.5" PointX="15.75" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RoomTask" Width="1.5" PointX="43.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.AuthorizedDepartments1" Width="1.5" PointX="43.75" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MaintenanceBuilding" Width="1.5" PointX="13.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MaintenanceFloor" Width="1.5" PointX="16" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MaintenanceRejectReason" Width="1.5" PointX="43.75" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MaintenanceRequestAction" Width="1.5" PointX="13" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MaintenanceRequest" Width="1.5" PointX="16" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MaintenanceService" Width="1.5" PointX="13.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MaintenanceStatus" Width="1.5" PointX="10.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MaintenanceSubstance" Width="1.5" PointX="19" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MaintenanceSuite" Width="1.5" PointX="18.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RequestsAttachment" Width="1.5" PointX="18.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.RequestSubstance" Width="1.5" PointX="21.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.UsersInDepartments1" Width="1.5" PointX="39.75" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Category" Width="1.5" PointX="43.75" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.CustomerInformation" Width="1.5" PointX="23.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Membership" Width="1.5" PointX="26" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MembershipDiscount" Width="1.5" PointX="28.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MembershipFeature" Width="1.5" PointX="28.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.PlanDiscount" Width="1.5" PointX="26" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.PlanFeature" Width="1.5" PointX="26" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.PlansGeneralInformation" Width="1.5" PointX="23.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SubCategory" Width="1.5" PointX="44.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.MessageServiceLog" Width="1.5" PointX="44.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SurveyActionPoll" Width="1.5" PointX="35.5" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SurveyAnswer" Width="1.5" PointX="33.25" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SurveyQuestion" Width="1.5" PointX="31" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.SurveyRelatedUser" Width="1.5" PointX="31" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Survey" Width="1.5" PointX="28.75" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.TranslationRequestAction" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.TranslationRequest" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.TranslationServiceCategory" Width="1.5" PointX="3.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.TranslationService" Width="1.5" PointX="9" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.TranslationStatus" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.TrRequestsAttachment" Width="1.5" PointX="8.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.TRRequestService" Width="1.5" PointX="11.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.TrRequestSpecialist" Width="1.5" PointX="8.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.VisaRequestAction" Width="1.5" PointX="5.25" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.VisaRequestAttachment" Width="1.5" PointX="5.25" PointY="56.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.VisaRequestCmopanion" Width="1.5" PointX="8.25" PointY="54.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.VisaRequest" Width="1.5" PointX="3" PointY="54.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.VisaType" Width="1.5" PointX="44.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.AllRequest" Width="1.5" PointX="44.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.UsersData" Width="1.5" PointX="44.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HCM_ASSESMENT_CHARTER" Width="1.5" PointX="32.75" PointY="47.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HCM_ASSESMENT_CHARTER_EVAL" Width="1.5" PointX="44.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HCM_ASSESMENT_COMPETENCIES" Width="1.5" PointX="34.75" PointY="47.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HCM_ASSESMENT_GOAL" Width="1.5" PointX="9.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HCM_ASSESMENT_GOAL_NOTES" Width="1.5" PointX="11.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HCM_ASSESMENT_ROLE" Width="1.5" PointX="45.75" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HCM_ASSESMENT_ROLE_USER" Width="1.5" PointX="45.75" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HCM_ASSESMENT_STATUS" Width="1.5" PointX="45.75" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HCM_ASSESMENT_TASK" Width="1.5" PointX="36.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.HCM_ASSESSMENT_COMPETENCY_DTL" Width="1.5" PointX="45.75" PointY="43.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.LiveTemp_RequestSubstances" Width="1.5" PointX="41.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.Temp_MaintenanceSubstances" Width="1.5" PointX="43.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalEServicesDBModel.vm_availabledevices" Width="1.5" PointX="45.75" PointY="48.875" IsExpanded="true" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_CampaignAttachments_Campaings" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_CampaignLinks_Campaings" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_Campaings_EmailLists" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_CustomCompaignMails_Campaings" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EmailListContents_EmailLists" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SimCardRequests_SASOAreas" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SASOEmbassyPlace_SASOCountries" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_VisaRequestCmopanions_SASOCountries" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_VisaRequestCmopanion_SASOEmbassyPlace" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SimCardRequestActions_ServicesStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SimCardRequests_ServicesStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_VisaRequestActions_ServicesStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_VisaRequests_ServicesStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_AvailableDevices_UtilitiyTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SimRequestServices_AvailableDevices" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SimRequestServices_DataSimServices" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SimCardRequestActions_SimCardRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SimCardRequestSpecialists_SimCardRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SimRequestServices_SimCardRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_Activity_Chapter" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_AgencyLicensor_ActivityRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_AgencyRelated_ActivityRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_AgencySupervisor_ActivityRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_AgencyLicensor_Agency" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_AgencyRelated_Agency" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_AgencySupervisor_Agency" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_Announcements_AnnouncementsDepartments" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EndorsementResults_EndorsementResults" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_PollsAnswers_Polls" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_PollsQuestions_Polls" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_PollsAnswers_PollsQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SASONewsAttachemnts_SASONews" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_ServiceRoles_ServiceLists" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SocialNewsAttachemnts_SocialNews" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_updEmployeeExperienceDetails_updEmployeeExperience" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_updEmployeeFamilyMembersDetails_updEmployeeFamilyMembers" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_updEmployeeQualificationDetails_updEmployeeQualificationinfo" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_updEmployeeTrainingDetails_updEmployeeTrainingInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationActions_EvaluationPlans" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationActions_EvaluationStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationGadarats_EvaluationPlans" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationGadarats_GadaratTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationGadarhDegrees_EvaluationGadarats" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationGoalDegrees_EvaluationGoals" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationGoalNotes_EvaluationGoals" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationGoals_EvaluationPlans" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationGoals_GoalTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationPlans_EvaluationStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_EvaluationRoleUsers_EvaluationRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_RoomReservationAttandaceRequest_RoomReservationRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_RoomReservationRequestActions_RoomReservationRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_RoomReservationRequestTask_RoomReservationRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_RoomReservationSpeekersRequest_RoomReservationRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_MaintenanceFloors_MaintenanceBuildings" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_MaintenanceSuites_MaintenanceFloors" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_MaintenanceRequestActions_MaintenanceRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_MaintenanceRequestActions_MaintenanceStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_MaintenanceRequest_MaintenanceStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_MaintenanceRequests_MaintenanceServices" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_RequestsAttachments_MaintenanceRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_RequestSubstances_MaintenanceRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_RequestSubstances_MaintenanceSubstances" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_Membership_CustomerInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_Membership_PlansGeneralInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_MembershipDiscounts_Membership" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_MembershipFeatures_Membership" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_MembershipDiscounts_PlanDiscounts" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_MembershipFeatures_PlanFeatures" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_PlanDiscountsPlansGeneralInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_PlanFeaturesPlansGeneralInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SurveyActionPoll_SurveyAnswers" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SurveyActionPoll_SurveyRelatedUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SurveyAnswers_SurveyQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SurveyQuestions_Surveys" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_SurveyRelatedUsers_Surveys" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_TranslationRequestActions_TranslationRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_TranslationRequestActions_TranslationStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_RequestsAttachments_TranslationRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_TranslationRequest_TranslationStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_TranslationRequests_TranslationServices" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_TRRequestServices_TranslationRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_TrRequestSpecialists_TranslationRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_TRRequestServices_TranslationServices" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_VisaRequestActions_VisaRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_VisaRequestAttachments_VisaRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalEServicesDBModel.FK_VisaRequestCmopanions_VisaRequests" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

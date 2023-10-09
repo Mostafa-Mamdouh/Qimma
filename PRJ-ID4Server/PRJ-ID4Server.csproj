@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>PRJ_ID4Server</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="4.1.2" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.2" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
+
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
+
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PRJ.Application\PRJ.Application.csproj" />
+    <ProjectReference Include="..\PRJ.Business\PRJ.Business.csproj" />
+    <ProjectReference Include="..\PRJ.DataAccess\PRJ.DataAccess.csproj" />
+    <ProjectReference Include="..\PRJ.Domain\PRJ.Domain.csproj" />
+    <ProjectReference Include="..\PRJ.GlobalComponents\PRJ.GlobalComponents.csproj" />
+  </ItemGroup>
+
+</Project>

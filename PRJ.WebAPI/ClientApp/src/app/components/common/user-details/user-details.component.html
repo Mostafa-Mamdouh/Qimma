@@ -1,0 +1,67 @@
+<div class="row d-flex justify-content-center align-items-center">
+  <div class="col col-lg-6 mb-4 mb-lg-0">
+    <div class="card mb-3" style="border-radius: 0.5rem">
+      <div class="row g-0">
+        <div
+          class="col-md-4 gradient-custom text-center text-white"
+          style="
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+          "
+        >
+          <img
+            [src]="user?.picture"
+            alt="Avatar"
+            class="img-fluid my-5"
+            style="width: 80px; border-radius: 50%"
+          />
+          <ng-container [ngSwitch]="lang">
+            <h5 *ngSwitchCase="'en'">
+              <span>{{ user?.firstNameEn | initCap }} </span
+              ><span>{{ user?.secondNameEn | initCap }} </span>
+              <span>{{ user?.lastNameEn | initCap }}</span>
+            </h5>
+            <h5 *ngSwitchCase="'ar'">
+              <span>{{ user?.firstNameAr }} </span
+              ><span>{{ user?.secondNameAr }} </span>
+              <span>{{ user?.lastNameAr }}</span>
+            </h5>
+          </ng-container>
+          <p>{{ user?.email }}</p>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body p-4">
+            <h4>{{ "userDetails" | translate }}</h4>
+            <hr class="mt-0 mb-4" />
+            <div class="row pt-1">
+              <div class="col-6 mb-3">
+                <h6>{{ "nationality" | translate }}</h6>
+                <p class="text-muted">{{ user?.nationality }}</p>
+              </div>
+              <div class="col-6 mb-3">
+                <h6>{{ "national_ID" | translate }}</h6>
+                <p class="text-muted">{{ user?.nationalID }}</p>
+              </div>
+            </div>
+            <hr class="mt-0 mb-4" />
+            <div class="row pt-1">
+              <div class="col-12 mb-3">
+                <h6>{{ "passport_no" | translate }}</h6>
+                <p class="text-muted">{{ user?.passportNo }}</p>
+              </div>
+            </div>
+            <hr class="mt-0 mb-4" />
+            <div class="row pt-1">
+              <div class="col-12 mb-3">
+                <h6>{{ "gregorianDOB" | translate }}</h6>
+                <p class="text-muted">
+                  {{ user?.gregorianBirthDate | date: "dd/MM/yyyy" }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

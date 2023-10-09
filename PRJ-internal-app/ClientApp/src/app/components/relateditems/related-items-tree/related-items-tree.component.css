@@ -1,0 +1,80 @@
+:host ::ng-deep .priority-2,
+:host ::ng-deep .priority-3,
+:host ::ng-deep .visibility-sm {
+  display: none;
+}
+
+@media screen and (max-width: 39.938em) {
+  :host ::ng-deep .visibility-sm {
+    display: inline;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  :host ::ng-deep .priority-2 {
+    display: table-cell;
+  }
+}
+
+@media screen and (min-width: 64em) {
+  :host ::ng-deep .priority-3 {
+    display: table-cell;
+  }
+}
+/* this is for Tree Template */
+.itemDes-head {
+  padding: 0.3em 1em !important;
+}
+.itemDestr {
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+}
+.itemDestr:hover {
+  background-color: #f5f5f5;
+}
+
+.itemDestr td {
+  padding: 0.1em 1em;
+  font-size: 0.85em;
+}
+.itemDestr td:last-child {
+  text-align: right;
+}
+.itemDes {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  direction: rtl;
+  transition: 0.3s ease-in-out all;
+}
+
+.itemDestr:hover .itemDes {
+  overflow: inherit;
+  text-overflow: inherit;
+  white-space: inherit;
+  direction: inherit;
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before,
+.sortingw1::before {
+  background-color: var(--gold);
+}
+table > tbody > tr > td {
+  background-color: #fff;
+}
+
+.datatablediv .table-containerw1 {
+  background-color: #fff;
+  padding: 1em 0.5em;
+  margin: 0.5em;
+}
+.tree-containerw1 {
+  background-color: #fff;
+}
+
+.title-olddata {
+  font-weight: 500;
+}
+.hidden {
+  display: none;
+}

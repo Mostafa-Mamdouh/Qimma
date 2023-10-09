@@ -1,0 +1,18 @@
+.one_unit_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.one_unit_container .unit-container {
+  background-color: #b0b0b0;
+  padding: 6px;
+  border-radius: 0.375rem;
+  border: 1px solid #ced4da;
+}
+
+h4,
+h5 {
+  font-weight: bolder;
+}

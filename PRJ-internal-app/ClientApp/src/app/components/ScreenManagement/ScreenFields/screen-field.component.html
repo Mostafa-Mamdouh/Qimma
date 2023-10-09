@@ -1,0 +1,204 @@
+
+
+<div class="w-100 container border rounded shadow mt-5 bg-white px-4">
+
+
+
+  <div class="mainContent d-flex flex-wrap justify-content-evenly align-content-center mt-4">
+
+    <section *ngIf="isPreviewOnly==false" class="lookupdiv d-flex justify-content-start align-items-start flex-wrap w-100 my-2">
+      <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+        <button type="button" class="btn btn-gold btn-sm mx-1" (click)="Back()"><fa-icon [icon]="faArrowAltCircleLeft"> </fa-icon> {{ "General.Back" | translate }} </button>
+      </div>
+      <h4 class="text-left">
+
+        {{ "ScreenFields.PageTitle" | translate }}
+      </h4>
+
+      <div class="row w-100 mt-3 lookupsDataEntry">
+
+        <div class="lookupsfields">
+          <div class="w-100">
+
+            <form [formGroup]="SubmitForm" (ngSubmit)="save()">
+
+              <div class="row p-3 w-100 py-2">
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="FieldDescAr" class="mx-1">{{ "ScreenFields.FieldDescAr" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyArabic($event , 200)" type="text" class="form-control" [(ngModel)]="FieldDescAr" formControlName="FieldDescAr" id="FieldDescAr" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                  <div *ngIf="SubmitForm.controls['FieldDescAr'].errors && SubmitForm.controls['FieldDescAr'].touched" class="form-text d-block text-danger">
+                    ({{ "ScreenFields.ValidFieldDescAr" | translate }})
+                  </div>
+                </div>
+
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="FieldDescEn" class="mx-1">{{ "ScreenFields.FieldDescEn" | translate }} <span class="text-danger">*</span></label>
+                  <input (keypress)="OnlyEnglish($event , 200)" type="text" class="form-control" [(ngModel)]="FieldDescEn" formControlName="FieldDescEn" id="FieldDescEn" required placeholder="{{ 'mandatory' | translate }}" autocomplete="off" />
+                  <div *ngIf="SubmitForm.controls['FieldDescEn'].errors && SubmitForm.controls['FieldDescEn'].touched" class="form-text d-block text-danger">
+                    ({{ "ScreenFields.ValidFieldDescEn" | translate }})
+                  </div>
+                </div>
+                <div class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="FieldType" class="mx-1">{{ "ScreenFields.FieldType" | translate }} <span class="text-danger">*</span></label>
+                  <select (change)="onChangeType()" class="form-control" [(ngModel)]="FieldType" formControlName="FieldType">
+                    <option value=""> -- {{ "ScreenFields.FieldType" | translate }} -- </option>
+                    <option *ngFor="let itm of FieldTypeList" value="{{itm.FieldType}}">
+                      {{ lang == "en" ? itm.FieldTypeNameEn : itm.FieldTypeNameAr }}
+                    </option>
+                  </select>
+                  <div *ngIf="SubmitForm.controls['FieldType'].errors && SubmitForm.controls['FieldType'].touched" class="form-text d-block text-danger">
+                    ({{ "ScreenFields.ValidFieldType" | translate }})
+                  </div>
+                </div>
+
+                <div *ngIf="!FieldFormatHidden" class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                  <label for="FieldFormat" class="mx-1">{{ "ScreenFields.FieldFormat" | translate }} <span class="text-danger">*</span></label>
+                  <input  type="text" class="form-control" placeholder="{{ 'mandatory' | translate }}" [(ngModel)]="FieldFormat" formControlName="FieldFormat" id="FieldFormat"  autocomplete="off" />
+                  <div *ngIf="SubmitForm.controls['FieldFormat'].errors && SubmitForm.controls['FieldFormat'].touched" class="form-text d-block text-danger">
+                    ({{ "ScreenFields.ValidFieldFormat" | translate }})
+                  </div>
+                </div>
+                <div class="row" *ngIf="FieldType==2 && (!LookupSetHidden || !LovHidden)">
+                  <div *ngIf="FieldType==2 && !LookupSetHidden" class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="LookupSetId" class="mx-1">{{ "ScreenFields.LookupSetId" | translate }} <span class="text-danger">*</span></label>
+                    <select (change)="onSelectFieldList('LookupSetId')" class="form-control" [(ngModel)]="LookupSetId" formControlName="LookupSetId">
+                      <option value=""> -- {{ "ScreenFields.LookupSetId" | translate }} -- </option>
+                      <option *ngFor="let itm of classList" value="{{itm.lookupSetId}}">
+                        {{ lang == "en" ? itm.displayNameEn : itm.displayNameAr }}
+                      </option>
+                    </select>
+                    <div *ngIf="SubmitForm.controls['LookupSetId'].errors && SubmitForm.controls['LookupSetId'].touched" class="form-text d-block text-danger">
+                      ({{ "ScreenFields.ValidLookupSetId" | translate }})
+                    </div>
+                  </div>
+                  <div *ngIf="FieldType==2 && (!LookupSetHidden || !LovHidden)" class="px-1 mb-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <label for="value1" class="mx-1">{{ "ScreenFields.LovId" | translate }} <span class="text-danger">*</span></label>
+                    <select (change)="onSelectFieldList('LovId')" class="form-control" [(ngModel)]="LovId" formControlName="LovId">
+                      <option value=""> -- {{ "ScreenFields.LovId" | translate }} -- </option>
+                      <option *ngFor="let itm of lovList" value="{{itm.lovId}}">
+                        {{ lang == "en" ? itm.lovNameEn : itm.lovNameAr }}
+                      </option>
+                    </select>
+                    <div *ngIf="SubmitForm.controls['LovId'].errors && SubmitForm.controls['LovId'].touched" class="form-text d-block text-danger">
+                      ({{ "ScreenFields.ValidLovId" | translate }})
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end align-items-center flex-wrap w-100">
+                  <span class="btn btn-secondary mx-2" (click)="reset()" style="padding-left: 50px; padding-right: 50px;" id="reset-all">
+                    {{ "ResetFormData" | translate }}
+                  </span>
+                  <button class="btn btn-gold mx-2" style="padding-left: 100px;padding-right:100px;" id="submit-all">
+                    {{ "Save" | translate }}
+                  </button>
+                </div>
+              </div>
+
+            </form>
+
+
+          </div>
+        </div>
+
+      </div>
+
+
+    </section>
+    <hr *ngIf="isPreviewOnly==false" class="my-4 w-100">
+    <div class="datatablediv w-100">
+      <table id="datatableexample" class="table datatable table-responsive table-striped table-bordered row-border table-hover table-sm w-100 overflow-auto">
+        <thead>
+          <tr>
+            <th *ngIf="isPreviewOnly==false" class="select-filter">
+              {{ "ScreenFields.Screen" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "ScreenFields.FieldDescEn" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "ScreenFields.FieldDescAr" | translate }}
+            </th>
+            <th class="select-filter">
+              {{ "ScreenFields.FieldType" | translate }}
+            </th>
+            <th *ngIf="isPreviewOnly==false" class="select-filter">
+              {{ "ScreenFields.FieldFormat" | translate }}
+            </th>
+            <th *ngIf="isPreviewOnly==false" class="select-filter">
+              {{ "ScreenFields.LookupSetId" | translate }}
+            </th>
+            <th *ngIf="isPreviewOnly==false" class="select-filter">
+              {{ "ScreenFields.LovId" | translate }}
+            </th>
+            <th *ngIf="isPreviewOnly==false">{{ "Action" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container  *ngIf="isPreviewOnly==false">
+            <tr *ngFor="let mem of dataList;let i = index;">
+              <td>{{ lang == "en" ? mem.screenNameEn : mem.screenNameAr }}</td>
+              <td>{{mem.fieldDescEn }} </td>
+              <td>{{mem.fieldDescAr}}</td>
+              <td>{{ lang == "en" ? mem.fieldTypeEn : mem.fieldTypeAr }}</td>
+              <td>{{mem.fieldFormat}}</td>
+              <td>{{mem.className}}</td>
+              <td>{{ lang == "en" ? mem.lovNameEn : mem.lovNameAr }}</td>
+
+              <td>
+                <button class="edit btn btn-gold btn-sm mx-1" (click)="Details(mem)"><fa-icon [icon]="faPen"> </fa-icon> </button>
+                <button class="delete btn btn-secondary btn-sm mx-1" (click)="Delete(mem)"><fa-icon [icon]="faTrash"> </fa-icon></button>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="isPreviewOnly==true">
+            <tr  *ngFor="let mem of dataList;let i = index;" (click)="fieldClicked(mem)">
+              <td>{{mem.fieldDescEn}}  </td>
+              <td>{{mem.fieldDescAr}}</td>
+              <td>{{ lang == "en" ? mem.fieldTypeEn : mem.fieldTypeAr }}</td>
+            </tr>
+          </ng-container>
+          
+        </tbody>
+        <tfoot *ngIf="isPreviewOnly==true">
+          <tr>
+            <th>
+              <input class="search-input"
+                     name="fieldDescAr"
+                     id="fieldDescAr"
+                     type="text"
+                     placeholder="Aramco"
+                     style="width: 100%" />
+            </th>
+            <th>
+              <input class="search-input"
+                     name="fieldDescAr"
+                     id="fieldDescAr"
+                     type="text"
+                     placeholder="أرامكو"
+                     style="width: 100%" />
+            </th>
+
+            <th>
+              <input *ngIf="lang == 'en'" class="search-input"
+                     name="fieldTypeEn"
+                     id="fieldTypeEn"
+                     type="text"
+                     placeholder="055 66..."
+                     style="width: 100%" />
+              <input *ngIf="lang == 'ar'" class="search-input"
+                     name="fieldTypeAr"
+                     id="fieldTypeAr"
+                     type="text"
+                     placeholder="055 66..."
+                     style="width: 100%" />
+            </th>
+          
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,14 @@
+<div (click)="action(menu.path)"
+     class="mainContentBlock d-flex flex-row justify-content-start align-items-center mb-3 px-3">
+  <img src="{{menu.imgSrc}}" alt="" />
+  <div class="d-flex flex-column align-content-center justify-content-center text-right text-block mx-3">
+    <ng-container [ngSwitch]="lang">
+      <h4 *ngSwitchCase="'en'">{{ menu.shortMenuDesFrn }}</h4>
+      <h4 *ngSwitchCase="'ar'">{{ menu.shortMenuDesNtv }}</h4>
+    </ng-container>
+    <ng-container [ngSwitch]="lang">
+      <h6 *ngSwitchCase="'en'">{{ menu.menuDesFrn }}</h6>
+      <h6 *ngSwitchCase="'ar'">{{ menu.menuDesNtv }}</h6>
+    </ng-container>
+  </div>
+</div>

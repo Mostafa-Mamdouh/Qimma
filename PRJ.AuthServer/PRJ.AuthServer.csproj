@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\Scripts\Account.js" />
+    <None Include="wwwroot\js\Scripts\Config.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DNTCaptcha.Core" Version="4.3.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PRJ.Application\PRJ.Application.csproj" />
+    <ProjectReference Include="..\PRJ.Business\PRJ.Business.csproj" />
+    <ProjectReference Include="..\PRJ.DataAccess\PRJ.DataAccess.csproj" />
+    <ProjectReference Include="..\PRJ.Domain\PRJ.Domain.csproj" />
+    <ProjectReference Include="..\PRJ.GlobalComponents\PRJ.GlobalComponents.csproj" />
+    <ProjectReference Include="..\PRJ.Repository\PRJ.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

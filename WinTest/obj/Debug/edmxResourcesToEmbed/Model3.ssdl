@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NRRCDb2Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LookupSet">
+    <Key>
+      <PropertyRef Name="LookupSetId" />
+    </Key>
+    <Property Name="LookupSetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="int" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar(max)" />
+    <Property Name="DisplayNameAr" Type="nvarchar(max)" />
+    <Property Name="DisplayNameEn" Type="nvarchar(max)" />
+    <Property Name="ExtraData1" Type="nvarchar(max)" />
+    <Property Name="ExtraData2" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="LookupSetTerm">
+    <Key>
+      <PropertyRef Name="LookupSetTermId" />
+    </Key>
+    <Property Name="LookupSetTermId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LookupSetId" Type="int" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" />
+    <Property Name="DisplayNameAr" Type="nvarchar(max)" />
+    <Property Name="DisplayNameEn" Type="nvarchar(max)" />
+    <Property Name="ExtraData1" Type="nvarchar(max)" />
+    <Property Name="ExtraData2" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+  </EntityType>
+  <Association Name="FK_LookupSetTerm_LookupSet_LookupSetId">
+    <End Role="LookupSet" Type="Self.LookupSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LookupSetTerm" Type="Self.LookupSetTerm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupSet">
+        <PropertyRef Name="LookupSetId" />
+      </Principal>
+      <Dependent Role="LookupSetTerm">
+        <PropertyRef Name="LookupSetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NRRCDb2Model1StoreContainer">
+    <EntitySet Name="LookupSet" EntityType="Self.LookupSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookupSetTerm" EntityType="Self.LookupSetTerm" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_LookupSetTerm_LookupSet_LookupSetId" Association="Self.FK_LookupSetTerm_LookupSet_LookupSetId">
+      <End Role="LookupSet" EntitySet="LookupSet" />
+      <End Role="LookupSetTerm" EntitySet="LookupSetTerm" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

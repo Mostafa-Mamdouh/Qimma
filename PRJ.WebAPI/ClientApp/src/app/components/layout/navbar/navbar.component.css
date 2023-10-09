@@ -1,0 +1,40 @@
+
+
+/* New Navbar */
+
+.rightMenu {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar-brand{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.navbar-master .nav-item {
+padding: 0 30px;
+font-weight: bold;
+}
+.navbar-master .dropdown-menu.show {
+  display: inline-flex;
+  left: 0;
+  width: fit-content;
+  flex-direction: row;
+  padding: 1em;
+  top: 140%;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  border-radius: 0;
+  border: var(--bs-border-width) var(--bs-border-style) var(--gold);
+}
+
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+}
+body {
+  background-image: unset;
+}
+/* End of New Navbar */

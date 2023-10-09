@@ -1,0 +1,27 @@
+.tableadditional thead, .tableInvoice thead, .additionalvalueTable thead, .itemsvalueTable thead{
+    background-color: var(--gold);
+    color: white;
+}
+.tableadditional thead tr th, .itemsvalueTable thead tr th, .tableInvoice thead tr th, .additionalvalueTable thead tr th {
+    font-size: 0.8em;
+    text-align: center;
+}
+.table td.fit, 
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+td.containtd input {
+    width: 48%;
+}
+.warn-text{
+    color:#e90c0c;
+    font-size: 14px;
+    padding-top: 4px;
+}
+.table td .Num{
+    text-align: right;
+}
+.table td{
+    text-align: center;
+}

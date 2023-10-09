@@ -1,0 +1,6 @@
+.modal-header, .modal-footer, ol {
+  direction: ltr;
+}
+.ngx-dropzone-preview {
+  color: gray;
+}
